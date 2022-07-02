@@ -8,17 +8,60 @@
 
 /* Begin PBXBuildFile section */
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
-		F13CA31F286E769E00527D1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* ContentView.swift */; };
+		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
 		F13CA324286E769F00527D1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA323286E769F00527D1E /* Preview Assets.xcassets */; };
+		F13CA32C286FB8E200527D1E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA32B286FB8E200527D1E /* Router.swift */; };
+		F13CA32E286FB9E700527D1E /* ScreenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA32D286FB9E700527D1E /* ScreenType.swift */; };
+		F13CA330286FBA1D00527D1E /* ScreenMovable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA32F286FBA1D00527D1E /* ScreenMovable.swift */; };
+		F13CA332286FBA4A00527D1E /* SlideAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA331286FBA4900527D1E /* SlideAnimation.swift */; };
+		F13CA334286FBB3E00527D1E /* ThirdScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA333286FBB3D00527D1E /* ThirdScreen.swift */; };
+		F13CA336286FBB6C00527D1E /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA335286FBB6C00527D1E /* FirstScreen.swift */; };
+		F13CA338286FBBB500527D1E /* Controller+NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA337286FBBB500527D1E /* Controller+NextButton.swift */; };
+		F13CA33A286FBBEC00527D1E /* SecondScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA339286FBBEC00527D1E /* SecondScreen.swift */; };
+		F13CA33C286FBC3A00527D1E /* Controller+Navi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA33B286FBC3A00527D1E /* Controller+Navi.swift */; };
+		F13CA33E286FBCFF00527D1E /* FirstScreen+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA33D286FBCFF00527D1E /* FirstScreen+Account.swift */; };
+		F13CA340286FBFFF00527D1E /* CircleButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA33F286FBFFF00527D1E /* CircleButtonModifier.swift */; };
+		F13CA342286FC3E500527D1E /* Controller+Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA341286FC3E500527D1E /* Controller+Footer.swift */; };
+		F13CA344286FD51E00527D1E /* Controller+BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA343286FD51E00527D1E /* Controller+BackButton.swift */; };
+		F13CA346286FE69000527D1E /* Controller+RegistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA345286FE69000527D1E /* Controller+RegistButton.swift */; };
+		F13CA348286FE70500527D1E /* Controller+nextOrRegistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA347286FE70500527D1E /* Controller+nextOrRegistButton.swift */; };
+		F13CA34C286FED2C00527D1E /* KeyPadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA34B286FED2C00527D1E /* KeyPadButton.swift */; };
+		F13CA34E286FED4500527D1E /* NumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA34D286FED4500527D1E /* NumberPad.swift */; };
+		F13CA350286FF9F300527D1E /* Color+rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA34F286FF9F300527D1E /* Color+rgb.swift */; };
+		F13CA352286FFDE800527D1E /* Controller+Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA351286FFDE800527D1E /* Controller+Header.swift */; };
+		F13CA35428708D6200527D1E /* HeaderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35328708D6200527D1E /* HeaderInfo.swift */; };
+		F13CA3562870904F00527D1E /* Controller+BottomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA3552870904F00527D1E /* Controller+BottomMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
-		F13CA31E286E769E00527D1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		F13CA320286E769F00527D1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F13CA323286E769F00527D1E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F13CA32B286FB8E200527D1E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		F13CA32D286FB9E700527D1E /* ScreenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenType.swift; sourceTree = "<group>"; };
+		F13CA32F286FBA1D00527D1E /* ScreenMovable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenMovable.swift; sourceTree = "<group>"; };
+		F13CA331286FBA4900527D1E /* SlideAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideAnimation.swift; sourceTree = "<group>"; };
+		F13CA333286FBB3D00527D1E /* ThirdScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreen.swift; sourceTree = "<group>"; };
+		F13CA335286FBB6C00527D1E /* FirstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen.swift; sourceTree = "<group>"; };
+		F13CA337286FBBB500527D1E /* Controller+NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+NextButton.swift"; sourceTree = "<group>"; };
+		F13CA339286FBBEC00527D1E /* SecondScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreen.swift; sourceTree = "<group>"; };
+		F13CA33B286FBC3A00527D1E /* Controller+Navi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+Navi.swift"; sourceTree = "<group>"; };
+		F13CA33D286FBCFF00527D1E /* FirstScreen+Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstScreen+Account.swift"; sourceTree = "<group>"; };
+		F13CA33F286FBFFF00527D1E /* CircleButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonModifier.swift; sourceTree = "<group>"; };
+		F13CA341286FC3E500527D1E /* Controller+Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+Footer.swift"; sourceTree = "<group>"; };
+		F13CA343286FD51E00527D1E /* Controller+BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+BackButton.swift"; sourceTree = "<group>"; };
+		F13CA345286FE69000527D1E /* Controller+RegistButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+RegistButton.swift"; sourceTree = "<group>"; };
+		F13CA347286FE70500527D1E /* Controller+nextOrRegistButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+nextOrRegistButton.swift"; sourceTree = "<group>"; };
+		F13CA34B286FED2C00527D1E /* KeyPadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadButton.swift; sourceTree = "<group>"; };
+		F13CA34D286FED4500527D1E /* NumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPad.swift; sourceTree = "<group>"; };
+		F13CA34F286FF9F300527D1E /* Color+rgb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+rgb.swift"; sourceTree = "<group>"; };
+		F13CA351286FFDE800527D1E /* Controller+Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+Header.swift"; sourceTree = "<group>"; };
+		F13CA35328708D6200527D1E /* HeaderInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInfo.swift; sourceTree = "<group>"; };
+		F13CA3552870904F00527D1E /* Controller+BottomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+BottomMenu.swift"; sourceTree = "<group>"; };
+		F13CA3582871011C00527D1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +78,7 @@
 		F13CA310286E769E00527D1E = {
 			isa = PBXGroup;
 			children = (
+				F13CA3582871011C00527D1E /* README.md */,
 				F13CA31B286E769E00527D1E /* TapSimpleButton */,
 				F13CA31A286E769E00527D1E /* Products */,
 			);
@@ -52,9 +96,30 @@
 			isa = PBXGroup;
 			children = (
 				F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */,
-				F13CA31E286E769E00527D1E /* ContentView.swift */,
 				F13CA320286E769F00527D1E /* Assets.xcassets */,
 				F13CA322286E769F00527D1E /* Preview Content */,
+				F13CA32B286FB8E200527D1E /* Router.swift */,
+				F13CA32D286FB9E700527D1E /* ScreenType.swift */,
+				F13CA32F286FBA1D00527D1E /* ScreenMovable.swift */,
+				F13CA331286FBA4900527D1E /* SlideAnimation.swift */,
+				F13CA335286FBB6C00527D1E /* FirstScreen.swift */,
+				F13CA33D286FBCFF00527D1E /* FirstScreen+Account.swift */,
+				F13CA339286FBBEC00527D1E /* SecondScreen.swift */,
+				F13CA333286FBB3D00527D1E /* ThirdScreen.swift */,
+				F13CA31E286E769E00527D1E /* Controller.swift */,
+				F13CA351286FFDE800527D1E /* Controller+Header.swift */,
+				F13CA337286FBBB500527D1E /* Controller+NextButton.swift */,
+				F13CA343286FD51E00527D1E /* Controller+BackButton.swift */,
+				F13CA345286FE69000527D1E /* Controller+RegistButton.swift */,
+				F13CA33B286FBC3A00527D1E /* Controller+Navi.swift */,
+				F13CA341286FC3E500527D1E /* Controller+Footer.swift */,
+				F13CA347286FE70500527D1E /* Controller+nextOrRegistButton.swift */,
+				F13CA35328708D6200527D1E /* HeaderInfo.swift */,
+				F13CA3552870904F00527D1E /* Controller+BottomMenu.swift */,
+				F13CA34F286FF9F300527D1E /* Color+rgb.swift */,
+				F13CA34D286FED4500527D1E /* NumberPad.swift */,
+				F13CA34B286FED2C00527D1E /* KeyPadButton.swift */,
+				F13CA33F286FBFFF00527D1E /* CircleButtonModifier.swift */,
 			);
 			path = TapSimpleButton;
 			sourceTree = "<group>";
@@ -137,8 +202,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F13CA31F286E769E00527D1E /* ContentView.swift in Sources */,
+				F13CA33E286FBCFF00527D1E /* FirstScreen+Account.swift in Sources */,
+				F13CA34C286FED2C00527D1E /* KeyPadButton.swift in Sources */,
+				F13CA346286FE69000527D1E /* Controller+RegistButton.swift in Sources */,
+				F13CA332286FBA4A00527D1E /* SlideAnimation.swift in Sources */,
+				F13CA348286FE70500527D1E /* Controller+nextOrRegistButton.swift in Sources */,
+				F13CA334286FBB3E00527D1E /* ThirdScreen.swift in Sources */,
+				F13CA3562870904F00527D1E /* Controller+BottomMenu.swift in Sources */,
+				F13CA31F286E769E00527D1E /* Controller.swift in Sources */,
+				F13CA32C286FB8E200527D1E /* Router.swift in Sources */,
+				F13CA336286FBB6C00527D1E /* FirstScreen.swift in Sources */,
+				F13CA330286FBA1D00527D1E /* ScreenMovable.swift in Sources */,
+				F13CA342286FC3E500527D1E /* Controller+Footer.swift in Sources */,
+				F13CA33C286FBC3A00527D1E /* Controller+Navi.swift in Sources */,
 				F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */,
+				F13CA338286FBBB500527D1E /* Controller+NextButton.swift in Sources */,
+				F13CA344286FD51E00527D1E /* Controller+BackButton.swift in Sources */,
+				F13CA352286FFDE800527D1E /* Controller+Header.swift in Sources */,
+				F13CA35428708D6200527D1E /* HeaderInfo.swift in Sources */,
+				F13CA350286FF9F300527D1E /* Color+rgb.swift in Sources */,
+				F13CA32E286FB9E700527D1E /* ScreenType.swift in Sources */,
+				F13CA34E286FED4500527D1E /* NumberPad.swift in Sources */,
+				F13CA33A286FBBEC00527D1E /* SecondScreen.swift in Sources */,
+				F13CA340286FBFFF00527D1E /* CircleButtonModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +281,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -249,7 +335,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -264,6 +350,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TapSimpleButton/Preview Content\"";
@@ -275,6 +362,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -282,6 +370,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.arai.TapSimpleButton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -293,6 +382,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TapSimpleButton/Preview Content\"";
@@ -304,6 +394,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,6 +402,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.arai.TapSimpleButton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -11,7 +11,9 @@ import SwiftUI
 struct TapSimpleButtonApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Controller()
+                .environmentObject(Router.shared)
+                .environmentObject(HeaderInfo())
         }
     }
 }
