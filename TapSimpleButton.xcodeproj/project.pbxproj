@@ -33,6 +33,7 @@
 		F13CA35428708D6200527D1E /* HeaderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35328708D6200527D1E /* HeaderInfo.swift */; };
 		F13CA3562870904F00527D1E /* Controller+BottomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA3552870904F00527D1E /* Controller+BottomMenu.swift */; };
 		F13CA35A2871050200527D1E /* View+backgroundCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA3592871050200527D1E /* View+backgroundCircle.swift */; };
+		F13CA35C2871057500527D1E /* View+setTransAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35B2871057500527D1E /* View+setTransAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		F13CA3552870904F00527D1E /* Controller+BottomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+BottomMenu.swift"; sourceTree = "<group>"; };
 		F13CA3582871011C00527D1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F13CA3592871050200527D1E /* View+backgroundCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+backgroundCircle.swift"; sourceTree = "<group>"; };
+		F13CA35B2871057500527D1E /* View+setTransAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+setTransAnimation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				F13CA34B286FED2C00527D1E /* KeyPadButton.swift */,
 				F13CA33F286FBFFF00527D1E /* CircleButtonModifier.swift */,
 				F13CA3592871050200527D1E /* View+backgroundCircle.swift */,
+				F13CA35B2871057500527D1E /* View+setTransAnimation.swift */,
 			);
 			path = TapSimpleButton;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				F13CA350286FF9F300527D1E /* Color+rgb.swift in Sources */,
 				F13CA32E286FB9E700527D1E /* ScreenType.swift in Sources */,
 				F13CA34E286FED4500527D1E /* NumberPad.swift in Sources */,
+				F13CA35C2871057500527D1E /* View+setTransAnimation.swift in Sources */,
 				F13CA33A286FBBEC00527D1E /* SecondScreen.swift in Sources */,
 				F13CA340286FBFFF00527D1E /* CircleButtonModifier.swift in Sources */,
 			);
