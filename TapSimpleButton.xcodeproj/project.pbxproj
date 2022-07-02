@@ -34,6 +34,8 @@
 		F13CA3562870904F00527D1E /* Controller+BottomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA3552870904F00527D1E /* Controller+BottomMenu.swift */; };
 		F13CA35A2871050200527D1E /* View+backgroundCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA3592871050200527D1E /* View+backgroundCircle.swift */; };
 		F13CA35C2871057500527D1E /* View+setTransAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35B2871057500527D1E /* View+setTransAnimation.swift */; };
+		F13CA35E28710ED000527D1E /* FirstScreen+income.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35D28710ED000527D1E /* FirstScreen+income.swift */; };
+		F13CA36028710F1200527D1E /* FirstScreen+spending.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35F28710F1200527D1E /* FirstScreen+spending.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +68,8 @@
 		F13CA3582871011C00527D1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F13CA3592871050200527D1E /* View+backgroundCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+backgroundCircle.swift"; sourceTree = "<group>"; };
 		F13CA35B2871057500527D1E /* View+setTransAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+setTransAnimation.swift"; sourceTree = "<group>"; };
+		F13CA35D28710ED000527D1E /* FirstScreen+income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstScreen+income.swift"; sourceTree = "<group>"; };
+		F13CA35F28710F1200527D1E /* FirstScreen+spending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstScreen+spending.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,8 @@
 				F13CA33F286FBFFF00527D1E /* CircleButtonModifier.swift */,
 				F13CA3592871050200527D1E /* View+backgroundCircle.swift */,
 				F13CA35B2871057500527D1E /* View+setTransAnimation.swift */,
+				F13CA35D28710ED000527D1E /* FirstScreen+income.swift */,
+				F13CA35F28710F1200527D1E /* FirstScreen+spending.swift */,
 			);
 			path = TapSimpleButton;
 			sourceTree = "<group>";
@@ -213,10 +219,12 @@
 				F13CA346286FE69000527D1E /* Controller+RegistButton.swift in Sources */,
 				F13CA332286FBA4A00527D1E /* SlideAnimation.swift in Sources */,
 				F13CA348286FE70500527D1E /* Controller+nextOrRegistButton.swift in Sources */,
+				F13CA36028710F1200527D1E /* FirstScreen+spending.swift in Sources */,
 				F13CA334286FBB3E00527D1E /* ThirdScreen.swift in Sources */,
 				F13CA3562870904F00527D1E /* Controller+BottomMenu.swift in Sources */,
 				F13CA31F286E769E00527D1E /* Controller.swift in Sources */,
 				F13CA32C286FB8E200527D1E /* Router.swift in Sources */,
+				F13CA35E28710ED000527D1E /* FirstScreen+income.swift in Sources */,
 				F13CA336286FBB6C00527D1E /* FirstScreen.swift in Sources */,
 				F13CA330286FBA1D00527D1E /* ScreenMovable.swift in Sources */,
 				F13CA342286FC3E500527D1E /* Controller+Footer.swift in Sources */,
