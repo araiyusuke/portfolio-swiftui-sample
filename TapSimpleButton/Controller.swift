@@ -50,21 +50,6 @@ struct Controller: ScreenMovable {
 }
 
 extension View {
-    
-    func backgroundCircle(_ color: Color, _ size: CGFloat, _ borderColor: Color, _ borderSize: CGFloat ) -> some View {
-        GeometryReader { geometry in
-            modifier(
-                CircleButtonModifier(
-                    color: color,
-                    size: size,
-                    borderColor: borderColor,
-                    borderSize: borderSize
-                )
-            )
-            .frame(width: geometry.size.width, height: geometry.size.height)
-        }
-    }
-    
     func setTransAnimation(direction: Router.Direction = .forward) -> some View {
         if  case .back = direction {
             return self
