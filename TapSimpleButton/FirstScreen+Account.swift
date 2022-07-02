@@ -8,8 +8,16 @@
 import Foundation
 import SwiftUI
 
-struct Account: Hashable {
+struct Account: Identifiable, Hashable {
+    
+    var id = UUID()
     var title: String
     var borderColor: Color
     var boderSize: CGFloat = 3
+    
+    var view: some View {
+        Text(title)
+            .backgroundCircle(.white, 82, borderColor, boderSize)
+    }
+
 }
