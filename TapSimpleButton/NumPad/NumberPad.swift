@@ -61,7 +61,7 @@ struct NumberPad: View {
         
         var string: String {
             switch self {
-            
+                
             case .number(let num):
                 return num.description
             case .doubleZero:
@@ -80,25 +80,34 @@ struct NumberPad: View {
             return Group {
                 
                 switch self {
-                
+                    
                 case .doubleZero:
                     Text("00")
                         .customFont(font: .roboto, size: 36, spacing: .short, color: .dark, weight: .light)
-
+                    
                 case .number(let num):
                     
                     Text(num.description)
                         .customFont(font: .roboto, size: 36, spacing: .short, color: .dark, weight: .light)
-
+                    
                 case .delete:
-                    VStack(spacing: 0) {
-                        Text("⌫")
-                            .customFont(size: 50, spacing: .short, color: .dark, weight: .bold)
-                            .frame(width: 52, height: 36)
-                            .padding(.top, 10)
-                            .padding(.bottom, 8)
-                            .padding(.trailing, 1)
+                    
+                    ZStack(alignment: .bottom) {
+                        
+                        Text("消去")
+                            .customFont(font: .roboto, size: 13, spacing: .short, color: .dark, weight: .light)
+                            .offset(y: -8)
+                        
+                        
+                        ZStack(alignment: .center) {
+                            Image("remove_icon")
+                                .resizable()
+                                .frame(width: 40, height: 24)
+                                .offset(x: -2)
+                        }
+                        .frame(maxHeight: .infinity)
                     }
+                    .frame(maxHeight: .infinity)
                 }
             }
         }
