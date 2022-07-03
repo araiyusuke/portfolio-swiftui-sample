@@ -10,4 +10,5 @@ import SwiftUI
 
 class HeaderInfo: ObservableObject {
     @Published var title: String  = ""
+    @Published var numPadValue: String  = ""
 }

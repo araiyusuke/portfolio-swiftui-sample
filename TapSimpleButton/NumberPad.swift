@@ -71,6 +71,10 @@ struct NumberPad: View {
             }
         }
         
+        var isDeleteKey: Bool {
+            self == .delete
+        }
+        
         var label: some View {
             
             return Group {
