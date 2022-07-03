@@ -7,4 +7,4 @@
 
 <img width="271" alt="iPhone_13_mini" src="https://user-images.githubusercontent.com/1781289/177058661-239354e2-dcff-4a51-a881-9d52ef69d3e5.png">
 
-
+<img width="270" alt="iPhone_13_mini" src="https://user-images.githubusercontent.com/1781289/177059856-b0c7d4f3-f1bc-4907-ac19-76c2ccc24cc5.png">
