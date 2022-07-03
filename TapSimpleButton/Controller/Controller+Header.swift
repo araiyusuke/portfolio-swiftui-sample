@@ -67,6 +67,11 @@ extension Controller {
                         .frame(height: 30)
                 }
                 .frame(alignment: .top)
+            case .setting:
+                Text("設定")
+                    .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
+                    .frame(height: 20)
+
             }
         }
     }

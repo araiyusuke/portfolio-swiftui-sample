@@ -23,6 +23,8 @@ extension Controller {
                         moveBack(to: .first, router)
                     case .third:
                         moveBack(to: .second, router)
+                    case .setting:
+                        return
                     }
                 }
         }
