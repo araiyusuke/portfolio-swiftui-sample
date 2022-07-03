@@ -10,8 +10,8 @@ import SwiftUI
 
 extension Controller {
     var next: some View {
-        Text("次へ＞")
-            .foregroundColor(.black)
+        Text("次へ 〉")
+            .customFont(size: 18, spacing: .short, color: .dark, weight: .medium)
             .onTapGesture {
                 moveForward(to: .second, router)
             }

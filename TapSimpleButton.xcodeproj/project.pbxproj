@@ -36,6 +36,16 @@
 		F13CA35C2871057500527D1E /* View+setTransAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35B2871057500527D1E /* View+setTransAnimation.swift */; };
 		F13CA35E28710ED000527D1E /* FirstScreen+income.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35D28710ED000527D1E /* FirstScreen+income.swift */; };
 		F13CA36028710F1200527D1E /* FirstScreen+spending.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35F28710F1200527D1E /* FirstScreen+spending.swift */; };
+		F13CA36D2871125100527D1E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F13CA3622871125100527D1E /* README.md */; };
+		F13CA36E2871125100527D1E /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F13CA3642871125100527D1E /* Roboto-Medium.ttf */; };
+		F13CA36F2871125100527D1E /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F13CA3652871125100527D1E /* Roboto-Light.ttf */; };
+		F13CA3702871125100527D1E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F13CA3662871125100527D1E /* Roboto-Regular.ttf */; };
+		F13CA3712871125100527D1E /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = F13CA3672871125100527D1E /* LICENSE.txt */; };
+		F13CA3722871125100527D1E /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F13CA3682871125100527D1E /* Roboto-Bold.ttf */; };
+		F13CA3732871125100527D1E /* NotoSansJP-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F13CA36A2871125100527D1E /* NotoSansJP-Medium.otf */; };
+		F13CA3742871125100527D1E /* NotoSansJP-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F13CA36B2871125100527D1E /* NotoSansJP-Bold.otf */; };
+		F13CA3752871125100527D1E /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = F13CA36C2871125100527D1E /* OFL.txt */; };
+		F13CA3772871133100527D1E /* Text+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA3762871133100527D1E /* Text+Font.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +80,17 @@
 		F13CA35B2871057500527D1E /* View+setTransAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+setTransAnimation.swift"; sourceTree = "<group>"; };
 		F13CA35D28710ED000527D1E /* FirstScreen+income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstScreen+income.swift"; sourceTree = "<group>"; };
 		F13CA35F28710F1200527D1E /* FirstScreen+spending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstScreen+spending.swift"; sourceTree = "<group>"; };
+		F13CA3622871125100527D1E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F13CA3642871125100527D1E /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		F13CA3652871125100527D1E /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		F13CA3662871125100527D1E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		F13CA3672871125100527D1E /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		F13CA3682871125100527D1E /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		F13CA36A2871125100527D1E /* NotoSansJP-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Medium.otf"; sourceTree = "<group>"; };
+		F13CA36B2871125100527D1E /* NotoSansJP-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Bold.otf"; sourceTree = "<group>"; };
+		F13CA36C2871125100527D1E /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		F13CA3762871133100527D1E /* Text+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Font.swift"; sourceTree = "<group>"; };
+		F13CA378287113FD00527D1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +124,8 @@
 		F13CA31B286E769E00527D1E /* TapSimpleButton */ = {
 			isa = PBXGroup;
 			children = (
+				F13CA378287113FD00527D1E /* Info.plist */,
+				F13CA3612871125100527D1E /* Fonts */,
 				F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */,
 				F13CA320286E769F00527D1E /* Assets.xcassets */,
 				F13CA322286E769F00527D1E /* Preview Content */,
@@ -142,6 +165,39 @@
 				F13CA323286E769F00527D1E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F13CA3612871125100527D1E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA3622871125100527D1E /* README.md */,
+				F13CA3632871125100527D1E /* Roboto */,
+				F13CA3692871125100527D1E /* Noto_Sans_JP */,
+				F13CA3762871133100527D1E /* Text+Font.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F13CA3632871125100527D1E /* Roboto */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA3642871125100527D1E /* Roboto-Medium.ttf */,
+				F13CA3652871125100527D1E /* Roboto-Light.ttf */,
+				F13CA3662871125100527D1E /* Roboto-Regular.ttf */,
+				F13CA3672871125100527D1E /* LICENSE.txt */,
+				F13CA3682871125100527D1E /* Roboto-Bold.ttf */,
+			);
+			path = Roboto;
+			sourceTree = "<group>";
+		};
+		F13CA3692871125100527D1E /* Noto_Sans_JP */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA36A2871125100527D1E /* NotoSansJP-Medium.otf */,
+				F13CA36B2871125100527D1E /* NotoSansJP-Bold.otf */,
+				F13CA36C2871125100527D1E /* OFL.txt */,
+			);
+			path = Noto_Sans_JP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,8 +258,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F13CA3702871125100527D1E /* Roboto-Regular.ttf in Resources */,
+				F13CA3752871125100527D1E /* OFL.txt in Resources */,
+				F13CA36E2871125100527D1E /* Roboto-Medium.ttf in Resources */,
+				F13CA36D2871125100527D1E /* README.md in Resources */,
+				F13CA36F2871125100527D1E /* Roboto-Light.ttf in Resources */,
 				F13CA324286E769F00527D1E /* Preview Assets.xcassets in Resources */,
 				F13CA321286E769F00527D1E /* Assets.xcassets in Resources */,
+				F13CA3732871125100527D1E /* NotoSansJP-Medium.otf in Resources */,
+				F13CA3742871125100527D1E /* NotoSansJP-Bold.otf in Resources */,
+				F13CA3722871125100527D1E /* Roboto-Bold.ttf in Resources */,
+				F13CA3712871125100527D1E /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +300,7 @@
 				F13CA344286FD51E00527D1E /* Controller+BackButton.swift in Sources */,
 				F13CA352286FFDE800527D1E /* Controller+Header.swift in Sources */,
 				F13CA35428708D6200527D1E /* HeaderInfo.swift in Sources */,
+				F13CA3772871133100527D1E /* Text+Font.swift in Sources */,
 				F13CA350286FF9F300527D1E /* Color+rgb.swift in Sources */,
 				F13CA32E286FB9E700527D1E /* ScreenType.swift in Sources */,
 				F13CA34E286FED4500527D1E /* NumberPad.swift in Sources */,
@@ -373,6 +439,7 @@
 				DEVELOPMENT_TEAM = CNWDNX3S69;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TapSimpleButton/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -405,6 +472,7 @@
 				DEVELOPMENT_TEAM = CNWDNX3S69;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TapSimpleButton/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

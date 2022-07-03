@@ -21,6 +21,7 @@ struct SecondScreen: ScreenMovable {
         SlideAnimation {
             VStack(spacing: 15) {
                 Text("取引先")
+                    .customFont(size: 12, spacing: .short, color: .dark, weight: .light)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                 HStack(spacing: 5) {
@@ -39,6 +40,7 @@ struct SecondScreen: ScreenMovable {
                 .frame(maxWidth: .infinity, alignment: .leading)
 
                 Text("摘要")
+                    .customFont(size: 12, spacing: .short, color: .dark, weight: .light)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 HStack(alignment: .top, spacing: 5) {
@@ -59,13 +61,9 @@ struct SecondScreen: ScreenMovable {
 
                 
                 Text("取引の内容やメモを入力します。\n入力すると、後で取引を探しやすくなります。\n入力しなくても構いません。")
+                    .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-            
-
-                
-         
-               
             }
             .padding(.leading, 34)
             .padding(.top, 10)

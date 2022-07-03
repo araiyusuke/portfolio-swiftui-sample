@@ -38,17 +38,21 @@ struct FirstScreen: ScreenMovable {
 
                 Picker(selection: $tab, label: Text("")) {
                           Text("収入")
-                            .foregroundColor(.black)
+                            .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
+
                             .tag(0)
                           Text("支出")
-                            .foregroundColor(.black)
+                            .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
                             .tag(1)
                       }
                 .pickerStyle(.segmented)
                 .padding(10)
                 .onAppear() {
                     let appearance = UISegmentedControl.appearance()
-                       let font = UIFont.boldSystemFont(ofSize: 12)
+                    let firstPriorityFont = UIFont(name: "Roboto-Light", size: 11.0);
+                    let secondPriorityFontfont = UIFont.boldSystemFont(ofSize: 12)
+                    let selectFont = UIFont(name: "NotoSansJP-Medium", size: 11.0);
+
                        let foregroundColor = UIColor.black
 
                        // 選択時の背景色
@@ -56,13 +60,13 @@ struct FirstScreen: ScreenMovable {
 
                        // 通常時のフォントとフォント色
                        appearance.setTitleTextAttributes([
-                           .font: font,
+                           .font: firstPriorityFont ?? secondPriorityFontfont,
                            .foregroundColor: foregroundColor
                        ], for: .normal)
 
                        // 選択時のフォントとフォント色
                        appearance.setTitleTextAttributes([
-                           .font: font,
+                            .font: selectFont ?? secondPriorityFontfont,
                            .foregroundColor: UIColor.black
                        ], for: .selected)
                 }

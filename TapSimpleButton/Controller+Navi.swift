@@ -66,17 +66,17 @@ extension Controller {
                 
                 HStack {
                     Text("科目")
-                        .font(.footnote)
+                        .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
                         .fixedSize()
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Text("取引先・摘要")
-                        .font(.footnote)
+                        .customFont(size: 10, spacing: .none, color: .dark, weight: .light)
                         .fixedSize()
                         .frame(maxWidth: .infinity, alignment: .center)
                     
                     Text("金額")
-                        .font(.footnote)
+                        .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
                         .fixedSize()
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }

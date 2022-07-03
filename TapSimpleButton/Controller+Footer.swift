@@ -20,9 +20,12 @@ extension Controller {
                     .padding(.leading, 5)
                     .frame(width: geometry.size.width * 0.2, alignment: .leading)
                 
-                navi
-                    .frame(width: 170, height: 45)
-                    .frame(width: geometry.size.width * 0.6, height: 60)
+                Group {
+                    navi
+                        .frame(width: 170, height: 45)
+                }
+                .frame(width: geometry.size.width * 0.6, height: 60)
+
                 
                 nextOrRegist.padding(.trailing, 5)
                     .frame(width: geometry.size.width * 0.2, alignment: .trailing)
