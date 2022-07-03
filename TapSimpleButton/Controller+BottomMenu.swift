@@ -10,63 +10,37 @@ import SwiftUI
 
 extension Controller {
     
+    static let menus: [BottomMenuType] = [
+        .list,
+        .input,
+        .camera,
+        .help,
+        .etc,
+    ]
+    
+    func color(_ flag: Bool) -> Color {
+        return flag ? Color.blue: Color.rgb(127, 127, 127)
+    }
+    
     var bottomMenu: some View {
         
         HStack(spacing: 0) {
-            VStack {
-                Text("取引一覧")
-                    .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
-
-            }
-            .padding(.bottom, 3)
-            .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottom)
-            .background(Color.gray)
             
-            VStack {
-                Text("取引入力")
-                    .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
+            ForEach(Self.menus) { menu in
+                
+                VStack {
 
+                    menu.image.foregroundColor(color(self.selectTabMenu == menu))
+
+                    Text(menu.description)
+                        .customFont(size: 11, spacing: .short, rgb: color(self.selectTabMenu == menu), weight: .light)
+
+                }
+                .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottom)
+                .onButtonTap {
+                    selectTabMenu = menu
+                }
             }
-            .padding(.bottom, 3)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-            .background(Color.white)
-
-            VStack {
-                Text("レシート撮影")
-                    .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
-
-            }
-            .padding(.bottom, 3)
-            .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottom)
-            .background(Color.yellow)
-
-            VStack {
-                Text("ヘルプ")
-                    .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
-
-            }
-            .padding(.bottom, 3)
-            .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottom)
-            .background(Color.pink)
-
-            VStack {
-                Text("その他")
-                    .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
-
-
-            }
-            .padding(.bottom, 3)
-            .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottom)
-            .background(Color.blue)
-
-
-        }
-        .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottom)
-
+        }.padding(.horizontal, 10)
     }
-
-//        .frame(maxWidth: .infinity , maxHeight: .infinity, alignment: .top)
-//        .background(Color.backGroundColor)
-//        .edgesIgnoringSafeArea(edges: [.top])
-    
 }

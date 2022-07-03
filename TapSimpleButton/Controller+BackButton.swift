@@ -20,9 +20,9 @@ extension Controller {
                     case .first:
                         return
                     case .second:
-                        moveForward(to: .first, router)
+                        moveBack(to: .first, router)
                     case .third:
-                        moveForward(to: .second, router)
+                        moveBack(to: .second, router)
                     }
                 }
         }

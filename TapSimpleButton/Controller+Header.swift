@@ -24,18 +24,19 @@ extension Controller {
         Group {
             
             switch router.screen {
+                
             case .first:
                 VStack() {
                     
                     Text("白色申告")
-                        .customFont(size: 30, spacing: .short, color: .light, weight: .light)
+                        .customFont(size: 28, spacing: .short, color: .light, weight: .light)
                         .frame(height: 30)
                     
                     Text(info.title)
                         .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
                         .frame(height: 30)
                 }
-                .frame(maxHeight: .infinity, alignment: .center)
+                .frame(alignment: .center)
 
 
             case .second:
@@ -46,7 +47,6 @@ extension Controller {
 
                     Text("取引先・提要入力")
                         .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
-
                         .frame(height: 30)
                 }
                 .frame(alignment: .top)
@@ -67,9 +67,7 @@ extension Controller {
                         .frame(height: 30)
                 }
                 .frame(alignment: .top)
-
             }
         }
-        .foregroundColor(.white)
     }
 }
