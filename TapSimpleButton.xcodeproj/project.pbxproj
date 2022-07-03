@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F13C7F3928717EF500973687 /* BottomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F3828717EF400973687 /* BottomMenu.swift */; };
+		F13C7F3B28717F6500973687 /* BottomMenuType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F3A28717F6500973687 /* BottomMenuType.swift */; };
+		F13C7F3D2871868800973687 /* View+onButtonTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F3C2871868800973687 /* View+onButtonTap.swift */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -34,9 +37,24 @@
 		F13CA3562870904F00527D1E /* Controller+BottomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA3552870904F00527D1E /* Controller+BottomMenu.swift */; };
 		F13CA35A2871050200527D1E /* View+backgroundCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA3592871050200527D1E /* View+backgroundCircle.swift */; };
 		F13CA35C2871057500527D1E /* View+setTransAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35B2871057500527D1E /* View+setTransAnimation.swift */; };
+		F13CA35E28710ED000527D1E /* FirstScreen+income.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35D28710ED000527D1E /* FirstScreen+income.swift */; };
+		F13CA36028710F1200527D1E /* FirstScreen+spending.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35F28710F1200527D1E /* FirstScreen+spending.swift */; };
+		F13CA36D2871125100527D1E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F13CA3622871125100527D1E /* README.md */; };
+		F13CA36E2871125100527D1E /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F13CA3642871125100527D1E /* Roboto-Medium.ttf */; };
+		F13CA36F2871125100527D1E /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F13CA3652871125100527D1E /* Roboto-Light.ttf */; };
+		F13CA3702871125100527D1E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F13CA3662871125100527D1E /* Roboto-Regular.ttf */; };
+		F13CA3712871125100527D1E /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = F13CA3672871125100527D1E /* LICENSE.txt */; };
+		F13CA3722871125100527D1E /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F13CA3682871125100527D1E /* Roboto-Bold.ttf */; };
+		F13CA3732871125100527D1E /* NotoSansJP-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F13CA36A2871125100527D1E /* NotoSansJP-Medium.otf */; };
+		F13CA3742871125100527D1E /* NotoSansJP-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F13CA36B2871125100527D1E /* NotoSansJP-Bold.otf */; };
+		F13CA3752871125100527D1E /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = F13CA36C2871125100527D1E /* OFL.txt */; };
+		F13CA3772871133100527D1E /* Text+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA3762871133100527D1E /* Text+Font.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F13C7F3828717EF400973687 /* BottomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenu.swift; sourceTree = "<group>"; };
+		F13C7F3A28717F6500973687 /* BottomMenuType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuType.swift; sourceTree = "<group>"; };
+		F13C7F3C2871868800973687 /* View+onButtonTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onButtonTap.swift"; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -66,6 +84,19 @@
 		F13CA3582871011C00527D1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F13CA3592871050200527D1E /* View+backgroundCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+backgroundCircle.swift"; sourceTree = "<group>"; };
 		F13CA35B2871057500527D1E /* View+setTransAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+setTransAnimation.swift"; sourceTree = "<group>"; };
+		F13CA35D28710ED000527D1E /* FirstScreen+income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstScreen+income.swift"; sourceTree = "<group>"; };
+		F13CA35F28710F1200527D1E /* FirstScreen+spending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirstScreen+spending.swift"; sourceTree = "<group>"; };
+		F13CA3622871125100527D1E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F13CA3642871125100527D1E /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		F13CA3652871125100527D1E /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		F13CA3662871125100527D1E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		F13CA3672871125100527D1E /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		F13CA3682871125100527D1E /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		F13CA36A2871125100527D1E /* NotoSansJP-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Medium.otf"; sourceTree = "<group>"; };
+		F13CA36B2871125100527D1E /* NotoSansJP-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Bold.otf"; sourceTree = "<group>"; };
+		F13CA36C2871125100527D1E /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		F13CA3762871133100527D1E /* Text+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Font.swift"; sourceTree = "<group>"; };
+		F13CA378287113FD00527D1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +110,124 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F13C7F3E287189CF00973687 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA3552870904F00527D1E /* Controller+BottomMenu.swift */,
+				F13CA31E286E769E00527D1E /* Controller.swift */,
+				F13CA351286FFDE800527D1E /* Controller+Header.swift */,
+				F13CA337286FBBB500527D1E /* Controller+NextButton.swift */,
+				F13CA343286FD51E00527D1E /* Controller+BackButton.swift */,
+				F13CA345286FE69000527D1E /* Controller+RegistButton.swift */,
+				F13CA33B286FBC3A00527D1E /* Controller+Navi.swift */,
+				F13CA341286FC3E500527D1E /* Controller+Footer.swift */,
+				F13CA347286FE70500527D1E /* Controller+nextOrRegistButton.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F13C7F3F287189ED00973687 /* FirstScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA335286FBB6C00527D1E /* FirstScreen.swift */,
+				F13CA33D286FBCFF00527D1E /* FirstScreen+Account.swift */,
+				F13CA35D28710ED000527D1E /* FirstScreen+income.swift */,
+				F13CA35F28710F1200527D1E /* FirstScreen+spending.swift */,
+			);
+			path = FirstScreen;
+			sourceTree = "<group>";
+		};
+		F13C7F4028718A2200973687 /* SecondScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA339286FBBEC00527D1E /* SecondScreen.swift */,
+			);
+			path = SecondScreen;
+			sourceTree = "<group>";
+		};
+		F13C7F4128718A6100973687 /* ThirdScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA333286FBB3D00527D1E /* ThirdScreen.swift */,
+			);
+			path = ThirdScreen;
+			sourceTree = "<group>";
+		};
+		F13C7F4228718A8B00973687 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7F3C2871868800973687 /* View+onButtonTap.swift */,
+				F13CA34F286FF9F300527D1E /* Color+rgb.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F13C7F4328718AA800973687 /* NumPad */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA34B286FED2C00527D1E /* KeyPadButton.swift */,
+				F13CA34D286FED4500527D1E /* NumberPad.swift */,
+			);
+			path = NumPad;
+			sourceTree = "<group>";
+		};
+		F13C7F4428718AE800973687 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7F4928718C4400973687 /* Routing */,
+				F13C7F3F287189ED00973687 /* FirstScreen */,
+				F13C7F4128718A6100973687 /* ThirdScreen */,
+				F13C7F4028718A2200973687 /* SecondScreen */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		F13C7F4528718B0D00973687 /* BottomMenu */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7F3A28717F6500973687 /* BottomMenuType.swift */,
+				F13C7F3828717EF400973687 /* BottomMenu.swift */,
+			);
+			path = BottomMenu;
+			sourceTree = "<group>";
+		};
+		F13C7F4628718B4100973687 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7F4728718B5A00973687 /* CircleButton */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F13C7F4728718B5A00973687 /* CircleButton */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA3592871050200527D1E /* View+backgroundCircle.swift */,
+				F13CA33F286FBFFF00527D1E /* CircleButtonModifier.swift */,
+			);
+			path = CircleButton;
+			sourceTree = "<group>";
+		};
+		F13C7F4828718BD900973687 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA35328708D6200527D1E /* HeaderInfo.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F13C7F4928718C4400973687 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA35B2871057500527D1E /* View+setTransAnimation.swift */,
+				F13CA32F286FBA1D00527D1E /* ScreenMovable.swift */,
+				F13CA331286FBA4900527D1E /* SlideAnimation.swift */,
+				F13CA32B286FB8E200527D1E /* Router.swift */,
+				F13CA32D286FB9E700527D1E /* ScreenType.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
 		F13CA310286E769E00527D1E = {
 			isa = PBXGroup;
 			children = (
@@ -99,33 +248,17 @@
 		F13CA31B286E769E00527D1E /* TapSimpleButton */ = {
 			isa = PBXGroup;
 			children = (
-				F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */,
 				F13CA320286E769F00527D1E /* Assets.xcassets */,
+				F13CA378287113FD00527D1E /* Info.plist */,
+				F13C7F4828718BD900973687 /* ViewModels */,
+				F13CA3612871125100527D1E /* Fonts */,
 				F13CA322286E769F00527D1E /* Preview Content */,
-				F13CA32B286FB8E200527D1E /* Router.swift */,
-				F13CA32D286FB9E700527D1E /* ScreenType.swift */,
-				F13CA32F286FBA1D00527D1E /* ScreenMovable.swift */,
-				F13CA331286FBA4900527D1E /* SlideAnimation.swift */,
-				F13CA335286FBB6C00527D1E /* FirstScreen.swift */,
-				F13CA33D286FBCFF00527D1E /* FirstScreen+Account.swift */,
-				F13CA339286FBBEC00527D1E /* SecondScreen.swift */,
-				F13CA333286FBB3D00527D1E /* ThirdScreen.swift */,
-				F13CA31E286E769E00527D1E /* Controller.swift */,
-				F13CA351286FFDE800527D1E /* Controller+Header.swift */,
-				F13CA337286FBBB500527D1E /* Controller+NextButton.swift */,
-				F13CA343286FD51E00527D1E /* Controller+BackButton.swift */,
-				F13CA345286FE69000527D1E /* Controller+RegistButton.swift */,
-				F13CA33B286FBC3A00527D1E /* Controller+Navi.swift */,
-				F13CA341286FC3E500527D1E /* Controller+Footer.swift */,
-				F13CA347286FE70500527D1E /* Controller+nextOrRegistButton.swift */,
-				F13CA35328708D6200527D1E /* HeaderInfo.swift */,
-				F13CA3552870904F00527D1E /* Controller+BottomMenu.swift */,
-				F13CA34F286FF9F300527D1E /* Color+rgb.swift */,
-				F13CA34D286FED4500527D1E /* NumberPad.swift */,
-				F13CA34B286FED2C00527D1E /* KeyPadButton.swift */,
-				F13CA33F286FBFFF00527D1E /* CircleButtonModifier.swift */,
-				F13CA3592871050200527D1E /* View+backgroundCircle.swift */,
-				F13CA35B2871057500527D1E /* View+setTransAnimation.swift */,
+				F13C7F4228718A8B00973687 /* Extensions */,
+				F13C7F4428718AE800973687 /* Screen */,
+				F13C7F4528718B0D00973687 /* BottomMenu */,
+				F13C7F4628718B4100973687 /* Components */,
+				F13C7F4328718AA800973687 /* NumPad */,
+				F13C7F3E287189CF00973687 /* Controller */,
 			);
 			path = TapSimpleButton;
 			sourceTree = "<group>";
@@ -136,6 +269,40 @@
 				F13CA323286E769F00527D1E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F13CA3612871125100527D1E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */,
+				F13CA3622871125100527D1E /* README.md */,
+				F13CA3632871125100527D1E /* Roboto */,
+				F13CA3692871125100527D1E /* Noto_Sans_JP */,
+				F13CA3762871133100527D1E /* Text+Font.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F13CA3632871125100527D1E /* Roboto */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA3642871125100527D1E /* Roboto-Medium.ttf */,
+				F13CA3652871125100527D1E /* Roboto-Light.ttf */,
+				F13CA3662871125100527D1E /* Roboto-Regular.ttf */,
+				F13CA3672871125100527D1E /* LICENSE.txt */,
+				F13CA3682871125100527D1E /* Roboto-Bold.ttf */,
+			);
+			path = Roboto;
+			sourceTree = "<group>";
+		};
+		F13CA3692871125100527D1E /* Noto_Sans_JP */ = {
+			isa = PBXGroup;
+			children = (
+				F13CA36A2871125100527D1E /* NotoSansJP-Medium.otf */,
+				F13CA36B2871125100527D1E /* NotoSansJP-Bold.otf */,
+				F13CA36C2871125100527D1E /* OFL.txt */,
+			);
+			path = Noto_Sans_JP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,8 +363,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F13CA3702871125100527D1E /* Roboto-Regular.ttf in Resources */,
+				F13CA3752871125100527D1E /* OFL.txt in Resources */,
+				F13CA36E2871125100527D1E /* Roboto-Medium.ttf in Resources */,
+				F13CA36D2871125100527D1E /* README.md in Resources */,
+				F13CA36F2871125100527D1E /* Roboto-Light.ttf in Resources */,
 				F13CA324286E769F00527D1E /* Preview Assets.xcassets in Resources */,
 				F13CA321286E769F00527D1E /* Assets.xcassets in Resources */,
+				F13CA3732871125100527D1E /* NotoSansJP-Medium.otf in Resources */,
+				F13CA3742871125100527D1E /* NotoSansJP-Bold.otf in Resources */,
+				F13CA3722871125100527D1E /* Roboto-Bold.ttf in Resources */,
+				F13CA3712871125100527D1E /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,13 +389,16 @@
 				F13CA346286FE69000527D1E /* Controller+RegistButton.swift in Sources */,
 				F13CA332286FBA4A00527D1E /* SlideAnimation.swift in Sources */,
 				F13CA348286FE70500527D1E /* Controller+nextOrRegistButton.swift in Sources */,
+				F13CA36028710F1200527D1E /* FirstScreen+spending.swift in Sources */,
 				F13CA334286FBB3E00527D1E /* ThirdScreen.swift in Sources */,
 				F13CA3562870904F00527D1E /* Controller+BottomMenu.swift in Sources */,
 				F13CA31F286E769E00527D1E /* Controller.swift in Sources */,
 				F13CA32C286FB8E200527D1E /* Router.swift in Sources */,
+				F13CA35E28710ED000527D1E /* FirstScreen+income.swift in Sources */,
 				F13CA336286FBB6C00527D1E /* FirstScreen.swift in Sources */,
 				F13CA330286FBA1D00527D1E /* ScreenMovable.swift in Sources */,
 				F13CA342286FC3E500527D1E /* Controller+Footer.swift in Sources */,
+				F13C7F3D2871868800973687 /* View+onButtonTap.swift in Sources */,
 				F13CA33C286FBC3A00527D1E /* Controller+Navi.swift in Sources */,
 				F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */,
 				F13CA35A2871050200527D1E /* View+backgroundCircle.swift in Sources */,
@@ -227,8 +406,11 @@
 				F13CA344286FD51E00527D1E /* Controller+BackButton.swift in Sources */,
 				F13CA352286FFDE800527D1E /* Controller+Header.swift in Sources */,
 				F13CA35428708D6200527D1E /* HeaderInfo.swift in Sources */,
+				F13CA3772871133100527D1E /* Text+Font.swift in Sources */,
 				F13CA350286FF9F300527D1E /* Color+rgb.swift in Sources */,
+				F13C7F3928717EF500973687 /* BottomMenu.swift in Sources */,
 				F13CA32E286FB9E700527D1E /* ScreenType.swift in Sources */,
+				F13C7F3B28717F6500973687 /* BottomMenuType.swift in Sources */,
 				F13CA34E286FED4500527D1E /* NumberPad.swift in Sources */,
 				F13CA35C2871057500527D1E /* View+setTransAnimation.swift in Sources */,
 				F13CA33A286FBBEC00527D1E /* SecondScreen.swift in Sources */,
@@ -365,6 +547,7 @@
 				DEVELOPMENT_TEAM = CNWDNX3S69;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TapSimpleButton/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -397,6 +580,7 @@
 				DEVELOPMENT_TEAM = CNWDNX3S69;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TapSimpleButton/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
