@@ -15,7 +15,7 @@ extension Controller {
             .fill(Color.black)
     }
     
-    static let naviItems = [1,2,3]
+    static let naviItems = ["1","2","3"]
     static let alignments: [Alignment] = [.leading,.center, .trailing]
     static let targets: [ScreenType] = [.first, .second, .third]
 
@@ -35,7 +35,7 @@ extension Controller {
                 HStack(spacing: 0) {
                     ForEach(0..<Self.naviItems.count, id: \.self) { index in
                         VStack {
-                            Text(index.description)
+                            Text(Self.naviItems[index])
                                 .foregroundColor(isActive(index) ? .white : .black)
                                 .backgroundCircle(isActive(index) ? .black : .white, 25, .fontColor, 3)
                                 .frame(width: 25, height: 25)
