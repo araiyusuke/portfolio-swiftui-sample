@@ -27,7 +27,7 @@ extension Controller {
                 .frame(width: geometry.size.width * 0.6)
 
                 
-                nextOrRegist.padding(.trailing, 5)
+                nextOrRegist.padding(.trailing, 10)
                     .frame(width: geometry.size.width * 0.2, alignment: .trailing)
 
             }
