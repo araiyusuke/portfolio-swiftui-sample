@@ -13,7 +13,7 @@ extension Controller {
     var footer : some View {
         
         GeometryReader { geometry in
-            
+        
             HStack(spacing: 0) {
                 
                 back
@@ -24,18 +24,14 @@ extension Controller {
                     navi
                         .frame(width: 170, height: 45)
                 }
-                .frame(width: geometry.size.width * 0.6, height: 60)
+                .frame(width: geometry.size.width * 0.6)
 
                 
                 nextOrRegist.padding(.trailing, 5)
                     .frame(width: geometry.size.width * 0.2, alignment: .trailing)
 
             }
-            .frame(
-                width: geometry.size.width,
-                height: geometry.size.height,
-                alignment: .trailing)
-            
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .trailing)
         }
     }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F13C7F3928717EF500973687 /* BottomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F3828717EF400973687 /* BottomMenu.swift */; };
+		F13C7F3B28717F6500973687 /* BottomMenuType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F3A28717F6500973687 /* BottomMenuType.swift */; };
+		F13C7F3D2871868800973687 /* ButtonTapModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F3C2871868800973687 /* ButtonTapModifier.swift */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -49,6 +52,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F13C7F3828717EF400973687 /* BottomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenu.swift; sourceTree = "<group>"; };
+		F13C7F3A28717F6500973687 /* BottomMenuType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuType.swift; sourceTree = "<group>"; };
+		F13C7F3C2871868800973687 /* ButtonTapModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTapModifier.swift; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -126,7 +132,6 @@
 			children = (
 				F13CA378287113FD00527D1E /* Info.plist */,
 				F13CA3612871125100527D1E /* Fonts */,
-				F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */,
 				F13CA320286E769F00527D1E /* Assets.xcassets */,
 				F13CA322286E769F00527D1E /* Preview Content */,
 				F13CA32B286FB8E200527D1E /* Router.swift */,
@@ -155,6 +160,9 @@
 				F13CA35B2871057500527D1E /* View+setTransAnimation.swift */,
 				F13CA35D28710ED000527D1E /* FirstScreen+income.swift */,
 				F13CA35F28710F1200527D1E /* FirstScreen+spending.swift */,
+				F13C7F3828717EF400973687 /* BottomMenu.swift */,
+				F13C7F3A28717F6500973687 /* BottomMenuType.swift */,
+				F13C7F3C2871868800973687 /* ButtonTapModifier.swift */,
 			);
 			path = TapSimpleButton;
 			sourceTree = "<group>";
@@ -170,6 +178,7 @@
 		F13CA3612871125100527D1E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */,
 				F13CA3622871125100527D1E /* README.md */,
 				F13CA3632871125100527D1E /* Roboto */,
 				F13CA3692871125100527D1E /* Noto_Sans_JP */,
@@ -293,6 +302,7 @@
 				F13CA336286FBB6C00527D1E /* FirstScreen.swift in Sources */,
 				F13CA330286FBA1D00527D1E /* ScreenMovable.swift in Sources */,
 				F13CA342286FC3E500527D1E /* Controller+Footer.swift in Sources */,
+				F13C7F3D2871868800973687 /* ButtonTapModifier.swift in Sources */,
 				F13CA33C286FBC3A00527D1E /* Controller+Navi.swift in Sources */,
 				F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */,
 				F13CA35A2871050200527D1E /* View+backgroundCircle.swift in Sources */,
@@ -302,7 +312,9 @@
 				F13CA35428708D6200527D1E /* HeaderInfo.swift in Sources */,
 				F13CA3772871133100527D1E /* Text+Font.swift in Sources */,
 				F13CA350286FF9F300527D1E /* Color+rgb.swift in Sources */,
+				F13C7F3928717EF500973687 /* BottomMenu.swift in Sources */,
 				F13CA32E286FB9E700527D1E /* ScreenType.swift in Sources */,
+				F13C7F3B28717F6500973687 /* BottomMenuType.swift in Sources */,
 				F13CA34E286FED4500527D1E /* NumberPad.swift in Sources */,
 				F13CA35C2871057500527D1E /* View+setTransAnimation.swift in Sources */,
 				F13CA33A286FBBEC00527D1E /* SecondScreen.swift in Sources */,
