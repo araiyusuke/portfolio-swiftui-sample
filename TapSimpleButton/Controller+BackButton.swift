@@ -10,8 +10,8 @@ import SwiftUI
 
 extension Controller {
     var back: some View {
-        Text("＜戻る")
-            .foregroundColor(.black)
+        Text("〈 戻る")
+            .customFont(size: 18, spacing: .short, color: .dark, weight: .medium)
             .onTapGesture {
                 moveForward(to: .second, router)
             }

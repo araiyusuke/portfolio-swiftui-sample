@@ -15,7 +15,8 @@ extension Controller {
         HStack(spacing: 0) {
             VStack {
                 Text("取引一覧")
-                
+                    .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
+
             }
             .padding(.bottom, 3)
             .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottom)
@@ -23,6 +24,7 @@ extension Controller {
             
             VStack {
                 Text("取引入力")
+                    .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
 
             }
             .padding(.bottom, 3)
@@ -31,6 +33,7 @@ extension Controller {
 
             VStack {
                 Text("レシート撮影")
+                    .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
 
             }
             .padding(.bottom, 3)
@@ -39,6 +42,8 @@ extension Controller {
 
             VStack {
                 Text("ヘルプ")
+                    .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
+
             }
             .padding(.bottom, 3)
             .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottom)
@@ -46,6 +51,8 @@ extension Controller {
 
             VStack {
                 Text("その他")
+                    .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
+
 
             }
             .padding(.bottom, 3)
@@ -54,11 +61,10 @@ extension Controller {
 
 
         }
-        .font(.caption2)
         .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottom)
-        .foregroundColor(Color.fontColor)
 
     }
+
 //        .frame(maxWidth: .infinity , maxHeight: .infinity, alignment: .top)
 //        .background(Color.backGroundColor)
 //        .edgesIgnoringSafeArea(edges: [.top])

@@ -11,20 +11,11 @@ import SwiftUI
 extension Controller {
     var regist: some View {
         Text("登録")
+            .customFont(size: 18, spacing: .short, color: .light, weight: .bold)
             .frame(width: 70, height: 40)
-//            .padding(.horizontal, 5)
             .foregroundColor(.white)
             .background(Color.rgb(99, 187, 235))
             .cornerRadius(3)
-//
-//            .frame(width: 70, height: 40)
-//            .background(Color.white)
-//        
-//            .cornerRadius(3)
-//            .frame(width: 70, height: 1)
-//            .background(Color.rgb(99, 187, 235))
-//            .cornerRadius(5)
-        
             .onTapGesture {
                 moveForward(to: .second, router)
             }

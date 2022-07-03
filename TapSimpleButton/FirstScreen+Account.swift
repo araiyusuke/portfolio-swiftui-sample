@@ -17,6 +17,7 @@ struct Account: Identifiable, Hashable {
     
     var view: some View {
         Text(title)
+            .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
             .backgroundCircle(.white, 82, borderColor, boderSize)
     }
 

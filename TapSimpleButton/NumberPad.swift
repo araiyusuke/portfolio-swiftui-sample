@@ -79,21 +79,24 @@ struct NumberPad: View {
                 
                 case .doubleZero:
                     Text("00")
-                    
+                        .customFont(font: .roboto, size: 36, spacing: .short, color: .dark, weight: .light)
+
                 case .number(let num):
                     
                     Text(num.description)
-        
+                        .customFont(font: .roboto, size: 36, spacing: .short, color: .dark, weight: .light)
+
                 case .delete:
                     VStack(spacing: 0) {
                         Text("⌫")
+                            .customFont(size: 50, spacing: .short, color: .dark, weight: .bold)
                             .frame(width: 52, height: 36)
                             .padding(.top, 10)
                             .padding(.bottom, 8)
-                            .padding(.trailing, 1)                        
+                            .padding(.trailing, 1)
                     }
                 }
-            }.foregroundColor(.black)
+            }
         }
     }
 }
