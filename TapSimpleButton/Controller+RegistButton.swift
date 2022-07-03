@@ -17,7 +17,7 @@ extension Controller {
             .background(Color.rgb(99, 187, 235))
             .cornerRadius(3)
             .onTapGesture {
-                moveForward(to: .second, router)
+                moveForward(to: .first, router)
             }
     }
 }

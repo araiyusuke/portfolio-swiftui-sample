@@ -13,7 +13,14 @@ extension Controller {
         Text("次へ 〉")
             .customFont(size: 18, spacing: .short, color: .dark, weight: .medium)
             .onTapGesture {
-                moveForward(to: .second, router)
+                switch router.screen {
+                case .first:
+                    moveForward(to: .second, router)
+                case .second:
+                    moveForward(to: .third, router)
+                default:
+                    return
+                }
             }
     }
 }

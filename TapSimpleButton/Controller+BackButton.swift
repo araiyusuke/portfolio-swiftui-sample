@@ -9,11 +9,22 @@ import Foundation
 import SwiftUI
 
 extension Controller {
+    
+    @ViewBuilder
     var back: some View {
-        Text("〈 戻る")
-            .customFont(size: 18, spacing: .short, color: .dark, weight: .medium)
-            .onTapGesture {
-                moveForward(to: .second, router)
-            }
+        if router.screen != .first {
+             Text("〈 戻る")
+                .customFont(size: 18, spacing: .short, color: .dark, weight: .medium)
+                .onTapGesture {
+                    switch router.screen {
+                    case .first:
+                        return
+                    case .second:
+                        moveForward(to: .first, router)
+                    case .third:
+                        moveForward(to: .second, router)
+                    }
+                }
+        }
     }
 }
