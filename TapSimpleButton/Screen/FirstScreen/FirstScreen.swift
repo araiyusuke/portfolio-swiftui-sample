@@ -18,13 +18,11 @@ struct FirstScreen: ScreenMovable {
     @State private var tab = 1
     
     var menus : [[Account?]] {
-        if tab == 0
-        {
+        if tab == 0 {
             return FirstScreen.income
 
         } else {
             return FirstScreen.spending
-
         }
     }
     

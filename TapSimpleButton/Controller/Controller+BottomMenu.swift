@@ -38,7 +38,18 @@ extension Controller {
                 }
                 .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottom)
                 .onButtonTap {
+                    
                     selectTabMenu = menu
+                    
+                    if menu == .etc {
+                        moveForward(to: .setting, router)
+                        return
+                    }
+                    
+                    if menu == .input {
+                        moveForward(to: .first, router)
+                        return
+                    }
                 }
             }
         }.padding(.horizontal, 10)

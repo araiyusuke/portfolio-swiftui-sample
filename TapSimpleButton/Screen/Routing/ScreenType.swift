@@ -11,4 +11,5 @@ enum ScreenType {
     case first
     case second
     case third
+    case setting
 }
