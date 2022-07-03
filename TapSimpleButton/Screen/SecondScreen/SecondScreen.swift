@@ -18,60 +18,38 @@ struct SecondScreen: ScreenMovable {
     @State var editText = ""
 
     var body: some View {
+        
         SlideAnimation {
+            
             VStack(spacing: 15) {
-                Text("取引先")
-                    .customFont(size: 12, spacing: .short, color: .dark, weight: .light)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                HStack(spacing: 5) {
-                    TextField("取引先を入力(任意)", text: $torihiki)
-                        .frame(width: 290, height: 41)
-                        .padding(.leading, 5)
-                        .background(.white)
-                        .border(.gray)
-                    
-                    Text("↓")
-                        .foregroundColor(.white)
-                        .frame(width: 41, height: 41)
-                        .background(Color.headerColor)
-                        .cornerRadius(7)
+                
+                suppliers
+                
+                HStack(spacing: 3) {
+                    inputSuppliers
+                    pullDown
+                        .onButtonTap() {
+                            
+                        }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-                Text("摘要")
-                    .customFont(size: 12, spacing: .short, color: .dark, weight: .light)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                description
                 
-                HStack(alignment: .top, spacing: 5) {
+                HStack(alignment: .top, spacing: 3) {
                     
-                    TextEditor(text: $editText)
-                        .frame(width: 290, height: 100)
-                        .padding(.leading, 5)
-                        .background(.white)
-                        .border(.gray)
+                    inputDescription
                         
-                    Text("↓")
-                        .foregroundColor(.white)
-                        .frame(width: 41, height: 41)
-                        .background(Color.headerColor)
-                        .cornerRadius(7)
-
+                    pullDown
+                        .onButtonTap() {
+                            
+                        }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
 
-                
-                Text("取引の内容やメモを入力します。\n入力すると、後で取引を探しやすくなります。\n入力しなくても構いません。")
-                    .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
+                help
             }
-            .padding(.leading, 34)
-            .padding(.top, 10)
-
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            .foregroundColor(Color.fontColor)
-            .font(.footnote)
-            .background(Color.backGroundColor)
             .gesture(DragGesture()
                        .onEnded({ value in
                            
@@ -91,9 +69,54 @@ struct SecondScreen: ScreenMovable {
                        })
                    )
         }
+        .padding(.leading, 30)
+        .padding(.top, 20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear() {
             info.title = "取引先・適用入力"
         }
+    }
+    
+    var pullDown: some View {
+        Image("pull_down")
+            .resizable()
+            .frame(width: 18, height: 20)
+            .frame(width: 40, height: 40)
+            .background(Color.headerColor)
+            .cornerRadius(5)
+    }
+    
+    var help: some View {
+        Text("取引の内容やメモを入力します。\n入力すると、後で取引を探しやすくなります。\n入力しなくても構いません。")
+            .customFont(size: 13, spacing: .short, color: .dark, weight: .light)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    var suppliers: some View {
+        Text("取引先")
+            .customFont(size: 12, spacing: .short, color: .dark, weight: .light)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    var inputDescription: some View {
+        TextEditor(text: $editText)
+            .padding(.leading, 10)
+            .frame(width: 290, height: 100)
+            .background(.white)
+            .border(.gray)
+    }
+    
+    var inputSuppliers: some View {
+        TextField("取引先を入力(任意)", text: $torihiki)
+            .padding(.leading, 10)
+            .frame(width: 290, height: 41)
+            .background(.white)
+            .border(.gray)
+    }
+    
+    var description: some View {
+        Text("摘要")
+            .customFont(size: 12, spacing: .short, color: .dark, weight: .light)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
