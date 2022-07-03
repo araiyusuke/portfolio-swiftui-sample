@@ -10,6 +10,15 @@ import SwiftUI
 
 extension Controller {
     
+    var dateString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.locale = Locale(identifier: "ja_JP")
+        dateFormatter.timeZone = TimeZone(identifier:  "Asia/Tokyo")
+        dateFormatter.dateFormat = "yyyy/M/d"
+        return dateFormatter.string(from: Date())
+    }
+    
     var header: some View {
         
         Group {
@@ -49,12 +58,12 @@ extension Controller {
                         .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
                         .frame(height: 20)
 
-                    Text("2022/07/02")
+                    Text(dateString)
                         .customFont(size: 19, spacing: .short, rgb: Color.rgb(242,220, 171), weight: .bold)
                         .frame(height: 30)
 
-                    Text("¥0")
-                        .customFont(size: 24, rgb: Color.rgb(242,220, 171), weight: .bold)
+                    Text("¥ \(info.numPadValue.isEmpty ? "0" : info.numPadValue)")
+                        .customFont(size: 24, spacing: .short, rgb: Color.rgb(242,220, 171), weight: .bold)
                         .frame(height: 30)
                 }
                 .frame(alignment: .top)

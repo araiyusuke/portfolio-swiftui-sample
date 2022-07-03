@@ -11,12 +11,32 @@ import SwiftUI
 struct ThirdScreen: ScreenMovable {
     
     @EnvironmentObject var router : Router
+    @EnvironmentObject var info : HeaderInfo
     @State private var labelPosX:CGFloat = 0
 
     var body: some View {
         SlideAnimation {
             NumberPad() { numKey in
-                print(numKey.string)
+                
+                if numKey.isDeleteKey {
+                    
+                    if info.numPadValue.count >= 1 {
+                        info.numPadValue.removeLast()
+                    }
+                    
+                    return
+
+                    
+                }
+                
+                if info.numPadValue == "0" {
+                    info.numPadValue = numKey.string
+                    return
+                }
+                
+                info.numPadValue.append(numKey.string)
+                
+                
             }
             .frame(width: 324, height: 430)
            
