@@ -15,7 +15,7 @@ struct FirstScreen: ScreenMovable {
 
     let circleSize: CGFloat = 82
     @State private var labelPosX:CGFloat = 0
-    @State private var tab = 0
+    @State private var tab = 1
     
     var menus : [[Account?]] {
         if tab == 0
