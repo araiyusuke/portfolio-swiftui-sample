@@ -25,6 +25,8 @@ struct Controller: ScreenMovable {
                 ThirdScreen()
             case .setting:
                 SettingScreen()
+            case .list:
+                ListScreen()
             }
         }
         
@@ -46,14 +48,13 @@ struct Controller: ScreenMovable {
                         .frame(maxHeight: .infinity)
                         .background(Color.backGroundColor)
 
-                    if router.screen != .setting {
+                    if ( router.screen == .first || router.screen == .second || router.screen == .third ){
                         footer
                             .frame(maxHeight: 60)
                             .background(Color.backGroundColor)
                     }
                     
-                    
-                    if ( router.screen == .first || router.screen == .setting ){
+                    if ( router.screen == .first || router.screen == .setting || router.screen == .list ){
                         
                         bottomMenu
                             .frame(height: 60)

@@ -50,6 +50,11 @@ extension Controller {
                         moveForward(to: .first, router)
                         return
                     }
+                    
+                    if menu == .list {
+                        moveForward(to: .list, router)
+                        return
+                    }
                 }
             }
         }.padding(.horizontal, 10)

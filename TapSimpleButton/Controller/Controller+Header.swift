@@ -71,7 +71,10 @@ extension Controller {
                 Text("設定")
                     .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
                     .frame(height: 20)
-
+            case .list:
+                Text("取引一覧")
+                    .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
+                    .frame(height: 20)
             }
         }
     }
