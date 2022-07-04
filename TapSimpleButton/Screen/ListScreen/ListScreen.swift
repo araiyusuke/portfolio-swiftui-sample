@@ -7,12 +7,19 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 struct ListScreen: ScreenMovable {
     
     @EnvironmentObject var router : Router
     @State var selected = 0
     @State var sortDirection: Sort = .new
+    @State private var cancellables = Set<AnyCancellable>()
+    @State var transactions: [Transaction] = []
+
+    var searchCount: String {
+        transactions.count.description
+    }
     
     var searchButton: some View {
         Image("search_icon")
@@ -32,7 +39,7 @@ struct ListScreen: ScreenMovable {
                     .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text("検索結果: 11件")
+                Text("検索結果: \(searchCount)件")
                     .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
@@ -46,7 +53,7 @@ struct ListScreen: ScreenMovable {
                 sortDirection.icon
                 
                 Text(sortDirection.description)
-                    .customFont(size: 15, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                    .customFont(size: 13, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
                     .onButtonTap() {
                         sortDirection.toggle()
                     }
@@ -62,7 +69,7 @@ struct ListScreen: ScreenMovable {
             .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
             
             List {
-                ForEach(Self.transactions) { transaction in
+                ForEach(self.transactions) { transaction in
                     transaction.cell
                         .swipeActions(edge: .trailing) {
                             HStack {
@@ -90,5 +97,15 @@ struct ListScreen: ScreenMovable {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .onAppear {
+            TransactionsAPI.fetch()
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { completion in
+                    print(completion)
+                }, receiveValue: { response in
+                    transactions = response.transactions
+                })
+                .store(in: &cancellables)
+        }
     }
 }

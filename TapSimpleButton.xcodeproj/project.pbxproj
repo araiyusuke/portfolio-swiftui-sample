@@ -12,8 +12,27 @@
 		F13C7F5228724BF000973687 /* SettingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F5128724BF000973687 /* SettingScreen.swift */; };
 		F13C7F552872592000973687 /* ListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F542872592000973687 /* ListScreen.swift */; };
 		F13C7F572872852F00973687 /* ListScreen+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F562872852F00973687 /* ListScreen+Sort.swift */; };
-		F13C7F592872857000973687 /* ListScreen+Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F582872857000973687 /* ListScreen+Transaction.swift */; };
-		F13C7F5B287285A800973687 /* ListScreen+Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F5A287285A800973687 /* ListScreen+Transactions.swift */; };
+		F13C7F5E2872B58800973687 /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F5D2872B58800973687 /* StatusCode.swift */; };
+		F13C7F602872B5B100973687 /* APIAgentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F5F2872B5B100973687 /* APIAgentProtocol.swift */; };
+		F13C7F622872B66600973687 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F612872B66600973687 /* Configuration.swift */; };
+		F13C7F642872B67E00973687 /* Mockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F632872B67E00973687 /* Mockable.swift */; };
+		F13C7F662872B69500973687 /* AgentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F652872B69500973687 /* AgentFactory.swift */; };
+		F13C7F682872B6BF00973687 /* APIAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F672872B6BF00973687 /* APIAgent.swift */; };
+		F13C7F6A2872B6EE00973687 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F692872B6EE00973687 /* APIError.swift */; };
+		F13C7F6C2872B70D00973687 /* URLRequest+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F6B2872B70D00973687 /* URLRequest+Ext.swift */; };
+		F13C7F6E2872B73600973687 /* HTTPMethodEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F6D2872B73600973687 /* HTTPMethodEnum.swift */; };
+		F13C7F702872B75100973687 /* ResponseResultError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F6F2872B75100973687 /* ResponseResultError.swift */; };
+		F13C7F722872B76F00973687 /* ApiEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F712872B76F00973687 /* ApiEndPoint.swift */; };
+		F13C7F742872B78900973687 /* RequestParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F732872B78900973687 /* RequestParameter.swift */; };
+		F13C7F762872B7A900973687 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F752872B7A900973687 /* Token.swift */; };
+		F13C7F782872B7D000973687 /* JsonEncodeSnakeCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F772872B7D000973687 /* JsonEncodeSnakeCase.swift */; };
+		F13C7F7A2872B81400973687 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F792872B81400973687 /* EndPoint.swift */; };
+		F13C7F7C2872B87B00973687 /* SuppliersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F7B2872B87B00973687 /* SuppliersAPI.swift */; };
+		F13C7F802872B8E100973687 /* Suppliers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F7F2872B8E100973687 /* Suppliers.swift */; };
+		F13C7F842872D55A00973687 /* DescriptionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F832872D55A00973687 /* DescriptionsAPI.swift */; };
+		F13C7F862872D58600973687 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F852872D58600973687 /* Description.swift */; };
+		F13C7F892872DB5D00973687 /* TransactionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F882872DB5D00973687 /* TransactionsAPI.swift */; };
+		F13C7F8B2872DB8B00973687 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F8A2872DB8B00973687 /* Transaction.swift */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -61,8 +80,27 @@
 		F13C7F5128724BF000973687 /* SettingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingScreen.swift; sourceTree = "<group>"; };
 		F13C7F542872592000973687 /* ListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScreen.swift; sourceTree = "<group>"; };
 		F13C7F562872852F00973687 /* ListScreen+Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListScreen+Sort.swift"; sourceTree = "<group>"; };
-		F13C7F582872857000973687 /* ListScreen+Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListScreen+Transaction.swift"; sourceTree = "<group>"; };
-		F13C7F5A287285A800973687 /* ListScreen+Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListScreen+Transactions.swift"; sourceTree = "<group>"; };
+		F13C7F5D2872B58800973687 /* StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
+		F13C7F5F2872B5B100973687 /* APIAgentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAgentProtocol.swift; sourceTree = "<group>"; };
+		F13C7F612872B66600973687 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		F13C7F632872B67E00973687 /* Mockable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockable.swift; sourceTree = "<group>"; };
+		F13C7F652872B69500973687 /* AgentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentFactory.swift; sourceTree = "<group>"; };
+		F13C7F672872B6BF00973687 /* APIAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAgent.swift; sourceTree = "<group>"; };
+		F13C7F692872B6EE00973687 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		F13C7F6B2872B70D00973687 /* URLRequest+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Ext.swift"; sourceTree = "<group>"; };
+		F13C7F6D2872B73600973687 /* HTTPMethodEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethodEnum.swift; sourceTree = "<group>"; };
+		F13C7F6F2872B75100973687 /* ResponseResultError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseResultError.swift; sourceTree = "<group>"; };
+		F13C7F712872B76F00973687 /* ApiEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndPoint.swift; sourceTree = "<group>"; };
+		F13C7F732872B78900973687 /* RequestParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestParameter.swift; sourceTree = "<group>"; };
+		F13C7F752872B7A900973687 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		F13C7F772872B7D000973687 /* JsonEncodeSnakeCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonEncodeSnakeCase.swift; sourceTree = "<group>"; };
+		F13C7F792872B81400973687 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		F13C7F7B2872B87B00973687 /* SuppliersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliersAPI.swift; sourceTree = "<group>"; };
+		F13C7F7F2872B8E100973687 /* Suppliers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suppliers.swift; sourceTree = "<group>"; };
+		F13C7F832872D55A00973687 /* DescriptionsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionsAPI.swift; sourceTree = "<group>"; };
+		F13C7F852872D58600973687 /* Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
+		F13C7F882872DB5D00973687 /* TransactionsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsAPI.swift; sourceTree = "<group>"; };
+		F13C7F8A2872DB8B00973687 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -250,10 +288,60 @@
 			children = (
 				F13C7F542872592000973687 /* ListScreen.swift */,
 				F13C7F562872852F00973687 /* ListScreen+Sort.swift */,
-				F13C7F582872857000973687 /* ListScreen+Transaction.swift */,
-				F13C7F5A287285A800973687 /* ListScreen+Transactions.swift */,
 			);
 			path = ListScreen;
+			sourceTree = "<group>";
+		};
+		F13C7F5C2872B53700973687 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7F872872DB4700973687 /* Transactions */,
+				F13C7F822872D52D00973687 /* Descriptions */,
+				F13C7F812872D51D00973687 /* Suppliers */,
+				F13C7F5D2872B58800973687 /* StatusCode.swift */,
+				F13C7F5F2872B5B100973687 /* APIAgentProtocol.swift */,
+				F13C7F612872B66600973687 /* Configuration.swift */,
+				F13C7F632872B67E00973687 /* Mockable.swift */,
+				F13C7F652872B69500973687 /* AgentFactory.swift */,
+				F13C7F672872B6BF00973687 /* APIAgent.swift */,
+				F13C7F692872B6EE00973687 /* APIError.swift */,
+				F13C7F6B2872B70D00973687 /* URLRequest+Ext.swift */,
+				F13C7F6D2872B73600973687 /* HTTPMethodEnum.swift */,
+				F13C7F6F2872B75100973687 /* ResponseResultError.swift */,
+				F13C7F712872B76F00973687 /* ApiEndPoint.swift */,
+				F13C7F732872B78900973687 /* RequestParameter.swift */,
+				F13C7F752872B7A900973687 /* Token.swift */,
+				F13C7F772872B7D000973687 /* JsonEncodeSnakeCase.swift */,
+				F13C7F792872B81400973687 /* EndPoint.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F13C7F812872D51D00973687 /* Suppliers */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7F7B2872B87B00973687 /* SuppliersAPI.swift */,
+				F13C7F7F2872B8E100973687 /* Suppliers.swift */,
+			);
+			path = Suppliers;
+			sourceTree = "<group>";
+		};
+		F13C7F822872D52D00973687 /* Descriptions */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7F832872D55A00973687 /* DescriptionsAPI.swift */,
+				F13C7F852872D58600973687 /* Description.swift */,
+			);
+			path = Descriptions;
+			sourceTree = "<group>";
+		};
+		F13C7F872872DB4700973687 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7F882872DB5D00973687 /* TransactionsAPI.swift */,
+				F13C7F8A2872DB8B00973687 /* Transaction.swift */,
+			);
+			path = Transactions;
 			sourceTree = "<group>";
 		};
 		F13CA310286E769E00527D1E = {
@@ -278,6 +366,7 @@
 			children = (
 				F13CA320286E769F00527D1E /* Assets.xcassets */,
 				F13CA378287113FD00527D1E /* Info.plist */,
+				F13C7F5C2872B53700973687 /* Network */,
 				F13C7F4828718BD900973687 /* ViewModels */,
 				F13CA3612871125100527D1E /* Fonts */,
 				F13CA322286E769F00527D1E /* Preview Content */,
@@ -412,41 +501,60 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F13C7F802872B8E100973687 /* Suppliers.swift in Sources */,
 				F13CA33E286FBCFF00527D1E /* FirstScreen+Account.swift in Sources */,
 				F13CA34C286FED2C00527D1E /* KeyPadButton.swift in Sources */,
+				F13C7F5E2872B58800973687 /* StatusCode.swift in Sources */,
 				F13CA346286FE69000527D1E /* Controller+RegistButton.swift in Sources */,
 				F13CA332286FBA4A00527D1E /* SlideAnimation.swift in Sources */,
+				F13C7F862872D58600973687 /* Description.swift in Sources */,
 				F13CA348286FE70500527D1E /* Controller+nextOrRegistButton.swift in Sources */,
 				F13CA36028710F1200527D1E /* FirstScreen+spending.swift in Sources */,
+				F13C7F642872B67E00973687 /* Mockable.swift in Sources */,
 				F13CA334286FBB3E00527D1E /* ThirdScreen.swift in Sources */,
 				F13C7F552872592000973687 /* ListScreen.swift in Sources */,
 				F13CA3562870904F00527D1E /* Controller+BottomMenu.swift in Sources */,
 				F13CA31F286E769E00527D1E /* Controller.swift in Sources */,
-				F13C7F592872857000973687 /* ListScreen+Transaction.swift in Sources */,
+				F13C7F7A2872B81400973687 /* EndPoint.swift in Sources */,
 				F13CA32C286FB8E200527D1E /* Router.swift in Sources */,
 				F13CA35E28710ED000527D1E /* FirstScreen+income.swift in Sources */,
+				F13C7F6C2872B70D00973687 /* URLRequest+Ext.swift in Sources */,
+				F13C7F892872DB5D00973687 /* TransactionsAPI.swift in Sources */,
 				F13CA336286FBB6C00527D1E /* FirstScreen.swift in Sources */,
 				F13C7F5228724BF000973687 /* SettingScreen.swift in Sources */,
 				F13CA330286FBA1D00527D1E /* ScreenMovable.swift in Sources */,
 				F13CA342286FC3E500527D1E /* Controller+Footer.swift in Sources */,
+				F13C7F682872B6BF00973687 /* APIAgent.swift in Sources */,
 				F13C7F3D2871868800973687 /* View+onButtonTap.swift in Sources */,
 				F13CA33C286FBC3A00527D1E /* Controller+Navi.swift in Sources */,
+				F13C7F742872B78900973687 /* RequestParameter.swift in Sources */,
 				F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */,
+				F13C7F602872B5B100973687 /* APIAgentProtocol.swift in Sources */,
+				F13C7F622872B66600973687 /* Configuration.swift in Sources */,
 				F13CA35A2871050200527D1E /* View+backgroundCircle.swift in Sources */,
 				F13CA338286FBBB500527D1E /* Controller+NextButton.swift in Sources */,
+				F13C7F842872D55A00973687 /* DescriptionsAPI.swift in Sources */,
 				F13CA344286FD51E00527D1E /* Controller+BackButton.swift in Sources */,
-				F13C7F5B287285A800973687 /* ListScreen+Transactions.swift in Sources */,
+				F13C7F7C2872B87B00973687 /* SuppliersAPI.swift in Sources */,
+				F13C7F662872B69500973687 /* AgentFactory.swift in Sources */,
 				F13CA352286FFDE800527D1E /* Controller+Header.swift in Sources */,
 				F13CA35428708D6200527D1E /* HeaderInfo.swift in Sources */,
 				F13CA3772871133100527D1E /* Text+Font.swift in Sources */,
 				F13CA350286FF9F300527D1E /* Color+rgb.swift in Sources */,
+				F13C7F8B2872DB8B00973687 /* Transaction.swift in Sources */,
+				F13C7F702872B75100973687 /* ResponseResultError.swift in Sources */,
 				F13CA32E286FB9E700527D1E /* ScreenType.swift in Sources */,
 				F13C7F3B28717F6500973687 /* BottomMenuType.swift in Sources */,
+				F13C7F762872B7A900973687 /* Token.swift in Sources */,
 				F13C7F572872852F00973687 /* ListScreen+Sort.swift in Sources */,
 				F13CA34E286FED4500527D1E /* NumberPad.swift in Sources */,
 				F13CA35C2871057500527D1E /* View+setTransAnimation.swift in Sources */,
+				F13C7F722872B76F00973687 /* ApiEndPoint.swift in Sources */,
 				F13CA33A286FBBEC00527D1E /* SecondScreen.swift in Sources */,
+				F13C7F6E2872B73600973687 /* HTTPMethodEnum.swift in Sources */,
 				F13CA340286FBFFF00527D1E /* CircleButtonModifier.swift in Sources */,
+				F13C7F6A2872B6EE00973687 /* APIError.swift in Sources */,
+				F13C7F782872B7D000973687 /* JsonEncodeSnakeCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
