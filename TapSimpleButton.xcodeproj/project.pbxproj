@@ -10,6 +10,10 @@
 		F13C7F3B28717F6500973687 /* BottomMenuType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F3A28717F6500973687 /* BottomMenuType.swift */; };
 		F13C7F3D2871868800973687 /* View+onButtonTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F3C2871868800973687 /* View+onButtonTap.swift */; };
 		F13C7F5228724BF000973687 /* SettingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F5128724BF000973687 /* SettingScreen.swift */; };
+		F13C7F552872592000973687 /* ListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F542872592000973687 /* ListScreen.swift */; };
+		F13C7F572872852F00973687 /* ListScreen+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F562872852F00973687 /* ListScreen+Sort.swift */; };
+		F13C7F592872857000973687 /* ListScreen+Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F582872857000973687 /* ListScreen+Transaction.swift */; };
+		F13C7F5B287285A800973687 /* ListScreen+Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F5A287285A800973687 /* ListScreen+Transactions.swift */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -55,6 +59,10 @@
 		F13C7F3A28717F6500973687 /* BottomMenuType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuType.swift; sourceTree = "<group>"; };
 		F13C7F3C2871868800973687 /* View+onButtonTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+onButtonTap.swift"; sourceTree = "<group>"; };
 		F13C7F5128724BF000973687 /* SettingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingScreen.swift; sourceTree = "<group>"; };
+		F13C7F542872592000973687 /* ListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScreen.swift; sourceTree = "<group>"; };
+		F13C7F562872852F00973687 /* ListScreen+Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListScreen+Sort.swift"; sourceTree = "<group>"; };
+		F13C7F582872857000973687 /* ListScreen+Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListScreen+Transaction.swift"; sourceTree = "<group>"; };
+		F13C7F5A287285A800973687 /* ListScreen+Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListScreen+Transactions.swift"; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -174,6 +182,7 @@
 		F13C7F4428718AE800973687 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				F13C7F532872591300973687 /* ListScreen */,
 				F13C7F5028724BE300973687 /* SettingScreen */,
 				F13C7F4928718C4400973687 /* Routing */,
 				F13C7F3F287189ED00973687 /* FirstScreen */,
@@ -234,6 +243,17 @@
 				F13C7F5128724BF000973687 /* SettingScreen.swift */,
 			);
 			path = SettingScreen;
+			sourceTree = "<group>";
+		};
+		F13C7F532872591300973687 /* ListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7F542872592000973687 /* ListScreen.swift */,
+				F13C7F562872852F00973687 /* ListScreen+Sort.swift */,
+				F13C7F582872857000973687 /* ListScreen+Transaction.swift */,
+				F13C7F5A287285A800973687 /* ListScreen+Transactions.swift */,
+			);
+			path = ListScreen;
 			sourceTree = "<group>";
 		};
 		F13CA310286E769E00527D1E = {
@@ -399,8 +419,10 @@
 				F13CA348286FE70500527D1E /* Controller+nextOrRegistButton.swift in Sources */,
 				F13CA36028710F1200527D1E /* FirstScreen+spending.swift in Sources */,
 				F13CA334286FBB3E00527D1E /* ThirdScreen.swift in Sources */,
+				F13C7F552872592000973687 /* ListScreen.swift in Sources */,
 				F13CA3562870904F00527D1E /* Controller+BottomMenu.swift in Sources */,
 				F13CA31F286E769E00527D1E /* Controller.swift in Sources */,
+				F13C7F592872857000973687 /* ListScreen+Transaction.swift in Sources */,
 				F13CA32C286FB8E200527D1E /* Router.swift in Sources */,
 				F13CA35E28710ED000527D1E /* FirstScreen+income.swift in Sources */,
 				F13CA336286FBB6C00527D1E /* FirstScreen.swift in Sources */,
@@ -413,12 +435,14 @@
 				F13CA35A2871050200527D1E /* View+backgroundCircle.swift in Sources */,
 				F13CA338286FBBB500527D1E /* Controller+NextButton.swift in Sources */,
 				F13CA344286FD51E00527D1E /* Controller+BackButton.swift in Sources */,
+				F13C7F5B287285A800973687 /* ListScreen+Transactions.swift in Sources */,
 				F13CA352286FFDE800527D1E /* Controller+Header.swift in Sources */,
 				F13CA35428708D6200527D1E /* HeaderInfo.swift in Sources */,
 				F13CA3772871133100527D1E /* Text+Font.swift in Sources */,
 				F13CA350286FF9F300527D1E /* Color+rgb.swift in Sources */,
 				F13CA32E286FB9E700527D1E /* ScreenType.swift in Sources */,
 				F13C7F3B28717F6500973687 /* BottomMenuType.swift in Sources */,
+				F13C7F572872852F00973687 /* ListScreen+Sort.swift in Sources */,
 				F13CA34E286FED4500527D1E /* NumberPad.swift in Sources */,
 				F13CA35C2871057500527D1E /* View+setTransAnimation.swift in Sources */,
 				F13CA33A286FBBEC00527D1E /* SecondScreen.swift in Sources */,

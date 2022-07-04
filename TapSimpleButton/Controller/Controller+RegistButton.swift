@@ -18,7 +18,6 @@ extension Controller {
             .cornerRadius(5)
             .frame(width: 68, height: 36)
             .background(Color.rgb(99, 187, 235))
-        
             .cornerRadius(7)
             .onTapGesture {
                 moveForward(to: .first, router)

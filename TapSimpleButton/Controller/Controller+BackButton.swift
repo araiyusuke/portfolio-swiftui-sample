@@ -25,6 +25,8 @@ extension Controller {
                         moveBack(to: .second, router)
                     case .setting:
                         return
+                    case .list:
+                        return
                     }
                 }
         }
