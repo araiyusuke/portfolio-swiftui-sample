@@ -241,6 +241,7 @@
 		F13C7F4628718B4100973687 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F13C7F4328718AA800973687 /* NumPad */,
 				F13C7F4728718B5A00973687 /* CircleButton */,
 			);
 			path = Components;
@@ -374,7 +375,6 @@
 				F13C7F4428718AE800973687 /* Screen */,
 				F13C7F4528718B0D00973687 /* BottomMenu */,
 				F13C7F4628718B4100973687 /* Components */,
-				F13C7F4328718AA800973687 /* NumPad */,
 				F13C7F3E287189CF00973687 /* Controller */,
 			);
 			path = TapSimpleButton;
