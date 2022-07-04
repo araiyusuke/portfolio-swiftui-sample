@@ -7,9 +7,12 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 struct SecondScreen: ScreenMovable {
     
+    @State private var cancellables = Set<AnyCancellable>()
+
     @EnvironmentObject var router : Router
     @EnvironmentObject var info : HeaderInfo
 
@@ -29,7 +32,14 @@ struct SecondScreen: ScreenMovable {
                     inputSuppliers
                     pullDown
                         .onButtonTap() {
-                            
+                            SuppliersAPI.fetch()
+                                .receive(on: DispatchQueue.main)
+                                .sink(receiveCompletion: { completion in
+                                    print(completion)
+                                }, receiveValue: { response in
+                                    print(response)
+                                })
+                                .store(in: &cancellables)
                         }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -42,7 +52,14 @@ struct SecondScreen: ScreenMovable {
                         
                     pullDown
                         .onButtonTap() {
-                            
+                            DescriptionsAPI.fetch()
+                                .receive(on: DispatchQueue.main)
+                                .sink(receiveCompletion: { completion in
+                                    print(completion)
+                                }, receiveValue: { response in
+                                    print(response)
+                                })
+                                .store(in: &cancellables)
                         }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
