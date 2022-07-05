@@ -17,7 +17,7 @@ struct ListScreen: ScreenMovable {
     @ObservedObject private(set) var viewModel: ViewModel
     
     var searchCount: String {
-        viewModel.transactions.count.description
+        viewModel.count.description
     }
     
     var searchButton: some View {
@@ -67,37 +67,70 @@ struct ListScreen: ScreenMovable {
             .padding(.vertical, 10)
             .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
             
-            List {
-                ForEach(viewModel.transactions) { transaction in
-                    transaction.cell
-                        .swipeActions(edge: .trailing) {
-                            HStack {
-                                
-                                Button(role: .destructive) {
-                                } label: {
-                                    Text("削除")
-                                }
-                                
-                                Button(role: .none ) {
-                                    // 処理
-                                } label: {
-                                    Text("コピー")
-                                }
-                            }
-                            
-                        }
-                }
-                .listRowBackground(Color.white)
-                .listRowInsets(EdgeInsets())
-            }
-            .padding(0)
-            .environment(\.defaultMinListRowHeight, 78)
-            .listStyle(PlainListStyle())
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            content
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .onAppear {
             viewModel.fetch()
         }
     }
+    
+    @ViewBuilder
+    private var content: some View {
+        switch viewModel.transactions {
+        case .notRequested:
+            notRequestedView
+        case .isLoading:
+            loadingView
+        case let .loaded(transactions):
+            loadedView(transactions: transactions)
+        case let .failed(error):
+            failedView(error)
+        }
+    }
+    
+    var notRequestedView: some View {
+        Text("リクエスト中...")
+    }
+    
+    var loadingView: some View {
+        Text("ローディング...")
+    }
+    
+    func loadedView(transactions: [Transaction]) -> some View {
+        List {
+            ForEach(transactions) { transaction in
+                transaction.cell
+                    .swipeActions(edge: .trailing) {
+                        HStack {
+                            
+                            Button(role: .destructive) {
+                            } label: {
+                                Text("削除")
+                            }
+                            
+                            Button(role: .none ) {
+                                // 処理
+                            } label: {
+                                Text("コピー")
+                            }
+                        }
+                        
+                    }
+            }
+            .listRowBackground(Color.white)
+            .listRowInsets(EdgeInsets())
+        }
+        .padding(0)
+        .environment(\.defaultMinListRowHeight, 78)
+        .listStyle(PlainListStyle())
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    func failedView(_ error: Error) -> some View {
+        Text(error.localizedDescription)
+    }
+    
+    
 }
+

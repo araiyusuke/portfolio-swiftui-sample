@@ -16,19 +16,30 @@ extension ListScreen {
         let container: DIContainer
         private var cancellables = Set<AnyCancellable>()
 
-        @Published var transactions: [Transaction] = []
+//        @Published var transactions: [Transaction] = []
+        @Published var transactions: Loadable<[Transaction]>
 
-        init(container: DIContainer) {
+        init(container: DIContainer, transactions: Loadable<[Transaction]> = .notRequested) {
+
             self.container = container
+            self._transactions = .init(initialValue: transactions)
+
+        }
+        
+        var count: Int {
+            return transactions.value?.count ?? 0
         }
         
         func fetch() {
+                    
+            transactions = .isLoading
+
             container.services.transaction.fetchTransactions()
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { completion in
                     print(completion)
                 }, receiveValue: { response in
-                    self.transactions = response.transactions
+                    self.transactions = .loaded(response.transactions)
                 })
                 .store(in: &cancellables)
         }
