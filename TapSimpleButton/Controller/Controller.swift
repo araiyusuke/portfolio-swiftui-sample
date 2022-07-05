@@ -1,13 +1,21 @@
 
 import SwiftUI
 
+
 struct Controller: ScreenMovable {
     
     @EnvironmentObject var router : Router
     @EnvironmentObject var info : HeaderInfo
     @State public var selectTabMenu: BottomMenuType = .input
     @State private var labelPosX:CGFloat = 0
+    @State private var isBottomSheet: Bool = false
     let container: DIContainer
+    
+    public static func bottomSheet<MContent: View>(@ViewBuilder content: () -> MContent) -> some View {
+        return content()
+    }
+    
+  
     
     init(container: DIContainer) {
         self.container = container
@@ -41,6 +49,9 @@ struct Controller: ScreenMovable {
                     header
                         .frame(maxWidth: .infinity , maxHeight: 100)
                         .background(Color.headerColor)
+                        .onTapGesture {
+                            isBottomSheet.toggle()
+                        }
 
                     contents
                         .frame(maxHeight: .infinity)
@@ -60,7 +71,6 @@ struct Controller: ScreenMovable {
 
                     }
                 }
-
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
         }

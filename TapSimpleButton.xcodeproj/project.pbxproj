@@ -38,6 +38,7 @@
 		F13C7F922873AF0C00973687 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F912873AF0C00973687 /* AppEnvironment.swift */; };
 		F13C7F942873CA8400973687 /* ListScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F932873CA8400973687 /* ListScreen+ViewModel.swift */; };
 		F13C7F962873D14A00973687 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F952873D14A00973687 /* Loadable.swift */; };
+		F13C7F9928740C5000973687 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F9828740C5000973687 /* BottomSheet.swift */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -111,6 +112,7 @@
 		F13C7F912873AF0C00973687 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		F13C7F932873CA8400973687 /* ListScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListScreen+ViewModel.swift"; sourceTree = "<group>"; };
 		F13C7F952873D14A00973687 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		F13C7F9828740C5000973687 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 		F13C7F4628718B4100973687 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F13C7F9728740C4000973687 /* BottomSheet */,
 				F13C7F4328718AA800973687 /* NumPad */,
 				F13C7F4728718B5A00973687 /* CircleButton */,
 			);
@@ -365,6 +368,14 @@
 				F13C7F912873AF0C00973687 /* AppEnvironment.swift */,
 			);
 			path = Injected;
+			sourceTree = "<group>";
+		};
+		F13C7F9728740C4000973687 /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7F9828740C5000973687 /* BottomSheet.swift */,
+			);
+			path = BottomSheet;
 			sourceTree = "<group>";
 		};
 		F13CA310286E769E00527D1E = {
@@ -570,6 +581,7 @@
 				F13CA350286FF9F300527D1E /* Color+rgb.swift in Sources */,
 				F13C7F8B2872DB8B00973687 /* Transaction.swift in Sources */,
 				F13C7F702872B75100973687 /* ResponseResultError.swift in Sources */,
+				F13C7F9928740C5000973687 /* BottomSheet.swift in Sources */,
 				F13CA32E286FB9E700527D1E /* ScreenType.swift in Sources */,
 				F13C7F3B28717F6500973687 /* BottomMenuType.swift in Sources */,
 				F13C7F762872B7A900973687 /* Token.swift in Sources */,

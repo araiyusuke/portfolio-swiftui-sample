@@ -14,6 +14,7 @@ struct TapSimpleButtonApp: App {
             Controller(container: AppEnvironment.bootstrap().container)
                 .environmentObject(Router.shared)
                 .environmentObject(HeaderInfo())
+            
         }
     }
 }
