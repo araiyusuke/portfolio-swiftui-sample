@@ -33,6 +33,10 @@
 		F13C7F862872D58600973687 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F852872D58600973687 /* Description.swift */; };
 		F13C7F892872DB5D00973687 /* TransactionsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F882872DB5D00973687 /* TransactionsAPI.swift */; };
 		F13C7F8B2872DB8B00973687 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F8A2872DB8B00973687 /* Transaction.swift */; };
+		F13C7F8E2873A12300973687 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F8D2873A12300973687 /* AppState.swift */; };
+		F13C7F902873ADCD00973687 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F8F2873ADCD00973687 /* DIContainer.swift */; };
+		F13C7F922873AF0C00973687 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F912873AF0C00973687 /* AppEnvironment.swift */; };
+		F13C7F942873CA8400973687 /* ListScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F932873CA8400973687 /* ListScreen+ViewModel.swift */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -101,6 +105,10 @@
 		F13C7F852872D58600973687 /* Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
 		F13C7F882872DB5D00973687 /* TransactionsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsAPI.swift; sourceTree = "<group>"; };
 		F13C7F8A2872DB8B00973687 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		F13C7F8D2873A12300973687 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		F13C7F8F2873ADCD00973687 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		F13C7F912873AF0C00973687 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		F13C7F932873CA8400973687 /* ListScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListScreen+ViewModel.swift"; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -260,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				F13CA35328708D6200527D1E /* HeaderInfo.swift */,
+				F13C7F932873CA8400973687 /* ListScreen+ViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -345,6 +354,16 @@
 			path = Transactions;
 			sourceTree = "<group>";
 		};
+		F13C7F8C2873A10A00973687 /* Injected */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7F8D2873A12300973687 /* AppState.swift */,
+				F13C7F8F2873ADCD00973687 /* DIContainer.swift */,
+				F13C7F912873AF0C00973687 /* AppEnvironment.swift */,
+			);
+			path = Injected;
+			sourceTree = "<group>";
+		};
 		F13CA310286E769E00527D1E = {
 			isa = PBXGroup;
 			children = (
@@ -365,6 +384,7 @@
 		F13CA31B286E769E00527D1E /* TapSimpleButton */ = {
 			isa = PBXGroup;
 			children = (
+				F13C7F8C2873A10A00973687 /* Injected */,
 				F13CA320286E769F00527D1E /* Assets.xcassets */,
 				F13CA378287113FD00527D1E /* Info.plist */,
 				F13C7F5C2872B53700973687 /* Network */,
@@ -506,7 +526,9 @@
 				F13CA34C286FED2C00527D1E /* KeyPadButton.swift in Sources */,
 				F13C7F5E2872B58800973687 /* StatusCode.swift in Sources */,
 				F13CA346286FE69000527D1E /* Controller+RegistButton.swift in Sources */,
+				F13C7F922873AF0C00973687 /* AppEnvironment.swift in Sources */,
 				F13CA332286FBA4A00527D1E /* SlideAnimation.swift in Sources */,
+				F13C7F8E2873A12300973687 /* AppState.swift in Sources */,
 				F13C7F862872D58600973687 /* Description.swift in Sources */,
 				F13CA348286FE70500527D1E /* Controller+nextOrRegistButton.swift in Sources */,
 				F13CA36028710F1200527D1E /* FirstScreen+spending.swift in Sources */,
@@ -533,6 +555,7 @@
 				F13C7F622872B66600973687 /* Configuration.swift in Sources */,
 				F13CA35A2871050200527D1E /* View+backgroundCircle.swift in Sources */,
 				F13CA338286FBBB500527D1E /* Controller+NextButton.swift in Sources */,
+				F13C7F942873CA8400973687 /* ListScreen+ViewModel.swift in Sources */,
 				F13C7F842872D55A00973687 /* DescriptionsAPI.swift in Sources */,
 				F13CA344286FD51E00527D1E /* Controller+BackButton.swift in Sources */,
 				F13C7F7C2872B87B00973687 /* SuppliersAPI.swift in Sources */,
@@ -548,6 +571,7 @@
 				F13C7F762872B7A900973687 /* Token.swift in Sources */,
 				F13C7F572872852F00973687 /* ListScreen+Sort.swift in Sources */,
 				F13CA34E286FED4500527D1E /* NumberPad.swift in Sources */,
+				F13C7F902873ADCD00973687 /* DIContainer.swift in Sources */,
 				F13CA35C2871057500527D1E /* View+setTransAnimation.swift in Sources */,
 				F13C7F722872B76F00973687 /* ApiEndPoint.swift in Sources */,
 				F13CA33A286FBBEC00527D1E /* SecondScreen.swift in Sources */,
