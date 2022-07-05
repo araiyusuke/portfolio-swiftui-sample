@@ -88,13 +88,15 @@ struct FirstScreen: ScreenMovable {
                     HStack(spacing: 36) {
                         
                         ForEach(menus[num], id: \.hashValue) { account in
+                            
                             Group {
+                                
                                 if let account = account {
-                                    account.view.onButtonTap() {
+                                    
+                                    account.view(selected: account.title == info.account?.title).onButtonTap() {
                                         info.account = account
                                         moveForward(to: .second, router)
                                     }
-
                                 } else {
                                     Text("")
                                 }
