@@ -15,8 +15,6 @@ struct Controller: ScreenMovable {
         return content()
     }
     
-  
-    
     init(container: DIContainer) {
         self.container = container
     }
