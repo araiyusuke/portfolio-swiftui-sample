@@ -41,7 +41,7 @@ extension Controller {
 
             case .second:
                 VStack {
-                    Text("雑費")
+                    Text(info.account?.title ?? "")
                         .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
                         .frame(height: 20)
 
@@ -54,7 +54,7 @@ extension Controller {
 
             case .third:
                 VStack(spacing: 0) {
-                    Text("雑費")
+                    Text(info.account?.title ?? "")
                         .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
                         .frame(height: 20)
 

@@ -10,5 +10,6 @@ import SwiftUI
 
 class HeaderInfo: ObservableObject {
     @Published var title: String  = ""
+    @Published var account: Account? = nil
     @Published var numPadValue: String  = ""
 }

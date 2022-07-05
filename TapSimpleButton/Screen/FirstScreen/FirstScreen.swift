@@ -91,8 +91,10 @@ struct FirstScreen: ScreenMovable {
                             Group {
                                 if let account = account {
                                     account.view.onButtonTap() {
-//                                        viewModel.container.services.transaction.say()
+                                        info.account = account
+                                        moveForward(to: .second, router)
                                     }
+
                                 } else {
                                     Text("")
                                 }
