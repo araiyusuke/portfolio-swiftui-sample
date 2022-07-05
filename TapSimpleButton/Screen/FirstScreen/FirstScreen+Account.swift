@@ -15,10 +15,10 @@ struct Account: Identifiable, Hashable {
     var borderColor: Color
     var boderSize: CGFloat = 3
     
-    var view: some View {
+    func view(selected: Bool) -> some View {
         Text(title)
             .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
-            .backgroundCircle(.white, 82, borderColor, boderSize)
+            .backgroundCircle(selected ? borderColor : .white, 82, borderColor, boderSize)
     }
 
 }
