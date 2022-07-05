@@ -12,7 +12,7 @@ struct Suppliers: Mockable, Hashable {
     var suppliers: [Supplier]
 }
 
-struct Supplier: Mockable, Hashable {
+struct Supplier: Mockable, Hashable, Identifiable {
     var id: Int
     var name: String
 }

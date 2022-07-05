@@ -12,7 +12,7 @@ struct Descriptions: Mockable, Hashable {
     var descriptions: [Description]
 }
 
-struct Description: Mockable, Hashable {
+struct Description: Mockable, Identifiable, Hashable {
     var id: Int
     var name: String
 }
