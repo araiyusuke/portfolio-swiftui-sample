@@ -1,24 +1,23 @@
 
 import SwiftUI
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Controller()
-    }
-}
-
 struct Controller: ScreenMovable {
     
     @EnvironmentObject var router : Router
     @EnvironmentObject var info : HeaderInfo
     @State public var selectTabMenu: BottomMenuType = .input
     @State private var labelPosX:CGFloat = 0
+    let container: DIContainer
+    
+    init(container: DIContainer) {
+        self.container = container
+    }
     
     var contents: some View {
         return ZStack {
             switch router.screen {
             case .first:
-                FirstScreen()
+                FirstScreen(viewModel: FirstScreen.ViewModel(container: container))
             case .second:
                 SecondScreen()
             case .third:
@@ -26,10 +25,9 @@ struct Controller: ScreenMovable {
             case .setting:
                 SettingScreen()
             case .list:
-                ListScreen()
+                ListScreen(viewModel: .init(container: container))
             }
         }
-        
     }
     
     var body: some View {

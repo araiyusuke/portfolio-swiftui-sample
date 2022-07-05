@@ -8,8 +8,21 @@
 import Foundation
 import SwiftUI
 
+extension FirstScreen {
+    
+    class ViewModel: ObservableObject {
+        
+        let container: DIContainer
+
+        init(container: DIContainer) {
+            self.container = container
+        }
+    }
+}
+
 struct FirstScreen: ScreenMovable {
     
+    @ObservedObject private(set) var viewModel: ViewModel
     @EnvironmentObject var router : Router
     @EnvironmentObject var info : HeaderInfo
 
@@ -46,6 +59,7 @@ struct FirstScreen: ScreenMovable {
                 .pickerStyle(.segmented)
                 .padding(10)
                 .onAppear() {
+                    
                     let appearance = UISegmentedControl.appearance()
                     let firstPriorityFont = UIFont(name: "Roboto-Light", size: 11.0);
                     let secondPriorityFontfont = UIFont.boldSystemFont(ofSize: 12)
@@ -76,7 +90,9 @@ struct FirstScreen: ScreenMovable {
                         ForEach(menus[num], id: \.hashValue) { account in
                             Group {
                                 if let account = account {
-                                    account.view
+                                    account.view.onButtonTap() {
+//                                        viewModel.container.services.transaction.say()
+                                    }
                                 } else {
                                     Text("")
                                 }

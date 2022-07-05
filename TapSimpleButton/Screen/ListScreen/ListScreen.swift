@@ -14,11 +14,10 @@ struct ListScreen: ScreenMovable {
     @EnvironmentObject var router : Router
     @State var selected = 0
     @State var sortDirection: Sort = .new
-    @State private var cancellables = Set<AnyCancellable>()
-    @State var transactions: [Transaction] = []
-
+    @ObservedObject private(set) var viewModel: ViewModel
+    
     var searchCount: String {
-        transactions.count.description
+        viewModel.transactions.count.description
     }
     
     var searchButton: some View {
@@ -69,7 +68,7 @@ struct ListScreen: ScreenMovable {
             .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
             
             List {
-                ForEach(self.transactions) { transaction in
+                ForEach(viewModel.transactions) { transaction in
                     transaction.cell
                         .swipeActions(edge: .trailing) {
                             HStack {
@@ -98,14 +97,7 @@ struct ListScreen: ScreenMovable {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .onAppear {
-            TransactionsAPI.fetch()
-                .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { completion in
-                    print(completion)
-                }, receiveValue: { response in
-                    transactions = response.transactions
-                })
-                .store(in: &cancellables)
+            viewModel.fetch()
         }
     }
 }
