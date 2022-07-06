@@ -14,6 +14,14 @@ enum TransactionsAPI {
         let transactions: [Transaction]
     }
     
+    struct Success: Codable {
+        let success: Bool
+    }
+    
+    struct RegistResponse: Mockable {
+        let transactions: Success
+    }
+    
     private static let agent = AgentFactory.create()
 
     static func fetch() -> AnyPublisher<Response, Error> {
@@ -21,6 +29,15 @@ enum TransactionsAPI {
             API
                 .Transactions
                 .Fetch
+                .request()
+        )
+    }
+    
+    static func regist() -> AnyPublisher<RegistResponse, Error> {
+        return agent.run(
+            API
+                .Transactions
+                .Regist
                 .request()
         )
     }

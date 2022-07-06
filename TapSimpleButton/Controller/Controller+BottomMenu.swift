@@ -47,7 +47,7 @@ extension Controller {
                     }
                     
                     if menu == .input {
-                        moveForward(to: .first, router)
+                        moveForward(to: .first(false), router)
                         return
                     }
                     

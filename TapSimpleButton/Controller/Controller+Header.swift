@@ -19,7 +19,7 @@ extension Controller {
         return dateFormatter.string(from: Date())
     }
     
-    var header: some View {
+    var headerTop: some View {
         
         Group {
             
@@ -27,21 +27,19 @@ extension Controller {
                 
             case .first:
                 VStack() {
-                    
                     Text("白色申告")
                         .customFont(size: 28, spacing: .short, color: .light, weight: .light)
                         .frame(height: 30)
                     
-                    Text(info.title)
+                    Text(header.getTitle())
                         .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
                         .frame(height: 30)
                 }
                 .frame(alignment: .center)
 
-
             case .second:
                 VStack {
-                    Text(info.account?.title ?? "")
+                    Text(header.getAccount()?.title ?? "")
                         .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
                         .frame(height: 20)
 
@@ -54,7 +52,7 @@ extension Controller {
 
             case .third:
                 VStack(spacing: 0) {
-                    Text(info.account?.title ?? "")
+                    Text(header.getAccount()?.title ?? "")
                         .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
                         .frame(height: 20)
 
@@ -62,7 +60,7 @@ extension Controller {
                         .customFont(size: 19, spacing: .short, rgb: Color.rgb(242,220, 171), weight: .bold)
                         .frame(height: 30)
 
-                    Text("¥ \(info.numPadValue.isEmpty ? "0" : info.numPadValue)")
+                    Text("¥ \(header.getNumPad().isEmpty ? "0" : header.getNumPad())")
                         .customFont(size: 24, spacing: .short, rgb: Color.rgb(242,220, 171), weight: .bold)
                         .frame(height: 30)
                 }

@@ -14,7 +14,7 @@ struct SecondScreen: ScreenMovable {
     @State private var cancellables = Set<AnyCancellable>()
     
     @EnvironmentObject var router : Router
-    @EnvironmentObject var info : HeaderInfo
+    @EnvironmentObject var header : Header
     
     @State private var labelPosX:CGFloat = 0
     @State var supplierText = ""
@@ -90,7 +90,7 @@ struct SecondScreen: ScreenMovable {
                         self.labelPosX -= 30
                     } else if (value.translation.width > 0 ) {
                         self.labelPosX += 30
-                        moveBack(to: .first, router)
+                        moveBack(to: .first(false), router)
                     }
                 })
             )
@@ -99,7 +99,7 @@ struct SecondScreen: ScreenMovable {
         .padding(.top, 20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear() {
-            info.title = "取引先・適用入力"
+            header.setTitle("取引先・適用入力")
         }
         
         if showingSheet1 {

@@ -17,21 +17,12 @@ private var cancellables = Set<AnyCancellable>()
 
 struct TransactionService {
     
-//    func fetchTransactions(transactions: Binding<Loadable<[Transaction]>>) {
-
-        
     func fetchTransactions() -> AnyPublisher<TransactionsAPI.Response, Error> {
         TransactionsAPI.fetch()
-//            .receive(on: DispatchQueue.main)
-//            .sink(receiveCompletion: { completion in
-//                print(completion)
-//            }, receiveValue: { response in
-//                transactions.wrappedValue = .loaded(response.transactions)
-////                transactions.wrappedValue.value =
-////                transactions.wrappedValue = .loaded(response.transactions)
-////                    self.transactions = response.transactions
-//            })
-//            .store(in: &cancellables)
+    }
+    
+    func regist() -> AnyPublisher<TransactionsAPI.RegistResponse, Error> {
+        TransactionsAPI.regist()
     }
 }
 

@@ -10,7 +10,7 @@ import SwiftUI
 
 class Router: ObservableObject {
     
-    @Published var screen: ScreenType = .first
+    @Published var screen: ScreenType = .first(false)
     @Published var direction: Direction = .forward
     
     private init() {}

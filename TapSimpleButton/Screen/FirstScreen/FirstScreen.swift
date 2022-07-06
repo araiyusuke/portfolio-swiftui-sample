@@ -24,11 +24,12 @@ struct FirstScreen: ScreenMovable {
     
     @ObservedObject private(set) var viewModel: ViewModel
     @EnvironmentObject var router : Router
-    @EnvironmentObject var info : HeaderInfo
+    @EnvironmentObject var header : Header
 
     let circleSize: CGFloat = 82
     @State private var labelPosX:CGFloat = 0
     @State private var tab = 1
+    let registed: Bool
     
     var menus : [[Account?]] {
         if tab == 0 {
@@ -93,8 +94,8 @@ struct FirstScreen: ScreenMovable {
                                 
                                 if let account = account {
                                     
-                                    account.view(selected: account.title == info.account?.title).onButtonTap() {
-                                        info.account = account
+                                    account.view(selected: account.title == header.getAccount()?.title).onButtonTap() {
+                                        header.setAccount(account)
                                         moveForward(to: .second, router)
                                     }
                                 } else {
@@ -124,12 +125,12 @@ struct FirstScreen: ScreenMovable {
                            self.labelPosX -= 30
                        } else if (value.translation.width > 0 ) {
                            self.labelPosX += 30
-                           moveBack(to: .first, router)
+//                           moveBack(to: .first, router)
 
                        }
                    })
         ).onAppear() {
-            info.title = "勘定科目を選択"
+            header.setTitle("勘定科目を選択")
         }
     }
 }

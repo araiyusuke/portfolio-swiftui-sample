@@ -39,6 +39,8 @@
 		F13C7F942873CA8400973687 /* ListScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F932873CA8400973687 /* ListScreen+ViewModel.swift */; };
 		F13C7F962873D14A00973687 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F952873D14A00973687 /* Loadable.swift */; };
 		F13C7F9928740C5000973687 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F9828740C5000973687 /* BottomSheet.swift */; };
+		F13C7F9B287514D200973687 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F9A287514D200973687 /* Header.swift */; };
+		F13C7F9E2875173E00973687 /* Controller+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F9D2875173E00973687 /* Controller+ViewModel.swift */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -62,7 +64,6 @@
 		F13CA34E286FED4500527D1E /* NumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA34D286FED4500527D1E /* NumberPad.swift */; };
 		F13CA350286FF9F300527D1E /* Color+rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA34F286FF9F300527D1E /* Color+rgb.swift */; };
 		F13CA352286FFDE800527D1E /* Controller+Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA351286FFDE800527D1E /* Controller+Header.swift */; };
-		F13CA35428708D6200527D1E /* HeaderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35328708D6200527D1E /* HeaderInfo.swift */; };
 		F13CA3562870904F00527D1E /* Controller+BottomMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA3552870904F00527D1E /* Controller+BottomMenu.swift */; };
 		F13CA35A2871050200527D1E /* View+backgroundCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA3592871050200527D1E /* View+backgroundCircle.swift */; };
 		F13CA35C2871057500527D1E /* View+setTransAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA35B2871057500527D1E /* View+setTransAnimation.swift */; };
@@ -113,6 +114,8 @@
 		F13C7F932873CA8400973687 /* ListScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListScreen+ViewModel.swift"; sourceTree = "<group>"; };
 		F13C7F952873D14A00973687 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		F13C7F9828740C5000973687 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		F13C7F9A287514D200973687 /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		F13C7F9D2875173E00973687 /* Controller+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+ViewModel.swift"; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -137,7 +140,6 @@
 		F13CA34D286FED4500527D1E /* NumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPad.swift; sourceTree = "<group>"; };
 		F13CA34F286FF9F300527D1E /* Color+rgb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+rgb.swift"; sourceTree = "<group>"; };
 		F13CA351286FFDE800527D1E /* Controller+Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+Header.swift"; sourceTree = "<group>"; };
-		F13CA35328708D6200527D1E /* HeaderInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInfo.swift; sourceTree = "<group>"; };
 		F13CA3552870904F00527D1E /* Controller+BottomMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+BottomMenu.swift"; sourceTree = "<group>"; };
 		F13CA3582871011C00527D1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F13CA3592871050200527D1E /* View+backgroundCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+backgroundCircle.swift"; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		F13C7F4628718B4100973687 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F13C7F9C2875172700973687 /* Header */,
 				F13C7F9728740C4000973687 /* BottomSheet */,
 				F13C7F4328718AA800973687 /* NumPad */,
 				F13C7F4728718B5A00973687 /* CircleButton */,
@@ -272,8 +275,8 @@
 		F13C7F4828718BD900973687 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				F13CA35328708D6200527D1E /* HeaderInfo.swift */,
 				F13C7F932873CA8400973687 /* ListScreen+ViewModel.swift */,
+				F13C7F9D2875173E00973687 /* Controller+ViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -376,6 +379,14 @@
 				F13C7F9828740C5000973687 /* BottomSheet.swift */,
 			);
 			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		F13C7F9C2875172700973687 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7F9A287514D200973687 /* Header.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		F13CA310286E769E00527D1E = {
@@ -547,11 +558,13 @@
 				F13CA348286FE70500527D1E /* Controller+nextOrRegistButton.swift in Sources */,
 				F13CA36028710F1200527D1E /* FirstScreen+spending.swift in Sources */,
 				F13C7F642872B67E00973687 /* Mockable.swift in Sources */,
+				F13C7F9B287514D200973687 /* Header.swift in Sources */,
 				F13CA334286FBB3E00527D1E /* ThirdScreen.swift in Sources */,
 				F13C7F552872592000973687 /* ListScreen.swift in Sources */,
 				F13CA3562870904F00527D1E /* Controller+BottomMenu.swift in Sources */,
 				F13CA31F286E769E00527D1E /* Controller.swift in Sources */,
 				F13C7F7A2872B81400973687 /* EndPoint.swift in Sources */,
+				F13C7F9E2875173E00973687 /* Controller+ViewModel.swift in Sources */,
 				F13CA32C286FB8E200527D1E /* Router.swift in Sources */,
 				F13CA35E28710ED000527D1E /* FirstScreen+income.swift in Sources */,
 				F13C7F6C2872B70D00973687 /* URLRequest+Ext.swift in Sources */,
@@ -576,7 +589,6 @@
 				F13C7F7C2872B87B00973687 /* SuppliersAPI.swift in Sources */,
 				F13C7F662872B69500973687 /* AgentFactory.swift in Sources */,
 				F13CA352286FFDE800527D1E /* Controller+Header.swift in Sources */,
-				F13CA35428708D6200527D1E /* HeaderInfo.swift in Sources */,
 				F13CA3772871133100527D1E /* Text+Font.swift in Sources */,
 				F13CA350286FF9F300527D1E /* Color+rgb.swift in Sources */,
 				F13C7F8B2872DB8B00973687 /* Transaction.swift in Sources */,
