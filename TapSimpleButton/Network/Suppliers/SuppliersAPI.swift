@@ -11,7 +11,13 @@ import Combine
 enum SuppliersAPI {
     
     struct Response: Mockable {
+        
         let suppliers: [Supplier]
+        
+        static func mock(_ file: String? = nil) -> Response {
+            let decoder = jsonDecoder()
+            return try! decoder.decode(Response.self, from: loadFile(json: file ?? "Success_Fetch_Suppliers"))
+        }
     }
     
     private static let agent = AgentFactory.create()
