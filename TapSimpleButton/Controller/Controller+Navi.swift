@@ -17,7 +17,7 @@ extension Controller {
     
     static let naviItems = ["1","2","3"]
     static let alignments: [Alignment] = [.leading,.center, .trailing]
-    static let targets: [ScreenType] = [.first, .second, .third]
+    static let targets: [ScreenType] = [.first(false), .second, .third]
 
     func isActive(_ index: Int) -> Bool {
         Controller.targets[index] == router.screen

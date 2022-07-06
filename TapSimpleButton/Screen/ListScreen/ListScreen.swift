@@ -71,7 +71,7 @@ struct ListScreen: ScreenMovable {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .onAppear {
-            viewModel.fetch()
+            viewModel.fetchTransactions()
         }
     }
     

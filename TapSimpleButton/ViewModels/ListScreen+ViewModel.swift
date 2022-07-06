@@ -16,21 +16,18 @@ extension ListScreen {
         let container: DIContainer
         private var cancellables = Set<AnyCancellable>()
 
-//        @Published var transactions: [Transaction] = []
         @Published var transactions: Loadable<[Transaction]>
 
         init(container: DIContainer, transactions: Loadable<[Transaction]> = .notRequested) {
-
             self.container = container
             self._transactions = .init(initialValue: transactions)
-
         }
         
         var count: Int {
             return transactions.value?.count ?? 0
         }
         
-        func fetch() {
+        func fetchTransactions() {
                     
             transactions = .isLoading
 

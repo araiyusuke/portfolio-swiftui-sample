@@ -12,7 +12,7 @@ extension Controller {
     
     @ViewBuilder
     var back: some View {
-        if router.screen != .first {
+        if router.screen != .first(false) {
              Text("〈 戻る")
                 .customFont(size: 18, spacing: .short, color: .dark, weight: .medium)
                 .onTapGesture {
@@ -20,7 +20,7 @@ extension Controller {
                     case .first:
                         return
                     case .second:
-                        moveBack(to: .first, router)
+                        moveBack(to: .first(false), router)
                     case .third:
                         moveBack(to: .second, router)
                     case .setting:

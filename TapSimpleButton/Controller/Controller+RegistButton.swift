@@ -19,8 +19,10 @@ extension Controller {
             .frame(width: 68, height: 36)
             .background(Color.rgb(99, 187, 235))
             .cornerRadius(7)
-            .onTapGesture {
-                moveForward(to: .first, router)
+            .onButtonTap {
+                viewModel.registTransaction {
+                    moveBack(to: .first(true), router)
+                }
             }
     }
 }

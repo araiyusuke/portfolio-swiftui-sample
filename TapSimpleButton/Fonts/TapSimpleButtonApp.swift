@@ -13,7 +13,7 @@ struct TapSimpleButtonApp: App {
         WindowGroup {
             Controller(container: AppEnvironment.bootstrap().container)
                 .environmentObject(Router.shared)
-                .environmentObject(HeaderInfo())
+                .environmentObject(Header())
             
         }
     }

@@ -11,55 +11,50 @@ import SwiftUI
 struct ThirdScreen: ScreenMovable {
     
     @EnvironmentObject var router : Router
-    @EnvironmentObject var info : HeaderInfo
+    @EnvironmentObject var header : Header
     @State private var labelPosX:CGFloat = 0
-
+    
     var body: some View {
         SlideAnimation {
+            
             NumberPad() { numKey in
                 
                 if numKey.isDeleteKey {
                     
-                    if info.numPadValue.count >= 1 {
-                        info.numPadValue.removeLast()
+                    if header.getNumPad().count >= 1 {
+                        header.removeLast()
                     }
-                    
-                    return
-
-                    
-                }
-                
-                if info.numPadValue == "0" {
-                    info.numPadValue = numKey.string
                     return
                 }
                 
-                info.numPadValue.append(numKey.string)
-                
+                if header.getNumPad() == "0" {
+                    header.setNumPad(value: numKey.string)
+                    return
+                }
+                header.append(letter: numKey.string)
                 
             }
             .frame(width: 324, height: 430)
-           
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.backGroundColor)
         .gesture(DragGesture()
-                   .onEnded({ value in
-                       
-                       if (abs(value.translation.width) < 10) {
-                           return
-                       }
-                       
-                       if (value.translation.width < 0 ) {
-                           moveForward(to: .first, router)
-
-                           self.labelPosX -= 30
-                       } else if (value.translation.width > 0 ) {
-                           self.labelPosX += 30
-                           moveBack(to: .second, router)
-
-                       }
-                   })
-               )
+            .onEnded({ value in
+                
+                if (abs(value.translation.width) < 10) {
+                    return
+                }
+                
+                if (value.translation.width < 0 ) {
+                    moveForward(to: .first(false), router)
+                    
+                    self.labelPosX -= 30
+                } else if (value.translation.width > 0 ) {
+                    self.labelPosX += 30
+                    moveBack(to: .second, router)
+                    
+                }
+            })
+        )
     }
 }
