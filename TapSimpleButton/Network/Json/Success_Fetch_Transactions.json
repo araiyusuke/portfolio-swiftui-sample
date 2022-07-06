@@ -1,0 +1,31 @@
+{
+    "transactions": [
+        {
+            "id": 1,
+            "accounts": "接待交際費",
+            "date": "2022/07/03",
+            "price": 2990,
+            "hex": "#ffffff",
+            "supplier": "ローソン",
+            "description": "地理ちりばめられて。"
+        },
+        {
+            "id": 2,
+            "accounts": "売上ほか",
+            "date": "2022/07/03",
+            "price": 260,
+            "hex": "#3cb371",
+            "supplier": "ローソン",
+            "description": "ここはランの袋ふく。"
+        },
+        {
+            "id": 3,
+            "accounts": "接待交際費",
+            "date": "2022/07/03",
+            "price": 681,
+            "hex": "#ff0000",
+            "supplier": "ローソン",
+            "description": "よせたりした。する。"
+        }
+    ]
+}

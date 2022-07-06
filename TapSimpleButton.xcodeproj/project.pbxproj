@@ -41,6 +41,8 @@
 		F13C7F9928740C5000973687 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F9828740C5000973687 /* BottomSheet.swift */; };
 		F13C7F9B287514D200973687 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F9A287514D200973687 /* Header.swift */; };
 		F13C7F9E2875173E00973687 /* Controller+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F9D2875173E00973687 /* Controller+ViewModel.swift */; };
+		F13C7FA4287532D500973687 /* Success_Regist_Transaction.json in Resources */ = {isa = PBXBuildFile; fileRef = F13C7FA3287532D500973687 /* Success_Regist_Transaction.json */; };
+		F13C7FA62875372400973687 /* Success_Fetch_Transactions.json in Resources */ = {isa = PBXBuildFile; fileRef = F13C7FA52875372400973687 /* Success_Fetch_Transactions.json */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -116,6 +118,8 @@
 		F13C7F9828740C5000973687 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		F13C7F9A287514D200973687 /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		F13C7F9D2875173E00973687 /* Controller+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+ViewModel.swift"; sourceTree = "<group>"; };
+		F13C7FA3287532D500973687 /* Success_Regist_Transaction.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Success_Regist_Transaction.json; sourceTree = "<group>"; };
+		F13C7FA52875372400973687 /* Success_Fetch_Transactions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Success_Fetch_Transactions.json; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -313,6 +317,7 @@
 		F13C7F5C2872B53700973687 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F13C7F9F287530C500973687 /* Json */,
 				F13C7F872872DB4700973687 /* Transactions */,
 				F13C7F822872D52D00973687 /* Descriptions */,
 				F13C7F812872D51D00973687 /* Suppliers */,
@@ -387,6 +392,15 @@
 				F13C7F9A287514D200973687 /* Header.swift */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		F13C7F9F287530C500973687 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7FA3287532D500973687 /* Success_Regist_Transaction.json */,
+				F13C7FA52875372400973687 /* Success_Fetch_Transactions.json */,
+			);
+			path = Json;
 			sourceTree = "<group>";
 		};
 		F13CA310286E769E00527D1E = {
@@ -525,10 +539,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F13C7FA62875372400973687 /* Success_Fetch_Transactions.json in Resources */,
 				F13CA3702871125100527D1E /* Roboto-Regular.ttf in Resources */,
 				F13CA3752871125100527D1E /* OFL.txt in Resources */,
 				F13CA36E2871125100527D1E /* Roboto-Medium.ttf in Resources */,
 				F13CA36D2871125100527D1E /* README.md in Resources */,
+				F13C7FA4287532D500973687 /* Success_Regist_Transaction.json in Resources */,
 				F13CA36F2871125100527D1E /* Roboto-Light.ttf in Resources */,
 				F13CA324286E769F00527D1E /* Preview Assets.xcassets in Resources */,
 				F13CA321286E769F00527D1E /* Assets.xcassets in Resources */,
@@ -738,6 +754,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TapSimpleButton/Preview Content\"";
 				DEVELOPMENT_TEAM = CNWDNX3S69;
 				ENABLE_PREVIEWS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TapSimpleButton/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -751,6 +771,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-D NotServer";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.arai.TapSimpleButton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -784,6 +806,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.arai.TapSimpleButton;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
