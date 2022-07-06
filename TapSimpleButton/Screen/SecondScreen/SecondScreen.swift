@@ -8,23 +8,25 @@
 import Foundation
 import SwiftUI
 import Combine
+import ResizableSheet
 
 struct SecondScreen: ScreenMovable {
     
-    @State private var cancellables = Set<AnyCancellable>()
+    enum InputState {
+        case supplier, description
+    }
     
     @EnvironmentObject var router : Router
     @EnvironmentObject var header : Header
     
+    @State private var inputState: InputState? = nil
+    @State private var cancellables = Set<AnyCancellable>()
     @State private var labelPosX:CGFloat = 0
-    @State var supplierText = ""
-    @State var descriptionText = ""
-    @State private var showingSheet1 = false
-    @State private var showingSheet2 = false
-
-    @State private var suppliers: [Supplier] = []
-    @State private var descriptions: [Description] = []
-
+    @State private var supplierText = ""
+    @State private var descriptionText = ""
+    @State private var pullDownItems: [PullDownItem] = []
+    @State private var state: ResizableSheetState = .hidden
+    
     var body: some View {
         
         SlideAnimation {
@@ -39,18 +41,33 @@ struct SecondScreen: ScreenMovable {
                     
                     pullDown
                         .onButtonTap() {
-                                      
-                            showingSheet1 = true
-
+                            self.inputState = .supplier
+                            
                             SuppliersAPI.fetch()
                                 .receive(on: DispatchQueue.main)
                                 .sink(receiveCompletion: { completion in
                                     print(completion)
                                 }, receiveValue: { response in
-                                    suppliers = response.suppliers
+                                    pullDownItems = response.suppliers
+                                    state = .medium
+                                    
                                 })
                                 .store(in: &cancellables)
                         }
+                        .resizableSheet($state) { builder in
+                            builder.content { context in
+                                
+                                BottomSheetList(items: $pullDownItems , state: $state) { value in
+                                    if (inputState == .supplier) {
+                                        self.supplierText = value.name
+                                    } else if (inputState == .description) {
+                                        self.descriptionText = value.name
+                                    }
+                                }
+                                .frame(height: 600)
+                            }
+                        }
+                    
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
@@ -62,13 +79,17 @@ struct SecondScreen: ScreenMovable {
                     
                     pullDown
                         .onButtonTap() {
-                            showingSheet2 = true
+                            
+                            self.inputState = .description
                             DescriptionsAPI.fetch()
                                 .receive(on: DispatchQueue.main)
                                 .sink(receiveCompletion: { completion in
                                     print(completion)
                                 }, receiveValue: { response in
-                                    descriptions = response.descriptions
+                                    pullDownItems = response.descriptions
+                                    state = .medium
+                                    
+                                    
                                 })
                                 .store(in: &cancellables)
                         }
@@ -100,92 +121,6 @@ struct SecondScreen: ScreenMovable {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear() {
             header.setTitle("取引先・適用入力")
-        }
-        
-        if showingSheet1 {
-            BottomSheetView(isOpen: $showingSheet1, maxHeight: 600) {
-                suppliersList
-            }
-            .edgesIgnoringSafeArea(.all)
-        }
-        
-        if showingSheet2 {
-            BottomSheetView(isOpen: $showingSheet2, maxHeight: 600) {
-                        descriptionsList
-            }
-            .edgesIgnoringSafeArea(.all)
-        }
-    }
-    
-    var suppliersList : some View {
-        VStack(spacing: 0) {
-            ZStack(alignment: .center) {
-                
-                Text("取引先")
-                
-                ZStack {
-                    
-                    Text("閉じる")
-                        .padding()
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .onTapGesture {
-                            showingSheet1 = false
-                        }
-                    
-                }
-            }
-            
-            Text("検索結果: \(suppliers.count)件")
-                .padding(10)
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .background(Color.black.opacity(0.3))
-            
-            List {
-                ForEach(suppliers) { supplier in
-                    Text(supplier.name)
-                        .onButtonTap(){
-                            self.supplierText = supplier.name
-                        }
-                }
-            }
-            .listStyle(PlainListStyle())
-            .frame(maxHeight: .infinity)
-        }
-    }
-    
-    var descriptionsList: some View {
-        VStack(spacing: 0) {
-            ZStack(alignment: .center) {
-                
-                Text("摘要")
-                
-                ZStack {
-                    
-                    Text("閉じる")
-                        .padding()
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .onTapGesture {
-                            showingSheet2 = false
-                        }
-                    
-                }
-            }
-            
-            Text("検索結果: \(descriptions.count)件")
-                .padding(10)
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .background(Color.black.opacity(0.3))
-            
-            List {
-                ForEach(descriptions) { description in
-                    Text(description.name)
-                        .onButtonTap(){
-                            self.descriptionText = description.name
-                        }
-                }
-            }
-            .listStyle(PlainListStyle())
-            .frame(maxHeight: .infinity)
         }
     }
     
@@ -232,3 +167,4 @@ struct SecondScreen: ScreenMovable {
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
+

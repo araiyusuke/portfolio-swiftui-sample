@@ -12,7 +12,7 @@ enum DescriptionsAPI {
     
     struct Response: Mockable {
         
-        let descriptions: [Description]
+        let descriptions: [PullDownItem]
         
         static func mock(_ file: String? = nil) -> Response {
             let decoder = jsonDecoder()
