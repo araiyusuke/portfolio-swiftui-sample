@@ -43,6 +43,8 @@
 		F13C7F9E2875173E00973687 /* Controller+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F9D2875173E00973687 /* Controller+ViewModel.swift */; };
 		F13C7FA4287532D500973687 /* Success_Regist_Transaction.json in Resources */ = {isa = PBXBuildFile; fileRef = F13C7FA3287532D500973687 /* Success_Regist_Transaction.json */; };
 		F13C7FA62875372400973687 /* Success_Fetch_Transactions.json in Resources */ = {isa = PBXBuildFile; fileRef = F13C7FA52875372400973687 /* Success_Fetch_Transactions.json */; };
+		F13C7FA828753E1D00973687 /* Success_Fetch_Descriptions.json in Resources */ = {isa = PBXBuildFile; fileRef = F13C7FA728753E1D00973687 /* Success_Fetch_Descriptions.json */; };
+		F13C7FAA28753E7600973687 /* Success_Fetch_Suppliers.json in Resources */ = {isa = PBXBuildFile; fileRef = F13C7FA928753E7600973687 /* Success_Fetch_Suppliers.json */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -120,6 +122,8 @@
 		F13C7F9D2875173E00973687 /* Controller+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controller+ViewModel.swift"; sourceTree = "<group>"; };
 		F13C7FA3287532D500973687 /* Success_Regist_Transaction.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Success_Regist_Transaction.json; sourceTree = "<group>"; };
 		F13C7FA52875372400973687 /* Success_Fetch_Transactions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Success_Fetch_Transactions.json; sourceTree = "<group>"; };
+		F13C7FA728753E1D00973687 /* Success_Fetch_Descriptions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Success_Fetch_Descriptions.json; sourceTree = "<group>"; };
+		F13C7FA928753E7600973687 /* Success_Fetch_Suppliers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Success_Fetch_Suppliers.json; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -399,6 +403,8 @@
 			children = (
 				F13C7FA3287532D500973687 /* Success_Regist_Transaction.json */,
 				F13C7FA52875372400973687 /* Success_Fetch_Transactions.json */,
+				F13C7FA728753E1D00973687 /* Success_Fetch_Descriptions.json */,
+				F13C7FA928753E7600973687 /* Success_Fetch_Suppliers.json */,
 			);
 			path = Json;
 			sourceTree = "<group>";
@@ -544,8 +550,10 @@
 				F13CA3752871125100527D1E /* OFL.txt in Resources */,
 				F13CA36E2871125100527D1E /* Roboto-Medium.ttf in Resources */,
 				F13CA36D2871125100527D1E /* README.md in Resources */,
+				F13C7FA828753E1D00973687 /* Success_Fetch_Descriptions.json in Resources */,
 				F13C7FA4287532D500973687 /* Success_Regist_Transaction.json in Resources */,
 				F13CA36F2871125100527D1E /* Roboto-Light.ttf in Resources */,
+				F13C7FAA28753E7600973687 /* Success_Fetch_Suppliers.json in Resources */,
 				F13CA324286E769F00527D1E /* Preview Assets.xcassets in Resources */,
 				F13CA321286E769F00527D1E /* Assets.xcassets in Resources */,
 				F13CA3732871125100527D1E /* NotoSansJP-Medium.otf in Resources */,
