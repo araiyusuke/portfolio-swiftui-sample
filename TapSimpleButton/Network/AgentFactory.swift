@@ -6,12 +6,40 @@
 //
 
 import Foundation
+import Combine
+
+struct APIMockAgent: APIAgentProtocol {
+    
+    let config: URLSessionConfiguration?
+
+    init(config: URLSessionConfiguration? = nil ) {
+        self.config = config
+    }
+    
+    var session: URLSession {
+        if let config = config {
+            return URLSession.init(configuration: config)
+        } else {
+            return URLSession.shared
+        }
+    }
+    
+    func run<T: Mockable>(_ request: URLRequest, mockFile: String?, statusCd: Int?) -> AnyPublisher<T, Error> {
+        
+        return Just(
+            T.mock(mockFile)
+        )
+        .setFailureType(to: Error.self)
+        .eraseToAnyPublisher()
+    }
+}
+
 
 struct AgentFactory {
     
     static func create(config: URLSessionConfiguration? = nil) -> APIAgentProtocol {
         #if NotServer
-        return APIMockAgent(config: config)
+        return APIMockAgent()
         #else
         return APIAgent(config: config)
         #endif

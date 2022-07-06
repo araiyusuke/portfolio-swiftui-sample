@@ -22,7 +22,7 @@ struct TransactionService {
     }
     
     func regist() -> AnyPublisher<TransactionsAPI.RegistResponse, Error> {
-        TransactionsAPI.regist()
+        return TransactionsAPI.regist()
     }
 }
 
