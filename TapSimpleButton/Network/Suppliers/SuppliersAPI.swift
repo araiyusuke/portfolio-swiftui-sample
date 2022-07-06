@@ -12,7 +12,7 @@ enum SuppliersAPI {
     
     struct Response: Mockable {
         
-        let suppliers: [Supplier]
+        let suppliers: [PullDownItem]
         
         static func mock(_ file: String? = nil) -> Response {
             let decoder = jsonDecoder()

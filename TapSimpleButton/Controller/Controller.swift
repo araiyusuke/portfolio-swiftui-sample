@@ -1,6 +1,7 @@
 
 import SwiftUI
 import Combine
+import ResizableSheet
 
 struct Controller: ScreenMovable {
     
@@ -13,6 +14,18 @@ struct Controller: ScreenMovable {
     @State var cancellables = Set<AnyCancellable>()
     @ObservedObject private(set) var viewModel: ViewModel
 
+    var scene: UIWindowScene? {
+             guard let scene = UIApplication.shared.connectedScenes.first,
+                   let windowScene = scene as? UIWindowScene else {
+                 return nil
+             }
+             return windowScene
+         }
+      
+      var resizableSheetCenter: ResizableSheetCenter? {
+             return scene.flatMap(ResizableSheetCenter.resolve(for:))
+         }
+    
     public static func bottomSheet<MContent: View>(@ViewBuilder content: () -> MContent) -> some View {
         return content()
     }
@@ -87,6 +100,8 @@ struct Controller: ScreenMovable {
                 }
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
+            .environment(\.resizableSheetCenter, resizableSheetCenter)
+
         }
     }
 }

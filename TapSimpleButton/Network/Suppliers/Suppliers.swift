@@ -8,13 +8,21 @@
 import Foundation
 import Combine
 
-struct Suppliers: Mockable, Hashable {
-    var suppliers: [Supplier]
+struct Supplier: Mockable, Hashable {
+    var suppliers: [PullDownItem]
 }
 
-struct Supplier: Mockable, Hashable, Identifiable {
+struct PullDownItem: Mockable, Hashable, Identifiable {
     var id: Int
     var name: String
+    
+    public func getName() -> String {
+        return self.name
+    }
+}
+
+protocol Hogetarou: Identifiable, Hashable {
+    func getName() -> String
 }
 
 protocol UserProtocol {

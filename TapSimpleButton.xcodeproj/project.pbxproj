@@ -45,6 +45,8 @@
 		F13C7FA62875372400973687 /* Success_Fetch_Transactions.json in Resources */ = {isa = PBXBuildFile; fileRef = F13C7FA52875372400973687 /* Success_Fetch_Transactions.json */; };
 		F13C7FA828753E1D00973687 /* Success_Fetch_Descriptions.json in Resources */ = {isa = PBXBuildFile; fileRef = F13C7FA728753E1D00973687 /* Success_Fetch_Descriptions.json */; };
 		F13C7FAA28753E7600973687 /* Success_Fetch_Suppliers.json in Resources */ = {isa = PBXBuildFile; fileRef = F13C7FA928753E7600973687 /* Success_Fetch_Suppliers.json */; };
+		F13C7FD22875851B00973687 /* ResizableSheet in Frameworks */ = {isa = PBXBuildFile; productRef = F13C7FD12875851B00973687 /* ResizableSheet */; };
+		F13C7FD528759A3300973687 /* BottomSheetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7FD428759A3300973687 /* BottomSheetList.swift */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -124,6 +126,7 @@
 		F13C7FA52875372400973687 /* Success_Fetch_Transactions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Success_Fetch_Transactions.json; sourceTree = "<group>"; };
 		F13C7FA728753E1D00973687 /* Success_Fetch_Descriptions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Success_Fetch_Descriptions.json; sourceTree = "<group>"; };
 		F13C7FA928753E7600973687 /* Success_Fetch_Suppliers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Success_Fetch_Suppliers.json; sourceTree = "<group>"; };
+		F13C7FD428759A3300973687 /* BottomSheetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetList.swift; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -172,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F13C7FD22875851B00973687 /* ResizableSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +267,7 @@
 		F13C7F4628718B4100973687 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F13C7FD328759A2A00973687 /* BottomSheetList */,
 				F13C7F9C2875172700973687 /* Header */,
 				F13C7F9728740C4000973687 /* BottomSheet */,
 				F13C7F4328718AA800973687 /* NumPad */,
@@ -409,6 +414,14 @@
 			path = Json;
 			sourceTree = "<group>";
 		};
+		F13C7FD328759A2A00973687 /* BottomSheetList */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7FD428759A3300973687 /* BottomSheetList.swift */,
+			);
+			path = BottomSheetList;
+			sourceTree = "<group>";
+		};
 		F13CA310286E769E00527D1E = {
 			isa = PBXGroup;
 			children = (
@@ -503,6 +516,9 @@
 			dependencies = (
 			);
 			name = TapSimpleButton;
+			packageProductDependencies = (
+				F13C7FD12875851B00973687 /* ResizableSheet */,
+			);
 			productName = TapSimpleButton;
 			productReference = F13CA319286E769E00527D1E /* TapSimpleButton.app */;
 			productType = "com.apple.product-type.application";
@@ -531,6 +547,9 @@
 				Base,
 			);
 			mainGroup = F13CA310286E769E00527D1E;
+			packageReferences = (
+				F13C7FD02875851B00973687 /* XCRemoteSwiftPackageReference "ResizableSheet" */,
+			);
 			productRefGroup = F13CA31A286E769E00527D1E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -572,6 +591,7 @@
 			files = (
 				F13C7F802872B8E100973687 /* Suppliers.swift in Sources */,
 				F13CA33E286FBCFF00527D1E /* FirstScreen+Account.swift in Sources */,
+				F13C7FD528759A3300973687 /* BottomSheetList.swift in Sources */,
 				F13CA34C286FED2C00527D1E /* KeyPadButton.swift in Sources */,
 				F13C7F5E2872B58800973687 /* StatusCode.swift in Sources */,
 				F13CA346286FE69000527D1E /* Controller+RegistButton.swift in Sources */,
@@ -846,6 +866,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F13C7FD02875851B00973687 /* XCRemoteSwiftPackageReference "ResizableSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mtj0928/ResizableSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F13C7FD12875851B00973687 /* ResizableSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F13C7FD02875851B00973687 /* XCRemoteSwiftPackageReference "ResizableSheet" */;
+			productName = ResizableSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F13CA311286E769E00527D1E /* Project object */;
 }
