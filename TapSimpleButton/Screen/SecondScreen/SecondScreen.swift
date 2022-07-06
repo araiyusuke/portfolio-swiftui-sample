@@ -99,6 +99,8 @@ struct SecondScreen: ScreenMovable {
                 help
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            /// スワイプするために色を入れる
+            .background(Color.backGroundColor)
             .gesture(DragGesture()
                 .onEnded({ value in
                     
@@ -115,6 +117,7 @@ struct SecondScreen: ScreenMovable {
                     }
                 })
             )
+
         }
         .padding(.leading, 30)
         .padding(.top, 20)
