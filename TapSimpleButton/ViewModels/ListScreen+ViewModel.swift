@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-extension ListScreen {
+extension TransactionsListScreen {
     
     class ViewModel: ObservableObject {
         

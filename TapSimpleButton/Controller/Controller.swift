@@ -6,14 +6,16 @@ import ResizableSheet
 struct Controller: ScreenMovable {
     
     @EnvironmentObject var router : Router
+    @EnvironmentObject var inputTransactionRouter : TransactionInputRouter
     @EnvironmentObject var header : Header
     @EnvironmentObject var transactionInputRouter: TransactionInputRouter
-//    @ObservedObject private(set) var viewModel: ViewModel
-
-    @State public var selectTabMenu: BottomMenuType = .input
+    
     @State private var labelPosX:CGFloat = 0
     @State private var isBottomSheet: Bool = false
     @State var cancellables = Set<AnyCancellable>()
+    @State var selection: Int = 1
+    
+    @State var isHidden: Bool = false
 
     let container: DIContainer
     
@@ -36,73 +38,98 @@ struct Controller: ScreenMovable {
     
     init(container: DIContainer) {
         self.container = container
-//        self.viewModel = .init(container: container)
-    }
-    
-    var contents: some View {
-        return ZStack {
-            switch router.screen {
-                
-            // 取引入力
-            case .transactionInput(_):
-                TransactionInputScreen(container: container)
-                          
-            case .setting:
-                SettingScreen()
-            // 取引一覧
-            case .transactionList:
-                ListScreen(viewModel: .init(container: container))
-            case .receipt:
-                ReceiptScreen()
-            case .help:
-                HelpScreen()
-            }
-        }
     }
     
     var body: some View {
         
         GeometryReader { geometry in
             
-            ZStack {
-                
-                VStack(spacing: 0) {
+            NavigationView {
                     
-                    ZStack {
-                        headerTop
-                            .frame(width: geometry.size.width , height: 100)
-                            .background(Color.headerColor)
-                            .onTapGesture {
-                                isBottomSheet.toggle()
-                                print(geometry.size.width)
-                            }
+                    VStack(spacing: 0) {
                         
-                        if router.screen == .transactionInput(true) {
-                            Text("取引を登録しました")
-                                .frame(maxWidth: .infinity, maxHeight: 90, alignment: .center)
-                                .background(Color.white)
-                                .onAppear {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                        router.screen = .transactionInput(false)
-                                    }
+                        ZStack {
+                            headerTop
+                                .frame(width: geometry.size.width , height: 100)
+                                .background(Color.headerColor)
+                                .onTapGesture {
+                                    isBottomSheet.toggle()
                                 }
+
+                            if inputTransactionRouter.screen == .first(true) {
+                                Text("取引を登録しました")
+                                    .frame(maxWidth: .infinity, maxHeight: 90, alignment: .center)
+                                    .background(Color.white)
+                                    .onAppear {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                            inputTransactionRouter.screen = .first(false)
+                                        }
+                                    }
+                            }
                         }
+                        
+                        tab
+
                     }
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
+                    .environment(\.resizableSheetCenter, resizableSheetCenter)
+                    .hiddenNavigationBarStyle()
+
+                }
                     
-                    contents
-                        .frame(maxHeight: .infinity)
-                        .background(Color.backGroundColor)
-                    
-                    if router.screen.isShowBottomMenu() {
-                        bottomMenu
-                            .frame(height: 60)
-                            .background(Color.white)
-                    }
+               
+            }
+    }
+    
+    var tab: some View {
+        TabView(selection: $selection) {
+            
+            TransactionsListScreen(viewModel: .init(container: container))
+                .tabItem {
+                    Image(systemName: "apps.ipad.landscape")
+                }
+                .tag(0)
+            
+            TransactionInputScreen(container: container)
+                .tabItem {
+                    Image(systemName: "text.insert")
                     
                 }
-            }
-            .frame(width: geometry.size.width, height: geometry.size.height)
-            .environment(\.resizableSheetCenter, resizableSheetCenter)
+                .tag(1)
+            
+            ReceiptScreen()
+                .tabItem {
+                    Image(systemName: "camera")
+                }
+                .tag(2)
+            
+            HelpScreen()
+                .tabItem {
+                    Image(systemName: "questionmark.circle")
+                }
+                .tag(3)
+            
+            SettingScreen()
+                .tabItem {
+                    Image(systemName: "gearshape")
+                }
+                .tag(4)
         }
+        .frame(maxHeight: .infinity)
+        .background(Color.backGroundColor)
+    }
+}
+
+struct HiddenNavigationBar: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+        .navigationBarTitle("", displayMode: .inline)
+        .navigationBarHidden(true)
+    }
+}
+
+extension View {
+    func hiddenNavigationBarStyle() -> some View {
+        ModifiedContent(content: self, modifier: HiddenNavigationBar())
     }
 }

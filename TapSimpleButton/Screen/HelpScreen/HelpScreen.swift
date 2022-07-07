@@ -11,6 +11,7 @@ struct HelpScreen: View {
     var body: some View {
         Text("HelpScreen")
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+
     }
 }
 

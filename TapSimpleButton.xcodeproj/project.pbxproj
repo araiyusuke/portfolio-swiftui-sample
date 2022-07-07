@@ -50,6 +50,7 @@
 		F13C7FD828765DBF00973687 /* ReceiptScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7FD728765DBF00973687 /* ReceiptScreen.swift */; };
 		F13C7FDB28765DF400973687 /* HelpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7FDA28765DF400973687 /* HelpScreen.swift */; };
 		F13C7FDE28766A4200973687 /* TransactionInputScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7FDD28766A4200973687 /* TransactionInputScreen.swift */; };
+		F13C7FFB2876A55F00973687 /* TransactionDescriptionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7FFA2876A55F00973687 /* TransactionDescriptionScreen.swift */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -133,6 +134,7 @@
 		F13C7FD728765DBF00973687 /* ReceiptScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptScreen.swift; sourceTree = "<group>"; };
 		F13C7FDA28765DF400973687 /* HelpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpScreen.swift; sourceTree = "<group>"; };
 		F13C7FDD28766A4200973687 /* TransactionInputScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInputScreen.swift; sourceTree = "<group>"; };
+		F13C7FFA2876A55F00973687 /* TransactionDescriptionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDescriptionScreen.swift; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		F13C7F4428718AE800973687 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				F13C7FF92876A54600973687 /* TransactionDescriptionScreen */,
 				F13C7FDC28766A3500973687 /* TransactionInputScreen */,
 				F13C7FD928765DE800973687 /* HelpScreen */,
 				F13C7FD628765DB600973687 /* ReceiptScreen */,
@@ -453,6 +456,14 @@
 				F13C7FDD28766A4200973687 /* TransactionInputScreen.swift */,
 			);
 			path = TransactionInputScreen;
+			sourceTree = "<group>";
+		};
+		F13C7FF92876A54600973687 /* TransactionDescriptionScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F13C7FFA2876A55F00973687 /* TransactionDescriptionScreen.swift */,
+			);
+			path = TransactionDescriptionScreen;
 			sourceTree = "<group>";
 		};
 		F13CA310286E769E00527D1E = {
@@ -671,6 +682,7 @@
 				F13CA3772871133100527D1E /* Text+Font.swift in Sources */,
 				F13CA350286FF9F300527D1E /* Color+rgb.swift in Sources */,
 				F13C7FD828765DBF00973687 /* ReceiptScreen.swift in Sources */,
+				F13C7FFB2876A55F00973687 /* TransactionDescriptionScreen.swift in Sources */,
 				F13C7F8B2872DB8B00973687 /* Transaction.swift in Sources */,
 				F13C7F702872B75100973687 /* ResponseResultError.swift in Sources */,
 				F13C7F9928740C5000973687 /* BottomSheet.swift in Sources */,

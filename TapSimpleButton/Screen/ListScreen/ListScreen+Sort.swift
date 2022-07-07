@@ -8,9 +8,10 @@
 import Foundation
 import SwiftUI
 
-extension ListScreen {
+extension TransactionsListScreen {
     
     enum Sort {
+        
         case new, old
         
         mutating func toggle() {

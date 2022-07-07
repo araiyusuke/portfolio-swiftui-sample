@@ -11,7 +11,6 @@ import SwiftUI
 struct TapSimpleButtonApp: App {
     var body: some Scene {
         WindowGroup {
-            
             Controller(container: AppEnvironment.bootstrap().container)
                 .environmentObject(Router.shared)
                 .environmentObject(TransactionInputRouter.shared)

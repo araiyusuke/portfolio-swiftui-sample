@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-struct ListScreen: ScreenMovable {
+struct TransactionsListScreen: ScreenMovable {
     
     @EnvironmentObject var router : Router
     @State var selected = 0
@@ -27,48 +27,52 @@ struct ListScreen: ScreenMovable {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            
-            VStack(spacing: 5) {
-                Text("科目: すべて")
-                    .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+        
+//        NavigationView {
+            VStack(spacing: 0) {
                 
-                Text("取引日: 2021/01/01 〜 2022/07/04")
-                    .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                VStack(spacing: 5) {
+                    Text("科目: すべて")
+                        .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text("取引日: 2021/01/01 〜 2022/07/04")
+                        .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text("検索結果: \(searchCount)件")
+                        .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                }
+                .padding(5)
+                .frame(maxWidth: .infinity)
+                .background(Color.rgb(205, 230, 237))
                 
-                Text("検索結果: \(searchCount)件")
-                    .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                HStack() {
+                    
+                    sortDirection.icon
+                    
+                    Text(sortDirection.description)
+                        .customFont(size: 13, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                        .onButtonTap() {
+                            sortDirection.toggle()
+                        }
+                    
+                    Spacer()
+                    
+                    searchButton
+                        .onButtonTap() {
+                        }
+                }
+                .padding(.horizontal, 5)
+                .padding(.vertical, 10)
+                .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
                 
+                content
             }
-            .padding(5)
-            .frame(maxWidth: .infinity)
-            .background(Color.rgb(205, 230, 237))
-            
-            HStack() {
-                
-                sortDirection.icon
-                
-                Text(sortDirection.description)
-                    .customFont(size: 13, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                    .onButtonTap() {
-                        sortDirection.toggle()
-                    }
-                
-                Spacer()
-                
-                searchButton
-                    .onButtonTap() {
-                    }
-            }
-            .padding(.horizontal, 5)
-            .padding(.vertical, 10)
-            .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
-            
-            content
-        }
+
+//        }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .onAppear {
             viewModel.fetchTransactions()
@@ -100,7 +104,15 @@ struct ListScreen: ScreenMovable {
     func loadedView(transactions: [Transaction]) -> some View {
         List {
             ForEach(transactions) { transaction in
-                transaction.cell
+                
+                NavigationLink(
+                    destination: TransactionDescriptionScreen(),
+                        label: {
+                            transaction.cell
+                        })
+                
+                
+                    
                     .swipeActions(edge: .trailing) {
                         HStack {
                             

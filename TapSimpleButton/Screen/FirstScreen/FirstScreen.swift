@@ -97,7 +97,7 @@ struct FirstScreen: ScreenMovable2 {
                                     
                                     account.view(selected: account.title == header.getAccount()?.title).onButtonTap() {
                                         header.setAccount(account)
-//                                        moveForward(to: .second, router)
+                                        moveForward(to: .second, router)
                                     }
                                 } else {
                                     Text("")
