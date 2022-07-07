@@ -20,6 +20,8 @@ struct API {
     static let TRANSACTIONS_END_POINT = "\(API.PROTOCOL)\(API.HOST)\(TRANSACTION)"
 
     struct Transactions {
+        
+        
         struct Fetch: RequestParameter {
 
             static let endPoint = EndPoint(url:"\(API.TRANSACTIONS_END_POINT)/")
@@ -32,6 +34,15 @@ struct API {
         struct Regist: RequestParameter {
 
             static let endPoint = EndPoint(url:"\(API.TRANSACTIONS_END_POINT)/")
+
+            static func request() -> URLRequest {
+                return URLRequest.create(endPoint, method: .post)
+            }
+        }
+        
+        struct Edit: RequestParameter {
+
+            static let endPoint = EndPoint(url:"\(API.TRANSACTIONS_END_POINT)/update")
 
             static func request() -> URLRequest {
                 return URLRequest.create(endPoint, method: .post)

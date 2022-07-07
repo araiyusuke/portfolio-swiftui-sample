@@ -33,6 +33,16 @@ enum TransactionsAPI {
         }
     }
     
+    struct EdittResponse: Mockable {
+        
+        let transactions: Success
+        
+        static func mock(_ file: String? = nil) -> RegistResponse {
+            let decoder = jsonDecoder()
+            return try! decoder.decode(RegistResponse.self, from: loadFile(json: file ?? "Success_Regist_Transaction"))
+        }
+    }
+    
     private static let agent = AgentFactory.create()
 
     static func fetch() -> AnyPublisher<Response, Error> {
@@ -49,6 +59,15 @@ enum TransactionsAPI {
             API
                 .Transactions
                 .Regist
+                .request()
+        )
+    }
+    
+    static func edit() -> AnyPublisher<EdittResponse, Error> {
+        return agent.run(
+            API
+                .Transactions
+                .Edit
                 .request()
         )
     }

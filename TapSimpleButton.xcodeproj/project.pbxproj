@@ -36,7 +36,7 @@
 		F13C7F8E2873A12300973687 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F8D2873A12300973687 /* AppState.swift */; };
 		F13C7F902873ADCD00973687 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F8F2873ADCD00973687 /* DIContainer.swift */; };
 		F13C7F922873AF0C00973687 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F912873AF0C00973687 /* AppEnvironment.swift */; };
-		F13C7F942873CA8400973687 /* ListScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F932873CA8400973687 /* ListScreen+ViewModel.swift */; };
+		F13C7F942873CA8400973687 /* TransactionsListScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F932873CA8400973687 /* TransactionsListScreen+ViewModel.swift */; };
 		F13C7F962873D14A00973687 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F952873D14A00973687 /* Loadable.swift */; };
 		F13C7F9928740C5000973687 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F9828740C5000973687 /* BottomSheet.swift */; };
 		F13C7F9B287514D200973687 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7F9A287514D200973687 /* Header.swift */; };
@@ -50,7 +50,10 @@
 		F13C7FD828765DBF00973687 /* ReceiptScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7FD728765DBF00973687 /* ReceiptScreen.swift */; };
 		F13C7FDB28765DF400973687 /* HelpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7FDA28765DF400973687 /* HelpScreen.swift */; };
 		F13C7FDE28766A4200973687 /* TransactionInputScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7FDD28766A4200973687 /* TransactionInputScreen.swift */; };
-		F13C7FFB2876A55F00973687 /* TransactionDescriptionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7FFA2876A55F00973687 /* TransactionDescriptionScreen.swift */; };
+		F13C7FFB2876A55F00973687 /* TransactionsDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7FFA2876A55F00973687 /* TransactionsDetailScreen.swift */; };
+		F13C7FFD28779FAC00973687 /* TransactionsDetailScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7FFC28779FAC00973687 /* TransactionsDetailScreen+ViewModel.swift */; };
+		F13C80042877A2E800973687 /* SupplierEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C80032877A2E800973687 /* SupplierEditScreen.swift */; };
+		F13C80062877A34B00973687 /* DescriptionEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C80052877A34B00973687 /* DescriptionEditScreen.swift */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -121,7 +124,7 @@
 		F13C7F8D2873A12300973687 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F13C7F8F2873ADCD00973687 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		F13C7F912873AF0C00973687 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
-		F13C7F932873CA8400973687 /* ListScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListScreen+ViewModel.swift"; sourceTree = "<group>"; };
+		F13C7F932873CA8400973687 /* TransactionsListScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionsListScreen+ViewModel.swift"; sourceTree = "<group>"; };
 		F13C7F952873D14A00973687 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		F13C7F9828740C5000973687 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		F13C7F9A287514D200973687 /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
@@ -134,7 +137,10 @@
 		F13C7FD728765DBF00973687 /* ReceiptScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptScreen.swift; sourceTree = "<group>"; };
 		F13C7FDA28765DF400973687 /* HelpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpScreen.swift; sourceTree = "<group>"; };
 		F13C7FDD28766A4200973687 /* TransactionInputScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInputScreen.swift; sourceTree = "<group>"; };
-		F13C7FFA2876A55F00973687 /* TransactionDescriptionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDescriptionScreen.swift; sourceTree = "<group>"; };
+		F13C7FFA2876A55F00973687 /* TransactionsDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDetailScreen.swift; sourceTree = "<group>"; };
+		F13C7FFC28779FAC00973687 /* TransactionsDetailScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionsDetailScreen+ViewModel.swift"; sourceTree = "<group>"; };
+		F13C80032877A2E800973687 /* SupplierEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierEditScreen.swift; sourceTree = "<group>"; };
+		F13C80052877A34B00973687 /* DescriptionEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionEditScreen.swift; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -254,7 +260,9 @@
 		F13C7F4428718AE800973687 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				F13C7FF92876A54600973687 /* TransactionDescriptionScreen */,
+				F13C80022877A2DD00973687 /* SupplierEditScreen */,
+				F13C80012877A29D00973687 /* DescriptionEditScreen */,
+				F13C7FF92876A54600973687 /* TransactionDetailScreen */,
 				F13C7FDC28766A3500973687 /* TransactionInputScreen */,
 				F13C7FD928765DE800973687 /* HelpScreen */,
 				F13C7FD628765DB600973687 /* ReceiptScreen */,
@@ -300,8 +308,9 @@
 		F13C7F4828718BD900973687 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				F13C7F932873CA8400973687 /* ListScreen+ViewModel.swift */,
+				F13C7F932873CA8400973687 /* TransactionsListScreen+ViewModel.swift */,
 				F13C7F9D2875173E00973687 /* Controller+ViewModel.swift */,
+				F13C7FFC28779FAC00973687 /* TransactionsDetailScreen+ViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -458,12 +467,28 @@
 			path = TransactionInputScreen;
 			sourceTree = "<group>";
 		};
-		F13C7FF92876A54600973687 /* TransactionDescriptionScreen */ = {
+		F13C7FF92876A54600973687 /* TransactionDetailScreen */ = {
 			isa = PBXGroup;
 			children = (
-				F13C7FFA2876A55F00973687 /* TransactionDescriptionScreen.swift */,
+				F13C7FFA2876A55F00973687 /* TransactionsDetailScreen.swift */,
 			);
-			path = TransactionDescriptionScreen;
+			path = TransactionDetailScreen;
+			sourceTree = "<group>";
+		};
+		F13C80012877A29D00973687 /* DescriptionEditScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F13C80052877A34B00973687 /* DescriptionEditScreen.swift */,
+			);
+			path = DescriptionEditScreen;
+			sourceTree = "<group>";
+		};
+		F13C80022877A2DD00973687 /* SupplierEditScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F13C80032877A2E800973687 /* SupplierEditScreen.swift */,
+			);
+			path = SupplierEditScreen;
 			sourceTree = "<group>";
 		};
 		F13CA310286E769E00527D1E = {
@@ -634,6 +659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F13C7F802872B8E100973687 /* Suppliers.swift in Sources */,
+				F13C80042877A2E800973687 /* SupplierEditScreen.swift in Sources */,
 				F13CA33E286FBCFF00527D1E /* FirstScreen+Account.swift in Sources */,
 				F13C7FD528759A3300973687 /* BottomSheetList.swift in Sources */,
 				F13CA34C286FED2C00527D1E /* KeyPadButton.swift in Sources */,
@@ -654,6 +680,7 @@
 				F13C7F7A2872B81400973687 /* EndPoint.swift in Sources */,
 				F13C7F9E2875173E00973687 /* Controller+ViewModel.swift in Sources */,
 				F13C7FDB28765DF400973687 /* HelpScreen.swift in Sources */,
+				F13C7FFD28779FAC00973687 /* TransactionsDetailScreen+ViewModel.swift in Sources */,
 				F13CA32C286FB8E200527D1E /* Router.swift in Sources */,
 				F13CA35E28710ED000527D1E /* FirstScreen+income.swift in Sources */,
 				F13C7F6C2872B70D00973687 /* URLRequest+Ext.swift in Sources */,
@@ -672,7 +699,8 @@
 				F13C7F622872B66600973687 /* Configuration.swift in Sources */,
 				F13CA35A2871050200527D1E /* View+backgroundCircle.swift in Sources */,
 				F13CA338286FBBB500527D1E /* Controller+NextButton.swift in Sources */,
-				F13C7F942873CA8400973687 /* ListScreen+ViewModel.swift in Sources */,
+				F13C80062877A34B00973687 /* DescriptionEditScreen.swift in Sources */,
+				F13C7F942873CA8400973687 /* TransactionsListScreen+ViewModel.swift in Sources */,
 				F13C7F842872D55A00973687 /* DescriptionsAPI.swift in Sources */,
 				F13CA344286FD51E00527D1E /* Controller+BackButton.swift in Sources */,
 				F13C7F7C2872B87B00973687 /* SuppliersAPI.swift in Sources */,
@@ -682,7 +710,7 @@
 				F13CA3772871133100527D1E /* Text+Font.swift in Sources */,
 				F13CA350286FF9F300527D1E /* Color+rgb.swift in Sources */,
 				F13C7FD828765DBF00973687 /* ReceiptScreen.swift in Sources */,
-				F13C7FFB2876A55F00973687 /* TransactionDescriptionScreen.swift in Sources */,
+				F13C7FFB2876A55F00973687 /* TransactionsDetailScreen.swift in Sources */,
 				F13C7F8B2872DB8B00973687 /* Transaction.swift in Sources */,
 				F13C7F702872B75100973687 /* ResponseResultError.swift in Sources */,
 				F13C7F9928740C5000973687 /* BottomSheet.swift in Sources */,

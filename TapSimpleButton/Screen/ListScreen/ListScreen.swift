@@ -106,7 +106,7 @@ struct TransactionsListScreen: ScreenMovable {
             ForEach(transactions) { transaction in
                 
                 NavigationLink(
-                    destination: TransactionDescriptionScreen(),
+                    destination: TransactionsDetailScreen(),
                         label: {
                             transaction.cell
                         })

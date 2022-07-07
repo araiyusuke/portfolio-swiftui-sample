@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TransactionDescriptionScreen: View {
+struct TransactionsDetailScreen: View {
     
     @State private var pickerSelection = 0
     
@@ -56,8 +56,7 @@ struct TransactionDescriptionScreen: View {
                 Text("2022/07/06")
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
-            }
-            
+            }   
             
             HStack {
                 Text("取引日")
@@ -85,7 +84,7 @@ struct TransactionDescriptionScreen: View {
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
                 NavigationLink(
-                    destination: HelpScreen(),
+                    destination: SupplierEditScreen(),
                     label: {
                         Spacer()
                         
@@ -94,7 +93,6 @@ struct TransactionDescriptionScreen: View {
                         
                     }
                 )
-                
             }
             
             HStack {
@@ -102,7 +100,7 @@ struct TransactionDescriptionScreen: View {
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
                 NavigationLink(
-                    destination: HelpScreen(),
+                    destination: DescriptionEditScreen(),
                     label: {
                         Spacer()
                         
@@ -130,6 +128,6 @@ struct TransactionDescriptionScreen: View {
 
 struct TransactionDescriptionScreen_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionDescriptionScreen()
+        TransactionsDetailScreen()
     }
 }

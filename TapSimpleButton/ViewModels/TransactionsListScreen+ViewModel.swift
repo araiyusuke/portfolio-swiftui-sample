@@ -13,7 +13,7 @@ extension TransactionsListScreen {
     
     class ViewModel: ObservableObject {
         
-        let container: DIContainer
+        private let container: DIContainer
         private var cancellables = Set<AnyCancellable>()
 
         @Published var transactions: Loadable<[Transaction]>
@@ -23,15 +23,20 @@ extension TransactionsListScreen {
             self._transactions = .init(initialValue: transactions)
         }
         
-        var count: Int {
+        /// 取引数を取得
+        public var count: Int {
             return transactions.value?.count ?? 0
         }
         
-        func fetchTransactions() {
+        /// 取引一覧を取得
+        public func fetchTransactions() {
                     
             transactions = .isLoading
 
-            container.services.transaction.fetchTransactions()
+            container
+                .services
+                .transaction
+                .fetch()
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { completion in
                     print(completion)
@@ -40,5 +45,7 @@ extension TransactionsListScreen {
                 })
                 .store(in: &cancellables)
         }
+        
+        
     }
 }
