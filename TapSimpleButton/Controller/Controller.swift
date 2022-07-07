@@ -7,24 +7,28 @@ struct Controller: ScreenMovable {
     
     @EnvironmentObject var router : Router
     @EnvironmentObject var header : Header
+    
+    @ObservedObject private(set) var viewModel: ViewModel
+
     @State public var selectTabMenu: BottomMenuType = .input
     @State private var labelPosX:CGFloat = 0
     @State private var isBottomSheet: Bool = false
-    let container: DIContainer
     @State var cancellables = Set<AnyCancellable>()
-    @ObservedObject private(set) var viewModel: ViewModel
 
+    let container: DIContainer
+    
+    // ボトムシートライブラリ
     var scene: UIWindowScene? {
-             guard let scene = UIApplication.shared.connectedScenes.first,
-                   let windowScene = scene as? UIWindowScene else {
-                 return nil
-             }
-             return windowScene
-         }
-      
-      var resizableSheetCenter: ResizableSheetCenter? {
-             return scene.flatMap(ResizableSheetCenter.resolve(for:))
-         }
+        guard let scene = UIApplication.shared.connectedScenes.first,
+              let windowScene = scene as? UIWindowScene else {
+            return nil
+        }
+        return windowScene
+    }
+    
+    var resizableSheetCenter: ResizableSheetCenter? {
+        return scene.flatMap(ResizableSheetCenter.resolve(for:))
+    }
     
     public static func bottomSheet<MContent: View>(@ViewBuilder content: () -> MContent) -> some View {
         return content()
@@ -38,7 +42,8 @@ struct Controller: ScreenMovable {
     var contents: some View {
         return ZStack {
             switch router.screen {
-            case .first(let regist):
+                
+            case .transactionInput(let regist):
                 FirstScreen(viewModel: FirstScreen.ViewModel(container: container), registed: regist)
             case .second:
                 SecondScreen()
@@ -46,6 +51,7 @@ struct Controller: ScreenMovable {
                 ThirdScreen()
             case .setting:
                 SettingScreen()
+            // 取引一覧
             case .list:
                 ListScreen(viewModel: .init(container: container))
             }
@@ -59,6 +65,7 @@ struct Controller: ScreenMovable {
             ZStack {
                 
                 VStack(spacing: 0) {
+                    
                     ZStack {
                         headerTop
                             .frame(width: geometry.size.width , height: 100)
@@ -68,13 +75,13 @@ struct Controller: ScreenMovable {
                                 print(geometry.size.width)
                             }
                         
-                        if router.screen == .first(true) {
+                        if router.screen == .transactionInput(true) {
                             Text("取引を登録しました")
                                 .frame(maxWidth: .infinity, maxHeight: 90, alignment: .center)
                                 .background(Color.white)
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                        router.screen = .first(false)
+                                        router.screen = .transactionInput(false)
                                     }
                                 }
                         }
@@ -89,8 +96,7 @@ struct Controller: ScreenMovable {
                             .frame(maxHeight: 60)
                             .background(Color.backGroundColor)
                     }
-                    
-                    
+                
                     if router.screen.isShowBottomMenu() {
                         bottomMenu
                             .frame(height: 60)
@@ -101,7 +107,6 @@ struct Controller: ScreenMovable {
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
             .environment(\.resizableSheetCenter, resizableSheetCenter)
-
         }
     }
 }

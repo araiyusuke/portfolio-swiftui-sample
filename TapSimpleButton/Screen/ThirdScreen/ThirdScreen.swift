@@ -46,7 +46,7 @@ struct ThirdScreen: ScreenMovable {
                 }
                 
                 if (value.translation.width < 0 ) {
-                    moveForward(to: .first(false), router)
+                    moveForward(to: .transactionInput(false), router)
                     
                     self.labelPosX -= 30
                 } else if (value.translation.width > 0 ) {

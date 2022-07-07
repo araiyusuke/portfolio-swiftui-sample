@@ -25,7 +25,7 @@ extension Controller {
             
             switch router.screen {
                 
-            case .first:
+            case .transactionInput:
                 VStack() {
                     Text("白色申告")
                         .customFont(size: 28, spacing: .short, color: .light, weight: .light)

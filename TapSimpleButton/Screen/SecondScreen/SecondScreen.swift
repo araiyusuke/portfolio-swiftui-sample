@@ -113,7 +113,7 @@ struct SecondScreen: ScreenMovable {
                         self.labelPosX -= 30
                     } else if (value.translation.width > 0 ) {
                         self.labelPosX += 30
-                        moveBack(to: .first(false), router)
+                        moveBack(to: .transactionInput(false), router)
                     }
                 })
             )

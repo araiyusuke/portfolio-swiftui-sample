@@ -21,7 +21,7 @@ extension Controller {
             .cornerRadius(7)
             .onButtonTap {
                 viewModel.registTransaction {
-                    moveBack(to: .first(true), router)
+                    moveBack(to: .transactionInput(true), router)
                 }
             }
     }

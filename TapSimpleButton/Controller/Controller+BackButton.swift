@@ -12,15 +12,15 @@ extension Controller {
     
     @ViewBuilder
     var back: some View {
-        if router.screen != .first(false) {
+        if router.screen != .transactionInput(false) {
              Text("〈 戻る")
                 .customFont(size: 18, spacing: .short, color: .dark, weight: .medium)
                 .onTapGesture {
                     switch router.screen {
-                    case .first:
+                    case .transactionInput:
                         return
                     case .second:
-                        moveBack(to: .first(false), router)
+                        moveBack(to: .transactionInput(false), router)
                     case .third:
                         moveBack(to: .second, router)
                     case .setting:

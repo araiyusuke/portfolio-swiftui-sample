@@ -15,7 +15,7 @@ extension Controller {
             .customFont(size: 18, spacing: .short, color: .dark, weight: .medium)
             .onTapGesture {
                 switch router.screen {
-                case .first:
+                case .transactionInput:
                     moveForward(to: .second, router)
                 case .second:
                     moveForward(to: .third, router)
