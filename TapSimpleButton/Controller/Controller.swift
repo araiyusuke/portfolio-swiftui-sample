@@ -7,8 +7,8 @@ struct Controller: ScreenMovable {
     
     @EnvironmentObject var router : Router
     @EnvironmentObject var header : Header
-    
-    @ObservedObject private(set) var viewModel: ViewModel
+    @EnvironmentObject var transactionInputRouter: TransactionInputRouter
+//    @ObservedObject private(set) var viewModel: ViewModel
 
     @State public var selectTabMenu: BottomMenuType = .input
     @State private var labelPosX:CGFloat = 0
@@ -36,24 +36,26 @@ struct Controller: ScreenMovable {
     
     init(container: DIContainer) {
         self.container = container
-        self.viewModel = .init(container: container)
+//        self.viewModel = .init(container: container)
     }
     
     var contents: some View {
         return ZStack {
             switch router.screen {
                 
-            case .transactionInput(let regist):
-                FirstScreen(viewModel: FirstScreen.ViewModel(container: container), registed: regist)
-            case .second:
-                SecondScreen()
-            case .third:
-                ThirdScreen()
+            // 取引入力
+            case .transactionInput(_):
+                TransactionInputScreen(container: container)
+                          
             case .setting:
                 SettingScreen()
             // 取引一覧
-            case .list:
+            case .transactionList:
                 ListScreen(viewModel: .init(container: container))
+            case .receipt:
+                ReceiptScreen()
+            case .help:
+                HelpScreen()
             }
         }
     }
@@ -91,12 +93,6 @@ struct Controller: ScreenMovable {
                         .frame(maxHeight: .infinity)
                         .background(Color.backGroundColor)
                     
-                    if (router.screen.isShowFooter()){
-                        footer
-                            .frame(maxHeight: 60)
-                            .background(Color.backGroundColor)
-                    }
-                
                     if router.screen.isShowBottomMenu() {
                         bottomMenu
                             .frame(height: 60)

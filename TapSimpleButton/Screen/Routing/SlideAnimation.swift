@@ -23,3 +23,19 @@ struct SlideAnimation<Content: View>: ScreenMovable {
             .setTransAnimation(direction: action.direction)
     }
 }
+
+struct SlideAnimation2<Content: View>: ScreenMovable2 {
+    
+    @EnvironmentObject var action : TransactionInputRouter
+
+    let content: Content
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+        
+    var body: some View {
+        content
+            .setTransAnimation(direction: action.direction)
+    }
+}

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension Controller {
+extension TransactionInputScreen {
     var regist: some View {
         Text("登録")
             .customFont(size: 15, spacing: .short, color: .light, weight: .bold)
@@ -21,7 +21,7 @@ extension Controller {
             .cornerRadius(7)
             .onButtonTap {
                 viewModel.registTransaction {
-                    moveBack(to: .transactionInput(true), router)
+                    moveBack(to: .first(true), router)
                 }
             }
     }

@@ -8,25 +8,22 @@
 import Foundation
 import SwiftUI
 
-extension Controller {
+extension TransactionInputScreen {
     
     @ViewBuilder
     var back: some View {
-        if router.screen != .transactionInput(false) {
+        if router.screen != .first(false) {
              Text("〈 戻る")
                 .customFont(size: 18, spacing: .short, color: .dark, weight: .medium)
                 .onTapGesture {
                     switch router.screen {
-                    case .transactionInput:
+                    case .first:
                         return
                     case .second:
-                        moveBack(to: .transactionInput(false), router)
+                        moveBack(to: .first(false), router)
                     case .third:
                         moveBack(to: .second, router)
-                    case .setting:
-                        return
-                    case .list:
-                        return
+                 
                     }
                 }
         }

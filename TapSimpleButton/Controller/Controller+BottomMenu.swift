@@ -41,19 +41,22 @@ extension Controller {
                     
                     selectTabMenu = menu
                     
-                    if menu == .etc {
+                    switch(menu) {
+                        
+                    case .etc:
                         moveForward(to: .setting, router)
-                        return
-                    }
                     
-                    if menu == .input {
+                    case .input:
                         moveForward(to: .transactionInput(false), router)
-                        return
-                    }
-                    
-                    if menu == .list {
-                        moveForward(to: .list, router)
-                        return
+                        
+                    case .help:
+                        moveForward(to: .help, router)
+
+                    case .list:
+                        moveForward(to: .transactionList, router)
+
+                    case .camera:
+                        moveForward(to: .receipt, router)
                     }
                 }
             }

@@ -10,14 +10,14 @@ import SwiftUI
 import Combine
 import ResizableSheet
 
-struct SecondScreen: ScreenMovable {
+struct SecondScreen: ScreenMovable2 {
     
     enum InputState {
         case supplier, description
     }
     
-    @EnvironmentObject var router : Router
     @EnvironmentObject var header : Header
+    @EnvironmentObject var router : TransactionInputRouter
     
     @State private var inputState: InputState? = nil
     @State private var cancellables = Set<AnyCancellable>()
@@ -29,7 +29,7 @@ struct SecondScreen: ScreenMovable {
     
     var body: some View {
         
-        SlideAnimation {
+        SlideAnimation2 {
             
             VStack(spacing: 15) {
                 
@@ -113,19 +113,17 @@ struct SecondScreen: ScreenMovable {
                         self.labelPosX -= 30
                     } else if (value.translation.width > 0 ) {
                         self.labelPosX += 30
-                        moveBack(to: .transactionInput(false), router)
+                        moveBack(to: .first(false), router)
                     }
                 })
             )
-
-        }
-        .padding(.leading, 30)
-        .padding(.top, 20)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onAppear() {
-            header.setTitle("取引先・適用入力")
+            .padding(.leading, 30)
+            .padding(.top, 20)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
+    
+    
     
     var pullDown: some View {
         Image("pull_down")

@@ -20,11 +20,12 @@ extension FirstScreen {
     }
 }
 
-struct FirstScreen: ScreenMovable {
+struct FirstScreen: ScreenMovable2 {
     
     @ObservedObject private(set) var viewModel: ViewModel
-    @EnvironmentObject var router : Router
+    
     @EnvironmentObject var header : Header
+    @EnvironmentObject var router : TransactionInputRouter
 
     let circleSize: CGFloat = 82
     @State private var labelPosX:CGFloat = 0
@@ -42,7 +43,7 @@ struct FirstScreen: ScreenMovable {
     
     var body: some View {
         
-        SlideAnimation {
+        SlideAnimation2 {
             
             let spacing:CGFloat = 30
             
@@ -96,7 +97,7 @@ struct FirstScreen: ScreenMovable {
                                     
                                     account.view(selected: account.title == header.getAccount()?.title).onButtonTap() {
                                         header.setAccount(account)
-                                        moveForward(to: .second, router)
+//                                        moveForward(to: .second, router)
                                     }
                                 } else {
                                     Text("")
@@ -114,11 +115,11 @@ struct FirstScreen: ScreenMovable {
         .background(Color.backGroundColor)
         .gesture(DragGesture()
                    .onEnded({ value in
-                       
+
                        if (abs(value.translation.width) < 10) {
                            return
                        }
-                       
+
                        if (value.translation.width < 0 ) {
                            moveForward(to: .second, router)
 
@@ -129,7 +130,8 @@ struct FirstScreen: ScreenMovable {
 
                        }
                    })
-        ).onAppear() {
+        )
+        .onAppear() {
             header.setTitle("勘定科目を選択")
         }
     }

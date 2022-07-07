@@ -7,16 +7,21 @@
 
 import Foundation
 
+enum TransactionInput: Equatable {
+    case first(Bool), second, third
+}
+
 enum ScreenType: Equatable {
+    
     case transactionInput(Bool)
-    case second
-    case third
+    case receipt
     case setting
-    case list
+    case help
+    case transactionList
     
     func isShowFooter() -> Bool {
         switch self {
-        case .transactionInput, .second, .third:
+        case .transactionInput:
             return true
         default:
             return false
@@ -24,12 +29,13 @@ enum ScreenType: Equatable {
     }
 
     func isShowBottomMenu() -> Bool {
-        switch self {
-        case .transactionInput, .setting, .list:
-            return true
-        default:
-            return false
-        }
+        return true
+//        switch self {
+//        case .transactionInput, .setting, .transactionList:
+//            return true
+//        default:
+//            return false
+//        }
     }
 }
 
