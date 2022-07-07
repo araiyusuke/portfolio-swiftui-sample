@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-extension Controller {
+extension TransactionInputScreen {
     
     class ViewModel: ObservableObject {
         @EnvironmentObject var router : Router

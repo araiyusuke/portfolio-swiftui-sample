@@ -7,24 +7,28 @@ struct Controller: ScreenMovable {
     
     @EnvironmentObject var router : Router
     @EnvironmentObject var header : Header
+    @EnvironmentObject var transactionInputRouter: TransactionInputRouter
+//    @ObservedObject private(set) var viewModel: ViewModel
+
     @State public var selectTabMenu: BottomMenuType = .input
     @State private var labelPosX:CGFloat = 0
     @State private var isBottomSheet: Bool = false
-    let container: DIContainer
     @State var cancellables = Set<AnyCancellable>()
-    @ObservedObject private(set) var viewModel: ViewModel
 
+    let container: DIContainer
+    
+    // ボトムシートライブラリ
     var scene: UIWindowScene? {
-             guard let scene = UIApplication.shared.connectedScenes.first,
-                   let windowScene = scene as? UIWindowScene else {
-                 return nil
-             }
-             return windowScene
-         }
-      
-      var resizableSheetCenter: ResizableSheetCenter? {
-             return scene.flatMap(ResizableSheetCenter.resolve(for:))
-         }
+        guard let scene = UIApplication.shared.connectedScenes.first,
+              let windowScene = scene as? UIWindowScene else {
+            return nil
+        }
+        return windowScene
+    }
+    
+    var resizableSheetCenter: ResizableSheetCenter? {
+        return scene.flatMap(ResizableSheetCenter.resolve(for:))
+    }
     
     public static func bottomSheet<MContent: View>(@ViewBuilder content: () -> MContent) -> some View {
         return content()
@@ -32,22 +36,26 @@ struct Controller: ScreenMovable {
     
     init(container: DIContainer) {
         self.container = container
-        self.viewModel = .init(container: container)
+//        self.viewModel = .init(container: container)
     }
     
     var contents: some View {
         return ZStack {
             switch router.screen {
-            case .first(let regist):
-                FirstScreen(viewModel: FirstScreen.ViewModel(container: container), registed: regist)
-            case .second:
-                SecondScreen()
-            case .third:
-                ThirdScreen()
+                
+            // 取引入力
+            case .transactionInput(_):
+                TransactionInputScreen(container: container)
+                          
             case .setting:
                 SettingScreen()
-            case .list:
+            // 取引一覧
+            case .transactionList:
                 ListScreen(viewModel: .init(container: container))
+            case .receipt:
+                ReceiptScreen()
+            case .help:
+                HelpScreen()
             }
         }
     }
@@ -59,6 +67,7 @@ struct Controller: ScreenMovable {
             ZStack {
                 
                 VStack(spacing: 0) {
+                    
                     ZStack {
                         headerTop
                             .frame(width: geometry.size.width , height: 100)
@@ -68,13 +77,13 @@ struct Controller: ScreenMovable {
                                 print(geometry.size.width)
                             }
                         
-                        if router.screen == .first(true) {
+                        if router.screen == .transactionInput(true) {
                             Text("取引を登録しました")
                                 .frame(maxWidth: .infinity, maxHeight: 90, alignment: .center)
                                 .background(Color.white)
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                        router.screen = .first(false)
+                                        router.screen = .transactionInput(false)
                                     }
                                 }
                         }
@@ -83,13 +92,6 @@ struct Controller: ScreenMovable {
                     contents
                         .frame(maxHeight: .infinity)
                         .background(Color.backGroundColor)
-                    
-                    if (router.screen.isShowFooter()){
-                        footer
-                            .frame(maxHeight: 60)
-                            .background(Color.backGroundColor)
-                    }
-                    
                     
                     if router.screen.isShowBottomMenu() {
                         bottomMenu
@@ -101,7 +103,6 @@ struct Controller: ScreenMovable {
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
             .environment(\.resizableSheetCenter, resizableSheetCenter)
-
         }
     }
 }

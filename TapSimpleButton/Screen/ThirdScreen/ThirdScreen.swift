@@ -8,14 +8,15 @@
 import Foundation
 import SwiftUI
 
-struct ThirdScreen: ScreenMovable {
+struct ThirdScreen: ScreenMovable2 {
     
-    @EnvironmentObject var router : Router
+    @EnvironmentObject var router : TransactionInputRouter
     @EnvironmentObject var header : Header
     @State private var labelPosX:CGFloat = 0
     
     var body: some View {
-        SlideAnimation {
+        
+        SlideAnimation2 {
             
             NumberPad() { numKey in
                 
@@ -45,9 +46,7 @@ struct ThirdScreen: ScreenMovable {
                     return
                 }
                 
-                if (value.translation.width < 0 ) {
-                    moveForward(to: .first(false), router)
-                    
+                if (value.translation.width < 0 ) {                    
                     self.labelPosX -= 30
                 } else if (value.translation.width > 0 ) {
                     self.labelPosX += 30

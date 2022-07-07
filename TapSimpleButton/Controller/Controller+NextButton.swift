@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension Controller {
+extension TransactionInputScreen {
     
     var next: some View {
         Text("次へ 〉")
@@ -19,6 +19,9 @@ extension Controller {
                     moveForward(to: .second, router)
                 case .second:
                     moveForward(to: .third, router)
+                case .third:
+                    moveBack(to: .first(true), router)
+
                 default:
                     return
                 }

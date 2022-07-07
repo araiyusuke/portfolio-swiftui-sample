@@ -8,16 +8,31 @@
 import Foundation
 import SwiftUI
 
-class Router: ObservableObject {
+enum Direction {
+    case forward, back
+}
+
+class TransactionInputRouter: ObservableObject {
     
-    @Published var screen: ScreenType = .first(false)
+    // スタート画面は取引入力
+    @Published var screen: TransactionInput = .first(false)
     @Published var direction: Direction = .forward
     
-    private init() {}
+    public init() {}
+    
+    static let shared: TransactionInputRouter = .init()
+    
+   
+}
+
+class Router: ObservableObject {
+    
+    // スタート画面は取引入力
+    @Published var screen: ScreenType = .transactionInput(false)
+    @Published var direction: Direction = .forward
+    
+    public init() {}
     
     static let shared: Router = .init()
     
-    enum Direction {
-        case forward, back
-    }
 }

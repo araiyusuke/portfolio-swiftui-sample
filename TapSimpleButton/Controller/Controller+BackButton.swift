@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension Controller {
+extension TransactionInputScreen {
     
     @ViewBuilder
     var back: some View {
@@ -23,10 +23,7 @@ extension Controller {
                         moveBack(to: .first(false), router)
                     case .third:
                         moveBack(to: .second, router)
-                    case .setting:
-                        return
-                    case .list:
-                        return
+                 
                     }
                 }
         }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 extension View {
-    func setTransAnimation(direction: Router.Direction = .forward) -> some View {
+    func setTransAnimation(direction: Direction = .forward) -> some View {
         if  case .back = direction {
             return self
                 .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing)))

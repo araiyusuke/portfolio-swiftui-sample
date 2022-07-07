@@ -29,3 +29,24 @@ extension ScreenMovable {
         }
     }
 }
+
+protocol ScreenMovable2: View {
+    func moveForward(to : TransactionInput, _ router: TransactionInputRouter) -> Void
+    func moveBack(to : TransactionInput, _ router: TransactionInputRouter) -> Void
+}
+
+extension ScreenMovable2 {
+    
+    func moveBack(to: TransactionInput, _ router: TransactionInputRouter) {
+        withAnimation(.easeInOut(duration: 0.5)) {
+            router.direction = .back
+            router.screen = to
+        }
+    }
+    func moveForward(to: TransactionInput, _ router: TransactionInputRouter) {
+        withAnimation(.easeInOut(duration: 0.5)) {
+            router.direction = .forward
+            router.screen = to
+        }
+    }
+}

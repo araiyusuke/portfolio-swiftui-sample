@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension Controller {
+extension TransactionInputScreen {
     
     @ViewBuilder
     var nextOrRegist: some View {
