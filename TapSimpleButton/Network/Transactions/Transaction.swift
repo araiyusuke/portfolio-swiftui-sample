@@ -69,8 +69,8 @@ struct Transaction: Mockable, Hashable, Identifiable {
                 }
                 .padding(.leading, 5)
                 
-                rightArrow
-                    .frame(width: 30)
+//                rightArrow
+//                    .frame(width: 30)
             }
         }
         

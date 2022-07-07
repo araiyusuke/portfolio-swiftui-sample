@@ -40,12 +40,10 @@ struct TransactionInputScreen:  ScreenMovable2 {
     
     var body: some View {
         
-        VStack {
+        VStack(spacing: 0) {
             
             contents
-            
-            Spacer()
-            
+                                   
             footer
                 .frame(maxHeight: 60)
                 .background(Color.backGroundColor)

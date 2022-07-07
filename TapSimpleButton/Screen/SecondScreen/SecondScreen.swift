@@ -119,6 +119,7 @@ struct SecondScreen: ScreenMovable2 {
             )
             .padding(.leading, 30)
             .padding(.top, 20)
+            .background(Color.backGroundColor)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
