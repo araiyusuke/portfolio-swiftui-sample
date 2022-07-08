@@ -9,19 +9,18 @@ import Foundation
 import Combine
 import SwiftUI
 
-
 struct Transactions: Mockable, Hashable{
     var transactions: [Transaction]
 }
 
 struct Transaction: Mockable, Hashable, Identifiable {
     var id: Int
-    let accounts: String
-    let date: String
-    let price: Int
+    var accounts: String
+    var date: String
+    var price: Int
     let hex: String
-    let supplier: String?
-    let description: String?
+    var supplier: String?
+    var description: String?
     var color: Color {
         return Color.hex(string: hex, alpha: 0.3)
     }

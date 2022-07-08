@@ -15,7 +15,7 @@ struct SupplierEditScreen: View {
     @State private var pullDownItems: [PullDownItem] = []
     @State private var state: ResizableSheetState = .hidden
     @State private var supplierText = ""
-
+    
     var body: some View {
         
         VStack(spacing: 20) {
@@ -45,7 +45,6 @@ struct SupplierEditScreen: View {
                                 print(completion)
                             }, receiveValue: { response in
                                 pullDownItems = response.descriptions
-                                
                                 self.state = .medium
                             })
                             .store(in: &cancellables)
@@ -54,12 +53,15 @@ struct SupplierEditScreen: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
                         
-            Spacer()
+//            Spacer()
+        
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .background(Color.backGroundColor)
+        
     }
+    
     
     var inputSuppliers: some View {
         TextField("取引先を入力(任意)", text: $supplierText)

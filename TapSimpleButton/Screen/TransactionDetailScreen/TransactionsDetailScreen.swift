@@ -10,6 +10,7 @@ import SwiftUI
 struct TransactionsDetailScreen: View {
     
     @State private var pickerSelection = 0
+    @Binding  var transaction: Transaction
     
     var body: some View {
         
@@ -28,17 +29,14 @@ struct TransactionsDetailScreen: View {
             .frame(height: 80)
             
             list
-                .frame(height: 500)
+                .frame(height: 400)
             
             Text("削除")
                 .customFont(size: 16, spacing: .none, rgb: .red, weight: .light)
                 .padding(.vertical, 15)
-            
                 .frame(maxWidth: .infinity, maxHeight: 40)
                 .background(.white)
                 .padding(.vertical, 15)
-            
-            
         }
         .background(Color.rgb(247, 247, 247))
         
@@ -53,27 +51,18 @@ struct TransactionsDetailScreen: View {
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
                 Spacer()
-                Text("2022/07/06")
+                Text(transaction.date)
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
             }   
-            
-            HStack {
-                Text("取引日")
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
-                
-                Spacer()
-                Text("2022/07/06")
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
-                
-            }
             
             HStack {
                 Text("科目")
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
                 Spacer()
-                Text("広告宣伝費")
+                
+                Text(transaction.accounts)
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
             }
@@ -84,12 +73,13 @@ struct TransactionsDetailScreen: View {
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
                 NavigationLink(
-                    destination: SupplierEditScreen()
-                        .environment(\.resizableSheetCenter, resizableSheetCenter),
+                    destination:
+                        SupplierEditScreen()
+                            .environment(\.resizableSheetCenter, resizableSheetCenter),
                     label: {
                         Spacer()
                         
-                        Text("セブンイレブン")
+                        Text(transaction.description ?? "")
                             .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                         
                     }
@@ -117,11 +107,13 @@ struct TransactionsDetailScreen: View {
             HStack {
                 Text("金額(税込)")
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
-                
+                    
+            
                 Spacer()
-                Text("¥0")
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
+                Text(transaction.price.description)
+                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+                    
             }
             
         }
@@ -129,8 +121,3 @@ struct TransactionsDetailScreen: View {
     }
 }
 
-struct TransactionDescriptionScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        TransactionsDetailScreen()
-    }
-}

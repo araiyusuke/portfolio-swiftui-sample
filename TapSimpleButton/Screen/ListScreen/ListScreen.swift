@@ -28,50 +28,55 @@ struct TransactionsListScreen: ScreenMovable {
     
     var body: some View {
         
-        //        NavigationView {
-        VStack(spacing: 0) {
+        NavigationView {
             
-            VStack(spacing: 5) {
-                Text("科目: すべて")
-                    .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(spacing: 0) {
                 
-                Text("取引日: 2021/01/01 〜 2022/07/04")
-                    .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                VStack(spacing: 5) {
+                    Text("科目: すべて")
+                        .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text("取引日: 2021/01/01 〜 2022/07/04")
+                        .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text("検索結果: \(searchCount)件")
+                        .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                }
+                .padding(5)
+                .frame(maxWidth: .infinity)
+                .background(Color.rgb(205, 230, 237))
                 
-                Text("検索結果: \(searchCount)件")
-                    .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                HStack() {
+                    
+                    sortDirection.icon
+                    
+                    Text(sortDirection.description)
+                        .customFont(size: 13, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                        .onButtonTap() {
+                            sortDirection.toggle()
+                        }
+                    
+                    Spacer()
+                    
+                    searchButton
+                        .onButtonTap() {
+                        }
+                }
+                .padding(.horizontal, 5)
+                .padding(.vertical, 10)
+                .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
                 
+                content
             }
-            .padding(5)
-            .frame(maxWidth: .infinity)
-            .background(Color.rgb(205, 230, 237))
-            
-            HStack() {
-                
-                sortDirection.icon
-                
-                Text(sortDirection.description)
-                    .customFont(size: 13, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                    .onButtonTap() {
-                        sortDirection.toggle()
-                    }
-                
-                Spacer()
-                
-                searchButton
-                    .onButtonTap() {
-                    }
-            }
-            .padding(.horizontal, 5)
-            .padding(.vertical, 10)
-            .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
-            
-            content
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+          
+            .hiddenNavigationBarStyle()
+
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .onAppear {
             viewModel.fetchTransactions()
         }
@@ -100,13 +105,58 @@ struct TransactionsListScreen: ScreenMovable {
     }
     
     func loadedView(transactions: [Transaction]) -> some View {
-        List {
-            ForEach(transactions) { transaction in
-                
+        
+     
+            List(viewModel.transactionsList.indices, id:\.self) { index in
+
                 NavigationLink(
-                    destination: TransactionsDetailScreen(),
+                    destination: TransactionsDetailScreen(transaction:$viewModel.transactionsList[index]),
                     label: {
-                        transaction.cell
+                        ZStack {
+                            
+                            Text(viewModel.transactionsList[index].accounts)
+                                .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
+                            
+                            HStack(spacing: 0) {
+                                
+                                VStack(spacing: 0) {
+                                    
+                                }
+                                .frame(maxWidth: 7, maxHeight: .infinity)
+                                .background(viewModel.transactionsList[index].color)
+                                .padding(.vertical, 2)
+                                
+                                
+                                VStack (spacing: 10) {
+                                    
+                                    HStack(spacing: 0) {
+                                        
+                                        Text(viewModel.transactionsList[index].date)
+                                            .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
+                                        
+                                        Spacer()
+                                        
+                                        Text("¥\(viewModel.transactionsList[index].price)")
+                                            .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
+                                        
+                                    }
+                                    
+                                    HStack(spacing: 0) {
+                                        Text(viewModel.transactionsList[index].description ?? "適用未入力")
+                                            .customFont(size: 13, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
+                                        
+                                        Spacer()
+                                        
+                                        viewModel.transactionsList[index].image
+                                        
+                                    }
+                                }
+                                .padding(.leading, 5)
+                                
+                //                rightArrow
+                //                    .frame(width: 30)
+                            }
+                        }
                     })
                 
                 .swipeActions(edge: .trailing) {
@@ -122,17 +172,21 @@ struct TransactionsListScreen: ScreenMovable {
                         } label: {
                             Text("コピー")
                         }
-                    }
+                    
                     
                 }
             }
             .listRowBackground(Color.white)
             .listRowInsets(EdgeInsets())
         }
+        
+        
+        
         .padding(0)
         .environment(\.defaultMinListRowHeight, 78)
         .listStyle(PlainListStyle())
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+       
     }
     
     func failedView(_ error: Error) -> some View {
