@@ -39,8 +39,10 @@ struct SecondScreen: ScreenMovable2 {
                     
                     inputSuppliers
                     
-                    pullDown
+                    PullDown()
                         .onButtonTap() {
+                            
+                            //取引先の入力欄をターゲットにする
                             self.inputState = .supplier
                             
                             SuppliersAPI.fetch()
@@ -50,14 +52,12 @@ struct SecondScreen: ScreenMovable2 {
                                 }, receiveValue: { response in
                                     pullDownItems = response.suppliers
                                     state = .medium
-                                    
                                 })
                                 .store(in: &cancellables)
                         }
                         .resizableSheet($state) { builder in
                             builder.content { context in
-                                
-                                BottomSheetList(items: $pullDownItems , state: $state) { value in
+                                BottomSheetList(title: "取引先",items: $pullDownItems , state: $state) { value in
                                     if (inputState == .supplier) {
                                         self.supplierText = value.name
                                     } else if (inputState == .description) {
@@ -77,9 +77,8 @@ struct SecondScreen: ScreenMovable2 {
                     
                     inputDescription
                     
-                    pullDown
+                    PullDown()
                         .onButtonTap() {
-                            
                             self.inputState = .description
                             DescriptionsAPI.fetch()
                                 .receive(on: DispatchQueue.main)
@@ -88,8 +87,6 @@ struct SecondScreen: ScreenMovable2 {
                                 }, receiveValue: { response in
                                     pullDownItems = response.descriptions
                                     state = .medium
-                                    
-                                    
                                 })
                                 .store(in: &cancellables)
                         }
@@ -122,17 +119,6 @@ struct SecondScreen: ScreenMovable2 {
             .background(Color.backGroundColor)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-    }
-    
-    
-    
-    var pullDown: some View {
-        Image("pull_down")
-            .resizable()
-            .frame(width: 18, height: 20)
-            .frame(width: 40, height: 40)
-            .background(Color.headerColor)
-            .cornerRadius(5)
     }
     
     var help: some View {

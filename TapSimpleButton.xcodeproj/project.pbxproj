@@ -54,6 +54,8 @@
 		F13C7FFD28779FAC00973687 /* TransactionsDetailScreen+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C7FFC28779FAC00973687 /* TransactionsDetailScreen+ViewModel.swift */; };
 		F13C80042877A2E800973687 /* SupplierEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C80032877A2E800973687 /* SupplierEditScreen.swift */; };
 		F13C80062877A34B00973687 /* DescriptionEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C80052877A34B00973687 /* DescriptionEditScreen.swift */; };
+		F13C80092877AACA00973687 /* View+ResizableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C80082877AACA00973687 /* View+ResizableSheet.swift */; };
+		F13C800C2877AF3A00973687 /* PullDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C800B2877AF3A00973687 /* PullDown.swift */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -141,6 +143,8 @@
 		F13C7FFC28779FAC00973687 /* TransactionsDetailScreen+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionsDetailScreen+ViewModel.swift"; sourceTree = "<group>"; };
 		F13C80032877A2E800973687 /* SupplierEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierEditScreen.swift; sourceTree = "<group>"; };
 		F13C80052877A34B00973687 /* DescriptionEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionEditScreen.swift; sourceTree = "<group>"; };
+		F13C80082877AACA00973687 /* View+ResizableSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ResizableSheet.swift"; sourceTree = "<group>"; };
+		F13C800B2877AF3A00973687 /* PullDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullDown.swift; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 		F13C7F4628718B4100973687 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F13C800A2877AF2A00973687 /* PullDown */,
+				F13C80072877AAB200973687 /* View+ResizableSheet */,
 				F13C7FD328759A2A00973687 /* BottomSheetList */,
 				F13C7F9C2875172700973687 /* Header */,
 				F13C7F9728740C4000973687 /* BottomSheet */,
@@ -491,6 +497,22 @@
 			path = SupplierEditScreen;
 			sourceTree = "<group>";
 		};
+		F13C80072877AAB200973687 /* View+ResizableSheet */ = {
+			isa = PBXGroup;
+			children = (
+				F13C80082877AACA00973687 /* View+ResizableSheet.swift */,
+			);
+			path = "View+ResizableSheet";
+			sourceTree = "<group>";
+		};
+		F13C800A2877AF2A00973687 /* PullDown */ = {
+			isa = PBXGroup;
+			children = (
+				F13C800B2877AF3A00973687 /* PullDown.swift */,
+			);
+			path = PullDown;
+			sourceTree = "<group>";
+		};
 		F13CA310286E769E00527D1E = {
 			isa = PBXGroup;
 			children = (
@@ -671,6 +693,7 @@
 				F13C7F862872D58600973687 /* Description.swift in Sources */,
 				F13CA348286FE70500527D1E /* Controller+nextOrRegistButton.swift in Sources */,
 				F13CA36028710F1200527D1E /* FirstScreen+spending.swift in Sources */,
+				F13C800C2877AF3A00973687 /* PullDown.swift in Sources */,
 				F13C7F642872B67E00973687 /* Mockable.swift in Sources */,
 				F13C7F9B287514D200973687 /* Header.swift in Sources */,
 				F13CA334286FBB3E00527D1E /* ThirdScreen.swift in Sources */,
@@ -692,6 +715,7 @@
 				F13CA342286FC3E500527D1E /* Controller+Footer.swift in Sources */,
 				F13C7F682872B6BF00973687 /* APIAgent.swift in Sources */,
 				F13C7F3D2871868800973687 /* View+onButtonTap.swift in Sources */,
+				F13C80092877AACA00973687 /* View+ResizableSheet.swift in Sources */,
 				F13CA33C286FBC3A00527D1E /* Controller+Navi.swift in Sources */,
 				F13C7F742872B78900973687 /* RequestParameter.swift in Sources */,
 				F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */,

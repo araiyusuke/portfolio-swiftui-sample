@@ -84,7 +84,8 @@ struct TransactionsDetailScreen: View {
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
                 NavigationLink(
-                    destination: SupplierEditScreen(),
+                    destination: SupplierEditScreen()
+                        .environment(\.resizableSheetCenter, resizableSheetCenter),
                     label: {
                         Spacer()
                         
@@ -100,7 +101,9 @@ struct TransactionsDetailScreen: View {
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
                 NavigationLink(
-                    destination: DescriptionEditScreen(),
+                    destination: DescriptionEditScreen()
+                        .environment(\.resizableSheetCenter, resizableSheetCenter)
+                    ,
                     label: {
                         Spacer()
                         
