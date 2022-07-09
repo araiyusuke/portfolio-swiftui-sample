@@ -15,6 +15,8 @@ struct DescriptionEditScreen: View {
     @State private var pullDownItems: [PullDownItem] = []
     @State private var state: ResizableSheetState = .hidden
     @Binding var editText: String?
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
         
         VStack(spacing: 20) {
@@ -59,6 +61,24 @@ struct DescriptionEditScreen: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .background(Color.backGroundColor)
+        .navigationTitle("取引詳細")
+        .navigationBarBackButtonHidden(true)
+               .toolbar {
+                   ToolbarItem(placement: .navigationBarLeading) {
+                       Button(
+                           action: {
+                               dismiss()
+                           }, label: {
+                               HStack {
+                                   Image(systemName: "arrow.backward")
+                                   
+                                   Text("戻る")
+                               }
+                             
+                           }
+                       ).tint(.white)
+                   }
+               }
     }
     
     var inputDescription: some View {

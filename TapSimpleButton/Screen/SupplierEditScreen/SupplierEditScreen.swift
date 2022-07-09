@@ -58,7 +58,8 @@ struct SupplierEditScreen: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .background(Color.backGroundColor)
-        
+        .navigationTitle("取引先入力")
+
     }
     
     

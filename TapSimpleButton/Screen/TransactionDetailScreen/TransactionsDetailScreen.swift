@@ -8,12 +8,10 @@
 import SwiftUI
 import ResizableSheet
 
-
-
-
-
 struct TransactionsDetailScreen: View {
-    
+    @EnvironmentObject var router : Router
+    @Environment(\.dismiss) var dismiss
+
     struct BottomSheetContents: View {
         @Binding var state: BottomSheetState
 
@@ -77,6 +75,8 @@ struct TransactionsDetailScreen: View {
             list
                 .frame(height: 400)
             
+            Spacer()
+            
             Text("削除")
                 .customFont(size: 16, spacing: .none, rgb: .red, weight: .light)
                 .padding(.vertical, 15)
@@ -84,8 +84,27 @@ struct TransactionsDetailScreen: View {
                 .background(.white)
                 .padding(.vertical, 15)
         }
-        .background(Color.rgb(247, 247, 247))
+        .navigationTitle("取引詳細")
+        .navigationBarBackButtonHidden(true)
+               .toolbar {
+                   ToolbarItem(placement: .navigationBarLeading) {
+                       Button(
+                           action: {
+                               dismiss()
+                           }, label: {
+                               HStack {
+                                   Image(systemName: "arrow.backward")
+                                   
+                                   Text("戻る")
+                               }
+                             
+                           }
+                       ).tint(.white)
+                   }
+               }
         .frame(maxHeight: .infinity)
+        .background(Color.rgb(247, 247, 247))
+
         .resizableSheet($state) { builder in
             builder.content { context in
                 BottomSheetContents(state: $bottomSheetState)
@@ -110,7 +129,6 @@ struct TransactionsDetailScreen: View {
                    
             }
             .onButtonTap() {
-                print("タップ")
                 bottomSheetState = .date
                 state = .medium
             }

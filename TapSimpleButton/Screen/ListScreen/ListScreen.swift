@@ -11,7 +11,6 @@ import Combine
 
 struct TransactionsListScreen: View {
 
-    @EnvironmentObject var router : Router
     @State var selected = 0
     @State var sortDirection: Sort = .new
     @ObservedObject private(set) var viewModel: ViewModel
@@ -28,7 +27,7 @@ struct TransactionsListScreen: View {
     
     var body: some View {
         
-        NavigationView {
+//        NavigationView {
             
             VStack(spacing: 0) {
                 
@@ -73,24 +72,22 @@ struct TransactionsListScreen: View {
                 content
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-            .hiddenNavigationBarStyle()
-            
-        }
-        .onAppear {
-            viewModel.fetchTransactions()
-        }
-
+            .onAppear {
+                viewModel.fetchTransactions()
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle("取引一覧")
     }
     
     @ViewBuilder
     private var content: some View {
         switch viewModel.transactions {
         case .notRequested:
-            notRequestedView
+            loadedView()
         case .isLoading:
             loadingView
         case let .loaded(transactions):
-            loadedView(transactions: transactions)
+            loadedView()
         case let .failed(error):
             failedView(error)
         }
@@ -104,15 +101,17 @@ struct TransactionsListScreen: View {
         Text("ローディング...")
     }
     
-    func loadedView(transactions: [Transaction]) -> some View {
+    func loadedView() -> some View {
         
         List(viewModel.transactionsList.indices, id:\.self) { index in
             
             NavigationLink(
                 destination:
+                    
                     TransactionsDetailScreen(transaction:$viewModel.transactionsList[index])
                         .environment(\.resizableSheetCenter, resizableSheetCenter)
 
+                
                 ,
                 label: {
                     ZStack {
@@ -160,7 +159,9 @@ struct TransactionsListScreen: View {
                             //                    .frame(width: 30)
                         }
                     }
-                })
+                }
+                
+            )
             .isDetailLink(false)
 
             

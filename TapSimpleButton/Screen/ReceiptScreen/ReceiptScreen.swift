@@ -12,6 +12,7 @@ struct ReceiptScreen: View {
     var body: some View {
         Text("ReceiptScreen")
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle("レシート撮影")
     }
 }

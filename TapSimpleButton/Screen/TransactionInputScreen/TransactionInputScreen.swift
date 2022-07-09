@@ -49,6 +49,7 @@ struct TransactionInputScreen:  ScreenMovable2 {
                 .frame(maxHeight: 60)
                 .background(Color.backGroundColor)
         }
+        
        
     }
 }

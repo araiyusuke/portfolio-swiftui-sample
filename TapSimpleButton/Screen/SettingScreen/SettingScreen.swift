@@ -43,5 +43,7 @@ struct SettingScreen: ScreenMovable {
             }
         }
         .frame(maxHeight: .infinity, alignment: .top)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitle("その他")
     }
 }
