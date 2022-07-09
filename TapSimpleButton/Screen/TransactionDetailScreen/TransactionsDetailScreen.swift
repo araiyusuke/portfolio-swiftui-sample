@@ -159,8 +159,7 @@ struct TransactionsDetailScreen: View {
                 
                 NavigationLink(
                     destination: DescriptionEditScreen(editText: $transaction.description)
-                        .environment(\.resizableSheetCenter, resizableSheetCenter)
-                    ,
+                        .environment(\.resizableSheetCenter, resizableSheetCenter),
                     label: {
                         
                         Spacer()
@@ -177,11 +176,12 @@ struct TransactionsDetailScreen: View {
                 Text("金額(税込)")
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
-                
                 Spacer()
                 
-                Text(transaction.price.description)
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+                TextField("placeholder", value: $transaction.price, formatter: NumberFormatter())
+                    .font(Font.custom("NotoSansJP", size: 13))
+                    .multilineTextAlignment(TextAlignment.trailing)
+                    .padding(.trailing, 10)
                 
             }
         }
