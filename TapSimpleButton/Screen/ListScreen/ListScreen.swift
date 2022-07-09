@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-struct TransactionsListScreen: ScreenMovable {
+struct TransactionsListScreen: View {
     
     @EnvironmentObject var router : Router
     @State var selected = 0
@@ -73,9 +73,8 @@ struct TransactionsListScreen: ScreenMovable {
                 content
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-          
             .hiddenNavigationBarStyle()
-
+            
         }
         .onAppear {
             viewModel.fetchTransactions()
@@ -106,72 +105,72 @@ struct TransactionsListScreen: ScreenMovable {
     
     func loadedView(transactions: [Transaction]) -> some View {
         
-     
-            List(viewModel.transactionsList.indices, id:\.self) { index in
-
-                NavigationLink(
-                    destination: TransactionsDetailScreen(transaction:$viewModel.transactionsList[index]),
-                    label: {
-                        ZStack {
+        List(viewModel.transactionsList.indices, id:\.self) { index in
+            
+            NavigationLink(
+                destination: TransactionsDetailScreen(transaction:$viewModel.transactionsList[index]),
+                label: {
+                    ZStack {
+                        
+                        Text(viewModel.transactionsList[index].accounts)
+                            .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
+                        
+                        HStack(spacing: 0) {
                             
-                            Text(viewModel.transactionsList[index].accounts)
-                                .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
-                            
-                            HStack(spacing: 0) {
+                            VStack(spacing: 0) {
                                 
-                                VStack(spacing: 0) {
-                                    
-                                }
-                                .frame(maxWidth: 7, maxHeight: .infinity)
-                                .background(viewModel.transactionsList[index].color)
-                                .padding(.vertical, 2)
-                                
-                                
-                                VStack (spacing: 10) {
-                                    
-                                    HStack(spacing: 0) {
-                                        
-                                        Text(viewModel.transactionsList[index].date)
-                                            .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
-                                        
-                                        Spacer()
-                                        
-                                        Text("¥\(viewModel.transactionsList[index].price)")
-                                            .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
-                                        
-                                    }
-                                    
-                                    HStack(spacing: 0) {
-                                        Text(viewModel.transactionsList[index].description ?? "適用未入力")
-                                            .customFont(size: 13, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
-                                        
-                                        Spacer()
-                                        
-                                        viewModel.transactionsList[index].image
-                                        
-                                    }
-                                }
-                                .padding(.leading, 5)
-                                
-                //                rightArrow
-                //                    .frame(width: 30)
                             }
+                            .frame(maxWidth: 7, maxHeight: .infinity)
+                            .background(viewModel.transactionsList[index].color)
+                            .padding(.vertical, 2)
+                            
+                            
+                            VStack (spacing: 10) {
+                                
+                                HStack(spacing: 0) {
+                                    
+                                    Text(viewModel.transactionsList[index].date)
+                                        .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
+                                    
+                                    Spacer()
+                                    
+                                    Text("¥\(viewModel.transactionsList[index].price)")
+                                        .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
+                                    
+                                }
+                                
+                                HStack(spacing: 0) {
+                                    Text(viewModel.transactionsList[index].description ?? "適用未入力")
+                                        .customFont(size: 13, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
+                                    
+                                    Spacer()
+                                    
+                                    viewModel.transactionsList[index].image
+                                    
+                                }
+                            }
+                            .padding(.leading, 5)
+                            
+                            //                rightArrow
+                            //                    .frame(width: 30)
                         }
-                    })
-                
-                .swipeActions(edge: .trailing) {
-                    HStack {
-                        
-                        Button(role: .destructive) {
-                        } label: {
-                            Text("削除")
-                        }
-                        
-                        Button(role: .none ) {
-                            // 処理
-                        } label: {
-                            Text("コピー")
-                        }
+                    }
+                })
+            .isDetailLink(false)
+
+            
+            .swipeActions(edge: .trailing) {
+                HStack {
+                    
+                    Button(role: .destructive) {
+                    } label: {
+                        Text("削除")
+                    }
+                    
+                    Button(role: .none ) {
+                    } label: {
+                        Text("コピー")
+                    }
                     
                     
                 }
@@ -186,7 +185,7 @@ struct TransactionsListScreen: ScreenMovable {
         .environment(\.defaultMinListRowHeight, 78)
         .listStyle(PlainListStyle())
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-       
+        
     }
     
     func failedView(_ error: Error) -> some View {

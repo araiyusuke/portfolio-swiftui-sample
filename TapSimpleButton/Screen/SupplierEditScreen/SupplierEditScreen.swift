@@ -14,8 +14,7 @@ struct SupplierEditScreen: View {
     @State private var cancellables = Set<AnyCancellable>()
     @State private var pullDownItems: [PullDownItem] = []
     @State private var state: ResizableSheetState = .hidden
-    @State private var supplierText = ""
-    
+    @Binding public var editText: String?
     var body: some View {
         
         VStack(spacing: 20) {
@@ -33,7 +32,7 @@ struct SupplierEditScreen: View {
                     .resizableSheet($state) { builder in
                         builder.content { context in
                             BottomSheetList(title: "取引先", items: $pullDownItems , state: $state) { value in
-                                self.supplierText = value.name
+                                self.editText = value.name
                             }
                             .frame(height: 600)
                         }
@@ -52,9 +51,9 @@ struct SupplierEditScreen: View {
                 
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-                        
-//            Spacer()
-        
+            
+                        Spacer()
+            
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
@@ -64,10 +63,15 @@ struct SupplierEditScreen: View {
     
     
     var inputSuppliers: some View {
-        TextField("取引先を入力(任意)", text: $supplierText)
+        TextField("取引先を入力(任意)", text: $editText.toUnwrapped(defaultValue: ""))
             .padding(.leading, 10)
             .frame(width: 290, height: 41)
             .background(.white)
             .border(.gray)
+    }
+}
+extension Binding {
+    func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
+        Binding<T>(get: { self.wrappedValue ?? defaultValue }, set: { self.wrappedValue = $0 })
     }
 }

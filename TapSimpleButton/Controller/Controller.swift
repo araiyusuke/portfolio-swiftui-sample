@@ -17,48 +17,39 @@ struct Controller: ScreenMovable {
     @State var isHidden: Bool = false
     
     let container: DIContainer
-        
+    
     init(container: DIContainer) {
         self.container = container
     }
     
     var body: some View {
         
-        GeometryReader { geometry in
+        VStack(spacing: 0) {
             
-            NavigationView {
-                
-                VStack(spacing: 0) {
-                    
-                    ZStack {
-                        headerTop
-                            .frame(width: geometry.size.width , height: 100)
-                            .background(Color.headerColor)
-                            .onTapGesture {
-                                isBottomSheet.toggle()
-                            }
-                        
-                        if inputTransactionRouter.screen == .first(true) {
-                            Text("取引を登録しました")
-                                .frame(maxWidth: .infinity, maxHeight: 90, alignment: .center)
-                                .background(Color.white)
-                                .onAppear {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                        inputTransactionRouter.screen = .first(false)
-                                    }
-                                }
-                        }
+            ZStack {
+                headerTop
+                    .frame(maxWidth: .infinity, maxHeight: 100)
+                    .background(Color.headerColor)
+                    .onTapGesture {
+                        isBottomSheet.toggle()
                     }
-                    
-                    tab
-                    
-                }
-                .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
-                .environment(\.resizableSheetCenter, resizableSheetCenter)
-                .hiddenNavigationBarStyle()
                 
+                if inputTransactionRouter.screen == .first(true) {
+                    Text("取引を登録しました")
+                        .frame(maxWidth: .infinity, maxHeight: 90, alignment: .center)
+                        .background(Color.white)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                inputTransactionRouter.screen = .first(false)
+                            }
+                        }
+                }
             }
+            
+            tab
+            
         }
+        .environment(\.resizableSheetCenter, resizableSheetCenter)
     }
     
     var tab: some View {

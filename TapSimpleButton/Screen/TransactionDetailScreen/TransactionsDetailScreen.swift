@@ -7,12 +7,17 @@
 
 import SwiftUI
 
+class Book: ObservableObject {
+    @Published var title = "Great Expectations"
+}
+
 struct TransactionsDetailScreen: View {
     
     @State private var pickerSelection = 0
-    @Binding  var transaction: Transaction
+    @Binding var transaction: Transaction
     
     var body: some View {
+        
         
         VStack(spacing: 0) {
             
@@ -39,7 +44,6 @@ struct TransactionsDetailScreen: View {
                 .padding(.vertical, 15)
         }
         .background(Color.rgb(247, 247, 247))
-        
     }
     
     var list : some View {
@@ -51,10 +55,11 @@ struct TransactionsDetailScreen: View {
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
                 Spacer()
+                
                 Text(transaction.date)
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
-            }   
+            }
             
             HStack {
                 Text("科目")
@@ -74,8 +79,29 @@ struct TransactionsDetailScreen: View {
                 
                 NavigationLink(
                     destination:
-                        SupplierEditScreen()
-                            .environment(\.resizableSheetCenter, resizableSheetCenter),
+                        SupplierEditScreen(editText: $transaction.supplier)
+                        .environment(\.resizableSheetCenter, resizableSheetCenter),
+                    label: {
+                        
+                        Spacer()
+                        
+                        Text(transaction.supplier ?? "")
+                            .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+                        
+                    }
+                )
+                .isDetailLink(false)
+                
+            }
+            
+            HStack {
+                Text("摘要")
+                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+                
+                NavigationLink(
+                    destination: DescriptionEditScreen(editText: $transaction.description)
+                        .environment(\.resizableSheetCenter, resizableSheetCenter)
+                    ,
                     label: {
                         Spacer()
                         
@@ -84,38 +110,20 @@ struct TransactionsDetailScreen: View {
                         
                     }
                 )
-            }
-            
-            HStack {
-                Text("摘要")
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
-                
-                NavigationLink(
-                    destination: DescriptionEditScreen()
-                        .environment(\.resizableSheetCenter, resizableSheetCenter)
-                    ,
-                    label: {
-                        Spacer()
-                        
-                        Text("いい")
-                            .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
-                        
-                    }
-                )
+                .isDetailLink(false)
             }
             
             HStack {
                 Text("金額(税込)")
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
-                    
-            
+                
+                
                 Spacer()
                 
                 Text(transaction.price.description)
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
-                    
+                
             }
-            
         }
         .listStyle(.plain)
     }
