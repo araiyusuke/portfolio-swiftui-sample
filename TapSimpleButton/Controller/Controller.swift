@@ -6,6 +6,7 @@ import ResizableSheet
 struct Controller: ScreenMovable {
     
     @EnvironmentObject var router : Router
+
     @EnvironmentObject var inputTransactionRouter : TransactionInputRouter
     @EnvironmentObject var header : Header
     @EnvironmentObject var transactionInputRouter: TransactionInputRouter
@@ -26,7 +27,7 @@ struct Controller: ScreenMovable {
     
     var body: some View {
         
-        NavigationView {
+//        NavigationView {
             VStack(spacing: 0) {
                 
                 ZStack {
@@ -52,22 +53,28 @@ struct Controller: ScreenMovable {
                 }
                 
                 contents
-                
+                    .navigationBarColor(UIColor.rgba(red: 144, green: 204, blue: 240, alpha: 1))
+
                 if inputTransactionRouter.screen == .second &&  inputTransactionRouter.screen == .third {
                     EmptyView()
                 } else {
-                    bottomMenu
-                        .frame(height: 60)
-                        .background(Color.headerColor)
+                    
+                    if headerManager.isShow {
+                        bottomMenu
+                            .frame(height: 60)
+                            .background(Color.headerColor)
+                    } else {
+                        
+                    }
+                  
                 }
+
                 
-                
-            }
-            .navigationBarTitleDisplayMode(.large)
-            .navigationBarColor(UIColor.rgba(red: 144, green: 204, blue: 240, alpha: 1))
-            
+//            }
+
         }
-        
+        .environment(\.resizableSheetCenter, resizableSheetCenter)
+
     }
     
     var contents: some View {
@@ -85,7 +92,7 @@ struct Controller: ScreenMovable {
                 
             case .transactionList:
                 TransactionsListScreen(viewModel: .init(container: container))
-                    .environment(\.resizableSheetCenter, resizableSheetCenter)
+//                    .environment(\.resizableSheetCenter, resizableSheetCenter)
             }
         }
     }
@@ -95,7 +102,7 @@ struct Controller: ScreenMovable {
         TabView(selection: $selection) {
             
             TransactionsListScreen(viewModel: .init(container: container))
-                .environment(\.resizableSheetCenter, resizableSheetCenter)
+//                .environment(\.resizableSheetCenter, resizableSheetCenter)
                 .tabItem {
                     Image(systemName: "apps.ipad.landscape")
                 }

@@ -57,6 +57,15 @@ struct DescriptionEditScreen: View {
             help
             
             Spacer()
+            
+            if self.state == .medium {
+                Text("うほ")
+                    .frame(maxWidth: .infinity, maxHeight: 400)
+                    .background(Color.red)
+                    .onTapGesture {
+                        self.state = .hidden
+                    }
+            }
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
@@ -78,7 +87,10 @@ struct DescriptionEditScreen: View {
                            }
                        ).tint(.white)
                    }
+
                }
+
+
     }
     
     var inputDescription: some View {

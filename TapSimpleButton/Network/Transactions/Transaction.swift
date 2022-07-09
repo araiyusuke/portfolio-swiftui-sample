@@ -18,7 +18,7 @@ struct Transaction: Mockable, Hashable, Identifiable {
     var accounts: String
     var date: String
     var price: Int
-    let hex: String
+    var hex: String
     var supplier: String?
     var description: String?
     var color: Color {
