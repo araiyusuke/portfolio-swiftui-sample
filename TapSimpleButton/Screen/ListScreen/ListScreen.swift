@@ -109,7 +109,7 @@ struct TransactionsListScreen: View {
                 destination:
                     
                     TransactionsDetailScreen(transaction:$viewModel.transactionsList[index])
-                        .environment(\.resizableSheetCenter, resizableSheetCenter)
+//                        .environment(\.resizableSheetCenter, resizableSheetCenter)
 
                 
                 ,

@@ -52,7 +52,8 @@ struct Controller: ScreenMovable {
                 }
                 
                 contents
-                
+                    .navigationBarColor(UIColor.rgba(red: 144, green: 204, blue: 240, alpha: 1))
+
                 if inputTransactionRouter.screen == .second &&  inputTransactionRouter.screen == .third {
                     EmptyView()
                 } else {
@@ -60,14 +61,13 @@ struct Controller: ScreenMovable {
                         .frame(height: 60)
                         .background(Color.headerColor)
                 }
-                
+
                 
             }
-            .navigationBarTitleDisplayMode(.large)
-            .navigationBarColor(UIColor.rgba(red: 144, green: 204, blue: 240, alpha: 1))
-            
+
         }
-        
+        .environment(\.resizableSheetCenter, resizableSheetCenter)
+
     }
     
     var contents: some View {
@@ -85,7 +85,7 @@ struct Controller: ScreenMovable {
                 
             case .transactionList:
                 TransactionsListScreen(viewModel: .init(container: container))
-                    .environment(\.resizableSheetCenter, resizableSheetCenter)
+//                    .environment(\.resizableSheetCenter, resizableSheetCenter)
             }
         }
     }
@@ -95,7 +95,7 @@ struct Controller: ScreenMovable {
         TabView(selection: $selection) {
             
             TransactionsListScreen(viewModel: .init(container: container))
-                .environment(\.resizableSheetCenter, resizableSheetCenter)
+//                .environment(\.resizableSheetCenter, resizableSheetCenter)
                 .tabItem {
                     Image(systemName: "apps.ipad.landscape")
                 }

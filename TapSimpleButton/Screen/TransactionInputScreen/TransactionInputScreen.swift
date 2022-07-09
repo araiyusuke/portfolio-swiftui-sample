@@ -30,7 +30,7 @@ struct TransactionInputScreen:  ScreenMovable2 {
 
             case .second:
                 SecondScreen()
-                    .environment(\.resizableSheetCenter, resizableSheetCenter)
+//                    .environment(\.resizableSheetCenter, resizableSheetCenter)
 
             case .third:
                 ThirdScreen()

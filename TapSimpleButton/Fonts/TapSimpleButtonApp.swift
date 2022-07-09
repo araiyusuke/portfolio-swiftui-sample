@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import ResizableSheet
 @main
 struct TapSimpleButtonApp: App {
     

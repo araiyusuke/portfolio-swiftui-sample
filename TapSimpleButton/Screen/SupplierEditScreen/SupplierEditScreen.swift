@@ -13,7 +13,7 @@ struct SupplierEditScreen: View {
     
     @State private var cancellables = Set<AnyCancellable>()
     @State private var pullDownItems: [PullDownItem] = []
-    @State private var state: ResizableSheetState = .hidden
+    @State public var state: ResizableSheetState = .hidden
     @Binding public var editText: String?
     var body: some View {
         
@@ -29,15 +29,10 @@ struct SupplierEditScreen: View {
                 inputSuppliers
                 
                 PullDown()
-                    .resizableSheet($state) { builder in
-                        builder.content { context in
-                            BottomSheetList(title: "取引先", items: $pullDownItems , state: $state) { value in
-                                self.editText = value.name
-                            }
-                            .frame(height: 600)
-                        }
-                    }
+                    
                     .onButtonTap() {
+                        self.state = .medium
+
                         DescriptionsAPI.fetch()
                             .receive(on: DispatchQueue.main)
                             .sink(receiveCompletion: { completion in
@@ -48,15 +43,32 @@ struct SupplierEditScreen: View {
                             })
                             .store(in: &cancellables)
                     }
+                    .resizableSheet($state) { builder in
+                        builder.content { context in
+                            BottomSheetList(title: "取引先", items: $pullDownItems , state: $state) { value in
+                                self.editText = value.name
+                            }
+                            .frame(height: 600)
+                        }
+                    }
                 
             }
+            .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             
                         Spacer()
             
+            if self.state == .medium {
+                Text("うほ")
+                    .frame(maxWidth: .infinity, maxHeight: 400)
+                    .background(Color.red)
+                    .onTapGesture {
+                        self.state = .hidden
+                    }
+            }
+            
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
         .background(Color.backGroundColor)
         .navigationTitle("取引先入力")
 
