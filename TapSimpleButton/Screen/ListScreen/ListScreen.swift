@@ -13,8 +13,9 @@ struct TransactionsListScreen: View {
 
     @State var selected = 0
     @State var sortDirection: Sort = .new
-    @ObservedObject private(set) var viewModel: ViewModel
-    
+    @StateObject var viewModel: ViewModel
+    @EnvironmentObject var router : HeaderManager
+
     var searchCount: String {
         viewModel.count.description
     }
@@ -27,7 +28,7 @@ struct TransactionsListScreen: View {
     
     var body: some View {
         
-//        NavigationView {
+        NavigationView {
             
             VStack(spacing: 0) {
                 
@@ -71,12 +72,16 @@ struct TransactionsListScreen: View {
                 
                 content
             }
+
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .onAppear {
                 viewModel.fetchTransactions()
+                router.isShow = true
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarTitle("取引一覧")
+        }
+
     }
     
     @ViewBuilder
@@ -86,8 +91,10 @@ struct TransactionsListScreen: View {
             loadedView()
         case .isLoading:
             loadingView
+            
         case let .loaded(transactions):
             loadedView()
+                
         case let .failed(error):
             failedView(error)
         }
@@ -107,12 +114,7 @@ struct TransactionsListScreen: View {
             
             NavigationLink(
                 destination:
-                    
-                    TransactionsDetailScreen(transaction:$viewModel.transactionsList[index])
-//                        .environment(\.resizableSheetCenter, resizableSheetCenter)
-
-                
-                ,
+                    TransactionsDetailScreen(transaction:$viewModel.transactionsList[index]),
                 label: {
                     ZStack {
                         
@@ -171,6 +173,7 @@ struct TransactionsListScreen: View {
                     Button(role: .destructive) {
                     } label: {
                         Text("削除")
+                          
                     }
                     
                     Button(role: .none ) {
@@ -187,7 +190,6 @@ struct TransactionsListScreen: View {
         .padding(0)
         .environment(\.defaultMinListRowHeight, 78)
         .listStyle(PlainListStyle())
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     func failedView(_ error: Error) -> some View {

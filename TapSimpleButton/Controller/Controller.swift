@@ -6,6 +6,7 @@ import ResizableSheet
 struct Controller: ScreenMovable {
     
     @EnvironmentObject var router : Router
+
     @EnvironmentObject var inputTransactionRouter : TransactionInputRouter
     @EnvironmentObject var header : Header
     @EnvironmentObject var transactionInputRouter: TransactionInputRouter
@@ -26,7 +27,7 @@ struct Controller: ScreenMovable {
     
     var body: some View {
         
-        NavigationView {
+//        NavigationView {
             VStack(spacing: 0) {
                 
                 ZStack {
@@ -57,13 +58,19 @@ struct Controller: ScreenMovable {
                 if inputTransactionRouter.screen == .second &&  inputTransactionRouter.screen == .third {
                     EmptyView()
                 } else {
-                    bottomMenu
-                        .frame(height: 60)
-                        .background(Color.headerColor)
+                    
+                    if headerManager.isShow {
+                        bottomMenu
+                            .frame(height: 60)
+                            .background(Color.headerColor)
+                    } else {
+                        
+                    }
+                  
                 }
 
                 
-            }
+//            }
 
         }
         .environment(\.resizableSheetCenter, resizableSheetCenter)
