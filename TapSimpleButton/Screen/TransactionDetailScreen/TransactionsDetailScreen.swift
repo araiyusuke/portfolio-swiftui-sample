@@ -11,67 +11,20 @@ import ResizableSheet
 struct TransactionsDetailScreen: View {
     @EnvironmentObject var router : Router
     @Environment(\.dismiss) var dismiss
-    @State var show: Bool = false
+    
+    // ボトムシートの表示管理
+    @State private var isShowBottomSheet: Bool = false
+    
     @EnvironmentObject var headerManager : HeaderManager
 
-    enum BottomSheetState {
-        case date
-        case account
-        
-        var description: String {
-            switch self {
-            case .date:
-                return "date"
-            case .account:
-                return "account"
-            }
-        }
-    }
     
     @State private var pickerSelection = 0
     @Binding var transaction: Transaction
     @State var state: ResizableSheetState = .hidden
     @State var bottomSheetState: BottomSheetState = .date
     @State private var selectionDate = Date()    // Date構造体の生成、初期値は現在日時
-    @State private var pullDownItems: [PullDownItem] = [
-        .init(id: 1, name: "仕入"),
-        .init(id: 2, name: "接待交際費"),
-        .init(id: 3, name: "旅費交通費"),
-        .init(id: 4, name: "通信費"),
-        .init(id: 5, name: "雑費"),
-        .init(id: 6, name: "荷造運賃"),
-        .init(id: 7, name: "消耗品費"),
-        .init(id: 8, name: "会議費"),
-        .init(id: 9, name: "法定福利費"),
-        .init(id: 10, name: "福利厚生費"),
-        .init(id: 11, name: "広告宣伝費"),
-        .init(id: 12, name: "修繕費"),
-        .init(id: 13, name: "水道光熱費"),
-        .init(id: 14, name: "新聞図書費"),
-        .init(id: 15, name: "支払い手数料"),
-        .init(id: 16, name: "車両日"),
-        .init(id: 17, name: "地代家賃"),
-        .init(id: 18, name: "租税効果"),
-        .init(id: 19, name: "損害保険料"),
-        .init(id: 20, name: "給料賃金"),
-        .init(id: 21, name: "外注工賃"),
-        .init(id: 22, name: "利子割引料"),
-        .init(id: 23, name: "研修費"),
-        .init(id: 24, name: "税理士・弁護士報酬"),
-        .init(id: 25, name: "専従者給与"),
-
-    ]
     
-    var overlay: some View {
-        Color
-            .black
-            .opacity(0.5).zIndex(9)
-            .onTapGesture {
-            withAnimation {
-                show.toggle()
-            }
-        }
-    }
+   
     
     var bottomSheetsHeader: some View {
         
@@ -87,7 +40,7 @@ struct TransactionsDetailScreen: View {
                         .foregroundColor(.black)
                         .onTapGesture {
                             withAnimation {
-                                show.toggle()
+                                isShowBottomSheet.toggle()
                             }
                         }
                 }.frame(maxWidth: .infinity, alignment: .trailing)
@@ -102,7 +55,7 @@ struct TransactionsDetailScreen: View {
         
         ZStack(alignment: .bottom) {
             
-            if show {
+            if isShowBottomSheet {
                 overlay
             }
             
@@ -135,7 +88,7 @@ struct TransactionsDetailScreen: View {
             }
             .frame(maxWidth: .infinity , maxHeight: .infinity, alignment: .bottom)
             
-            if show {
+            if isShowBottomSheet {
                 
                 VStack {
 
@@ -149,16 +102,16 @@ struct TransactionsDetailScreen: View {
 
                     
                     List {
-                        ForEach(pullDownItems) { item in
-                            Text(item.name)
+                        ForEach(Account.all()) { account in
+                            Text(account.name)
                                 .customFont(size: 14, spacing: .none, color: .dark, weight: .light)
                                 .frame(maxWidth: .infinity)
                                 .onButtonTap() {
                                     
-                                    transaction.accounts = item.name
+                                    transaction.accounts = account.name
 
                                     withAnimation {
-                                        show.toggle()
+                                        isShowBottomSheet.toggle()
                                     }
 
                                 }
@@ -218,7 +171,7 @@ struct TransactionsDetailScreen: View {
             }
             .onButtonTap() {
                 withAnimation {
-                    show.toggle()
+                    isShowBottomSheet.toggle()
                 }
             }
             
@@ -233,7 +186,7 @@ struct TransactionsDetailScreen: View {
             }
             .onButtonTap() {
                 withAnimation {
-                    show.toggle()
+                    isShowBottomSheet.toggle()
                 }
             }
             
@@ -302,3 +255,36 @@ struct TransactionsDetailScreen: View {
     }
 }
 
+extension TransactionsDetailScreen {
+    
+    enum BottomSheetState {
+        
+        // 取引日時
+        case date
+        // 勘定
+        case account
+        
+        var description: String {
+            switch self {
+            case .date:
+                return "date"
+            case .account:
+                return "account"
+            }
+        }
+    }
+}
+
+// ボトムシート表示時、他の画面操作を向こうにするために表示するオーバーレイ
+extension TransactionsDetailScreen {
+    var overlay: some View {
+        Color
+            .black
+            .opacity(0.5).zIndex(9)
+            .onTapGesture {
+            withAnimation {
+                isShowBottomSheet.toggle()
+            }
+        }
+    }
+}

@@ -12,19 +12,19 @@ extension FirstScreen {
 
     static let spending = [
         [
-            Account(title: "収入", borderColor: Color.rgb(148, 196, 122)),
-            Account(title: "接待交際費", borderColor: Color.rgb(173, 124, 229)),
-            Account(title: "旅費交通費", borderColor: .green)
+            Account(name: "仕入", color: Color.rgb(148, 196, 122)),
+            Account(name: "接待交際費", color: Color.rgb(173, 124, 229)),
+            Account(name: "旅費交通費", color: .green)
         ],
         [
-            Account(title: "消耗品", borderColor: Color.rgb(237, 127, 123)),
-            Account(title: "通信費", borderColor: Color.rgb(123, 206, 250)),
-            Account(title: "会議費", borderColor: Color.rgb(243, 177, 116))
+            Account(name: "通信費", color: Color.rgb(123, 206, 250)),
+            Account(name: "消耗品", color: Color.rgb(237, 127, 123)),
+            Account(name: "会議費", color: Color.rgb(243, 177, 116))
         ],
         [
-            Account(title: "法定福利費", borderColor: Color.rgb(243, 177, 116)),
-            Account(title: "前回の取引", borderColor: Color.gray),
-            Account(title: "その他", borderColor: .gray)
+            Account(name: "法定福利費", color: Color.rgb(243, 177, 116)),
+            Account(name: "前回の取引", color: Color.gray),
+            Account(name: "その他", color: .gray)
         ]
     ]
 }
