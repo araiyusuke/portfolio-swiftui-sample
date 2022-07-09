@@ -49,7 +49,7 @@ struct Controller: ScreenMovable {
             tab
             
         }
-        .environment(\.resizableSheetCenter, resizableSheetCenter)
+
     }
     
     var tab: some View {
@@ -57,6 +57,7 @@ struct Controller: ScreenMovable {
         TabView(selection: $selection) {
             
             TransactionsListScreen(viewModel: .init(container: container))
+                .environment(\.resizableSheetCenter, resizableSheetCenter)
                 .tabItem {
                     Image(systemName: "apps.ipad.landscape")
                 }

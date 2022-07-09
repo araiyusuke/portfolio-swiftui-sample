@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 struct TransactionsListScreen: View {
-    
+
     @EnvironmentObject var router : Router
     @State var selected = 0
     @State var sortDirection: Sort = .new
@@ -79,6 +79,7 @@ struct TransactionsListScreen: View {
         .onAppear {
             viewModel.fetchTransactions()
         }
+
     }
     
     @ViewBuilder
@@ -108,7 +109,11 @@ struct TransactionsListScreen: View {
         List(viewModel.transactionsList.indices, id:\.self) { index in
             
             NavigationLink(
-                destination: TransactionsDetailScreen(transaction:$viewModel.transactionsList[index]),
+                destination:
+                    TransactionsDetailScreen(transaction:$viewModel.transactionsList[index])
+                        .environment(\.resizableSheetCenter, resizableSheetCenter)
+
+                ,
                 label: {
                     ZStack {
                         
@@ -178,14 +183,10 @@ struct TransactionsListScreen: View {
             .listRowBackground(Color.white)
             .listRowInsets(EdgeInsets())
         }
-        
-        
-        
         .padding(0)
         .environment(\.defaultMinListRowHeight, 78)
         .listStyle(PlainListStyle())
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        
     }
     
     func failedView(_ error: Error) -> some View {
