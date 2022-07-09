@@ -173,14 +173,14 @@ struct TransactionsDetailScreen: View {
             }
             
             HStack {
+                
                 Text("金額(税込)")
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
-                
-                Spacer()
-                
+                                
                 TextField("placeholder", value: $transaction.price, formatter: NumberFormatter())
                     .font(Font.custom("NotoSansJP", size: 13))
                     .multilineTextAlignment(TextAlignment.trailing)
+                    .frame(maxWidth: .infinity)
                     .padding(.trailing, 10)
                 
             }
