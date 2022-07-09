@@ -7,7 +7,6 @@
 
 import SwiftUI
 import ResizableSheet
-
 @main
 struct TapSimpleButtonApp: App {
     
@@ -17,6 +16,7 @@ struct TapSimpleButtonApp: App {
                 .environmentObject(Router.shared)
                 .environmentObject(TransactionInputRouter.shared)
                 .environmentObject(Header())
+                .environmentObject(HeaderManager())
         }
     }
 }

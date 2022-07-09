@@ -45,7 +45,7 @@ extension Controller {
                             .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
                             .frame(height: 20)
                         
-                        Text("取引先・提要入力")
+                        Text("取引先・摘要入力")
                             .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
                             .frame(height: 30)
                     }

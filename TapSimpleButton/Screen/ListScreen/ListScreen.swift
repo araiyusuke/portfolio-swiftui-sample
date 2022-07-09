@@ -9,9 +9,8 @@ import Foundation
 import SwiftUI
 import Combine
 
-struct TransactionsListScreen: ScreenMovable {
-    
-    @EnvironmentObject var router : Router
+struct TransactionsListScreen: View {
+
     @State var selected = 0
     @State var sortDirection: Sort = .new
     @ObservedObject private(set) var viewModel: ViewModel
@@ -28,64 +27,67 @@ struct TransactionsListScreen: ScreenMovable {
     
     var body: some View {
         
-        //        NavigationView {
-        VStack(spacing: 0) {
+//        NavigationView {
             
-            VStack(spacing: 5) {
-                Text("科目: すべて")
-                    .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(spacing: 0) {
                 
-                Text("取引日: 2021/01/01 〜 2022/07/04")
-                    .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                VStack(spacing: 5) {
+                    Text("科目: すべて")
+                        .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text("取引日: 2021/01/01 〜 2022/07/04")
+                        .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text("検索結果: \(searchCount)件")
+                        .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                }
+                .padding(5)
+                .frame(maxWidth: .infinity)
+                .background(Color.rgb(205, 230, 237))
                 
-                Text("検索結果: \(searchCount)件")
-                    .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                HStack() {
+                    
+                    sortDirection.icon
+                    
+                    Text(sortDirection.description)
+                        .customFont(size: 13, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                        .onButtonTap() {
+                            sortDirection.toggle()
+                        }
+                    
+                    Spacer()
+                    
+                    searchButton
+                        .onButtonTap() {
+                        }
+                }
+                .padding(.horizontal, 5)
+                .padding(.vertical, 10)
+                .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
                 
+                content
             }
-            .padding(5)
-            .frame(maxWidth: .infinity)
-            .background(Color.rgb(205, 230, 237))
-            
-            HStack() {
-                
-                sortDirection.icon
-                
-                Text(sortDirection.description)
-                    .customFont(size: 13, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                    .onButtonTap() {
-                        sortDirection.toggle()
-                    }
-                
-                Spacer()
-                
-                searchButton
-                    .onButtonTap() {
-                    }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            .onAppear {
+                viewModel.fetchTransactions()
             }
-            .padding(.horizontal, 5)
-            .padding(.vertical, 10)
-            .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
-            
-            content
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .onAppear {
-            viewModel.fetchTransactions()
-        }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle("取引一覧")
     }
     
     @ViewBuilder
     private var content: some View {
         switch viewModel.transactions {
         case .notRequested:
-            notRequestedView
+            loadedView()
         case .isLoading:
             loadingView
         case let .loaded(transactions):
-            loadedView(transactions: transactions)
+            loadedView()
         case let .failed(error):
             failedView(error)
         }
@@ -99,30 +101,83 @@ struct TransactionsListScreen: ScreenMovable {
         Text("ローディング...")
     }
     
-    func loadedView(transactions: [Transaction]) -> some View {
-        List {
-            ForEach(transactions) { transaction in
+    func loadedView() -> some View {
+        
+        List(viewModel.transactionsList.indices, id:\.self) { index in
+            
+            NavigationLink(
+                destination:
+                    
+                    TransactionsDetailScreen(transaction:$viewModel.transactionsList[index])
+                        .environment(\.resizableSheetCenter, resizableSheetCenter)
+
                 
-                NavigationLink(
-                    destination: TransactionsDetailScreen(),
-                    label: {
-                        transaction.cell
-                    })
-                
-                .swipeActions(edge: .trailing) {
-                    HStack {
+                ,
+                label: {
+                    ZStack {
                         
-                        Button(role: .destructive) {
-                        } label: {
-                            Text("削除")
-                        }
+                        Text(viewModel.transactionsList[index].accounts)
+                            .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
                         
-                        Button(role: .none ) {
-                            // 処理
-                        } label: {
-                            Text("コピー")
+                        HStack(spacing: 0) {
+                            
+                            VStack(spacing: 0) {
+                                
+                            }
+                            .frame(maxWidth: 7, maxHeight: .infinity)
+                            .background(viewModel.transactionsList[index].color)
+                            .padding(.vertical, 2)
+                            
+                            
+                            VStack (spacing: 10) {
+                                
+                                HStack(spacing: 0) {
+                                    
+                                    Text(viewModel.transactionsList[index].date)
+                                        .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
+                                    
+                                    Spacer()
+                                    
+                                    Text("¥\(viewModel.transactionsList[index].price)")
+                                        .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
+                                    
+                                }
+                                
+                                HStack(spacing: 0) {
+                                    Text(viewModel.transactionsList[index].description ?? "適用未入力")
+                                        .customFont(size: 13, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
+                                    
+                                    Spacer()
+                                    
+                                    viewModel.transactionsList[index].image
+                                    
+                                }
+                            }
+                            .padding(.leading, 5)
+                            
+                            //                rightArrow
+                            //                    .frame(width: 30)
                         }
                     }
+                }
+                
+            )
+            .isDetailLink(false)
+
+            
+            .swipeActions(edge: .trailing) {
+                HStack {
+                    
+                    Button(role: .destructive) {
+                    } label: {
+                        Text("削除")
+                    }
+                    
+                    Button(role: .none ) {
+                    } label: {
+                        Text("コピー")
+                    }
+                    
                     
                 }
             }

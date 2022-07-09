@@ -17,6 +17,7 @@ extension TransactionsListScreen {
         private var cancellables = Set<AnyCancellable>()
 
         @Published var transactions: Loadable<[Transaction]>
+        @Published var transactionsList: [Transaction] = []
 
         init(container: DIContainer, transactions: Loadable<[Transaction]> = .notRequested) {
             self.container = container
@@ -41,6 +42,7 @@ extension TransactionsListScreen {
                 .sink(receiveCompletion: { completion in
                     print(completion)
                 }, receiveValue: { response in
+                    self.transactionsList = response.transactions
                     self.transactions = .loaded(response.transactions)
                 })
                 .store(in: &cancellables)

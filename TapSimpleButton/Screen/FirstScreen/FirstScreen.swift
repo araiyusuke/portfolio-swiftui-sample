@@ -111,6 +111,7 @@ struct FirstScreen: ScreenMovable2 {
             }
             .font(.footnote)
         }
+        .hiddenNavigationBarStyle()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(Color.backGroundColor)
         .gesture(DragGesture()

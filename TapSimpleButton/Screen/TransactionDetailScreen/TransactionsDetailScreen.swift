@@ -6,11 +6,56 @@
 //
 
 import SwiftUI
+import ResizableSheet
 
 struct TransactionsDetailScreen: View {
+    @EnvironmentObject var router : Router
+    @Environment(\.dismiss) var dismiss
+
+    struct BottomSheetContents: View {
+        @Binding var state: BottomSheetState
+
+        var body: some View {
+            switch state {
+            case .date:
+                Text(state.description)
+            case .account:
+                Text(state.description)
+            }
+        }
+    }
+
+    enum BottomSheetState {
+        case date
+        case account
+        
+        var description: String {
+            switch self {
+            case .date:
+                return "date"
+            case .account:
+                return "account"
+            }
+        }
+    }
     
     @State private var pickerSelection = 0
+    @Binding var transaction: Transaction
+    @State var state: ResizableSheetState = .hidden
+    @State var bottomSheetState: BottomSheetState = .date
+
+    @State private var pullDownItems: [PullDownItem] = [
+        .init(id: 1, name: "A"),
+        .init(id: 1, name: "B"),
+        .init(id: 1, name: "C")
+    ]
     
+    @State private var pullDownItems1: [PullDownItem] = [
+        .init(id: 1, name: "あ"),
+        .init(id: 1, name: "い"),
+        .init(id: 1, name: "う")
+    ]
+
     var body: some View {
         
         VStack(spacing: 0) {
@@ -18,7 +63,7 @@ struct TransactionsDetailScreen: View {
             HStack {
                 Text("取引内容")
                     .customFont(size: 12, spacing: .none, color: .dark, weight: .light)
-                
+                   
                 Spacer()
                 
                 Text("この取引は編集可能です\n項目タップで編集開始")
@@ -28,20 +73,44 @@ struct TransactionsDetailScreen: View {
             .frame(height: 80)
             
             list
-                .frame(height: 500)
+                .frame(height: 400)
+            
+            Spacer()
             
             Text("削除")
                 .customFont(size: 16, spacing: .none, rgb: .red, weight: .light)
                 .padding(.vertical, 15)
-            
                 .frame(maxWidth: .infinity, maxHeight: 40)
                 .background(.white)
                 .padding(.vertical, 15)
-            
-            
         }
+        .navigationTitle("取引詳細")
+        .navigationBarBackButtonHidden(true)
+               .toolbar {
+                   ToolbarItem(placement: .navigationBarLeading) {
+                       Button(
+                           action: {
+                               dismiss()
+                           }, label: {
+                               HStack {
+                                   Image(systemName: "arrow.backward")
+                                   
+                                   Text("戻る")
+                               }
+                             
+                           }
+                       ).tint(.white)
+                   }
+               }
+        .frame(maxHeight: .infinity)
         .background(Color.rgb(247, 247, 247))
-        
+
+        .resizableSheet($state) { builder in
+            builder.content { context in
+                BottomSheetContents(state: $bottomSheetState)
+                    .frame(height: 600)
+            }
+        }
     }
     
     var list : some View {
@@ -51,21 +120,17 @@ struct TransactionsDetailScreen: View {
             HStack {
                 Text("取引日")
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+                    
                 
                 Spacer()
-                Text("2022/07/06")
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
-            }   
-            
-            HStack {
-                Text("取引日")
+                Text(transaction.date)
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
-                
-                Spacer()
-                Text("2022/07/06")
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
-                
+                   
+            }
+            .onButtonTap() {
+                bottomSheetState = .date
+                state = .medium
             }
             
             HStack {
@@ -73,27 +138,37 @@ struct TransactionsDetailScreen: View {
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
                 Spacer()
-                Text("広告宣伝費")
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
+                account
+                    
+            }
+            .onButtonTap() {
+                bottomSheetState = .account
+                state = .medium
+                print(bottomSheetState)
             }
             
-            
             HStack {
+                
                 Text("取引先")
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
                 NavigationLink(
-                    destination: SupplierEditScreen()
-                        .environment(\.resizableSheetCenter, resizableSheetCenter),
+                    destination:
+                        SupplierEditScreen(editText: $transaction.supplier)
+                        .environment(\.resizableSheetCenter, resizableSheetCenter)
+                    ,
                     label: {
+                        
                         Spacer()
                         
-                        Text("セブンイレブン")
+                        Text(transaction.supplier ?? "")
                             .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                         
                     }
                 )
+                .isDetailLink(false)
+                
             }
             
             HStack {
@@ -101,36 +176,41 @@ struct TransactionsDetailScreen: View {
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                 
                 NavigationLink(
-                    destination: DescriptionEditScreen()
-                        .environment(\.resizableSheetCenter, resizableSheetCenter)
-                    ,
+                    destination: DescriptionEditScreen(editText: $transaction.description)
+                        .environment(\.resizableSheetCenter, resizableSheetCenter),
                     label: {
+                        
                         Spacer()
                         
-                        Text("いい")
+                        Text(transaction.description ?? "")
                             .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                         
                     }
                 )
+                .isDetailLink(false)
             }
             
             HStack {
+                
                 Text("金額(税込)")
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
-                
-                Spacer()
-                Text("¥0")
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+                                
+                TextField("placeholder", value: $transaction.price, formatter: NumberFormatter())
+                    .font(Font.custom("NotoSansJP", size: 13))
+                    .multilineTextAlignment(TextAlignment.trailing)
+                    .frame(maxWidth: .infinity)
+                    .padding(.trailing, 10)
                 
             }
-            
         }
         .listStyle(.plain)
+      
+       
+    }
+    
+    var account: some View {
+        Text(transaction.accounts)
+            .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
     }
 }
 
-struct TransactionDescriptionScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        TransactionsDetailScreen()
-    }
-}

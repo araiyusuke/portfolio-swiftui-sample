@@ -11,11 +11,12 @@ import ResizableSheet
 
 struct DescriptionEditScreen: View {
     
-    @State private var descriptionText = ""
     @State private var cancellables = Set<AnyCancellable>()
     @State private var pullDownItems: [PullDownItem] = []
     @State private var state: ResizableSheetState = .hidden
-    
+    @Binding var editText: String?
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
         
         VStack(spacing: 20) {
@@ -32,7 +33,7 @@ struct DescriptionEditScreen: View {
                     .resizableSheet($state) { builder in
                         builder.content { context in
                             BottomSheetList(title: "摘要", items: $pullDownItems , state: $state) { value in
-                                self.descriptionText = value.name
+                                self.editText = value.name
                             }
                             .frame(height: 600)
                         }
@@ -60,10 +61,28 @@ struct DescriptionEditScreen: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .background(Color.backGroundColor)
+        .navigationTitle("取引詳細")
+        .navigationBarBackButtonHidden(true)
+               .toolbar {
+                   ToolbarItem(placement: .navigationBarLeading) {
+                       Button(
+                           action: {
+                               dismiss()
+                           }, label: {
+                               HStack {
+                                   Image(systemName: "arrow.backward")
+                                   
+                                   Text("戻る")
+                               }
+                             
+                           }
+                       ).tint(.white)
+                   }
+               }
     }
     
     var inputDescription: some View {
-        TextEditor(text: $descriptionText)
+        TextEditor(text: $editText.toUnwrapped(defaultValue: ""))
             .padding(.leading, 10)
             .frame(width: 290, height: 100)
             .background(.white)

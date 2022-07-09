@@ -27,10 +27,11 @@ struct TransactionInputScreen:  ScreenMovable2 {
                 
             case .first(let regist):
                 FirstScreen(viewModel: FirstScreen.ViewModel(container: container), registed: regist)
-          
+
             case .second:
                 SecondScreen()
-                
+                    .environment(\.resizableSheetCenter, resizableSheetCenter)
+
             case .third:
                 ThirdScreen()
                 
@@ -48,6 +49,7 @@ struct TransactionInputScreen:  ScreenMovable2 {
                 .frame(maxHeight: 60)
                 .background(Color.backGroundColor)
         }
+        
        
     }
 }

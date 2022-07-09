@@ -25,12 +25,21 @@ class TransactionInputRouter: ObservableObject {
    
 }
 
+class HeaderManager: ObservableObject {
+    @Published var isShow: Bool = true
+}
+
 class Router: ObservableObject {
+    
+    enum TransactionListScreenType {
+        case top
+        case detail
+    }
     
     // スタート画面は取引入力
     @Published var screen: ScreenType = .transactionInput(false)
     @Published var direction: Direction = .forward
-    
+
     public init() {}
     
     static let shared: Router = .init()

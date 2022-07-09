@@ -118,7 +118,10 @@ struct SecondScreen: ScreenMovable2 {
             .padding(.top, 20)
             .background(Color.backGroundColor)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+           
         }
+        .hiddenNavigationBarStyle()
+
     }
     
     var help: some View {
