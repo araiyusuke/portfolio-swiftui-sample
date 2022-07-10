@@ -64,7 +64,7 @@ struct TransactionsDetailScreen: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .background(Color.rgb(247, 247, 247))
-        .navigationForUpdateTransaction(title: "取引詳細")
+        .customNavigation(leading: "戻る", center: "取引詳細", trailing: "保存")
         .onAppear() {
             viewModel.onAppear()
             headerManager.isShow = false

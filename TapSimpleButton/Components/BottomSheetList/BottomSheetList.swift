@@ -27,7 +27,7 @@ struct BottomSheetList:  View {
                     .customFont(size: 13, spacing: .short, color: .dark, weight: .light)
 
                 ZStack {
-                    Text("閉じる")
+                    Text("✖️")
                         .customFont(size: 13, spacing: .short, color: .dark, weight: .light)
                         .padding()
                         .frame(maxWidth: .infinity, alignment: .trailing)
