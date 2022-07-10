@@ -22,7 +22,7 @@ extension TransactionInputScreen {
             .onButtonTap {
                 viewModel.registTransaction {
                     header.showToast(title: "取引を登録しました")
-                    moveBack(to: .first(true), router)
+                    moveBack(to: .first, router)
                 }
             }
     }

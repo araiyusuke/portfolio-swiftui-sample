@@ -12,7 +12,7 @@ extension TransactionInputScreen {
     
     @ViewBuilder
     var back: some View {
-        if router.screen != .first(false) {
+        if router.screen != .first {
              Text("〈 戻る")
                 .customFont(size: 18, spacing: .short, color: .dark, weight: .medium)
                 .onTapGesture {
@@ -20,7 +20,7 @@ extension TransactionInputScreen {
                     case .first:
                         return
                     case .second:
-                        moveBack(to: .first(false), router)
+                        moveBack(to: .first, router)
                     case .third:
                         moveBack(to: .second, router)
                  

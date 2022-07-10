@@ -26,8 +26,8 @@ struct TransactionInputScreen:  ScreenMovable2 {
             
             switch router.screen {
                 
-            case .first(let regist):
-                FirstScreen(viewModel: FirstScreen.ViewModel(container: container), registed: regist)
+            case .first:
+                FirstScreen(viewModel: FirstScreen.ViewModel(container: container))
 
             case .second:
                 SecondScreen()

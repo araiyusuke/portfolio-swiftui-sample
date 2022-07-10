@@ -23,14 +23,12 @@ extension FirstScreen {
 struct FirstScreen: ScreenMovable2 {
     
     @ObservedObject private(set) var viewModel: ViewModel
-    
     @EnvironmentObject var header : Header
     @EnvironmentObject var router : TransactionInputRouter
 
     let circleSize: CGFloat = 82
     @State private var labelPosX:CGFloat = 0
     @State private var tab = 1
-    let registed: Bool
     
     var menus : [[Account?]] {
         if tab == 0 {
@@ -70,7 +68,7 @@ struct FirstScreen: ScreenMovable2 {
                        let foregroundColor = UIColor.black
 
                        // 選択時の背景色
-                    appearance.selectedSegmentTintColor = UIColor.white
+                        appearance.selectedSegmentTintColor = UIColor.white
 
                        // 通常時のフォントとフォント色
                        appearance.setTitleTextAttributes([
