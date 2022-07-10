@@ -6,7 +6,7 @@ import ResizableSheet
 struct Controller: ScreenMovable {
     
     @EnvironmentObject var router : Router
-    @EnvironmentObject var inputTransactionRouter : TransactionInputRouter
+//    @EnvironmentObject var inputTransactionRouter : TransactionInputRouter
     @EnvironmentObject var header : Header
     @EnvironmentObject var transactionInputRouter: TransactionInputRouter
     @EnvironmentObject var bottomTabManager : BottomTabManager
@@ -43,7 +43,7 @@ struct Controller: ScreenMovable {
                 contents
                     .navigationBarColor(UIColor.rgba(red: 144, green: 204, blue: 240, alpha: 1))
                 
-                if inputTransactionRouter.screen == .second &&  inputTransactionRouter.screen == .third {
+                if transactionInputRouter.screen == .second || transactionInputRouter.screen == .third {
                     EmptyView()
                 } else {
                     if bottomTabManager.isShow {
