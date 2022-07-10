@@ -15,16 +15,16 @@ struct CustomNavigationModifier: ViewModifier {
     public let leading: String?
     public let center: String
     public let trailing: String?
+    public var callBack: (() -> Void)?
     
     func body(content: Content) -> some View {
         
-        Group {
-            
+        return ZStack {
+                        
             if let leading = leading , let trailing = trailing {
                 content
                     .navigationTitle(center)
                     .navigationBarBackButtonHidden(true)
-                    .navigationBarItems(trailing: Text(trailing).foregroundColor(.white))
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
                             Button(
@@ -37,7 +37,23 @@ struct CustomNavigationModifier: ViewModifier {
                                     }
                                 }
                             ).tint(.white)
+                            
                         }
+                        
+                        ToolbarItem(placement: .navigationBarTrailing){
+                            Button(
+                                action: {
+                                    if let callBack = self.callBack {
+                                        callBack()
+                                    }
+                                }, label: {
+                                    Text(trailing)
+                                })
+                            }
+                        
+                                       
+                        
+                      
                     }
             } else {
                 content
@@ -49,7 +65,7 @@ struct CustomNavigationModifier: ViewModifier {
 }
 
 extension View {
-    public func customNavigation(leading: String? = nil, center: String, trailing: String? = nil) -> some View {
-        self.modifier(CustomNavigationModifier(leading: leading, center: center, trailing: trailing ))
+    public func customNavigation(leading: String? = nil, center: String, trailing: String? = nil, callBack: (() -> Void)? = nil)  -> some View {
+        self.modifier(CustomNavigationModifier(leading: leading, center: center, trailing: trailing, callBack: callBack ))
     }
 }

@@ -18,7 +18,9 @@ extension TransactionsListScreen {
 
         @Published var transactions: Loadable<[Transaction]>
         @Published var transactionsList: [Transaction] = []
+        @Published var isShowSecond: Bool = false
 
+        
         init(container: DIContainer, transactions: Loadable<[Transaction]> = .notRequested) {
             self.container = container
             self._transactions = .init(initialValue: transactions)

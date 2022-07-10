@@ -21,6 +21,7 @@ extension TransactionInputScreen {
             .cornerRadius(7)
             .onButtonTap {
                 viewModel.registTransaction {
+                    header.showToast(title: "取引を登録しました")
                     moveBack(to: .first(true), router)
                 }
             }

@@ -10,11 +10,11 @@ import SwiftUI
 import Combine
 
 struct TransactionsListScreen: View {
-
-    @State var selected = 0
+    
     @State var sortDirection: Sort = .new
     @StateObject var viewModel: ViewModel
     @EnvironmentObject var bottomTab : BottomTabManager
+    @EnvironmentObject var header : Header
 
     var searchCount: String {
         viewModel.count.description
@@ -30,59 +30,59 @@ struct TransactionsListScreen: View {
         
         NavigationView {
             
-            VStack(spacing: 0) {
+            ZStack {
                 
-                VStack(spacing: 5) {
-                    Text("科目: すべて")
-                        .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                VStack(spacing: 0) {
                     
-                    Text("取引日: 2021/01/01 〜 2022/07/04")
-                        .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    VStack(spacing: 5) {
+                        Text("科目: すべて")
+                            .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Text("取引日: 2021/01/01 〜 2022/07/04")
+                            .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Text("検索結果: \(searchCount)件")
+                            .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                    }
+                    .padding(5)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.rgb(205, 230, 237))
                     
-                    Text("検索結果: \(searchCount)件")
-                        .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    HStack() {
+                        
+                        sortDirection.icon
+                        
+                        Text(sortDirection.description)
+                            .customFont(size: 13, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                            .onButtonTap() {
+                                sortDirection.toggle()
+                            }
+                        
+                        Spacer()
+                        
+                        searchButton
+                            .onButtonTap() {
+                            }
+                    }
+                    .padding(.horizontal, 5)
+                    .padding(.vertical, 10)
+                    .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
+                    
+                    content
                     
                 }
-                .padding(5)
-                .frame(maxWidth: .infinity)
-                .background(Color.rgb(205, 230, 237))
-                
-                HStack() {
-                    
-                    sortDirection.icon
-                    
-                    Text(sortDirection.description)
-                        .customFont(size: 13, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                        .onButtonTap() {
-                            sortDirection.toggle()
-                        }
-                    
-                    Spacer()
-                    
-                    searchButton
-                        .onButtonTap() {
-                        }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                .onAppear {
+                    viewModel.fetchTransactions()
+                    bottomTab.isShow = true
                 }
-                .padding(.horizontal, 5)
-                .padding(.vertical, 10)
-                .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
-                
-                content
+                .customNavigation(center: "取引一覧")
             }
-
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-            .onAppear {
-                viewModel.fetchTransactions()
-                bottomTab.isShow = true
-            }
-            .customNavigation(center: "取引一覧")
-//            .navigationBarTitleDisplayMode(.inline)
-//            .navigationBarTitle("取引一覧")
         }
-
     }
     
     @ViewBuilder
@@ -95,7 +95,7 @@ struct TransactionsListScreen: View {
             
         case let .loaded(transactions):
             loadedView()
-                
+            
         case let .failed(error):
             failedView(error)
         }
@@ -118,7 +118,7 @@ struct TransactionsListScreen: View {
                     TransactionsDetailScreen( viewModel: .init(
                         container: viewModel.container,
                         transaction: viewModel.transactionsList[index])
-                ),
+                    ),
                 label: {
                     ZStack {
                         
@@ -160,14 +160,14 @@ struct TransactionsListScreen: View {
                                 }
                             }
                             .padding(.leading, 5)
-
+                            
                         }
                     }
                 }
                 
             )
             .isDetailLink(false)
-
+            
             
             .swipeActions(edge: .trailing) {
                 HStack {
@@ -175,7 +175,7 @@ struct TransactionsListScreen: View {
                     Button(role: .destructive) {
                     } label: {
                         Text("削除")
-                          
+                        
                     }
                     
                     Button(role: .none ) {
@@ -197,6 +197,4 @@ struct TransactionsListScreen: View {
     func failedView(_ error: Error) -> some View {
         Text(error.localizedDescription)
     }
-    
 }
-

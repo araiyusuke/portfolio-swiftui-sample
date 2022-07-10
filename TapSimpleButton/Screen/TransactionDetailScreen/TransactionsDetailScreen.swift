@@ -12,7 +12,8 @@ struct TransactionsDetailScreen: View {
     
     @StateObject var viewModel: ViewModel
     @EnvironmentObject var bottomTab : BottomTabManager
-
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var header : Header
     var body: some View {
         
         ZStack(alignment: .bottom) {
@@ -62,13 +63,21 @@ struct TransactionsDetailScreen: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
+       
         .frame(maxHeight: .infinity, alignment: .top)
         .background(Color.rgb(247, 247, 247))
-        .customNavigation(leading: "戻る", center: "取引詳細", trailing: "保存")
+        .customNavigation(leading: "戻る", center: "取引詳細", trailing: "保存") {
+            viewModel.onSaveButtonTap()
+        }
         .onAppear() {
             viewModel.onAppear()
             bottomTab.isShow = false
         }
+        .onReceive(viewModel.dismissHandle) { _ in
+            header.showToast(title: "保存ができました")
+            presentationMode.wrappedValue.dismiss()
+        }
+        
     }
     
     public func pickerChange(_ value: Date) {
