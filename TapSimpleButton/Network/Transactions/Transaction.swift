@@ -13,7 +13,13 @@ struct Transactions: Mockable, Hashable{
     var transactions: [Transaction]
 }
 
+struct TransactionDate {
+    static let dateFormat: String = "yyyy/MM/dd"
+
+}
+
 struct Transaction: Mockable, Hashable, Identifiable {
+    
     var id: Int
     var accounts: String
     var date: String
@@ -23,6 +29,13 @@ struct Transaction: Mockable, Hashable, Identifiable {
     var description: String?
     var color: Color {
         return Color.hex(string: hex, alpha: 0.3)
+    }
+    
+    var pickerDate: Date {
+        let formatter: DateFormatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.dateFormat = TransactionDate.dateFormat
+        return formatter.date(from: date) ?? Date()
     }
     
     var cell: some View {

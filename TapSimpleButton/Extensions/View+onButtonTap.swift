@@ -21,6 +21,7 @@ struct ButtonTapModifier: ViewModifier {
     }
 }
 
+
 extension View {
     public func onButtonTap(_ onTapped: (() -> Void)? = nil) -> some View {
         self.modifier(ButtonTapModifier(onTapped: onTapped))

@@ -18,14 +18,16 @@ class TransactionInputRouter: ObservableObject {
     @Published var screen: TransactionInput = .first(false)
     @Published var direction: Direction = .forward
     
-    public init() {}
+    private init() {}
     
     static let shared: TransactionInputRouter = .init()
-    
-   
 }
 
+
+
 class HeaderManager: ObservableObject {
+    
+    
     @Published var isShow: Bool = true
 }
 
