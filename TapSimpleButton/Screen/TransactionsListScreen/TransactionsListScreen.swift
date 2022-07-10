@@ -149,7 +149,7 @@ struct TransactionsListScreen: View {
                                 }
                                 
                                 HStack(spacing: 0) {
-                                    Text(viewModel.transactionsList[index].description ?? "適用未入力")
+                                    Text(viewModel.transactionsList[index].description ?? "摘要未入力")
                                         .customFont(size: 13, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
                                     
                                     Spacer()
