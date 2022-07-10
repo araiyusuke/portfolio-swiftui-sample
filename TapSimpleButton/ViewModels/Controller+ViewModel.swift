@@ -1,5 +1,4 @@
 //
-//  Controller+ViewModel.swift
 //  TapSimpleButton
 //
 //  Created by 名前なし on 2022/07/06.

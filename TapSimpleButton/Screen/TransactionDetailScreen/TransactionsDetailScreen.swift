@@ -11,7 +11,7 @@ import ResizableSheet
 struct TransactionsDetailScreen: View {
     
     @StateObject var viewModel: ViewModel
-    @EnvironmentObject var headerManager : HeaderManager
+    @EnvironmentObject var bottomTab : BottomTabManager
 
     var body: some View {
         
@@ -67,7 +67,7 @@ struct TransactionsDetailScreen: View {
         .customNavigation(leading: "戻る", center: "取引詳細", trailing: "保存")
         .onAppear() {
             viewModel.onAppear()
-            headerManager.isShow = false
+            bottomTab.isShow = false
         }
     }
     
