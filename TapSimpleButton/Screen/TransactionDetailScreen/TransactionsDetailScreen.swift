@@ -9,166 +9,52 @@ import SwiftUI
 import ResizableSheet
 
 struct TransactionsDetailScreen: View {
-    @EnvironmentObject var router : Router
-    @Environment(\.dismiss) var dismiss
-    @State var show: Bool = false
+    
+    @StateObject var viewModel: ViewModel
     @EnvironmentObject var headerManager : HeaderManager
 
-    enum BottomSheetState {
-        case date
-        case account
-        
-        var description: String {
-            switch self {
-            case .date:
-                return "date"
-            case .account:
-                return "account"
-            }
-        }
-    }
-    
-    @State private var pickerSelection = 0
-    @Binding var transaction: Transaction
-    @State var state: ResizableSheetState = .hidden
-    @State var bottomSheetState: BottomSheetState = .date
-    @State private var selectionDate = Date()    // Date構造体の生成、初期値は現在日時
-    @State private var pullDownItems: [PullDownItem] = [
-        .init(id: 1, name: "仕入"),
-        .init(id: 2, name: "接待交際費"),
-        .init(id: 3, name: "旅費交通費"),
-        .init(id: 4, name: "通信費"),
-        .init(id: 5, name: "雑費"),
-        .init(id: 6, name: "荷造運賃"),
-        .init(id: 7, name: "消耗品費"),
-        .init(id: 8, name: "会議費"),
-        .init(id: 9, name: "法定福利費"),
-        .init(id: 10, name: "福利厚生費"),
-        .init(id: 11, name: "広告宣伝費"),
-        .init(id: 12, name: "修繕費"),
-        .init(id: 13, name: "水道光熱費"),
-        .init(id: 14, name: "新聞図書費"),
-        .init(id: 15, name: "支払い手数料"),
-        .init(id: 16, name: "車両日"),
-        .init(id: 17, name: "地代家賃"),
-        .init(id: 18, name: "租税効果"),
-        .init(id: 19, name: "損害保険料"),
-        .init(id: 20, name: "給料賃金"),
-        .init(id: 21, name: "外注工賃"),
-        .init(id: 22, name: "利子割引料"),
-        .init(id: 23, name: "研修費"),
-        .init(id: 24, name: "税理士・弁護士報酬"),
-        .init(id: 25, name: "専従者給与"),
-
-    ]
-    
-    var overlay: some View {
-        Color
-            .black
-            .opacity(0.5).zIndex(9)
-            .onTapGesture {
-            withAnimation {
-                show.toggle()
-            }
-        }
-    }
-    
-    var bottomSheetsHeader: some View {
-        
-        HStack {
-
-            ZStack {
-                Text("科目")
-                    .customFont(size: 14, spacing: .none, color: .dark, weight: .light)
-
-                ZStack {
-                    Text("X")
-                        .padding(10)
-                        .foregroundColor(.black)
-                        .onTapGesture {
-                            withAnimation {
-                                show.toggle()
-                            }
-                        }
-                }.frame(maxWidth: .infinity, alignment: .trailing)
-            }
-
-
-        }
-        .background(Color.rgb(240, 240, 240))
-    }
-  
     var body: some View {
         
         ZStack(alignment: .bottom) {
             
-            if show {
+            // ボトムシート表示時は画面操作を禁止させる
+            if viewModel.isOpenBottomSheets {
                 overlay
             }
             
             VStack(spacing: 0) {
                 
-                HStack {
-                    Text("取引内容")
-                        .customFont(size: 12, spacing: .none, color: .dark, weight: .light)
-                    
-                    Spacer()
-                    
-                    Text("この取引は編集可能です\n項目タップで編集開始")
-                        .customFont(size: 12, spacing: .none, rgb: Color.rgb(65,144,210), weight: .light)
-                }
-                .padding()
-                .frame(height: 80)
-                
-                list
+                // 編集説明
+                transactionEditHelp
+                    .frame(height: 80)
+
+                // 内容
+                detailContents
                     .frame(height: 400)
                 
                 Spacer()
                 
-                Text("削除")
-                    .customFont(size: 16, spacing: .none, rgb: .red, weight: .light)
-                    .padding(.vertical, 15)
-                    .frame(maxWidth: .infinity, maxHeight: 40)
-                    .background(.white)
-                    .padding(.vertical, 15)
-                
+                Button(action: deleteTransactionAction ) {
+                    deleteBtn
+                }
+               
             }
             .frame(maxWidth: .infinity , maxHeight: .infinity, alignment: .bottom)
             
-            if show {
+            if viewModel.isOpenBottomSheets {
                 
                 VStack {
-
-                   bottomSheetsHeader
-
                     
-                    ///日付
-//                    DatePicker("", selection: $selectionDate, displayedComponents: .date)
-//                        .datePickerStyle(WheelDatePickerStyle())
-//                              .labelsHidden()
+                    if let bottomSheetState = viewModel.bottomSheetState {
+                        
+                        bottomSheetsHeader(title: bottomSheetState.description)
 
-                    
-                    List {
-                        ForEach(pullDownItems) { item in
-                            Text(item.name)
-                                .customFont(size: 14, spacing: .none, color: .dark, weight: .light)
-                                .frame(maxWidth: .infinity)
-                                .onButtonTap() {
-                                    
-                                    transaction.accounts = item.name
-
-                                    withAnimation {
-                                        show.toggle()
-                                    }
-
-                                }
+                        if bottomSheetState == .date {
+                            picker
+                        } else if bottomSheetState == .account {
+                            accountList
                         }
                     }
-                    .frame(maxWidth: .infinity)
-                    .listStyle(.plain)
-                    .background(Color.white)
-                    .frame(height: 400)
-
                 }
                 .background(Color.white)
                 .zIndex(.infinity)
@@ -178,78 +64,158 @@ struct TransactionsDetailScreen: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .background(Color.rgb(247, 247, 247))
-        .navigationTitle("取引詳細")
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(
-                    action: {
-                        dismiss()
-                    }, label: {
-                        HStack {
-                            Image(systemName: "arrow.backward")
-                            
-                            Text("戻る")
-                        }
-                        
-                    }
-                ).tint(.white)
-            }
-        }.onAppear() {
+        .navigationForUpdateTransaction(title: "取引詳細")
+        .onAppear() {
+            viewModel.onAppear()
             headerManager.isShow = false
         }
     }
     
+    public func pickerChange(_ value: Date) {
+        
+    }
     
-    var list : some View {
+    // ボトムシート閉じるボタンとタイトル
+    private func bottomSheetsHeader(title: String) -> some View {
+        
+        HStack {
+
+            ZStack {
+                // 日付 or 勘定名をタイトルにもつ
+                Text(title)
+                    .customFont(size: 14, spacing: .none, color: .dark, weight: .light)
+
+                // 閉じるボタンは右に寄せる
+                ZStack {
+                    Text("X")
+                        .padding(10)
+                        .foregroundColor(.black)
+                        .onTapGesture {
+                            withAnimation {
+                                viewModel.closeBottomSheets()
+                            }
+                        }
+                }.frame(maxWidth: .infinity, alignment: .trailing)
+            }
+        }
+        .background(Color.rgb(240, 240, 240))
+    }
+    
+    let deleteTransactionAction = { () -> () in
+        print("削除")
+    }
+    
+    // 説明
+    var transactionEditHelp: some View {
+        
+        HStack {
+            
+            VStack {
+                
+                Spacer()
+                
+                Text("取引内容")
+                    .customFont(size: 12, spacing: .none, color: .dark, weight: .light)
+            }
+           
+            Spacer()
+            
+            Text("この取引は編集可能です\n項目タップで編集開始")
+                .customFont(size: 12, spacing: .none, rgb: Color.rgb(65,144,210), weight: .light)
+        }
+        .padding()
+    }
+    
+    var picker: some View {
+        DatePicker("", selection: $viewModel.selectionDate, displayedComponents: .date)
+            .onChange(of: viewModel.selectionDate) { date in
+                viewModel.pickerChange(date: date)
+            }
+            .datePickerStyle(WheelDatePickerStyle())
+                  .labelsHidden()
+    }
+    
+    // 取引詳細を削除するためのボタン
+    var deleteBtn: some View {
+        Text("削除")
+            .customFont(size: 16, spacing: .none, rgb: .red, weight: .light)
+            .padding(.vertical, 15)
+            .frame(maxWidth: .infinity, maxHeight: 40)
+            .background(.white)
+            .padding(.vertical, 15)
+    }
+    
+    var accountList: some View {
+        List {
+            ForEach(viewModel.accounts) { account in
+                Text(account.name)
+                    .customFont(size: 14, spacing: .none, color: .dark, weight: .light)
+                    .frame(maxWidth: .infinity)
+                    .onButtonTap() {
+                        viewModel.transaction.accounts = account.name
+                        withAnimation {
+                            viewModel.closeBottomSheets()
+                        }
+                    }
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .listStyle(.plain)
+        .background(Color.white)
+        .frame(height: 400)
+    }
+    
+    // 取引詳細の内容
+    var detailContents : some View {
         
         List {
             
             HStack {
                 Text("取引日")
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
-                
+                    .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
                 
                 Spacer()
                 
-                Text(transaction.date)
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+                Text(viewModel.transaction.date)
+                    .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
                 
             }
             .onButtonTap() {
                 withAnimation {
-                    show.toggle()
+                    viewModel.selectionDate = viewModel.transaction.pickerDate
+                    viewModel.showBottomSheets(.date)
                 }
             }
             
             HStack {
                 Text("科目")
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+                    .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
                 
                 Spacer()
                 
-                account
+                Text(viewModel.transaction.accounts)
+                    .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
                 
             }
             .onButtonTap() {
                 withAnimation {
-                    show.toggle()
+                    viewModel.showBottomSheets(.account)
                 }
             }
             
             HStack {
                 
                 Text("取引先")
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+                    .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
                 
                 NavigationLink(
                     destination:
-                        SupplierEditScreen(editText: $transaction.supplier),
+                        SupplierEditScreen(editText: $viewModel.transaction.supplier),
                     label: {
                         
                         Spacer()
                         
-                        Text(transaction.supplier ?? "")
+                        Text(viewModel.transaction.supplier ?? "")
                             .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
                         
                     }
@@ -260,16 +226,16 @@ struct TransactionsDetailScreen: View {
             
             HStack {
                 Text("摘要")
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+                    .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
                 
                 NavigationLink(
-                    destination: DescriptionEditScreen(editText: $transaction.description),
+                    destination: DescriptionEditScreen(editText: $viewModel.transaction.description),
                     label: {
                         
                         Spacer()
                         
-                        Text(transaction.description ?? "")
-                            .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+                        Text(viewModel.transaction.description ?? "")
+                            .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
                         
                     }
                 )
@@ -280,12 +246,9 @@ struct TransactionsDetailScreen: View {
                 
                 Text("金額(税込)")
                     .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
-                    .onTapGesture {
-                        transaction.price = 9999
-                    }
-                
-                TextField("placeholder", value: $transaction.price, formatter: NumberFormatter())
-                    .font(Font.custom("NotoSansJP", size: 13))
+                 
+                TextField("¥0", value: $viewModel.transaction.price, formatter: NumberFormatter())
+                    .font(Font.custom("NotoSansJP", size: 15))
                     .multilineTextAlignment(TextAlignment.trailing)
                     .frame(maxWidth: .infinity)
                     .padding(.trailing, 10)
@@ -295,10 +258,38 @@ struct TransactionsDetailScreen: View {
         .listStyle(.plain)
         
     }
+}
+
+extension TransactionsDetailScreen {
     
-    var account: some View {
-        Text(transaction.accounts)
-            .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+    enum BottomSheetState {
+        
+        // 取引日
+        case date
+        // 科目
+        case account
+        
+        var description: String {
+            switch self {
+            case .date:
+                return "取引日"
+            case .account:
+                return "科目"
+            }
+        }
     }
 }
 
+// ボトムシート表示時、他の画面操作を向こうにするために表示するオーバーレイ
+extension TransactionsDetailScreen {
+    var overlay: some View {
+        Color
+            .black
+            .opacity(0.5).zIndex(9)
+            .onTapGesture {
+            withAnimation {
+                viewModel.closeBottomSheets()
+            }
+        }
+    }
+}

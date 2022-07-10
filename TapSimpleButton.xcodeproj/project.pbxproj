@@ -56,6 +56,7 @@
 		F13C80062877A34B00973687 /* DescriptionEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C80052877A34B00973687 /* DescriptionEditScreen.swift */; };
 		F13C80092877AACA00973687 /* View+ResizableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C80082877AACA00973687 /* View+ResizableSheet.swift */; };
 		F13C800C2877AF3A00973687 /* PullDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C800B2877AF3A00973687 /* PullDown.swift */; };
+		F13C804E287A763000973687 /* View+NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C804D287A763000973687 /* View+NavigationView.swift */; };
 		F13CA31D286E769E00527D1E /* TapSimpleButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */; };
 		F13CA31F286E769E00527D1E /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CA31E286E769E00527D1E /* Controller.swift */; };
 		F13CA321286E769F00527D1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F13CA320286E769F00527D1E /* Assets.xcassets */; };
@@ -145,6 +146,7 @@
 		F13C80052877A34B00973687 /* DescriptionEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionEditScreen.swift; sourceTree = "<group>"; };
 		F13C80082877AACA00973687 /* View+ResizableSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ResizableSheet.swift"; sourceTree = "<group>"; };
 		F13C800B2877AF3A00973687 /* PullDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullDown.swift; sourceTree = "<group>"; };
+		F13C804D287A763000973687 /* View+NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+NavigationView.swift"; sourceTree = "<group>"; };
 		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				F13C7F3C2871868800973687 /* View+onButtonTap.swift */,
 				F13CA34F286FF9F300527D1E /* Color+rgb.swift */,
+				F13C804D287A763000973687 /* View+NavigationView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 				F13CA33A286FBBEC00527D1E /* SecondScreen.swift in Sources */,
 				F13C7F6E2872B73600973687 /* HTTPMethodEnum.swift in Sources */,
 				F13CA340286FBFFF00527D1E /* CircleButtonModifier.swift in Sources */,
+				F13C804E287A763000973687 /* View+NavigationView.swift in Sources */,
 				F13C7F6A2872B6EE00973687 /* APIError.swift in Sources */,
 				F13C7F782872B7D000973687 /* JsonEncodeSnakeCase.swift in Sources */,
 			);

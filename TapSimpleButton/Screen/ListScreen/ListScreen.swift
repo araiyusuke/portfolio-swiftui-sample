@@ -114,7 +114,10 @@ struct TransactionsListScreen: View {
             
             NavigationLink(
                 destination:
-                    TransactionsDetailScreen(transaction:$viewModel.transactionsList[index]),
+                    TransactionsDetailScreen( viewModel: .init(
+                        container: viewModel.container,
+                        transaction: viewModel.transactionsList[index])
+                ),
                 label: {
                     ZStack {
                         
@@ -156,9 +159,7 @@ struct TransactionsListScreen: View {
                                 }
                             }
                             .padding(.leading, 5)
-                            
-                            //                rightArrow
-                            //                    .frame(width: 30)
+
                         }
                     }
                 }

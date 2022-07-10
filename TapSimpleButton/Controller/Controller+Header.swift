@@ -41,7 +41,7 @@ extension Controller {
                     .frame(alignment: .center)
                 case .second:
                     VStack {
-                        Text(header.getAccount()?.title ?? "")
+                        Text(header.getAccount()?.name ?? "")
                             .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
                             .frame(height: 20)
                         
@@ -52,7 +52,7 @@ extension Controller {
                     .frame(alignment: .top)
                 case .third:
                     VStack(spacing: 0) {
-                        Text(header.getAccount()?.title ?? "")
+                        Text(header.getAccount()?.name ?? "")
                             .customFont(size: 14, spacing: .short, color: .light, weight: .bold)
                             .frame(height: 20)
                         

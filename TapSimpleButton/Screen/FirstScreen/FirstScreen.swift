@@ -95,7 +95,7 @@ struct FirstScreen: ScreenMovable2 {
                                 
                                 if let account = account {
                                     
-                                    account.view(selected: account.title == header.getAccount()?.title).onButtonTap() {
+                                    account.view(selected: account.name == header.getAccount()?.name).onButtonTap() {
                                         header.setAccount(account)
                                         moveForward(to: .second, router)
                                     }
