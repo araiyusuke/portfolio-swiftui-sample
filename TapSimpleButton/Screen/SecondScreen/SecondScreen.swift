@@ -26,7 +26,8 @@ struct SecondScreen: ScreenMovable2 {
     @State private var descriptionText = ""
     @State private var pullDownItems: [PullDownItem] = []
     @State private var state: ResizableSheetState = .hidden
-    
+    @EnvironmentObject var bottomTab : BottomTabManager
+
     var body: some View {
         
         SlideAnimation2 {
@@ -121,8 +122,11 @@ struct SecondScreen: ScreenMovable2 {
            
         }
         .hiddenNavigationBarStyle()
-
+        .onAppear() {
+            bottomTab.isShow = false
+        }
     }
+       
     
     var help: some View {
         Text("取引の内容やメモを入力します。\n入力すると、後で取引を探しやすくなります。\n入力しなくても構いません。")

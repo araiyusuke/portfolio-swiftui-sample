@@ -78,7 +78,6 @@ struct TransactionsListScreen: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                 .onAppear {
                     viewModel.fetchTransactions()
-                    bottomTab.isShow = true
                 }
                 .customNavigation(center: "取引一覧")
             }
