@@ -10,6 +10,8 @@ import Combine
 
 enum TransactionsAPI {
     
+    private static let agent = AgentFactory.create()
+
     struct Response: Mockable {
         let transactions: [Transaction]
         
@@ -33,18 +35,16 @@ enum TransactionsAPI {
         }
     }
     
-    struct EdittResponse: Mockable {
+    struct UpdateResponse: Mockable {
         
         let transactions: Success
         
-        static func mock(_ file: String? = nil) -> RegistResponse {
+        static func mock(_ file: String? = nil) -> UpdateResponse {
             let decoder = jsonDecoder()
-            return try! decoder.decode(RegistResponse.self, from: loadFile(json: file ?? "Success_Regist_Transaction"))
+            return try! decoder.decode(UpdateResponse.self, from: loadFile(json: file ?? "Success_Regist_Transaction"))
         }
     }
     
-    private static let agent = AgentFactory.create()
-
     static func fetch() -> AnyPublisher<Response, Error> {
         return agent.run(
             API
@@ -63,11 +63,12 @@ enum TransactionsAPI {
         )
     }
     
-    static func edit() -> AnyPublisher<EdittResponse, Error> {
+    // 取引編集後の上書きボタンをタップした時に実行
+    static func update() -> AnyPublisher<UpdateResponse, Error> {
         return agent.run(
             API
                 .Transactions
-                .Edit
+                .Update
                 .request()
         )
     }

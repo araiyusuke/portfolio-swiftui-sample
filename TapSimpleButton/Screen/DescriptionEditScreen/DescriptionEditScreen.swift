@@ -70,7 +70,9 @@ struct DescriptionEditScreen: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .background(Color.backGroundColor)
-        .customNavigation(leading: "戻る", center: "摘要入力")
+        .customNavigation(leading: "戻る", center: "摘要入力") {
+            print("保存")
+        }
 
     }
     

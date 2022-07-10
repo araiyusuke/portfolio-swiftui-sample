@@ -25,8 +25,8 @@ struct TransactionService {
         return TransactionsAPI.regist()
     }
     
-    public func edit() -> AnyPublisher<TransactionsAPI.EdittResponse, Error> {
-        return TransactionsAPI.edit()
+    public func update(_ transaction: Transaction) -> AnyPublisher<TransactionsAPI.UpdateResponse, Error> {
+        return TransactionsAPI.update()
     }
 }
 

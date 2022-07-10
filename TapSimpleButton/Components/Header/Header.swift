@@ -9,10 +9,20 @@ import Foundation
 import SwiftUI
 
 class Header: ObservableObject {
-    
-    @Published private var title: String  = ""
+    @Published private (set) var isShowToast: Bool  = false
+    @Published var title: String  = ""
+    @Published private (set) var toastTitle: String  = ""
     @Published private var account: Account? = nil
     @Published private var numPadValue: String  = ""
+    
+    public func showToast(title: String) {
+        isShowToast.toggle()
+        toastTitle = title
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.isShowToast.toggle()
+            self.toastTitle = ""
+        }
+    }
     
     public func setAccount(_ account: Account) {
         self.account = account

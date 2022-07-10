@@ -40,7 +40,7 @@ struct API {
             }
         }
         
-        struct Edit: RequestParameter {
+        struct Update: RequestParameter {
 
             static let endPoint = EndPoint(url:"\(API.TRANSACTIONS_END_POINT)/update")
 

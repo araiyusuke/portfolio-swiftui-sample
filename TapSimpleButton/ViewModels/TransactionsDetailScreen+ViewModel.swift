@@ -12,7 +12,13 @@ import Combine
 extension TransactionsDetailScreen {
     
     class ViewModel: ObservableObject {
-        
+
+        var dismissHandle: AnyPublisher<Void, Never> {
+            subject.eraseToAnyPublisher()
+        }
+           
+        private let subject = PassthroughSubject<Void, Never>()
+    
         let container: DIContainer
 
         // ボトムシートの表示管理
@@ -26,6 +32,8 @@ extension TransactionsDetailScreen {
         
         @Published var transaction: Transaction
         
+        @Published var dismiss: Bool = false
+
         public func showBottomSheets(_ bottomSheetState: BottomSheetState?) {
             self.bottomSheetState = bottomSheetState
             self.isShowBottomSheet = true
@@ -45,7 +53,7 @@ extension TransactionsDetailScreen {
         }
         
         public func onAppear() {
-            
+
         }
         
         private func convertString(date: Date) -> String {
@@ -59,8 +67,6 @@ extension TransactionsDetailScreen {
             self.transaction.date = convertString(date: date)
         }
         
-        
-        
         private var cancellables = Set<AnyCancellable>()
         
         init(container: DIContainer, transaction: Transaction) {
@@ -72,7 +78,7 @@ extension TransactionsDetailScreen {
             return Account.all()
         }
         
-        func editSupplier( completion: @escaping () -> Void) {
+        func updateSupplier(completion: @escaping () -> Void) {
             container.services.transaction.regist()
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { completion in
@@ -83,6 +89,22 @@ extension TransactionsDetailScreen {
                     }
                 })
                 .store(in: &cancellables)
+        }
+        
+        private func updateTransaction(_ transacton: Transaction) {
+            container.services.transaction.update(transaction)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { completion in
+
+                }, receiveValue: { response in
+                    if response.transactions.success {
+                        self.subject.send()
+                    }
+                })
+                .store(in: &cancellables)
+        }
+        public func onSaveButtonTap() {
+            updateTransaction(transaction)
         }
     }
 }
