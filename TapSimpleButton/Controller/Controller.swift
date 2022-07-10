@@ -6,11 +6,11 @@ import ResizableSheet
 struct Controller: ScreenMovable {
     
     @EnvironmentObject var router : Router
-
+    
     @EnvironmentObject var inputTransactionRouter : TransactionInputRouter
     @EnvironmentObject var header : Header
     @EnvironmentObject var transactionInputRouter: TransactionInputRouter
-    @EnvironmentObject var headerManager : HeaderManager
+    @EnvironmentObject var bottomTabManager : BottomTabManager
     
     @State private var labelPosX:CGFloat = 0
     @State private var isBottomSheet: Bool = false
@@ -27,54 +27,48 @@ struct Controller: ScreenMovable {
     
     var body: some View {
         
-//        NavigationView {
-            VStack(spacing: 0) {
+        VStack(spacing: 0) {
+            
+            ZStack {
                 
-                ZStack {
-                    
-                    if router.screen == .transactionInput(false) {
-                        headerTop
-                            .frame(maxWidth: .infinity, maxHeight: 100)
-                            .background(Color.headerColor)
-                    }
-                   
-                    
-                    
-                    if inputTransactionRouter.screen == .first(true) {
-                        Text("取引を登録しました")
-                            .frame(maxWidth: .infinity, maxHeight: 90, alignment: .center)
-                            .background(Color.white)
-                            .onAppear {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                    inputTransactionRouter.screen = .first(false)
-                                }
-                            }
-                    }
+                if router.screen == .transactionInput(false) {
+                    headerTop
+                        .frame(maxWidth: .infinity, maxHeight: 100)
+                        .background(Color.headerColor)
                 }
                 
-                contents
-                    .navigationBarColor(UIColor.rgba(red: 144, green: 204, blue: 240, alpha: 1))
-
-                if inputTransactionRouter.screen == .second &&  inputTransactionRouter.screen == .third {
-                    EmptyView()
+                
+                
+                if inputTransactionRouter.screen == .first(true) {
+                    Text("取引を登録しました")
+                        .frame(maxWidth: .infinity, maxHeight: 90, alignment: .center)
+                        .background(Color.white)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                inputTransactionRouter.screen = .first(false)
+                            }
+                        }
+                }
+            }
+            
+            contents
+                .navigationBarColor(UIColor.rgba(red: 144, green: 204, blue: 240, alpha: 1))
+            
+            if inputTransactionRouter.screen == .second &&  inputTransactionRouter.screen == .third {
+                EmptyView()
+            } else {
+                
+                if bottomTabManager.isShow {
+                    bottomMenu
+                        .frame(height: 60)
+                        .background(Color.headerColor)
                 } else {
                     
-                    if headerManager.isShow {
-                        bottomMenu
-                            .frame(height: 60)
-                            .background(Color.headerColor)
-                    } else {
-                        
-                    }
-                  
                 }
-
-                
-//            }
-
+            }
         }
         .environment(\.resizableSheetCenter, resizableSheetCenter)
-
+        
     }
     
     var contents: some View {
@@ -92,7 +86,6 @@ struct Controller: ScreenMovable {
                 
             case .transactionList:
                 TransactionsListScreen(viewModel: .init(container: container))
-//                    .environment(\.resizableSheetCenter, resizableSheetCenter)
             }
         }
     }
@@ -102,7 +95,6 @@ struct Controller: ScreenMovable {
         TabView(selection: $selection) {
             
             TransactionsListScreen(viewModel: .init(container: container))
-//                .environment(\.resizableSheetCenter, resizableSheetCenter)
                 .tabItem {
                     Image(systemName: "apps.ipad.landscape")
                 }
@@ -153,27 +145,25 @@ extension View {
 }
 
 struct NavigationBarModifier: ViewModifier {
+    
     let backgroundColor: UIColor
-
+    
     init(backgroundColor: UIColor) {
         self.backgroundColor = backgroundColor
-
-        // [1]
+        
         let coloredAppearance = UINavigationBarAppearance()
         coloredAppearance.configureWithTransparentBackground()
         coloredAppearance.backgroundColor = backgroundColor
         coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-
-        // [2]
+        
         UINavigationBar.appearance().standardAppearance = coloredAppearance
         UINavigationBar.appearance().compactAppearance = coloredAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
         UINavigationBar.appearance().tintColor = .white
     }
-
+    
     func body(content: Content) -> some View {
-        // [3]
         content
     }
 }

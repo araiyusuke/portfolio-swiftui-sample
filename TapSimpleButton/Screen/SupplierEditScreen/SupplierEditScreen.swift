@@ -15,6 +15,7 @@ struct SupplierEditScreen: View {
     @State private var pullDownItems: [PullDownItem] = []
     @State public var state: ResizableSheetState = .hidden
     @Binding public var editText: String?
+    
     var body: some View {
         
         VStack(spacing: 10) {

@@ -23,12 +23,12 @@ class TransactionInputRouter: ObservableObject {
     static let shared: TransactionInputRouter = .init()
 }
 
-
-
-class HeaderManager: ObservableObject {
-    
-    
+class BottomTabManager: ObservableObject {
     @Published var isShow: Bool = true
+    private init() {}
+
+    static let shared: BottomTabManager = .init()
+
 }
 
 class Router: ObservableObject {

@@ -14,7 +14,7 @@ struct TransactionsListScreen: View {
     @State var selected = 0
     @State var sortDirection: Sort = .new
     @StateObject var viewModel: ViewModel
-    @EnvironmentObject var router : HeaderManager
+    @EnvironmentObject var bottomTab : BottomTabManager
 
     var searchCount: String {
         viewModel.count.description
@@ -76,10 +76,11 @@ struct TransactionsListScreen: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .onAppear {
                 viewModel.fetchTransactions()
-                router.isShow = true
+                bottomTab.isShow = true
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarTitle("取引一覧")
+            .customNavigation(center: "取引一覧")
+//            .navigationBarTitleDisplayMode(.inline)
+//            .navigationBarTitle("取引一覧")
         }
 
     }

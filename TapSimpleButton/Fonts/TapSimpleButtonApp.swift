@@ -15,7 +15,8 @@ struct TapSimpleButtonApp: App {
                 .environmentObject(Router.shared)
                 .environmentObject(TransactionInputRouter.shared)
                 .environmentObject(Header())
-                .environmentObject(HeaderManager())
+                .environmentObject(BottomTabManager.shared)
+
         }
     }
 }
