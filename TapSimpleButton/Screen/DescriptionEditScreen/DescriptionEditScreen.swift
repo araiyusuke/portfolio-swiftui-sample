@@ -70,26 +70,7 @@ struct DescriptionEditScreen: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .background(Color.backGroundColor)
-        .navigationTitle("取引詳細")
-        .navigationBarBackButtonHidden(true)
-               .toolbar {
-                   ToolbarItem(placement: .navigationBarLeading) {
-                       Button(
-                           action: {
-                               dismiss()
-                           }, label: {
-                               HStack {
-                                   Image(systemName: "arrow.backward")
-                                   
-                                   Text("戻る")
-                               }
-                             
-                           }
-                       ).tint(.white)
-                   }
-
-               }
-
+        .customNavigation(leading: "戻る", center: "摘要入力")
 
     }
     

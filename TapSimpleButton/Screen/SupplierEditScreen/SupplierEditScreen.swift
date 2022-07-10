@@ -17,7 +17,7 @@ struct SupplierEditScreen: View {
     @Binding public var editText: String?
     var body: some View {
         
-        VStack(spacing: 20) {
+        VStack(spacing: 10) {
             
             Text("取引先")
                 .customFont(size: 13, spacing: .short, color: .dark, weight: .light)
@@ -29,10 +29,10 @@ struct SupplierEditScreen: View {
                 inputSuppliers
                 
                 PullDown()
-                    
+                
                     .onButtonTap() {
                         self.state = .medium
-
+                        
                         DescriptionsAPI.fetch()
                             .receive(on: DispatchQueue.main)
                             .sink(receiveCompletion: { completion in
@@ -53,27 +53,16 @@ struct SupplierEditScreen: View {
                     }
                 
             }
-            .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
             
-                        Spacer()
-            
-            if self.state == .medium {
-                Text("うほ")
-                    .frame(maxWidth: .infinity, maxHeight: 400)
-                    .background(Color.red)
-                    .onTapGesture {
-                        self.state = .hidden
-                    }
-            }
-            
+            Spacer()
         }
+        .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
         .background(Color.backGroundColor)
-        .navigationTitle("取引先入力")
-
+        .customNavigation(leading: "戻る", center: "取引先入力")
+        
     }
-    
     
     var inputSuppliers: some View {
         TextField("取引先を入力(任意)", text: $editText.toUnwrapped(defaultValue: ""))
@@ -83,6 +72,7 @@ struct SupplierEditScreen: View {
             .border(.gray)
     }
 }
+
 extension Binding {
     func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
         Binding<T>(get: { self.wrappedValue ?? defaultValue }, set: { self.wrappedValue = $0 })

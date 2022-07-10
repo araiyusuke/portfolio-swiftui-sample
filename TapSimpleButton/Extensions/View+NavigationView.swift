@@ -8,36 +8,38 @@
 import Foundation
 import SwiftUI
 
-struct NavigationModifier: ViewModifier {
+struct CustomNavigationModifier: ViewModifier {
     
     @Environment(\.dismiss) var dismiss
-    let title: String
+    
+    public let leading: String
+    public let center: String
+    public let trailing: String?
     
     func body(content: Content) -> some View {
         content
-        .navigationTitle(title)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(trailing: Text("上書き保存").foregroundColor(.white))
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(
-                    action: {
-                        dismiss()
-                    }, label: {
-                        HStack {
-                            Image(systemName: "arrow.backward")
-                            Text("キャンセル")
+            .navigationTitle(center)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(trailing: Text(trailing ?? "").foregroundColor(.white))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(
+                        action: {
+                            dismiss()
+                        }, label: {
+                            HStack {
+                                Image(systemName: "arrow.backward")
+                                Text(leading)
+                            }
                         }
-                    }
-                ).tint(.white)
+                    ).tint(.white)
+                }
             }
-        }
     }
 }
 
-
 extension View {
-    public func navigationForUpdateTransaction(title: String) -> some View {
-        self.modifier(NavigationModifier(title: title))
+    public func customNavigation(leading: String, center: String, trailing: String? = nil) -> some View {
+        self.modifier(CustomNavigationModifier(leading: leading, center: center, trailing: trailing ))
     }
 }
