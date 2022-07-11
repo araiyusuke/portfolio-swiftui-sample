@@ -65,6 +65,7 @@ struct CustomNavigationModifier: ViewModifier {
 }
 
 extension View {
+    /// Navigationに文字列を表示(左、真ん中、右(タップしたらコールバックが返されれる)
     public func customNavigation(leading: String? = nil, center: String, trailing: String? = nil, callBack: (() -> Void)? = nil)  -> some View {
         self.modifier(CustomNavigationModifier(leading: leading, center: center, trailing: trailing, callBack: callBack ))
     }

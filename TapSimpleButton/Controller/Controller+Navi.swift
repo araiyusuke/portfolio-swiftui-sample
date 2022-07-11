@@ -17,7 +17,7 @@ extension TransactionInputScreen {
     
     static let naviItems = ["1","2","3"]
     static let alignments: [Alignment] = [.leading,.center, .trailing]
-    static let all: [TransactionInput] = [.first(false), .second, .third]
+    static let all: [TransactionInput] = [.first, .second, .third]
 
     func isActive(_ index: Int) -> Bool {
         TransactionInputScreen.all[index] == router.screen

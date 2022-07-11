@@ -11,20 +11,10 @@ import Combine
 
 struct TransactionsListScreen: View {
     
-    @State var sortDirection: Sort = .new
+    @State private var sort: Sort = .new
     @StateObject var viewModel: ViewModel
     @EnvironmentObject var bottomTab : BottomTabManager
     @EnvironmentObject var header : Header
-
-    var searchCount: String {
-        viewModel.count.description
-    }
-    
-    var searchButton: some View {
-        Image("search_icon")
-            .resizable()
-            .frame(width: 80, height: 28)
-    }
     
     var body: some View {
         
@@ -34,43 +24,9 @@ struct TransactionsListScreen: View {
                 
                 VStack(spacing: 0) {
                     
-                    VStack(spacing: 5) {
-                        Text("科目: すべて")
-                            .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Text("取引日: 2021/01/01 〜 2022/07/04")
-                            .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Text("検索結果: \(searchCount)件")
-                            .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                    }
-                    .padding(5)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.rgb(205, 230, 237))
+                    listInfo
                     
-                    HStack() {
-                        
-                        sortDirection.icon
-                        
-                        Text(sortDirection.description)
-                            .customFont(size: 13, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                            .onButtonTap() {
-                                sortDirection.toggle()
-                            }
-                        
-                        Spacer()
-                        
-                        searchButton
-                            .onButtonTap() {
-                            }
-                    }
-                    .padding(.horizontal, 5)
-                    .padding(.vertical, 10)
-                    .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
+                    listDispOptions
                     
                     content
                     
@@ -81,8 +37,14 @@ struct TransactionsListScreen: View {
                 }
                 .customNavigation(center: "取引一覧")
             }
+            .onAppear {
+                // NaivgationViewでOnAppearだと戻ってきた時に、TransactionsListScreen.onAppearにはならなかった
+                bottomTab.isShow = true
+            }
         }
     }
+    
+    
     
     @ViewBuilder
     private var content: some View {
@@ -92,7 +54,7 @@ struct TransactionsListScreen: View {
         case .isLoading:
             loadingView
             
-        case let .loaded(transactions):
+        case .loaded:
             loadedView()
             
         case let .failed(error):
@@ -149,7 +111,7 @@ struct TransactionsListScreen: View {
                                 }
                                 
                                 HStack(spacing: 0) {
-                                    Text(viewModel.transactionsList[index].description ?? "適用未入力")
+                                    Text(viewModel.transactionsList[index].description ?? "摘要未入力")
                                         .customFont(size: 13, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
                                     
                                     Spacer()
@@ -163,11 +125,8 @@ struct TransactionsListScreen: View {
                         }
                     }
                 }
-                
             )
             .isDetailLink(false)
-            
-            
             .swipeActions(edge: .trailing) {
                 HStack {
                     
@@ -181,8 +140,6 @@ struct TransactionsListScreen: View {
                     } label: {
                         Text("コピー")
                     }
-                    
-                    
                 }
             }
             .listRowBackground(Color.white)
@@ -195,5 +152,62 @@ struct TransactionsListScreen: View {
     
     func failedView(_ error: Error) -> some View {
         Text(error.localizedDescription)
+    }
+}
+
+extension TransactionsListScreen {
+    /// 画面上の検索ボタン
+    var searchButton: some View {
+        Image("search_icon")
+            .resizable()
+            .frame(width: 80, height: 28)
+    }
+}
+
+extension TransactionsListScreen {
+    /// リストの情報(科目、取引日、検索結果)
+    var listInfo: some View {
+        VStack(spacing: 5) {
+            Text("科目: すべて")
+                .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Text("取引日: 2021/01/01 〜 2022/07/04")
+                .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Text("検索結果: \(viewModel.searchCount)件")
+                .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+        }
+        .padding(5)
+        .frame(maxWidth: .infinity)
+        .background(Color.rgb(205, 230, 237))
+    }
+}
+
+extension TransactionsListScreen {
+    /// リストのオプション(検索、ソート)
+    var listDispOptions: some View {
+        HStack() {
+            
+            sort.icon
+            
+            Text(sort.description)
+                .customFont(size: 13, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                .onButtonTap() {
+                    sort.toggle()
+                }
+            
+            Spacer()
+            
+            searchButton
+                .onButtonTap() {
+                }
+        }
+        .padding(.horizontal, 5)
+        .padding(.vertical, 10)
+        .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
     }
 }

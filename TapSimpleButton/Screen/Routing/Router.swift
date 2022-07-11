@@ -15,7 +15,7 @@ enum Direction {
 class TransactionInputRouter: ObservableObject {
     
     // スタート画面は取引入力
-    @Published var screen: TransactionInput = .first(false)
+    @Published var screen: TransactionInput = .first
     @Published var direction: Direction = .forward
     
     private init() {}

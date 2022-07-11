@@ -70,6 +70,7 @@ struct TransactionsDetailScreen: View {
             viewModel.onSaveButtonTap()
         }
         .onAppear() {
+            print("TransactionsDetialScreen")
             viewModel.onAppear()
             bottomTab.isShow = false
         }

@@ -8,7 +8,7 @@
 import Foundation
 
 enum TransactionInput: Equatable {
-    case first(Bool), second, third
+    case first, second, third
 }
 
 enum ScreenType: Equatable {

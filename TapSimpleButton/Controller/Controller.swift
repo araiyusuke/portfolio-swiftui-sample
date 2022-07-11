@@ -6,7 +6,6 @@ import ResizableSheet
 struct Controller: ScreenMovable {
     
     @EnvironmentObject var router : Router
-//    @EnvironmentObject var inputTransactionRouter : TransactionInputRouter
     @EnvironmentObject var header : Header
     @EnvironmentObject var transactionInputRouter: TransactionInputRouter
     @EnvironmentObject var bottomTabManager : BottomTabManager
@@ -49,7 +48,6 @@ struct Controller: ScreenMovable {
                     if bottomTabManager.isShow {
                         bottomMenu
                             .frame(height: 60)
-                            .background(Color.headerColor)
                     }
                 }
             }

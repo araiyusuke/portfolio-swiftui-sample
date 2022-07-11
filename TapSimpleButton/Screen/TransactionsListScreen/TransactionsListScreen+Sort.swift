@@ -31,6 +31,7 @@ extension TransactionsListScreen {
             }
         }
         
+        /// 上と下の矢印
         var icon : some View {
             Image("sort_icon")
                 .resizable()
@@ -38,6 +39,7 @@ extension TransactionsListScreen {
                 .rotationEffect(.degrees(rotate))
         }
         
+        /// 矢印の右にある文字列(新しい取引日順、古い取引日順)
         var description: String {
             switch(self) {
             case .new:

@@ -20,10 +20,7 @@ extension TransactionInputScreen {
                 case .second:
                     moveForward(to: .third, router)
                 case .third:
-                    moveBack(to: .first(true), router)
-
-                default:
-                    return
+                    moveBack(to: .first, router)
                 }
             }
     }
