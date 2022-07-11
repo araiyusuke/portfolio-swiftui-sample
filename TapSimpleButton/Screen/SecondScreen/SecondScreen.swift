@@ -18,7 +18,8 @@ struct SecondScreen: ScreenMovable2 {
     
     @EnvironmentObject var header : Header
     @EnvironmentObject var router : TransactionInputRouter
-    
+    @EnvironmentObject var bottomTab : BottomTabManager
+
     @State private var inputState: InputState? = nil
     @State private var cancellables = Set<AnyCancellable>()
     @State private var labelPosX:CGFloat = 0
@@ -26,7 +27,6 @@ struct SecondScreen: ScreenMovable2 {
     @State private var descriptionText = ""
     @State private var pullDownItems: [PullDownItem] = []
     @State private var state: ResizableSheetState = .hidden
-    @EnvironmentObject var bottomTab : BottomTabManager
 
     var body: some View {
         

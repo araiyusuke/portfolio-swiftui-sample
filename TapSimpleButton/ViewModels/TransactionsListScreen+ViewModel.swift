@@ -27,7 +27,7 @@ extension TransactionsListScreen {
         }
         
         /// 取引数を取得
-        public var count: Int {
+        public var searchCount: Int {
             return transactions.value?.count ?? 0
         }
         
