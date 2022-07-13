@@ -1,0 +1,100 @@
+name: PortfolioSwiftUI
+
+packages: 
+  ResizableSheet:
+    url: https://github.com/mtj0928/ResizableSheet
+    exactVersion: 0.0.4
+
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget: 
+    iOS: 15.0
+  xcodeVersion: "13.1"
+
+settings:
+  base:
+    # 任意のTeam IDに置き換える
+    DEVELOPMENT_TEAM: NONE
+    MARKETING_VERSION: 1.0.0
+    CURRENT_PROJECT_VERSION: 1
+    # Xcode 13.1のテンプレートから作成したものと差分があったので、そろえている
+    CLANG_CXX_LANGUAGE_STANDARD: gnu++17
+    # 任意でManualに置き換える
+    CODE_SIGN_STYLE: Manual
+
+targets:
+  PortfolioSwiftUI:
+#    preBuildScripts:
+#      - path: swift_lint.sh
+#        name: SwiftLint
+    type: application
+    platform: iOS
+    sources: 
+      - PortfolioSwiftUI  
+    dependencies:
+      - package: ResizableSheet
+    settings:
+      base:
+        ENABLE_PREVIEWS: YES
+        DEVELOPMENT_ASSET_PATHS: "\"PortfolioSwiftUI/Preview Content\""
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    # 生成するInfo.plistの設定を記載する
+    info:
+      # 生成先のPathを指定する
+      path: PortfolioSwiftUI/Info.plist
+      # 各種設定は基本的にXcode 13.1のテンプレートから作成したものとそろえている
+      properties:
+        # settingsで設定した環境変数を使用する
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        # settingsで設定した環境変数を使用する
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        LSRequiresIPhoneOS: YES
+        # UILaunchScreenをダミーでもいいので設定しないと、描画がおかしくなる
+        UILaunchScreen: ""
+        UIApplicationSupportsIndirectInputEvents: YES
+        UIApplicationSceneManifest: 
+          UIApplicationSupportsMultipleScenes: YES
+        # Device OrientationはXcode 13.1のテンプレートとそろえている
+        UISupportedInterfaceOrientations~iphone:
+          [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+        UISupportedInterfaceOrientations~ipad:
+          [UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+
+  PortfolioSwiftUITests:
+    # UnitTestのTarget定義を指定する
+    type: bundle.unit-test
+    platform: iOS
+    sources: 
+      - PortfolioSwiftUITests
+  
+    settings:
+      base:
+        ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES
+    # 生成するInfo.plistの設定を記載する
+    info:
+      # 生成先のPathを指定する
+      path: PortfolioSwiftUITests/Info.plist
+      # 各種設定は基本的にXcode 13.1のテンプレートから作成したものとそろえている
+      properties:
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+
+  PortfolioSwiftUIUITests:
+    # UITestのTarget定義
+    type: bundle.ui-testing
+    platform: iOS
+    sources: 
+      - PortfolioSwiftUIUITests
+    dependencies:
+      - target: PortfolioSwiftUI
+    settings:
+      base:
+        ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES
+    # 生成するInfo.plistの設定を記載する
+    info:
+      # 生成先のPathを指定する
+      path: PortfolioSwiftUIUITests/Info.plist
+      # 各種設定は基本的にXcode 13.1のテンプレートから作成したものとそろえている
+      properties:
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
