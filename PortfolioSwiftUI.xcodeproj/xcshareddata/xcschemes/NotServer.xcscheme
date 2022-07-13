@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F13CA318286E769E00527D1E"
                BuildableName = "TapSimpleButton.app"
-               BlueprintName = "TapSimpleButton"
-               ReferencedContainer = "container:TapSimpleButton.xcodeproj">
+               BlueprintName = "PortfolioSwiftUI"
+               ReferencedContainer = "container:PortfolioSwiftUI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,8 +46,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F13CA318286E769E00527D1E"
             BuildableName = "TapSimpleButton.app"
-            BlueprintName = "TapSimpleButton"
-            ReferencedContainer = "container:TapSimpleButton.xcodeproj">
+            BlueprintName = "PortfolioSwiftUI"
+            ReferencedContainer = "container:PortfolioSwiftUI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F13CA318286E769E00527D1E"
             BuildableName = "TapSimpleButton.app"
-            BlueprintName = "TapSimpleButton"
-            ReferencedContainer = "container:TapSimpleButton.xcodeproj">
+            BlueprintName = "PortfolioSwiftUI"
+            ReferencedContainer = "container:PortfolioSwiftUI.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
