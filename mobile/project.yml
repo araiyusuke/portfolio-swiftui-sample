@@ -24,9 +24,9 @@ settings:
 
 targets:
   PortfolioSwiftUI:
-#    preBuildScripts:
-#      - path: swift_lint.sh
-#        name: SwiftLint
+    preBuildScripts:
+      - path: swift_lint.sh
+        name: SwiftLint
     type: application
     platform: iOS
     sources: 
