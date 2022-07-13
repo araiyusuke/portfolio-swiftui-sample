@@ -14,11 +14,9 @@ enum StatusCode: Error {
     static let httpNotFoundAndNotAllowed = 404...405
     static let httpTooManyRequest429 = 429
     static let unProcessableEntity422 = 422
-    
     case server(Int)
     case sessionFailed(error: Error)
     case decode(Error)
     case noResponse
     case unknown(Error)
-
 }

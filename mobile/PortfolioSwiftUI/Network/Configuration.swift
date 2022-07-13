@@ -8,12 +8,9 @@
 import Foundation
 
 struct Configuration {
-    
     static let shared = Configuration()
-    
     let apiHost: String
     let apiHttpProtcol: String
-    
     private init() {
         apiHost = "localhost:8080/api/"
         apiHttpProtcol = "http://"

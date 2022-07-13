@@ -36,9 +36,7 @@ struct DeviceToken: Token {
 }
 
 struct MemberToken: Token, CustomStringConvertible {
-    
     var plainText: String?
-    
     var description: String {
         return """
         \(plainText ?? "nil")

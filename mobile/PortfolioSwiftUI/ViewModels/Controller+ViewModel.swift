@@ -9,19 +9,15 @@ import SwiftUI
 import Combine
 
 extension TransactionInputScreen {
-    
     class ViewModel: ObservableObject {
-        @EnvironmentObject var router : Router
+        @EnvironmentObject var router: Router
 
         let container: DIContainer
         private var cancellables = Set<AnyCancellable>()
-        
         init(container: DIContainer) {
             self.container = container
         }
-        
         func registTransaction( completion: @escaping () -> Void) {
-                    
             container.services.transaction.regist()
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { completion in

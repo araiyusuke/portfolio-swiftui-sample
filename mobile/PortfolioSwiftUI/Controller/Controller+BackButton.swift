@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 extension TransactionInputScreen {
-    
     @ViewBuilder
     var back: some View {
         if router.screen != .first {
@@ -20,10 +19,9 @@ extension TransactionInputScreen {
                     case .first:
                         return
                     case .second:
-                        moveBack(to: .first, router)
+                        moveBack(screen: .first, router)
                     case .third:
-                        moveBack(to: .second, router)
-                 
+                        moveBack(screen: .second, router)
                     }
                 }
         }

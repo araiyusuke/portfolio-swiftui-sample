@@ -9,18 +9,17 @@ import Foundation
 import SwiftUI
 
 extension TransactionInputScreen {
-    
     var next: some View {
         Text("次へ 〉")
             .customFont(size: 18, spacing: .short, color: .dark, weight: .medium)
             .onTapGesture {
                 switch router.screen {
                 case .first:
-                    moveForward(to: .second, router)
+                    moveForward(screen: .second, router)
                 case .second:
-                    moveForward(to: .third, router)
+                    moveForward(screen: .third, router)
                 case .third:
-                    moveBack(to: .first, router)
+                    moveBack(screen: .first, router)
                 }
             }
     }

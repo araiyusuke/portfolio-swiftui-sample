@@ -11,13 +11,13 @@ import Combine
 typealias RequestHandler = ((URLRequest) throws -> (HTTPURLResponse, Data?))
 
 struct APIAgent: APIAgentProtocol {
-    
+
     let config: URLSessionConfiguration?
-    
+
     init(config: URLSessionConfiguration? = nil ) {
         self.config = config
     }
-    
+
     var session: URLSession {
         if let config = config {
             return URLSession.init(configuration: config)
@@ -25,14 +25,13 @@ struct APIAgent: APIAgentProtocol {
             return URLSession.shared
         }
     }
-    
+
     func run<T: Mockable>(_ request: URLRequest, mockFile: String?, statusCd: Int?) -> AnyPublisher<T, Error> {
         return API.run(session.dataTaskPublisher(for: request), mockFile: mockFile, statusCd: statusCd)
     }
 }
 
-class StubURLProtocol: URLProtocol {
-    
+class StubURLProtocol: URLProtocol {    
     static var requestHandler: RequestHandler?
 
     override class func canInit(with request: URLRequest) -> Bool {
@@ -60,20 +59,17 @@ class StubURLProtocol: URLProtocol {
 }
 
 extension API {
-    
-    static func run<T: Mockable>(_ dataTaskPublisher: URLSession.DataTaskPublisher, mockFile: String?, statusCd: Int?) -> AnyPublisher<T, Error> {
-        
+    static func run<T: Mockable>(_ dataTaskPublisher: URLSession.DataTaskPublisher,
+                             mockFile: String?, statusCd: Int?) -> AnyPublisher<T, Error> {
         dataTaskPublisher
             .tryMap { dataTaskOutput -> Result<URLSession.DataTaskPublisher.Output, Error> in
                 guard let httpResponse = dataTaskOutput.response as? HTTPURLResponse else {
                     throw APIError.invalidResponse
                 }
-                
                 print(httpResponse)
 
                 // ステータスコードを取得
                 let statusCode = httpResponse.statusCode
-                                                
                 // 500番台エラー
                 if StatusCode.httpClientErrorRange.contains(statusCode) {
                     throw APIError.serverError
@@ -81,7 +77,6 @@ extension API {
 
                 // 400番台エラー
                 if StatusCode.httpClientErrorRange.contains(statusCode) {
-                                        
                     // トークンエラー
                     if statusCode == StatusCode.httpUnauthorized401 {
                         let decoder = jsonDecoder()
@@ -99,17 +94,13 @@ extension API {
                         let data = try decoder.decode(ResponseResultError.self, from: dataTaskOutput.data)
                         throw APIError.validation(data: data)
                     }
-                    
                     if statusCode == StatusCode.httpTooManyRequest429 {
                         throw APIError.tooManyRequest
                     }
-                    
                     if StatusCode.httpNotFoundAndNotAllowed.contains(statusCode) {
                         throw APIError.serverError
                     }
-                
                 }
-                
                 return .success(dataTaskOutput)
             }
 
@@ -121,11 +112,9 @@ extension API {
     //                    return Fail(error: error)
     //                        .delay(for: 3, scheduler: DispatchQueue.main)
     //                        .eraseToAnyPublisher()
-                    
                     return Just(.failure(APIError.wifiError))
                         .setFailureType(to: Error.self)
                         .eraseToAnyPublisher()
-            
                 // retryさせいないエラー(sinkの.failureに到達する)
                 case URLError.timedOut:
                     return Just(.failure(error))
@@ -136,17 +125,14 @@ extension API {
                     return Just(.failure(error))
                         .setFailureType(to: Error.self)
                         .eraseToAnyPublisher()
-                    
                 case APIError.serverError:
                     return Just(.failure(error))
                         .setFailureType(to: Error.self)
                         .eraseToAnyPublisher()
-                    
                 case APIError.tooManyRequest:
                     return Just(.failure(error))
                         .setFailureType(to: Error.self)
                         .eraseToAnyPublisher()
-                    
                 // 入力フォームの検証
                 case APIError.validation(let data):
                     do {

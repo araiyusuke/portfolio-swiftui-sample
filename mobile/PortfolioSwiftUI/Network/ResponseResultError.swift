@@ -10,9 +10,8 @@ import Foundation
 struct ResponseResultError: Codable {
     let code: Int
     let message: String
-    let errors:[FieldError]?
+    let errors: [FieldError]?
     var messages: [String]? {
-        
         if let errors = errors {
             return errors.map({ (student) -> String in
                  student.message

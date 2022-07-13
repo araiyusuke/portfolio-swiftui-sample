@@ -17,7 +17,6 @@ extension View {
         }
         return windowScene
     }
-    
     var resizableSheetCenter: ResizableSheetCenter? {
         return scene.flatMap(ResizableSheetCenter.resolve(for:))
     }

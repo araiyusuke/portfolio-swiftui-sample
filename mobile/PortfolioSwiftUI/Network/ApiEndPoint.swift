@@ -20,61 +20,48 @@ struct API {
     static let transactionsEndPoint = "\(API.PROTOCOL)\(API.HOST)\(TRANSACTION)"
 
     struct Transactions {
-        
-        
         struct Fetch: RequestParameter {
-
-            static let endPoint = EndPoint(url:"\(API.transactionsEndPoint)/")
+            static let endPoint = EndPoint(url: "\(API.transactionsEndPoint)/")
 
             static func request() -> URLRequest {
                 return URLRequest.create(endPoint, method: .get)
             }
         }
-        
         struct Regist: RequestParameter {
-
-            static let endPoint = EndPoint(url:"\(API.transactionsEndPoint)/")
+            static let endPoint = EndPoint(url: "\(API.transactionsEndPoint)/")
 
             static func request() -> URLRequest {
                 return URLRequest.create(endPoint, method: .post)
             }
         }
-        
         struct Update: RequestParameter {
-
-            static let endPoint = EndPoint(url:"\(API.transactionsEndPoint)/update")
+            static let endPoint = EndPoint(url: "\(API.transactionsEndPoint)/update")
 
             static func request() -> URLRequest {
                 return URLRequest.create(endPoint, method: .post)
             }
         }
     }
-    
+
     struct Descriptions {
+        static let endPoint = EndPoint(url: "\(API.descriptionsEndPoint)/")
         struct Fetch: RequestParameter {
-
-            static let endPoint = EndPoint(url:"\(API.descriptionsEndPoint)/")
-
             static func request() -> URLRequest {
                 return URLRequest.create(endPoint, method: .get)
             }
         }
     }
-    
+
     struct Sppliers {
-
         struct Fetch: RequestParameter {
-
-            static let endPoint = EndPoint(url:"\(API.sppliterEndPoint)/")
+            static let endPoint = EndPoint(url: "\(API.sppliterEndPoint)/")
 
             static func request() -> URLRequest {
                 return URLRequest.create(endPoint, method: .get)
             }
         }
-        
         struct Create: RequestParameter {
-
-            static let endPoint = EndPoint(url:"\(API.sppliterEndPoint)/")
+            static let endPoint = EndPoint(url: "\(API.sppliterEndPoint)/")
 
             static func request() -> URLRequest {
                 return URLRequest.create(endPoint, method: .get)

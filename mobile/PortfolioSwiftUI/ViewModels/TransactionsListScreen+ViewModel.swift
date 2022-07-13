@@ -10,32 +10,24 @@ import SwiftUI
 import Combine
 
 extension TransactionsListScreen {
-    
     class ViewModel: ObservableObject {
-        
         let container: DIContainer
         private var cancellables = Set<AnyCancellable>()
 
         @Published var transactions: Loadable<[Transaction]>
         @Published var transactionsList: [Transaction] = []
         @Published var isShowSecond: Bool = false
-
-        
         init(container: DIContainer, transactions: Loadable<[Transaction]> = .notRequested) {
             self.container = container
             self._transactions = .init(initialValue: transactions)
         }
-        
         /// 取引数を取得
         public var searchCount: Int {
             return transactions.value?.count ?? 0
         }
-        
         /// 取引一覧を取得
         public func fetchTransactions() {
-                    
             transactions = .isLoading
-
             container
                 .services
                 .transaction
@@ -49,7 +41,5 @@ extension TransactionsListScreen {
                 })
                 .store(in: &cancellables)
         }
-        
-        
     }
 }

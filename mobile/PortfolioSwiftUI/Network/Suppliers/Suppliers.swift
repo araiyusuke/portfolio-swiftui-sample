@@ -15,7 +15,6 @@ struct Supplier: Mockable, Hashable {
 struct PullDownItem: Mockable, Hashable, Identifiable {
     var id: Int
     var name: String
-    
     public func getName() -> String {
         return self.name
     }
@@ -29,7 +28,5 @@ protocol UserProtocol {
     func getUser()
 }
 struct UserInteractor: UserProtocol {
-    func getUser() {
-        
-    }
+    func getUser() {}
 }

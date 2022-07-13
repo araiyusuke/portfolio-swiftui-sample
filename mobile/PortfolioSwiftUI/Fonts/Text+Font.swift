@@ -9,27 +9,21 @@ import Foundation
 import SwiftUI
 
 extension Text {
-    
     enum ColorModel {
         case light, dark
     }
-    
     enum Weight: String {
         case medium = "Medium"
         case bold = "Bold"
         case regular = "Regular"
         case light = "Light"
     }
-    
     enum FontType: String {
         case notosans = "NotoSansJP"
         case roboto = "Roboto"
     }
-    
     enum LetterSpacing {
-        
-        case none, short, `default`,  middle, long, veryLong
-        
+        case none, short, `default`, middle, long, veryLong
         var size: CGFloat {
             switch self {
             case .none:
@@ -47,11 +41,9 @@ extension Text {
             }
         }
     }
-    
     func customFont(size: CGFloat) -> some View {
         self.modifier(CustomFont(size))
     }
-    
     func customFont(
         font: FontType = .notosans,
         size: CGFloat,
@@ -60,7 +52,6 @@ extension Text {
         weight: Text.Weight,
         line: CGFloat = 8
     ) -> some View {
-        
         self
             .font(Font.custom("\(font.rawValue)-\(weight.rawValue)", size: size))
             .kerning(spacing.size)
@@ -76,7 +67,6 @@ extension Text {
         weight: Text.Weight,
         line: CGFloat = 8
     ) -> some View {
-        
         self
             .font(Font.custom("\(font.rawValue)-\(weight.rawValue)", size: size))
             .kerning(spacing.size)
@@ -86,16 +76,12 @@ extension Text {
 }
 
 struct CustomFont: ViewModifier {
-    
     let size: CGFloat
-    
     init(_ size: CGFloat) {
         self.size = size
     }
-    
     func body(content: Content) -> some View {
         content
             .font(.system(size: size, weight: .regular, design: .default))
     }
 }
-

@@ -8,9 +8,7 @@
 import Foundation
 
 struct EndPoint {
-
     let url: URL
-    
     init(url: String) {
         self.url = URL(string: url)!
     }

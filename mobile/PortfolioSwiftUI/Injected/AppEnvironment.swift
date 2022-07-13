@@ -12,7 +12,6 @@ struct AppEnvironment {
 }
 
 extension AppEnvironment {
-    
     static func bootstrap() -> AppEnvironment {
         let diContainer = DIContainer()
         return AppEnvironment(container: diContainer)

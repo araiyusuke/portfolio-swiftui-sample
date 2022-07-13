@@ -9,19 +9,14 @@ import Foundation
 import SwiftUI
 
 struct CustomNavigationModifier: ViewModifier {
-    
     @Environment(\.dismiss) var dismiss
-    
     public let leading: String?
     public let center: String
     public let trailing: String?
     public var callBack: (() -> Void)?
-    
     func body(content: Content) -> some View {
-        
         return ZStack {
-                        
-            if let leading = leading , let trailing = trailing {
+            if let leading = leading, let trailing = trailing {
                 content
                     .navigationTitle(center)
                     .navigationBarBackButtonHidden(true)
@@ -37,10 +32,8 @@ struct CustomNavigationModifier: ViewModifier {
                                     }
                                 }
                             ).tint(.white)
-                            
                         }
-                        
-                        ToolbarItem(placement: .navigationBarTrailing){
+                        ToolbarItem(placement: .navigationBarTrailing) {
                             Button(
                                 action: {
                                     if let callBack = self.callBack {
@@ -50,10 +43,6 @@ struct CustomNavigationModifier: ViewModifier {
                                     Text(trailing)
                                 })
                             }
-                        
-                                       
-                        
-                      
                     }
             } else {
                 content
@@ -66,7 +55,18 @@ struct CustomNavigationModifier: ViewModifier {
 
 extension View {
     /// Navigationに文字列を表示(左、真ん中、右(タップしたらコールバックが返されれる)
-    public func customNavigation(leading: String? = nil, center: String, trailing: String? = nil, callBack: (() -> Void)? = nil)  -> some View {
-        self.modifier(CustomNavigationModifier(leading: leading, center: center, trailing: trailing, callBack: callBack ))
-    }
+    public func customNavigation
+    (
+        leading: String? = nil,
+        center: String,
+        trailing: String? = nil,
+        callBack: (() -> Void)? = nil
+    )  -> some View {
+            self.modifier(CustomNavigationModifier(
+                leading: leading,
+                center: center,
+                trailing: trailing,
+                callBack: callBack
+            ))
+        }
 }

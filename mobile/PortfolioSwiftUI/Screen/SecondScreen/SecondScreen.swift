@@ -15,37 +15,27 @@ struct SecondScreen: ScreenMovable2 {
     enum InputState {
         case supplier, description
     }
-    
-    @EnvironmentObject var header : Header
-    @EnvironmentObject var router : TransactionInputRouter
-    @EnvironmentObject var bottomTab : BottomTabManager
-
-    @State private var inputState: InputState? = nil
+    @EnvironmentObject var header: Header
+    @EnvironmentObject var router: TransactionInputRouter
+    @EnvironmentObject var bottomTab: BottomTabManager
+    @State private var inputState: InputState?
     @State private var cancellables = Set<AnyCancellable>()
-    @State private var labelPosX:CGFloat = 0
+    @State private var labelPosX: CGFloat = 0
     @State private var supplierText = ""
     @State private var descriptionText = ""
     @State private var pullDownItems: [PullDownItem] = []
     @State private var state: ResizableSheetState = .hidden
 
     var body: some View {
-        
         SlideAnimation2 {
-            
             VStack(spacing: 15) {
-                
                 supplier
-                
                 HStack(spacing: 3) {
-                    
                     inputSuppliers
-                    
                     PullDown()
-                        .onButtonTap() {
-                            
-                            //取引先の入力欄をターゲットにする
+                        .onButtonTap {
+                            // 取引先の入力欄をターゲットにする
                             self.inputState = .supplier
-                            
                             SuppliersAPI.fetch()
                                 .receive(on: DispatchQueue.main)
                                 .sink(receiveCompletion: { completion in
@@ -57,29 +47,24 @@ struct SecondScreen: ScreenMovable2 {
                                 .store(in: &cancellables)
                         }
                         .resizableSheet($state) { builder in
-                            builder.content { context in
-                                BottomSheetList(title: "取引先",items: $pullDownItems , state: $state) { value in
-                                    if (inputState == .supplier) {
+                            builder.content { _ in
+                                BottomSheetList(title: "取引先", items: $pullDownItems, state: $state) { value in
+                                    if inputState == .supplier {
                                         self.supplierText = value.name
-                                    } else if (inputState == .description) {
+                                    } else if inputState == .description {
                                         self.descriptionText = value.name
                                     }
                                 }
                                 .frame(height: 600)
                             }
                         }
-                    
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                
                 description
-                
                 HStack(alignment: .top, spacing: 3) {
-                    
                     inputDescription
-                    
                     PullDown()
-                        .onButtonTap() {
+                        .onButtonTap {
                             self.inputState = .description
                             DescriptionsAPI.fetch()
                                 .receive(on: DispatchQueue.main)
@@ -93,25 +78,22 @@ struct SecondScreen: ScreenMovable2 {
                         }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                
                 help
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            /// スワイプするために色を入れる
+            // スワイプするために色を入れる
             .background(Color.backGroundColor)
             .gesture(DragGesture()
                 .onEnded({ value in
-                    
-                    if (abs(value.translation.width) < 10) {
+                    if abs(value.translation.width) < 10 {
                         return
                     }
-                    
-                    if (value.translation.width < 0 ) {
-                        moveForward(to: .third, router)
+                    if value.translation.width < 0 {
+                        moveForward(screen: .third, router)
                         self.labelPosX -= 30
-                    } else if (value.translation.width > 0 ) {
+                    } else if value.translation.width > 0 {
                         self.labelPosX += 30
-                        moveBack(to: .first, router)
+                        moveBack(screen: .first, router)
                     }
                 })
             )
@@ -119,27 +101,22 @@ struct SecondScreen: ScreenMovable2 {
             .padding(.top, 20)
             .background(Color.backGroundColor)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-           
         }
         .hiddenNavigationBarStyle()
-        .onAppear() {
+        .onAppear {
             bottomTab.isShow = false
         }
     }
-       
-    
     var help: some View {
         Text("取引の内容やメモを入力します。\n入力すると、後で取引を探しやすくなります。\n入力しなくても構いません。")
             .customFont(size: 13, spacing: .short, color: .dark, weight: .light)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
-    
     var supplier: some View {
         Text("取引先")
             .customFont(size: 12, spacing: .short, color: .dark, weight: .light)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
-    
     var inputDescription: some View {
         TextEditor(text: $descriptionText)
             .padding(.leading, 10)
@@ -147,7 +124,6 @@ struct SecondScreen: ScreenMovable2 {
             .background(.white)
             .border(.gray)
     }
-    
     var inputSuppliers: some View {
         TextField("取引先を入力(任意)", text: $supplierText)
             .padding(.leading, 10)
@@ -155,11 +131,9 @@ struct SecondScreen: ScreenMovable2 {
             .background(.white)
             .border(.gray)
     }
-    
     var description: some View {
         Text("摘要")
             .customFont(size: 12, spacing: .short, color: .dark, weight: .light)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
-

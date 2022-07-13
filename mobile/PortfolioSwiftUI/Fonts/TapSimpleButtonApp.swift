@@ -8,7 +8,6 @@
 import SwiftUI
 @main
 struct TapSimpleButtonApp: App {
-    
     var body: some Scene {
         WindowGroup {
             Controller(container: AppEnvironment.bootstrap().container)
@@ -16,7 +15,6 @@ struct TapSimpleButtonApp: App {
                 .environmentObject(TransactionInputRouter.shared)
                 .environmentObject(Header())
                 .environmentObject(BottomTabManager.shared)
-
         }
     }
 }

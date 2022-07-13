@@ -14,14 +14,12 @@ extension View {
 }
 
 struct Toast: ViewModifier {
-    
-    @EnvironmentObject var header : Header
+    @EnvironmentObject var header: Header
 
     func body(content: Content) -> some View {
         ZStack {
-            
             if header.isShowToast {
-                VStack() {
+                VStack {
                     Text(header.toastTitle)
                 }
                 .frame(maxWidth: .infinity, maxHeight: 100)
@@ -34,4 +32,3 @@ struct Toast: ViewModifier {
         }
     }
 }
-

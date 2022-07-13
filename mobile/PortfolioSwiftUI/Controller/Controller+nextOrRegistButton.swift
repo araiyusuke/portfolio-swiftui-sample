@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 extension TransactionInputScreen {
-    
     @ViewBuilder
     var nextOrRegist: some View {
         if router.screen == .third {

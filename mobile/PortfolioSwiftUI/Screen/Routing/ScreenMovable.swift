@@ -9,44 +9,41 @@ import Foundation
 import SwiftUI
 
 protocol ScreenMovable: View {
-    func moveForward(to : ScreenType, _ router: Router) -> Void
-    func moveBack(to : ScreenType, _ router: Router) -> Void
+    func moveForward(screen: ScreenType, _ router: Router)
+    func moveBack(screen: ScreenType, _ router: Router)
 }
 
 extension ScreenMovable {
-    
-    func moveForward(to: ScreenType, _ router: Router) {
+    func moveForward(screen: ScreenType, _ router: Router) {
         withAnimation(.easeInOut(duration: 0.3)) {
             router.direction = .forward
-            router.screen = to
+            router.screen = screen
         }
     }
-    
-    func moveBack(to: ScreenType, _ router: Router) {
+    func moveBack(screen: ScreenType, _ router: Router) {
         withAnimation(.easeInOut(duration: 0.3)) {
             router.direction = .back
-            router.screen = to
+            router.screen = screen
         }
     }
 }
 
 protocol ScreenMovable2: View {
-    func moveForward(to : TransactionInput, _ router: TransactionInputRouter) -> Void
-    func moveBack(to : TransactionInput, _ router: TransactionInputRouter) -> Void
+    func moveForward(screen: TransactionInput, _ router: TransactionInputRouter)
+    func moveBack(screen: TransactionInput, _ router: TransactionInputRouter)
 }
 
 extension ScreenMovable2 {
-    
-    func moveBack(to: TransactionInput, _ router: TransactionInputRouter) {
+    func moveBack(screen: TransactionInput, _ router: TransactionInputRouter) {
         withAnimation(.easeInOut(duration: 0.5)) {
             router.direction = .back
-            router.screen = to
+            router.screen = screen
         }
     }
-    func moveForward(to: TransactionInput, _ router: TransactionInputRouter) {
+    func moveForward(screen: TransactionInput, _ router: TransactionInputRouter) {
         withAnimation(.easeInOut(duration: 0.5)) {
             router.direction = .forward
-            router.screen = to
+            router.screen = screen
         }
     }
 }
