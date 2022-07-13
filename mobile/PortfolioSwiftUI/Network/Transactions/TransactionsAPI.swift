@@ -31,6 +31,7 @@ enum TransactionsAPI {
         
         static func mock(_ file: String? = nil) -> RegistResponse {
             let decoder = jsonDecoder()
+            // swiftlint:disable:next force_cast
             return try! decoder.decode(RegistResponse.self, from: loadFile(json: file ?? "Success_Regist_Transaction"))
         }
     }

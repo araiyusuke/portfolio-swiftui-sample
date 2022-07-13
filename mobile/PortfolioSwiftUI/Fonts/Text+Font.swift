@@ -10,11 +10,11 @@ import SwiftUI
 
 extension Text {
     
-    enum color {
+    enum ColorModel {
         case light, dark
     }
     
-    enum weight: String {
+    enum Weight: String {
         case medium = "Medium"
         case bold = "Bold"
         case regular = "Regular"
@@ -26,7 +26,7 @@ extension Text {
         case roboto = "Roboto"
     }
     
-    enum letterSpacing {
+    enum LetterSpacing {
         
         case none, short, `default`,  middle, long, veryLong
         
@@ -55,9 +55,9 @@ extension Text {
     func customFont(
         font: FontType = .notosans,
         size: CGFloat,
-        spacing: letterSpacing = .default,
+        spacing: LetterSpacing = .default,
         rgb: Color,
-        weight: Text.weight,
+        weight: Text.Weight,
         line: CGFloat = 8
     ) -> some View {
         
@@ -71,16 +71,16 @@ extension Text {
     func customFont(
         font: FontType = .notosans,
         size: CGFloat,
-        spacing: letterSpacing = .default,
-        color: Text.color = .dark,
-        weight: Text.weight,
+        spacing: LetterSpacing = .default,
+        color: ColorModel = .dark,
+        weight: Text.Weight,
         line: CGFloat = 8
     ) -> some View {
         
         self
             .font(Font.custom("\(font.rawValue)-\(weight.rawValue)", size: size))
             .kerning(spacing.size)
-            .foregroundColor(color == .light ? Color.white : Color.black)
+            .foregroundColor(color == .light ? .white : .black)
             .modifier(CustomFont(size))
     }
 }

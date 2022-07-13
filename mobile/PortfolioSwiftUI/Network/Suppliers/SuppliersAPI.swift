@@ -11,7 +11,7 @@ import Combine
 enum SuppliersAPI {
     
     struct Response: Mockable {
-        
+
         let suppliers: [PullDownItem]
         
         static func mock(_ file: String? = nil) -> Response {

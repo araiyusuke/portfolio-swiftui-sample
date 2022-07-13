@@ -52,8 +52,8 @@ class StubURLProtocol: URLProtocol {
                 client?.urlProtocol(self, didLoad: data)
             }
             client?.urlProtocolDidFinishLoading(self)
-        } catch let e {
-            client?.urlProtocol(self, didFailWithError: e)
+        } catch let error {
+            client?.urlProtocol(self, didFailWithError: error)
         }
     }
     override func stopLoading() {}
@@ -75,15 +75,15 @@ extension API {
                 let statusCode = httpResponse.statusCode
                                                 
                 // 500番台エラー
-                if StatusCode.HTTP_SERVER_ERROR_RANGE.contains(statusCode) {
+                if StatusCode.httpClientErrorRange.contains(statusCode) {
                     throw APIError.serverError
                 }
 
                 // 400番台エラー
-                if StatusCode.HTTP_CLIENT_ERROR_RANGE.contains(statusCode) {
+                if StatusCode.httpClientErrorRange.contains(statusCode) {
                                         
                     // トークンエラー
-                    if statusCode == StatusCode.HTTP_UNAUTHORIZED_401 {
+                    if statusCode == StatusCode.httpUnauthorized401 {
                         let decoder = jsonDecoder()
                         let data = try decoder.decode(ResponseResultError.self, from: dataTaskOutput.data)
                         if data.message == "Error:DeviceTokenが正しくありません" {
@@ -94,17 +94,17 @@ extension API {
                     }
 
                     // 入力エラー
-                    if statusCode == StatusCode.HTTP_UNPROCESSABLE_ENTITY_422 {
+                    if statusCode == StatusCode.unProcessableEntity422 {
                         let decoder = jsonDecoder()
                         let data = try decoder.decode(ResponseResultError.self, from: dataTaskOutput.data)
                         throw APIError.validation(data: data)
                     }
                     
-                    if statusCode == StatusCode.HTTP_TOO_MANY_REQUESTS_429 {
+                    if statusCode == StatusCode.httpTooManyRequest429 {
                         throw APIError.tooManyRequest
                     }
                     
-                    if StatusCode.HTTP_NOT_FOUND_AND_NOT_ALLOWED.contains(statusCode) {
+                    if StatusCode.httpNotFoundAndNotAllowed.contains(statusCode) {
                         throw APIError.serverError
                     }
                 

@@ -28,7 +28,7 @@ struct Transaction: Mockable, Hashable, Identifiable {
     var supplier: String?
     var description: String?
     var color: Color {
-        return Color.hex(string: hex, alpha: 0.3)
+        return Color.hex(hexString: hex, alpha: 0.3)
     }
     
     var pickerDate: Date {

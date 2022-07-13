@@ -11,11 +11,11 @@ struct Configuration {
     
     static let shared = Configuration()
     
-    let API_HOST: String
-    let API_HTTP_PROTOCOL: String
+    let apiHost: String
+    let apiHttpProtcol: String
     
     private init() {
-        API_HOST = "localhost:8080/api/"
-        API_HTTP_PROTOCOL = "http://"
+        apiHost = "localhost:8080/api/"
+        apiHttpProtcol = "http://"
     }
 }

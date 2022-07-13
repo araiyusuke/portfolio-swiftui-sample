@@ -32,7 +32,7 @@ struct NumberPad: View {
         onChange(key)
     }
     
-    func KeyPadRow(keys: [NumberPad.Key]) -> some View {
+    func keypadRow(keys: [NumberPad.Key]) -> some View {
         HStack(spacing: spacing.y) {
             ForEach(keys, id: \.self) { key in
                 KeyPadButton(key)
@@ -43,10 +43,10 @@ struct NumberPad: View {
     var body: some View {
         GeometryReader { geometry in
             VStack (spacing: spacing.x) {
-                KeyPadRow(keys: [.number(7), .number(8), .number(9)])
-                KeyPadRow(keys: [.number(4), .number(5), .number(6)])
-                KeyPadRow(keys: [.number(1), .number(2), .number(3)])
-                KeyPadRow(keys: [.doubleZero, .number(0), .delete])
+                keypadRow(keys: [.number(7), .number(8), .number(9)])
+                keypadRow(keys: [.number(4), .number(5), .number(6)])
+                keypadRow(keys: [.number(1), .number(2), .number(3)])
+                keypadRow(keys: [.doubleZero, .number(0), .delete])
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
             .environment(\.keyPadButtonAction, self.keyWasPressed(_:))
