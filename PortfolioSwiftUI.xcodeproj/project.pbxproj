@@ -149,7 +149,7 @@
 		F13C800B2877AF3A00973687 /* PullDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullDown.swift; sourceTree = "<group>"; };
 		F13C804D287A763000973687 /* View+NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+NavigationView.swift"; sourceTree = "<group>"; };
 		F13C8050287B09ED00973687 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		F13CA319286E769E00527D1E /* TapSimpleButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapSimpleButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F13CA319286E769E00527D1E /* PortfolioSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PortfolioSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13CA31C286E769E00527D1E /* TapSimpleButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSimpleButtonApp.swift; sourceTree = "<group>"; };
 		F13CA31E286E769E00527D1E /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		F13CA320286E769F00527D1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -531,7 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				F13CA3582871011C00527D1E /* README.md */,
-				F13CA31B286E769E00527D1E /* TapSimpleButton */,
+				F13CA31B286E769E00527D1E /* PortfolioSwiftUI */,
 				F13CA31A286E769E00527D1E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -539,12 +539,12 @@
 		F13CA31A286E769E00527D1E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F13CA319286E769E00527D1E /* TapSimpleButton.app */,
+				F13CA319286E769E00527D1E /* PortfolioSwiftUI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F13CA31B286E769E00527D1E /* TapSimpleButton */ = {
+		F13CA31B286E769E00527D1E /* PortfolioSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
 				F13C7F8C2873A10A00973687 /* Injected */,
@@ -560,7 +560,7 @@
 				F13C7F4628718B4100973687 /* Components */,
 				F13C7F3E287189CF00973687 /* Controller */,
 			);
-			path = TapSimpleButton;
+			path = PortfolioSwiftUI;
 			sourceTree = "<group>";
 		};
 		F13CA322286E769F00527D1E /* Preview Content */ = {
@@ -608,9 +608,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F13CA318286E769E00527D1E /* TapSimpleButton */ = {
+		F13CA318286E769E00527D1E /* PortfolioSwiftUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F13CA327286E769F00527D1E /* Build configuration list for PBXNativeTarget "TapSimpleButton" */;
+			buildConfigurationList = F13CA327286E769F00527D1E /* Build configuration list for PBXNativeTarget "PortfolioSwiftUI" */;
 			buildPhases = (
 				F13CA315286E769E00527D1E /* Sources */,
 				F13CA316286E769E00527D1E /* Frameworks */,
@@ -620,12 +620,12 @@
 			);
 			dependencies = (
 			);
-			name = TapSimpleButton;
+			name = PortfolioSwiftUI;
 			packageProductDependencies = (
 				F13C7FD12875851B00973687 /* ResizableSheet */,
 			);
 			productName = TapSimpleButton;
-			productReference = F13CA319286E769E00527D1E /* TapSimpleButton.app */;
+			productReference = F13CA319286E769E00527D1E /* PortfolioSwiftUI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -643,7 +643,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F13CA314286E769E00527D1E /* Build configuration list for PBXProject "TapSimpleButton" */;
+			buildConfigurationList = F13CA314286E769E00527D1E /* Build configuration list for PBXProject "PortfolioSwiftUI" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -659,7 +659,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F13CA318286E769E00527D1E /* TapSimpleButton */,
+				F13CA318286E769E00527D1E /* PortfolioSwiftUI */,
 			);
 		};
 /* End PBXProject section */
@@ -895,7 +895,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TapSimpleButton/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PortfolioSwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = CNWDNX3S69;
 				ENABLE_PREVIEWS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -903,7 +903,7 @@
 					"$(inherited)",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TapSimpleButton/Info.plist;
+				INFOPLIST_FILE = PortfolioSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -934,11 +934,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TapSimpleButton/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PortfolioSwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = CNWDNX3S69;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TapSimpleButton/Info.plist;
+				INFOPLIST_FILE = PortfolioSwiftUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -963,7 +963,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F13CA314286E769E00527D1E /* Build configuration list for PBXProject "TapSimpleButton" */ = {
+		F13CA314286E769E00527D1E /* Build configuration list for PBXProject "PortfolioSwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F13CA325286E769F00527D1E /* Debug */,
@@ -972,7 +972,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F13CA327286E769F00527D1E /* Build configuration list for PBXNativeTarget "TapSimpleButton" */ = {
+		F13CA327286E769F00527D1E /* Build configuration list for PBXNativeTarget "PortfolioSwiftUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F13CA328286E769F00527D1E /* Debug */,
