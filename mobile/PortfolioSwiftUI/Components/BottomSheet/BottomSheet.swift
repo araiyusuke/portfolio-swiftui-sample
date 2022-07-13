@@ -9,7 +9,7 @@ import Foundation
 
 import SwiftUI
 
-fileprivate enum Constants {
+enum Constants {
     static let radius: CGFloat = 16
     static let indicatorHeight: CGFloat = 6
     static let indicatorWidth: CGFloat = 60
@@ -18,9 +18,7 @@ fileprivate enum Constants {
 }
 
 struct BottomSheetView<Content: View>: View {
-    
     @Binding var isOpen: Bool
-
     let maxHeight: CGFloat
     let minHeight: CGFloat
     let content: Content
@@ -40,7 +38,7 @@ struct BottomSheetView<Content: View>: View {
         ZStack {
             self.content
         }
-        .frame(width: UIScreen.main.bounds.size.width , height: UIScreen.main.bounds.size.height * 0.6)
+        .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height * 0.6)
         .background(.white)
         .frame(height: UIScreen.main.bounds.size.height, alignment: .bottomLeading)
         .background(Color.black.opacity(isOpen == true ?  0.3 : 0))

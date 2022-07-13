@@ -10,26 +10,17 @@ import SwiftUI
 import Combine
 
 struct TransactionsListScreen: View {
-    
     @State private var sort: Sort = .new
     @StateObject var viewModel: ViewModel
-    @EnvironmentObject var bottomTab : BottomTabManager
-    @EnvironmentObject var header : Header
-    
+    @EnvironmentObject var bottomTab: BottomTabManager
+    @EnvironmentObject var header: Header
     var body: some View {
-        
         NavigationView {
-            
             ZStack {
-                
                 VStack(spacing: 0) {
-                    
                     listInfo
-                    
                     listDispOptions
-                    
                     content
-                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                 .onAppear {
@@ -43,9 +34,6 @@ struct TransactionsListScreen: View {
             }
         }
     }
-    
-    
-    
     @ViewBuilder
     private var content: some View {
         switch viewModel.transactions {
@@ -53,27 +41,20 @@ struct TransactionsListScreen: View {
             loadedView()
         case .isLoading:
             loadingView
-            
         case .loaded:
             loadedView()
-            
         case let .failed(error):
             failedView(error)
         }
     }
-    
     var notRequestedView: some View {
         Text("リクエスト中...")
     }
-    
     var loadingView: some View {
         Text("ローディング...")
     }
-    
     func loadedView() -> some View {
-        
-        List(viewModel.transactionsList.indices, id:\.self) { index in
-            
+        List(viewModel.transactionsList.indices, id: \.self) { index in
             NavigationLink(
                 destination:
                     TransactionsDetailScreen( viewModel: .init(
@@ -82,46 +63,33 @@ struct TransactionsListScreen: View {
                     ),
                 label: {
                     ZStack {
-                        
                         Text(viewModel.transactionsList[index].accounts)
-                            .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
-                        
+                            .customFont(size: 12, spacing: .none, rgb: Color.rgb(89, 89, 89), weight: .light)
                         HStack(spacing: 0) {
-                            
                             VStack(spacing: 0) {
-                                
                             }
                             .frame(maxWidth: 7, maxHeight: .infinity)
                             .background(viewModel.transactionsList[index].color)
                             .padding(.vertical, 2)
-                            
-                            
-                            VStack (spacing: 10) {
-                                
+                            VStack(spacing: 10) {
                                 HStack(spacing: 0) {
-                                    
                                     Text(viewModel.transactionsList[index].date)
-                                        .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
-                                    
+                                        .customFont(size: 12, spacing: .none,
+                                                    rgb: Color.rgb(89, 89, 89), weight: .light)
                                     Spacer()
-                                    
                                     Text("¥\(viewModel.transactionsList[index].price)")
-                                        .customFont(size: 12, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
-                                    
+                                        .customFont(size: 12, spacing: .none,
+                                                    rgb: Color.rgb(89, 89, 89), weight: .light)
                                 }
-                                
                                 HStack(spacing: 0) {
                                     Text(viewModel.transactionsList[index].description ?? "摘要未入力")
-                                        .customFont(size: 13, spacing: .none, rgb: Color.rgb(89,89,89), weight: .light)
-                                    
+                                        .customFont(size: 13, spacing: .none,
+                                                    rgb: Color.rgb(89, 89, 89), weight: .light)
                                     Spacer()
-                                    
                                     viewModel.transactionsList[index].image
-                                    
                                 }
                             }
                             .padding(.leading, 5)
-                            
                         }
                     }
                 }
@@ -129,13 +97,10 @@ struct TransactionsListScreen: View {
             .isDetailLink(false)
             .swipeActions(edge: .trailing) {
                 HStack {
-                    
                     Button(role: .destructive) {
                     } label: {
                         Text("削除")
-                        
                     }
-                    
                     Button(role: .none ) {
                     } label: {
                         Text("コピー")
@@ -149,7 +114,6 @@ struct TransactionsListScreen: View {
         .environment(\.defaultMinListRowHeight, 78)
         .listStyle(PlainListStyle())
     }
-    
     func failedView(_ error: Error) -> some View {
         Text(error.localizedDescription)
     }
@@ -169,17 +133,14 @@ extension TransactionsListScreen {
     var listInfo: some View {
         VStack(spacing: 5) {
             Text("科目: すべて")
-                .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                .customFont(size: 14, spacing: .short, rgb: Color.rgb(89, 89, 89), weight: .light)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            
             Text("取引日: 2021/01/01 〜 2022/07/04")
-                .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                .customFont(size: 14, spacing: .short, rgb: Color.rgb(89, 89, 89), weight: .light)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            
             Text("検索結果: \(viewModel.searchCount)件")
-                .customFont(size: 14, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
+                .customFont(size: 14, spacing: .short, rgb: Color.rgb(89, 89, 89), weight: .light)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            
         }
         .padding(5)
         .frame(maxWidth: .infinity)
@@ -190,20 +151,16 @@ extension TransactionsListScreen {
 extension TransactionsListScreen {
     /// リストのオプション(検索、ソート)
     var listDispOptions: some View {
-        HStack() {
-            
+        HStack {
             sort.icon
-            
             Text(sort.description)
-                .customFont(size: 13, spacing: .short, rgb: Color.rgb(89,89,89), weight: .light)
-                .onButtonTap() {
+                .customFont(size: 13, spacing: .short, rgb: Color.rgb(89, 89, 89), weight: .light)
+                .onButtonTap {
                     sort.toggle()
                 }
-            
             Spacer()
-            
             searchButton
-                .onButtonTap() {
+                .onButtonTap {
                 }
         }
         .padding(.horizontal, 5)

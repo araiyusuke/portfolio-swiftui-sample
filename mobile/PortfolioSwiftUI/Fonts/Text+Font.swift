@@ -9,27 +9,21 @@ import Foundation
 import SwiftUI
 
 extension Text {
-    
-    enum color {
+    enum ColorModel {
         case light, dark
     }
-    
-    enum weight: String {
+    enum Weight: String {
         case medium = "Medium"
         case bold = "Bold"
         case regular = "Regular"
         case light = "Light"
     }
-    
     enum FontType: String {
         case notosans = "NotoSansJP"
         case roboto = "Roboto"
     }
-    
-    enum letterSpacing {
-        
-        case none, short, `default`,  middle, long, veryLong
-        
+    enum LetterSpacing {
+        case none, short, `default`, middle, long, veryLong
         var size: CGFloat {
             switch self {
             case .none:
@@ -47,20 +41,17 @@ extension Text {
             }
         }
     }
-    
     func customFont(size: CGFloat) -> some View {
         self.modifier(CustomFont(size))
     }
-    
     func customFont(
         font: FontType = .notosans,
         size: CGFloat,
-        spacing: letterSpacing = .default,
+        spacing: LetterSpacing = .default,
         rgb: Color,
-        weight: Text.weight,
+        weight: Text.Weight,
         line: CGFloat = 8
     ) -> some View {
-        
         self
             .font(Font.custom("\(font.rawValue)-\(weight.rawValue)", size: size))
             .kerning(spacing.size)
@@ -71,31 +62,26 @@ extension Text {
     func customFont(
         font: FontType = .notosans,
         size: CGFloat,
-        spacing: letterSpacing = .default,
-        color: Text.color = .dark,
-        weight: Text.weight,
+        spacing: LetterSpacing = .default,
+        color: ColorModel = .dark,
+        weight: Text.Weight,
         line: CGFloat = 8
     ) -> some View {
-        
         self
             .font(Font.custom("\(font.rawValue)-\(weight.rawValue)", size: size))
             .kerning(spacing.size)
-            .foregroundColor(color == .light ? Color.white : Color.black)
+            .foregroundColor(color == .light ? .white : .black)
             .modifier(CustomFont(size))
     }
 }
 
 struct CustomFont: ViewModifier {
-    
     let size: CGFloat
-    
     init(_ size: CGFloat) {
         self.size = size
     }
-    
     func body(content: Content) -> some View {
         content
             .font(.system(size: size, weight: .regular, design: .default))
     }
 }
-

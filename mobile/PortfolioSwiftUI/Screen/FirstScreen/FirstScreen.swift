@@ -9,11 +9,8 @@ import Foundation
 import SwiftUI
 
 extension FirstScreen {
-    
     class ViewModel: ObservableObject {
-        
         let container: DIContainer
-
         init(container: DIContainer) {
             self.container = container
         }
@@ -21,16 +18,14 @@ extension FirstScreen {
 }
 
 struct FirstScreen: ScreenMovable2 {
-    
     @ObservedObject private(set) var viewModel: ViewModel
-    @EnvironmentObject var header : Header
-    @EnvironmentObject var router : TransactionInputRouter
+    @EnvironmentObject var header: Header
+    @EnvironmentObject var router: TransactionInputRouter
 
     let circleSize: CGFloat = 82
-    @State private var labelPosX:CGFloat = 0
+    @State private var labelPosX: CGFloat = 0
     @State private var tab = 1
-    
-    var menus : [[Account?]] {
+    var menus: [[Account?]] {
         if tab == 0 {
             return FirstScreen.income
 
@@ -38,13 +33,9 @@ struct FirstScreen: ScreenMovable2 {
             return FirstScreen.spending
         }
     }
-    
     var body: some View {
-        
         SlideAnimation2 {
-            
-            let spacing:CGFloat = 30
-            
+            let spacing: CGFloat = 30
             VStack(spacing: spacing) {
 
                 Picker(selection: $tab, label: Text("")) {
@@ -58,12 +49,11 @@ struct FirstScreen: ScreenMovable2 {
                       }
                 .pickerStyle(.segmented)
                 .padding(10)
-                .onAppear() {
-                    
+                .onAppear {
                     let appearance = UISegmentedControl.appearance()
-                    let firstPriorityFont = UIFont(name: "Roboto-Light", size: 11.0);
+                    let firstPriorityFont = UIFont(name: "Roboto-Light", size: 11.0)
                     let secondPriorityFontfont = UIFont.boldSystemFont(ofSize: 12)
-                    let selectFont = UIFont(name: "NotoSansJP-Medium", size: 11.0);
+                    let selectFont = UIFont(name: "NotoSansJP-Medium", size: 11.0)
 
                        let foregroundColor = UIColor.black
 
@@ -84,18 +74,13 @@ struct FirstScreen: ScreenMovable2 {
                 }
 
                 ForEach(0..<menus.count, id: \.self) { num in
-                    
                     HStack(spacing: 36) {
-                        
                         ForEach(menus[num], id: \.hashValue) { account in
-                            
                             Group {
-                                
                                 if let account = account {
-                                    
-                                    account.view(selected: account.name == header.getAccount()?.name).onButtonTap() {
+                                    account.view(selected: account.name == header.getAccount()?.name).onButtonTap {
                                         header.setAccount(account)
-                                        moveForward(to: .second, router)
+                                        moveForward(screen: .second, router)
                                     }
                                 } else {
                                     Text("")
@@ -114,23 +99,19 @@ struct FirstScreen: ScreenMovable2 {
         .background(Color.backGroundColor)
         .gesture(DragGesture()
                    .onEnded({ value in
-
-                       if (abs(value.translation.width) < 10) {
+                       if abs(value.translation.width) < 10 {
                            return
                        }
-
-                       if (value.translation.width < 0 ) {
-                           moveForward(to: .second, router)
-
+                       if value.translation.width < 0 {
+                           moveForward(screen: .second, router)
                            self.labelPosX -= 30
-                       } else if (value.translation.width > 0 ) {
+                       } else if value.translation.width > 0 {
                            self.labelPosX += 30
 //                           moveBack(to: .first, router)
-
                        }
                    })
         )
-        .onAppear() {
+        .onAppear {
             header.setTitle("勘定科目を選択")
         }
     }

@@ -12,10 +12,9 @@ struct Descriptions: Mockable, Hashable {
     var descriptions: [Description]
 }
 
-struct Description: Mockable,  Hashable {
+struct Description: Mockable, Hashable {
     var id: Int
     var name: String
-    
     func getName() -> String {
         return name
     }

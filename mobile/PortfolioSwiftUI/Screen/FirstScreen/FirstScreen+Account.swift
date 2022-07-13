@@ -9,21 +9,16 @@ import Foundation
 import SwiftUI
 
 struct Account: Identifiable, Hashable {
-    
     var id = UUID()
     var name: String
     var color: Color
     var boderSize: CGFloat = 3
-    
     func view(selected: Bool) -> some View {
         Text(name)
             .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
             .backgroundCircle(selected ? color : .white, 82, color, boderSize)
     }
-    
-    
     static func all() -> [Account] {
-        
         [
             Account(name: "仕入", color: Color.rgb(148, 196, 122)),
             Account(name: "接待交際費", color: Color.rgb(173, 124, 229)),
@@ -50,7 +45,7 @@ struct Account: Identifiable, Hashable {
             Account(name: "利子割引料", color: Color.rgb(243, 177, 116)),
             Account(name: "研修費", color: Color.rgb(243, 177, 116)),
             Account(name: "税理士・弁護士報酬", color: Color.rgb(243, 177, 116)),
-            Account(name: "専従者給与", color: Color.rgb(243, 177, 116)),
+            Account(name: "専従者給与", color: Color.rgb(243, 177, 116))
         ]
     }
 }

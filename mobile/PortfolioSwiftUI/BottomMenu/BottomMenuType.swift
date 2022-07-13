@@ -9,18 +9,14 @@ import Foundation
 import SwiftUI
 
 enum BottomMenuType: Identifiable {
-    
     var id: Self { self }
-    
     case list, input, camera, help, etc
-    
     var image: some View {
         Image(systemName: imageName )
             .resizable()
             .scaledToFit()
             .frame(width: 33, height: 33)
     }
-    
     var imageName: String {
         switch self {
         case .list:
@@ -35,7 +31,6 @@ enum BottomMenuType: Identifiable {
             return "gearshape"
         }
     }
-    
     var description: String {
         switch self {
         case .list:

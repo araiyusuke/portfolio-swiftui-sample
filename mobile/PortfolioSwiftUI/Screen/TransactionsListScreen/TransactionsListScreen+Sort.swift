@@ -9,11 +9,8 @@ import Foundation
 import SwiftUI
 
 extension TransactionsListScreen {
-    
     enum Sort {
-        
         case new, old
-        
         mutating func toggle() {
             if self == .new {
                 self = .old
@@ -21,16 +18,14 @@ extension TransactionsListScreen {
                 self = .new
             }
         }
-        
         var rotate: Double {
-            switch(self) {
+            switch self {
             case .new:
                 return 0
             case .old:
                 return 180
             }
         }
-        
         /// 上と下の矢印
         var icon : some View {
             Image("sort_icon")
@@ -38,10 +33,9 @@ extension TransactionsListScreen {
                 .frame(width: 27, height: 27)
                 .rotationEffect(.degrees(rotate))
         }
-        
         /// 矢印の右にある文字列(新しい取引日順、古い取引日順)
         var description: String {
-            switch(self) {
+            switch self {
             case .new:
                 return "新しい取引日順"
             case .old:
@@ -49,5 +43,4 @@ extension TransactionsListScreen {
             }
         }
     }
-    
 }

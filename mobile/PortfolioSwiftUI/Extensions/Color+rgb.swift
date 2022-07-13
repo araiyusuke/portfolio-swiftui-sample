@@ -9,34 +9,28 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    
-    static func rgb(_ r: Double, _ g: Double, _ b: Double, _ alpha: CGFloat = 1.0) -> Color {
-        return Color(red: r / 255, green: g / 255, blue: b / 255, opacity: alpha)
+    static func rgb(_ red: Double, _ green: Double, _ blue: Double, _ alpha: CGFloat = 1.0) -> Color {
+        return Color(red: red / 255, green: green / 255, blue: blue / 255, opacity: alpha)
     }
-    
     static var fontColor: Color {
         return Color.rgb(51, 51, 51)
     }
-    
     static var headerColor: Color {
         return Color.rgb(144, 204, 240)
     }
-    
     static var backGroundColor: Color {
         return Color.rgb(252, 251, 246)
     }
-    
-    static func hex( string : String, alpha : CGFloat) -> Color {
-       let string_ = string.replacingOccurrences(of: "#", with: "")
-       let scanner = Scanner(string: string_ as String)
+    static func hex(hexString: String, alpha: CGFloat) -> Color {
+       let scanner = Scanner(string: hexString as String)
        var color: UInt32 = 0
        if scanner.scanHexInt32(&color) {
-           let r = CGFloat((color & 0xFF0000) >> 16)
-           let g = CGFloat((color & 0x00FF00) >> 8)
-           let b = CGFloat(color & 0x0000FF)
-           return Color.rgb(r, g, b, alpha)
+           let red = CGFloat((color & 0xFF0000) >> 16)
+           let green = CGFloat((color & 0x00FF00) >> 8)
+           let blue = CGFloat(color & 0x0000FF)
+           return Color.rgb(red, green, blue, alpha)
        } else {
-           return Color.white;
+           return Color.white
        }
    }
 }

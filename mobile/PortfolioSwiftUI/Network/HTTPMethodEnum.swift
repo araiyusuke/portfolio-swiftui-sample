@@ -8,11 +8,9 @@
 import Foundation
 
 enum HTTPRequestMethod: String {
-    
     case get, post, put, delete
-   
     var description: String {
-        switch(self) {
+        switch self {
         case .get:
             return "GET"
         case .post:

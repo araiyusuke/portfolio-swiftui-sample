@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-//typealias LoadableSubject<Value> = Binding<Loadable<Value>>
+typealias LoadableSubject<Value> = Binding<Loadable<Value>>
 
 enum Loadable<T> {
 

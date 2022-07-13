@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 extension View {
-    
     func backgroundCircle(_ color: Color, _ size: CGFloat, _ borderColor: Color, _ borderSize: CGFloat ) -> some View {
         GeometryReader { geometry in
             modifier(

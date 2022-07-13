@@ -9,31 +9,23 @@ import Foundation
 import SwiftUI
 
 struct ThirdScreen: ScreenMovable2 {
-    
-    @EnvironmentObject var router : TransactionInputRouter
-    @EnvironmentObject var header : Header
-    @State private var labelPosX:CGFloat = 0
-    
+    @EnvironmentObject var router: TransactionInputRouter
+    @EnvironmentObject var header: Header
+    @State private var labelPosX: CGFloat = 0
     var body: some View {
-        
         SlideAnimation2 {
-            
-            NumberPad() { numKey in
-                
+            NumberPad { numKey in
                 if numKey.isDeleteKey {
-                    
                     if header.getNumPad().count >= 1 {
                         header.removeLast()
                     }
                     return
                 }
-                
                 if header.getNumPad() == "0" {
                     header.setNumPad(value: numKey.string)
                     return
                 }
                 header.append(letter: numKey.string)
-                
             }
             .frame(width: 324, height: 430)
         }
@@ -42,17 +34,14 @@ struct ThirdScreen: ScreenMovable2 {
         .hiddenNavigationBarStyle()
         .gesture(DragGesture()
             .onEnded({ value in
-                
-                if (abs(value.translation.width) < 10) {
+                if abs(value.translation.width) < 10 {
                     return
                 }
-                
-                if (value.translation.width < 0 ) {                    
+                if value.translation.width < 0 {
                     self.labelPosX -= 30
-                } else if (value.translation.width > 0 ) {
+                } else if value.translation.width > 0 {
                     self.labelPosX += 30
-                    moveBack(to: .second, router)
-                    
+                    moveBack(screen: .second, router)
                 }
             })
         )

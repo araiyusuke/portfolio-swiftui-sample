@@ -9,20 +9,14 @@ import Foundation
 import SwiftUI
 import ResizableSheet
 
-struct BottomSheetList:  View {
-    
+struct BottomSheetList: View {
     let title: String
     @Binding var items: [PullDownItem]
     @Binding var state: ResizableSheetState
-    
-    var onSelect : (PullDownItem) -> ()
-    
+    var onSelect: (PullDownItem) -> Void
     var body: some View {
-        
         VStack(spacing: 0) {
-            
             ZStack(alignment: .center) {
-                
                 Text(title)
                     .customFont(size: 13, spacing: .short, color: .dark, weight: .light)
 
@@ -34,21 +28,18 @@ struct BottomSheetList:  View {
                         .onTapGesture {
                             state = .hidden
                         }
-                    
                 }
             }
-            
             Text("検索結果: \(items.count)件")
                 .customFont(size: 13, spacing: .short, color: .dark, weight: .light)
                 .padding(10)
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .background(Color.black.opacity(0.3))
-            
             List {
                 ForEach(items) { item in
                     Text(item.name)
                         .customFont(size: 13, spacing: .short, color: .dark, weight: .light)
-                        .onButtonTap(){
+                        .onButtonTap {
                             onSelect(item)
                             state = .hidden
                         }
@@ -59,4 +50,3 @@ struct BottomSheetList:  View {
         }
     }
 }
-

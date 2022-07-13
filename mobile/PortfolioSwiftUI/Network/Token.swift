@@ -13,7 +13,7 @@ struct APIToken: Codable {
 }
 
 enum TokenError: Error {
-    case Nil
+    case nilValue
 }
 
 protocol Token: Codable {
@@ -24,7 +24,7 @@ protocol Token: Codable {
 extension Token {
     init(plainText: String?) throws {
         if plainText == nil {
-            throw TokenError.Nil
+            throw TokenError.nilValue
         }
         self.init()
         self.plainText = plainText
@@ -36,9 +36,7 @@ struct DeviceToken: Token {
 }
 
 struct MemberToken: Token, CustomStringConvertible {
-    
     var plainText: String?
-    
     var description: String {
         return """
         \(plainText ?? "nil")

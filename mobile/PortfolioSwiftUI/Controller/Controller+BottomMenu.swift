@@ -9,25 +9,19 @@ import Foundation
 import SwiftUI
 
 extension Controller {
-    
     static let menus: [BottomMenuType] = [
         .list,
         .input,
         .camera,
         .help,
-        .etc,
+        .etc
     ]
-    
     func rgb(_ flag: Bool) -> Color {
         return flag ? Color.blue: Color.rgb(127, 127, 127)
     }
-    
     var bottomMenu: some View {
-        
         HStack(spacing: 0) {
-            
             ForEach(Self.menus) { menu in
-                
                 VStack {
 
                     menu.image.foregroundColor(rgb(self.selectTabMenu == menu))
@@ -38,26 +32,22 @@ extension Controller {
                 }
                 .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottom)
                 .onButtonTap {
-                    
                     if selectTabMenu == menu {
                         return
                     }
-                    
                     selectTabMenu = menu
-                    
-                    switch(selectTabMenu) {
+                    switch selectTabMenu {
                     case .list:
-                        moveForward(to: .transactionList, router)
+                        moveForward(screen: .transactionList, router)
                     case .input:
-                        moveForward(to: .transactionInput(false), router)
+                        moveForward(screen: .transactionInput(false), router)
                     case .camera:
-                        moveForward(to: .receipt, router)
+                        moveForward(screen: .receipt, router)
                     case .help:
-                        moveForward(to: .help, router)
+                        moveForward(screen: .help, router)
                     case .etc:
-                        moveForward(to: .setting, router)
+                        moveForward(screen: .setting, router)
                     }
-                
                 }
             }
         }
