@@ -28,7 +28,7 @@ extension TransactionsListScreen {
         }
         /// 上と下の矢印
         var icon : some View {
-            Image("sort_icon")
+            Image(Asset.sortIcon)
                 .resizable()
                 .frame(width: 27, height: 27)
                 .rotationEffect(.degrees(rotate))
