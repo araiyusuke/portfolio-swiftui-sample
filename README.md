@@ -1,11 +1,11 @@
 # portfolio-swiftui-sample
 
-```
+## XcodeGenでプロジェクトファイルを生成
+
+```bash
 brew install swiftlint
 brew install xcodegen
-
 xcodegen
-
 ```
 
 ## API
