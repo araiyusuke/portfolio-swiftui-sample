@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct CircleButtonModifier: ViewModifier {
-    
     var color: Color
     var size: CGFloat
     var borderColor: Color

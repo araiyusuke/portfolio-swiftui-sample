@@ -27,11 +27,10 @@ struct APIAgent: APIAgentProtocol {
     }
 
     func run<T: Mockable>(_ request: URLRequest, mockFile: String?, statusCd: Int?) -> AnyPublisher<T, Error> {
-        return API.run(session.dataTaskPublisher(for: request), mockFile: mockFile, statusCd: statusCd)
+        return Api.run(session.dataTaskPublisher(for: request), mockFile: mockFile)
     }
 }
-
-class StubURLProtocol: URLProtocol {    
+class StubURLProtocol: URLProtocol {
     static var requestHandler: RequestHandler?
 
     override class func canInit(with request: URLRequest) -> Bool {
@@ -58,23 +57,21 @@ class StubURLProtocol: URLProtocol {
     override func stopLoading() {}
 }
 
-extension API {
-    static func run<T: Mockable>(_ dataTaskPublisher: URLSession.DataTaskPublisher,
-                             mockFile: String?, statusCd: Int?) -> AnyPublisher<T, Error> {
-        dataTaskPublisher
+typealias DataTaskPub = URLSession.DataTaskPublisher
+
+extension Api {
+    static func run<T: Mockable>(_ publisher: DataTaskPub, mockFile: String?) -> AnyPublisher<T, Error> {
+        publisher
             .tryMap { dataTaskOutput -> Result<URLSession.DataTaskPublisher.Output, Error> in
                 guard let httpResponse = dataTaskOutput.response as? HTTPURLResponse else {
                     throw APIError.invalidResponse
                 }
-                print(httpResponse)
-
                 // ステータスコードを取得
                 let statusCode = httpResponse.statusCode
                 // 500番台エラー
                 if StatusCode.httpClientErrorRange.contains(statusCode) {
                     throw APIError.serverError
                 }
-
                 // 400番台エラー
                 if StatusCode.httpClientErrorRange.contains(statusCode) {
                     // トークンエラー
@@ -87,7 +84,6 @@ extension API {
                             throw APIError.unauthorized(.member)
                         }
                     }
-
                     // 入力エラー
                     if statusCode == StatusCode.unProcessableEntity422 {
                         let decoder = jsonDecoder()

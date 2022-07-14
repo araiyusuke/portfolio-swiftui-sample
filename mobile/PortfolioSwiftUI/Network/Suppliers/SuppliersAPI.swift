@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-enum SuppliersAPI {
+enum SuppliersRepository {
     struct Response: Mockable {
         let suppliers: [PullDownItem]
         static func mock(_ file: String? = nil) -> Response {
@@ -20,8 +20,7 @@ enum SuppliersAPI {
 
     static func fetch() -> AnyPublisher<Response, Error> {
         return agent.run(
-            API
-                .Sppliers
+            SuppliersApi
                 .Fetch
                 .request()
         )

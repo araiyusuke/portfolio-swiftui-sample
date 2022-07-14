@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct KeyPadButton: View {
-    @Environment(\.keyPadButtonAction) var action: (NumberPad.Key) -> Void
-    
+    @Environment(\.keyPadButtonAction)
+    var action: (NumberPad.Key) -> Void
     enum ActionKey: EnvironmentKey {
         static var defaultValue: (NumberPad.Key) -> Void { { _ in } }
     }
@@ -21,7 +21,7 @@ struct KeyPadButton: View {
         GeometryReader { geometry in
             Button(action: {
                 self.action(key)
-            }) {
+            }, label: {
                 ZStack {
                     Circle()
                         .foregroundColor(.white)
@@ -33,7 +33,7 @@ struct KeyPadButton: View {
                         )
                     key.label
                 }
-            }
+            })
             .frame(width: geometry.size.width, height: geometry.size.height)
         }
     }

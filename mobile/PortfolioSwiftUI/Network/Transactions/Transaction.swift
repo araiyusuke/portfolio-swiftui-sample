@@ -41,7 +41,8 @@ struct Transaction: Mockable, Hashable, Identifiable {
             Text(accounts)
                 .customFont(size: 12, spacing: .none, rgb: Color.rgb(89, 89, 89), weight: .light)
             HStack(spacing: 0) {
-                VStack(spacing: 0) {}
+                VStack(spacing: 0) {
+                }
                 .frame(maxWidth: 7, maxHeight: .infinity)
                 .background(color)
                 .padding(.vertical, 2)
