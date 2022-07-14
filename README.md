@@ -1,5 +1,13 @@
 # portfolio-swiftui-sample
 
+```
+brew install swiftlint
+brew install xcodegen
+
+xcodegen
+
+```
+
 ## API
 
 ### 取引一覧 エンドポイント(GET)
