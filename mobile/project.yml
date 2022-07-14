@@ -4,6 +4,9 @@ packages:
   ResizableSheet:
     url: https://github.com/mtj0928/ResizableSheet
     exactVersion: 0.0.4
+  SwiftGen:
+    url: https://github.com/SwiftGen/SwiftGen
+    exactVersion: 6.5.0
 
 options:
   bundleIdPrefix: com.example
@@ -27,6 +30,10 @@ targets:
     preBuildScripts:
       - path: swift_lint.sh
         name: SwiftLint
+
+      - path: swift_gen.sh
+        name: SwiftGen
+
     type: application
     platform: iOS
     sources: 

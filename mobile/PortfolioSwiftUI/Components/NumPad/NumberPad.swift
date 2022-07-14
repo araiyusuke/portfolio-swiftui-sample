@@ -78,7 +78,7 @@ struct NumberPad: View {
                             .customFont(font: .roboto, size: 13, spacing: .short, color: .dark, weight: .light)
                             .offset(y: -8)
                         ZStack(alignment: .center) {
-                            Image("remove_icon")
+                            Image(Asset.onigiriImage)
                                 .resizable()
                                 .frame(width: 40, height: 24)
                                 .offset(x: -2)
