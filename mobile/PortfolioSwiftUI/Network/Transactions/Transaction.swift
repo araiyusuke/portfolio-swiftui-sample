@@ -69,13 +69,13 @@ struct Transaction: Mockable, Hashable, Identifiable {
 
     }
     var rightArrow: some View {
-        Image("right_allow_icon" )
+        Image(Asset.rightAllowIcon)
             .resizable()
             .frame(width: 10, height: 14)
     }
 
     var image: some View {
-        Image("pencil_icon" )
+        Image(Asset.pencilIcon)
             .resizable()
             .frame(width: 20, height: 20)
     }
