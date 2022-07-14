@@ -110,7 +110,7 @@ struct TransactionsListScreen: View {
 extension TransactionsListScreen {
     /// 画面上の検索ボタン
     var searchButton: some View {
-        Image("search_icon")
+        Image(Asset.searchIcon)
             .resizable()
             .frame(width: 80, height: 28)
     }
