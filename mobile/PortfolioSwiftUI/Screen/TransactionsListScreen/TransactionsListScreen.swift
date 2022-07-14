@@ -95,18 +95,6 @@ struct TransactionsListScreen: View {
                 }
             )
             .isDetailLink(false)
-            .swipeActions(edge: .trailing) {
-                HStack {
-                    Button(role: .destructive) {
-                    } label: {
-                        Text("削除")
-                    }
-                    Button(role: .none ) {
-                    } label: {
-                        Text("コピー")
-                    }
-                }
-            }
             .listRowBackground(Color.white)
             .listRowInsets(EdgeInsets())
         }

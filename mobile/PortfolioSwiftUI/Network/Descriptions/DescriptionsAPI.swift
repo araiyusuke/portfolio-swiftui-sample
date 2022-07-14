@@ -21,8 +21,7 @@ enum DescriptionsAPI {
 
     static func fetch() -> AnyPublisher<Response, Error> {
         return agent.run(
-            API
-                .Descriptions
+            DescriptionsApi
                 .Fetch
                 .request()
         )

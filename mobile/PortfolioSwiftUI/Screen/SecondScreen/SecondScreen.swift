@@ -11,7 +11,6 @@ import Combine
 import ResizableSheet
 
 struct SecondScreen: ScreenMovable2 {
-    
     enum InputState {
         case supplier, description
     }
@@ -36,7 +35,7 @@ struct SecondScreen: ScreenMovable2 {
                         .onButtonTap {
                             // 取引先の入力欄をターゲットにする
                             self.inputState = .supplier
-                            SuppliersAPI.fetch()
+                            SuppliersRepository.fetch()
                                 .receive(on: DispatchQueue.main)
                                 .sink(receiveCompletion: { completion in
                                     print(completion)

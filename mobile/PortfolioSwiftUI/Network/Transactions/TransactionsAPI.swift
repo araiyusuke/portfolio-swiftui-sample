@@ -47,16 +47,14 @@ enum TransactionsAPI {
 
     static func fetch() -> AnyPublisher<Response, Error> {
         return agent.run(
-            API
-                .Transactions
-                .Fetch
-                .request()
+                TransactionsApi
+                    .Fetch
+                    .request()
         )
     }
     static func regist() -> AnyPublisher<RegistResponse, Error> {
         return agent.run(
-            API
-                .Transactions
+            TransactionsApi
                 .Regist
                 .request()
         )
@@ -65,8 +63,7 @@ enum TransactionsAPI {
     // 取引編集後の上書きボタンをタップした時に実行
     static func update() -> AnyPublisher<UpdateResponse, Error> {
         return agent.run(
-            API
-                .Transactions
+            TransactionsApi
                 .Update
                 .request()
         )
