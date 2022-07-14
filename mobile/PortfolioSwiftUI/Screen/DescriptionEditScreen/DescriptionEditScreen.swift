@@ -19,7 +19,7 @@ struct DescriptionEditScreen: View {
     var body: some View {
         VStack(spacing: 20) {
             Text("摘要")
-                .customFont(size: 13, spacing: .short, color: .dark, weight: .light)
+                .customFont(size: 13, spacing: .short, weight: .light)
                 .frame(maxWidth: .infinity, alignment: .leading)
             HStack(alignment: .top, spacing: 3) {
                 inputDescription
@@ -65,7 +65,7 @@ struct DescriptionEditScreen: View {
     }
     var help: some View {
         Text("取引の内容やメモを入力します。\n入力すると、後で取引を探しやすくなります。\n入力しなくても構いません。")
-            .customFont(size: 13, spacing: .short, color: .dark, weight: .light)
+            .customFont(size: 13, spacing: .short, weight: .light)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

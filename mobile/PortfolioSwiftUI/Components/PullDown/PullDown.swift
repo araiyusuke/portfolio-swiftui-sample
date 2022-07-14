@@ -13,7 +13,7 @@ struct PullDown: View {
             .resizable()
             .frame(width: 18, height: 20)
             .frame(width: 40, height: 40)
-            .background(Color.headerColor)
+            .background(Asset.lightBlue.color)
             .cornerRadius(5)
     }
 }

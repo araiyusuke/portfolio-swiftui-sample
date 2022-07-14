@@ -11,7 +11,7 @@ import SwiftUI
 extension TransactionInputScreen {
     var next: some View {
         Text("次へ 〉")
-            .customFont(size: 18, spacing: .short, color: .dark, weight: .medium)
+            .customFont(size: 18, spacing: .short, weight: .medium)
             .onTapGesture {
                 switch router.screen {
                 case .first:

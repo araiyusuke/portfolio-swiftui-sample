@@ -68,14 +68,14 @@ struct NumberPad: View {
                 switch self {
                 case .doubleZero:
                     Text("00")
-                        .customFont(font: .roboto, size: 36, spacing: .short, color: .dark, weight: .light)
+                        .customFont(font: .roboto, size: 36, spacing: .short, weight: .light)
                 case .number(let num):
                     Text(num.description)
-                        .customFont(font: .roboto, size: 36, spacing: .short, color: .dark, weight: .light)
+                        .customFont(font: .roboto, size: 36, spacing: .short, weight: .light)
                 case .delete:
                     ZStack(alignment: .bottom) {
                         Text("消去")
-                            .customFont(font: .roboto, size: 13, spacing: .short, color: .dark, weight: .light)
+                            .customFont(font: .roboto, size: 13, spacing: .short, weight: .light)
                             .offset(y: -8)
                         ZStack(alignment: .center) {
                             Image(Asset.removeIcon)

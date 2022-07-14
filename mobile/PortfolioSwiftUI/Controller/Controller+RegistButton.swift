@@ -11,13 +11,13 @@ import SwiftUI
 extension TransactionInputScreen {
     var regist: some View {
         Text("登録")
-            .customFont(size: 15, spacing: .short, color: .light, weight: .bold)
+            .customFont(size: 15, spacing: .short, color: .white, weight: .bold)
             .frame(width: 64, height: 32)
-            .background(Color.rgb(99, 187, 235))
+            .background(Asset.lightBlue.color)
             .overlay(RoundedRectangle(cornerRadius: 5).stroke(.white, lineWidth: 3))
             .cornerRadius(5)
             .frame(width: 68, height: 36)
-            .background(Color.rgb(99, 187, 235))
+            .background(Asset.lightBlue.color)
             .cornerRadius(7)
             .onButtonTap {
                 viewModel.registTransaction {

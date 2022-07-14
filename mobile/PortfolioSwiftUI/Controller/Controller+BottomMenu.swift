@@ -17,7 +17,7 @@ extension Controller {
         .etc
     ]
     func rgb(_ flag: Bool) -> Color {
-        return flag ? Color.blue: Color.rgb(127, 127, 127)
+        return flag ? Asset.lightBlue.color: Asset.lightGray.color
     }
     var bottomMenu: some View {
         HStack(spacing: 0) {

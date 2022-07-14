@@ -10,7 +10,15 @@ import SwiftUI
 
 extension Text {
     enum ColorModel {
-        case light, dark
+        case lightGray, white
+        var color: Color {
+            switch self {
+            case .lightGray:
+                return Asset.lightGray.color
+            case .white:
+                return Asset.white.color
+            }
+        }
     }
     enum Weight: String {
         case medium = "Medium"
@@ -58,19 +66,19 @@ extension Text {
             .foregroundColor(rgb)
             .modifier(CustomFont(size))
     }
-
+    /// デフォルトのカラーはライトグレー
     func customFont(
         font: FontType = .notosans,
         size: CGFloat,
         spacing: LetterSpacing = .default,
-        color: ColorModel = .dark,
+        color: ColorModel = .lightGray,
         weight: Text.Weight,
         line: CGFloat = 8
     ) -> some View {
         self
             .font(Font.custom("\(font.rawValue)-\(weight.rawValue)", size: size))
             .kerning(spacing.size)
-            .foregroundColor(color == .light ? .white : .black)
+            .foregroundColor(color.color)
             .modifier(CustomFont(size))
     }
 }

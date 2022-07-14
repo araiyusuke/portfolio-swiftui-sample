@@ -74,7 +74,7 @@ struct TransactionsDetailScreen: View {
             ZStack {
                 // 日付 or 勘定名をタイトルにもつ
                 Text(title)
-                    .customFont(size: 14, spacing: .none, color: .dark, weight: .light)
+                    .customFont(size: 14, spacing: .none, weight: .light)
 
                 // 閉じるボタンは右に寄せる
                 ZStack {
@@ -100,11 +100,11 @@ struct TransactionsDetailScreen: View {
             VStack {
                 Spacer()
                 Text("取引内容")
-                    .customFont(size: 12, spacing: .none, color: .dark, weight: .light)
+                    .customFont(size: 12, spacing: .none, weight: .light)
             }
             Spacer()
             Text("この取引は編集可能です\n項目タップで編集開始")
-                .customFont(size: 12, spacing: .none, rgb: Color.rgb(65, 144, 210), weight: .light)
+                .customFont(size: 12, spacing: .none, rgb: Asset.lightBlue.color, weight: .light)
         }
         .padding()
     }
@@ -129,7 +129,7 @@ struct TransactionsDetailScreen: View {
         List {
             ForEach(viewModel.accounts) { account in
                 Text(account.name)
-                    .customFont(size: 14, spacing: .none, color: .dark, weight: .light)
+                    .customFont(size: 14, spacing: .none, weight: .light)
                     .frame(maxWidth: .infinity)
                     .onButtonTap {
                         viewModel.transaction.accounts = account.name
@@ -149,10 +149,10 @@ struct TransactionsDetailScreen: View {
         List {
             HStack {
                 Text("取引日")
-                    .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
+                    .customFont(size: 15, spacing: .none, weight: .light)
                 Spacer()
                 Text(viewModel.transaction.date)
-                    .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
+                    .customFont(size: 15, spacing: .none, weight: .light)
             }
             .onButtonTap {
                 withAnimation {
@@ -162,10 +162,10 @@ struct TransactionsDetailScreen: View {
             }
             HStack {
                 Text("科目")
-                    .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
+                    .customFont(size: 15, spacing: .none, weight: .light)
                 Spacer()
                 Text(viewModel.transaction.accounts)
-                    .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
+                    .customFont(size: 15, spacing: .none, weight: .light)
             }
             .onButtonTap {
                 withAnimation {
@@ -174,34 +174,34 @@ struct TransactionsDetailScreen: View {
             }
             HStack {
                 Text("取引先")
-                    .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
+                    .customFont(size: 15, spacing: .none, weight: .light)
                 NavigationLink(
                     destination:
                         SupplierEditScreen(editText: $viewModel.transaction.supplier),
                     label: {
                         Spacer()
                         Text(viewModel.transaction.supplier ?? "")
-                            .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+                            .customFont(size: 13, spacing: .none, weight: .light)
                     }
                 )
                 .isDetailLink(false)
             }
             HStack {
                 Text("摘要")
-                    .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
+                    .customFont(size: 15, spacing: .none, weight: .light)
                 NavigationLink(
                     destination: DescriptionEditScreen(editText: $viewModel.transaction.description),
                     label: {
                         Spacer()
                         Text(viewModel.transaction.description ?? "")
-                            .customFont(size: 15, spacing: .none, color: .dark, weight: .light)
+                            .customFont(size: 15, spacing: .none, weight: .light)
                     }
                 )
                 .isDetailLink(false)
             }
             HStack {
                 Text("金額(税込)")
-                    .customFont(size: 13, spacing: .none, color: .dark, weight: .light)
+                    .customFont(size: 13, spacing: .none, weight: .light)
                 TextField("¥0", value: $viewModel.transaction.price, formatter: NumberFormatter())
                     .font(Font.custom("NotoSansJP", size: 15))
                     .multilineTextAlignment(TextAlignment.trailing)

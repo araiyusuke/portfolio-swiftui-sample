@@ -39,7 +39,7 @@ struct Transaction: Mockable, Hashable, Identifiable {
 
         ZStack {
             Text(accounts)
-                .customFont(size: 12, spacing: .none, rgb: Color.rgb(89, 89, 89), weight: .light)
+                .customFont(size: 12, spacing: .none, weight: .light)
             HStack(spacing: 0) {
                 VStack(spacing: 0) {
                 }
@@ -49,14 +49,14 @@ struct Transaction: Mockable, Hashable, Identifiable {
                 VStack(spacing: 10) {
                     HStack(spacing: 0) {
                         Text(date)
-                        .customFont(size: 12, spacing: .none, rgb: Color.rgb(89, 89, 89), weight: .light)
+                        .customFont(size: 12, spacing: .none, weight: .light)
                         Spacer()
                         Text("¥\(price)")
-                            .customFont(size: 12, spacing: .none, rgb: Color.rgb(89, 89, 89), weight: .light)
+                            .customFont(size: 12, spacing: .none, weight: .light)
                     }
                     HStack(spacing: 0) {
                         Text(description ?? "適用未入力")
-                            .customFont(size: 13, spacing: .none, rgb: Color.rgb(89, 89, 89), weight: .light)
+                            .customFont(size: 13, spacing: .none, weight: .light)
                         Spacer()
                         image
                     }
