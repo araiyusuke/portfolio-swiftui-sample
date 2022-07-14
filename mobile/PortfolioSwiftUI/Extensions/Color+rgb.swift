@@ -12,12 +12,6 @@ extension Color {
     static func rgb(_ red: Double, _ green: Double, _ blue: Double, _ alpha: CGFloat = 1.0) -> Color {
         return Color(red: red / 255, green: green / 255, blue: blue / 255, opacity: alpha)
     }
-    static var fontColor: Color {
-        return Color.rgb(51, 51, 51)
-    }
-    static var headerColor: Color {
-        return Color.rgb(144, 204, 240)
-    }
     static var backGroundColor: Color {
         return Color.rgb(252, 251, 246)
     }

@@ -40,11 +40,11 @@ struct FirstScreen: ScreenMovable2 {
 
                 Picker(selection: $tab, label: Text("")) {
                           Text("収入")
-                            .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
+                            .customFont(size: 11, spacing: .short, weight: .light)
 
                             .tag(0)
                           Text("支出")
-                            .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
+                            .customFont(size: 11, spacing: .short, weight: .light)
                             .tag(1)
                       }
                 .pickerStyle(.segmented)

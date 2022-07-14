@@ -17,7 +17,7 @@ struct SupplierEditScreen: View {
     var body: some View {
         VStack(spacing: 10) {
             Text("取引先")
-                .customFont(size: 13, spacing: .short, color: .dark, weight: .light)
+                .customFont(size: 13, spacing: .short, weight: .light)
                 .frame(maxWidth: .infinity, alignment: .leading)
             HStack(alignment: .top, spacing: 3) {
                 inputSuppliers

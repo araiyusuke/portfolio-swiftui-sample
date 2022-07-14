@@ -15,7 +15,7 @@ struct Account: Identifiable, Hashable {
     var boderSize: CGFloat = 3
     func view(selected: Bool) -> some View {
         Text(name)
-            .customFont(size: 11, spacing: .short, color: .dark, weight: .light)
+            .customFont(size: 11, spacing: .short, weight: .light)
             .backgroundCircle(selected ? color : .white, 82, color, boderSize)
     }
     static func all() -> [Account] {

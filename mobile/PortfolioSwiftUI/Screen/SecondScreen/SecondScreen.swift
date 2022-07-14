@@ -108,12 +108,12 @@ struct SecondScreen: ScreenMovable2 {
     }
     var help: some View {
         Text("取引の内容やメモを入力します。\n入力すると、後で取引を探しやすくなります。\n入力しなくても構いません。")
-            .customFont(size: 13, spacing: .short, color: .dark, weight: .light)
+            .customFont(size: 13, spacing: .short, weight: .light)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     var supplier: some View {
         Text("取引先")
-            .customFont(size: 12, spacing: .short, color: .dark, weight: .light)
+            .customFont(size: 12, spacing: .short, weight: .light)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     var inputDescription: some View {
@@ -132,7 +132,7 @@ struct SecondScreen: ScreenMovable2 {
     }
     var description: some View {
         Text("摘要")
-            .customFont(size: 12, spacing: .short, color: .dark, weight: .light)
+            .customFont(size: 12, spacing: .short, weight: .light)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

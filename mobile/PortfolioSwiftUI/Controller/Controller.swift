@@ -24,7 +24,7 @@ struct Controller: ScreenMovable {
                     if router.screen == .transactionInput(false) {
                         headerTop
                             .frame(maxWidth: .infinity, maxHeight: 100)
-                            .background(Color.headerColor)
+                            .background(Asset.lightBlue.color)
                     }
                 }
                 contents
