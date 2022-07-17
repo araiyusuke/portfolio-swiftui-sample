@@ -15,16 +15,22 @@ extension Color {
     static var backGroundColor: Color {
         return Color.rgb(252, 251, 246)
     }
-    static func hex(hexString: String, alpha: CGFloat) -> Color {
-       let scanner = Scanner(string: hexString as String)
-       var color: UInt32 = 0
-       if scanner.scanHexInt32(&color) {
-           let red = CGFloat((color & 0xFF0000) >> 16)
-           let green = CGFloat((color & 0x00FF00) >> 8)
-           let blue = CGFloat(color & 0x0000FF)
-           return Color.rgb(red, green, blue, alpha)
-       } else {
-           return Color.white
-       }
-   }
+    /// 16進数からColorに変換する
+    /// - Parameters:
+    ///   - hexString: 16進数
+    ///   - alpha: 透明度
+    /// - Returns: Color
+    static func hex(hexString: String, alpha: CGFloat) -> Color? {
+        var rgb: UInt64 = 0
+        let scanner = Scanner(string: hexString as String)
+        var color: UInt64 = 0
+        guard Scanner(string: hexString).scanHexInt64(&rgb) else {
+            return nil
+        }
+        scanner.scanHexInt64(&color)
+        let red = CGFloat((color & 0xFF0000) >> 16)
+        let green = CGFloat((color & 0x00FF00) >> 8)
+        let blue = CGFloat((color & 0x0000FF))
+        return Color.rgb(red, green, blue, alpha)
+    }
 }
