@@ -7,6 +7,9 @@ packages:
   SwiftGen:
     url: https://github.com/SwiftGen/SwiftGen
     exactVersion: 6.5.0
+  ViewAdjustSize:
+    url: https://github.com/araiyusuke/view-adjust-size
+    exactVersion: 0.0.1
 
 options:
   bundleIdPrefix: com.example
@@ -40,6 +43,8 @@ targets:
       - PortfolioSwiftUI  
     dependencies:
       - package: ResizableSheet
+      - package: ViewAdjustSize
+
     settings:
       base:
         ENABLE_PREVIEWS: YES
