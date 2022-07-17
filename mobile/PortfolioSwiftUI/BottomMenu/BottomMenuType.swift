@@ -34,15 +34,15 @@ enum BottomMenuType: Identifiable {
     var description: String {
         switch self {
         case .list:
-            return "取引一覧"
+            return L10n.transactions
         case .input:
-            return "取引入力"
+            return L10n.inputTransaction
         case .camera:
             return "レシート撮影"
         case .help:
-            return "ヘルプ"
+            return L10n.help
         case .etc:
-            return "その他"
+            return L10n.others
         }
     }
 }

@@ -39,11 +39,11 @@ struct FirstScreen: ScreenMovable2 {
             VStack(spacing: spacing) {
 
                 Picker(selection: $tab, label: Text("")) {
-                          Text("収入")
+                    Text(L10n.incomes)
                             .customFont(size: 11, spacing: .short, weight: .light)
 
                             .tag(0)
-                          Text("支出")
+                    Text(L10n.expenses)
                             .customFont(size: 11, spacing: .short, weight: .light)
                             .tag(1)
                       }

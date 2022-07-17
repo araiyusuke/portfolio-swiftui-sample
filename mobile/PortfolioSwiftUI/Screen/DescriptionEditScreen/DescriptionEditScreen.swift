@@ -18,7 +18,7 @@ struct DescriptionEditScreen: View {
 
     var body: some View {
         VStack(spacing: adjust(20)) {
-            Text("摘要")
+            Text(L10n.descriptions)
                 .customFont(size: 13, spacing: .short, weight: .light)
                 .frame(maxWidth: .infinity, alignment: .leading)
             HStack(alignment: .top, spacing: adjust(3)) {
@@ -26,7 +26,7 @@ struct DescriptionEditScreen: View {
                 PullDown()
                     .resizableSheet($state) { builder in
                         builder.content { _ in
-                            BottomSheetList(title: "摘要", items: $pullDownItems, state: $state) { value in
+                            BottomSheetList(title: L10n.descriptions, items: $pullDownItems, state: $state) { value in
                                 self.editText = value.name
                             }
                             .adjustSize(height: 600)
@@ -51,8 +51,7 @@ struct DescriptionEditScreen: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .background(Color.backGroundColor)
-        .customNavigation(leading: "戻る", center: "摘要入力") {
-            print("保存")
+        .customNavigation(leading: L10n.back, center: "\(L10n.account)入力") {
         }
 
     }

@@ -27,7 +27,6 @@ extension Controller {
                         Text("白色申告")
                             .customFont(size: adjust(28), spacing: .short, color: .white, weight: .light)
                             .frame(height: adjust(30))
-                        
                         Text(header.getTitle())
                             .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
                             .frame(height: adjust(30))
@@ -38,7 +37,7 @@ extension Controller {
                         Text(header.getAccount()?.name ?? "")
                             .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
                             .frame(height: adjust(20))
-                        Text("取引先・摘要入力")
+                        Text("取引先・\(L10n.descriptions)入力")
                             .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
                             .frame(height: adjust(30))
                     }
@@ -58,11 +57,11 @@ extension Controller {
                     .frame(alignment: .top)
                 }
             case .setting:
-                Text("設定")
+                Text(L10n.settings)
                     .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
                     .adjustSize(height: 20)
             case .transactionList:
-                Text("取引一覧")
+                Text(L10n.transactions)
                     .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
                     .adjustSize(height: 20)
             case .receipt:
@@ -70,7 +69,7 @@ extension Controller {
                     .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
                     .adjustSize(height: 20)
             case .help:
-                Text("ヘルプ")
+                Text(L10n.help)
                     .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
                     .adjustSize(height: 20)
             }

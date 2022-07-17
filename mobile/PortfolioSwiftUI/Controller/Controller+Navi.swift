@@ -40,15 +40,15 @@ extension TransactionInputScreen {
             }
             .frame(maxWidth: .infinity, maxHeight: adjust(50))
             HStack {
-                Text("科目")
+                Text(L10n.account)
                     .customFont(size: adjust(11), spacing: .short, weight: .light)
                     .fixedSize()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("取引先・摘要")
+                Text("取引先・\(L10n.descriptions)")
                     .customFont(size: adjust(10), spacing: .none, weight: .light)
                     .fixedSize()
                     .frame(maxWidth: .infinity, alignment: .center)
-                Text("金額")
+                Text(L10n.price)
                     .customFont(size: adjust(11), spacing: .short, weight: .light)
                     .fixedSize()
                     .frame(maxWidth: .infinity, alignment: .trailing)

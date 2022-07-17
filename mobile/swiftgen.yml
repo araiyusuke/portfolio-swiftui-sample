@@ -4,3 +4,9 @@ xcassets:
   outputs:
     - templatePath: swiftgen-swiftui-template.stencil
       output: PortfolioSwiftUI/Generated/Assets.swift
+
+strings:
+  inputs: PortfolioSwiftUI/ja.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift4
+      output: PortfolioSwiftUI/Generated/strings.swift

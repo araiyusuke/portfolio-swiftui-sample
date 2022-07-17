@@ -49,7 +49,7 @@ struct SupplierEditScreen: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
         .background(Color.backGroundColor)
-        .customNavigation(leading: "戻る", center: "取引先入力")
+        .customNavigation(leading: L10n.back, center: "取引先入力")
     }
     var inputSuppliers: some View {
         TextField("取引先を入力(任意)", text: $editText.toUnwrapped(defaultValue: ""))

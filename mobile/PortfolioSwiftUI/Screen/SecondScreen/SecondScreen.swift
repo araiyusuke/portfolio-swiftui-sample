@@ -138,7 +138,7 @@ struct SecondScreen: ScreenMovable2 {
     }
     /// 摘要の入力ラベル
     var descriptionLable: some View {
-        Text("摘要")
+        Text(L10n.descriptions)
             .customFont(size: adjust(12), spacing: .short, weight: .light)
             .frame(maxWidth: .infinity, alignment: .leading)
     }

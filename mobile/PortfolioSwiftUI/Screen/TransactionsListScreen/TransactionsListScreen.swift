@@ -83,7 +83,7 @@ struct TransactionsListScreen: View {
                                 label(text: "¥\(price)")
                             }
                             HStack(spacing: 0) {
-                                    Text(viewModel.transactionsList[index].description ?? "摘要未入力")
+                                    Text(viewModel.transactionsList[index].description ?? "\(L10n.descriptions)未入力")
                                         .customFont(size: adjust(13), spacing: .none, weight: .light)
                                     Spacer()
                                     // 鉛筆マーク
@@ -138,13 +138,13 @@ extension TransactionsListScreen {
     /// リストの情報(科目、取引日、検索結果)
     var listInfo: some View {
         VStack(spacing: adjust(5)) {
-            Text("科目: すべて")
+            Text("\(L10n.account): すべて")
                 .customFont(size: adjust(14), spacing: .short, weight: .light)
                 .frame(maxWidth: .infinity, alignment: .leading)
             Text("取引日: 2021/01/01 〜 2022/07/04")
                 .customFont(size: adjust(14), spacing: .short, weight: .light)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text("検索結果: \(viewModel.searchCount)件")
+            Text("\(L10n.search)結果: \(viewModel.searchCount)件")
                 .customFont(size: adjust(14), spacing: .short, weight: .light)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
