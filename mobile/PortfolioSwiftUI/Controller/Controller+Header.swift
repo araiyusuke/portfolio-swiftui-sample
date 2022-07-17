@@ -50,7 +50,7 @@ extension Controller {
                         Text(dateString)
                             .customFont(size: 19, spacing: .short, rgb: Asset.moneyYellow.color, weight: .bold)
                             .adjustSize(height: 30)
-                        Text("¥ \(header.getNumPad().isEmpty ? "0" : header.getNumPad())")
+                        Text(header.getNumPad())
                             .customFont(size: 24, spacing: .short, rgb: Asset.moneyYellow.color, weight: .bold)
                             .adjustSize(height: 30)
                     }
