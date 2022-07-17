@@ -23,7 +23,7 @@ struct TransactionsDetailScreen: View {
                 // 編集説明
                 transactionEditHelp
                     .adjustSize(height: 80)
-
+                
                 // 内容
                 detailContents
                     .adjustSize(height: 400)
@@ -37,7 +37,7 @@ struct TransactionsDetailScreen: View {
                 VStack {
                     if let bottomSheetState = viewModel.bottomSheetState {
                         bottomSheetsHeader(title: bottomSheetState.description)
-
+                        
                         if bottomSheetState == .date {
                             picker
                         } else if bottomSheetState == .account {
@@ -69,12 +69,12 @@ struct TransactionsDetailScreen: View {
     // ボトムシート閉じるボタンとタイトル
     private func bottomSheetsHeader(title: String) -> some View {
         HStack {
-
+            
             ZStack {
                 // 日付 or 勘定名をタイトルにもつ
                 Text(title)
                     .customFont(size: 14, spacing: .none, weight: .light)
-
+                
                 // 閉じるボタンは右に寄せる
                 ZStack {
                     Text("X")
@@ -113,7 +113,7 @@ struct TransactionsDetailScreen: View {
                 viewModel.pickerChange(date: date)
             }
             .datePickerStyle(WheelDatePickerStyle())
-                  .labelsHidden()
+            .labelsHidden()
     }
     // 取引詳細を削除するためのボタン
     var deleteBtn: some View {
@@ -201,11 +201,15 @@ struct TransactionsDetailScreen: View {
             HStack {
                 Text("\(L10n.price)(税込)")
                     .customFont(size: 13, spacing: .none, weight: .light)
-                TextField("¥0", value: $viewModel.transaction.price, formatter: NumberFormatter())
-                    .font(Font.custom("NotoSansJP", size: 15))
-                    .multilineTextAlignment(TextAlignment.trailing)
-                    .frame(maxWidth: .infinity)
-                    .padding(.trailing, 10)
+                Spacer()
+                ZStack {
+                    Text(viewModel.transaction.price.money)
+                        .customFont(size: 15, spacing: .none, weight: .light)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                    TextField("¥0", value: $viewModel.transaction.price, formatter: NumberFormatter())
+                        .foregroundColor(.black.opacity(0))
+                        .multilineTextAlignment(TextAlignment.trailing)
+                }
             }
         }
         .listStyle(.plain)
@@ -236,9 +240,9 @@ extension TransactionsDetailScreen {
             .black
             .opacity(0.5).zIndex(9)
             .onTapGesture {
-            withAnimation {
-                viewModel.closeBottomSheets()
+                withAnimation {
+                    viewModel.closeBottomSheets()
+                }
             }
-        }
     }
 }

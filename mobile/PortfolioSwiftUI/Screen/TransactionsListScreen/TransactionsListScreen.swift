@@ -80,7 +80,7 @@ struct TransactionsListScreen: View {
                                 // 摘要
                                 label(text: account)
                                 Spacer()
-                                label(text: "¥\(price)")
+                                label(text: price.money)
                             }
                             HStack(spacing: 0) {
                                     Text(viewModel.transactionsList[index].description ?? "\(L10n.descriptions)未入力")

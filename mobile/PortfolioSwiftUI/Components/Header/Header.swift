@@ -35,7 +35,8 @@ class Header: ObservableObject {
         return self.title
     }
     public func getNumPad() -> String {
-        return self.numPadValue
+        let number = Int(self.numPadValue) ?? 0
+        return number.money
     }
     public func removeLast() {
         self.numPadValue.removeLast()
