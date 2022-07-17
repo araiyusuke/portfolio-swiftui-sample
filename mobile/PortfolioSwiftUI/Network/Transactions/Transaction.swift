@@ -15,7 +15,6 @@ struct Transactions: Mockable, Hashable {
 
 struct TransactionDate {
     static let dateFormat: String = "yyyy/MM/dd"
-
 }
 
 struct Transaction: Mockable, Hashable, Identifiable {
@@ -26,8 +25,9 @@ struct Transaction: Mockable, Hashable, Identifiable {
     var hex: String
     var supplier: String?
     var description: String?
+    /// リスト左脇にある摘要のカラー
     var color: Color {
-        return Color.hex(hexString: hex, alpha: 0.3)
+        Color.hex(hexString: hex, alpha: 0.3) ?? Asset.lightGray.color.opacity(0.3)
     }
     var pickerDate: Date {
         let formatter: DateFormatter = DateFormatter()
@@ -35,48 +35,9 @@ struct Transaction: Mockable, Hashable, Identifiable {
         formatter.dateFormat = TransactionDate.dateFormat
         return formatter.date(from: date) ?? Date()
     }
-    var cell: some View {
-
-        ZStack {
-            Text(accounts)
-                .customFont(size: 12, spacing: .none, weight: .light)
-            HStack(spacing: 0) {
-                VStack(spacing: 0) {
-                }
-                .frame(maxWidth: 7, maxHeight: .infinity)
-                .background(color)
-                .padding(.vertical, 2)
-                VStack(spacing: 10) {
-                    HStack(spacing: 0) {
-                        Text(date)
-                        .customFont(size: 12, spacing: .none, weight: .light)
-                        Spacer()
-                        Text("¥\(price)")
-                            .customFont(size: 12, spacing: .none, weight: .light)
-                    }
-                    HStack(spacing: 0) {
-                        Text(description ?? "適用未入力")
-                            .customFont(size: 13, spacing: .none, weight: .light)
-                        Spacer()
-                        image
-                    }
-                }
-                .padding(.leading, 5)
-            //                rightArrow
-//                    .frame(width: 30)
-            }
-        }
-
-    }
     var rightArrow: some View {
         Image(Asset.rightAllowIcon)
             .resizable()
             .frame(width: 10, height: 14)
-    }
-
-    var image: some View {
-        Image(Asset.pencilIcon)
-            .resizable()
-            .frame(width: 20, height: 20)
     }
 }
