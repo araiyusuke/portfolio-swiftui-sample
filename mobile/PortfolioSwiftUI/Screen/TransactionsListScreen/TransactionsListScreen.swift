@@ -55,49 +55,70 @@ struct TransactionsListScreen: View {
     }
     func loadedView() -> some View {
         List(viewModel.transactionsList.indices, id: \.self) { index in
+            let account = viewModel.transactionsList[index].accounts
+            let color = viewModel.transactionsList[index].color
+            let date = viewModel.transactionsList[index].date
+            let price = viewModel.transactionsList[index].price
             NavigationLink(
                 destination:
-                    TransactionsDetailScreen( viewModel: .init(
+                    TransactionsDetailScreen(viewModel: .init(
                         container: viewModel.container,
                         transaction: viewModel.transactionsList[index])
                     ),
                 label: {
-                    ZStack {
-                        Text(viewModel.transactionsList[index].accounts)
-                            .customFont(size: adjust(12), spacing: .none, weight: .light)
-                        HStack(spacing: 0) {
-                            VStack(spacing: 0) {
+                    HStack(spacing: 0) {
+                        // リスト左脇にある摘要別カラー
+                        verticalLine(
+                            color: color
+                        )
+                        VStack(spacing: 10) {
+                            // 横 -> 日付 摘要 金額
+                            HStack(spacing: 0) {
+                                // 入力日
+                                label(text: date)
+                                Spacer()
+                                // 摘要
+                                label(text: account)
+                                Spacer()
+                                label(text: "¥\(price)")
                             }
-                            .frame(maxWidth: 7, maxHeight: .infinity)
-                            .background(viewModel.transactionsList[index].color)
-                            .padding(.vertical, 2)
-                            VStack(spacing: 10) {
-                                HStack(spacing: 0) {
-                                    Text(viewModel.transactionsList[index].date)
-                                        .customFont(size: adjust(12), spacing: .none, weight: .light)
-                                    Spacer()
-                                    Text("¥\(viewModel.transactionsList[index].price)")
-                                        .customFont(size: adjust(12), spacing: .none, weight: .light)
-                                }
-                                HStack(spacing: 0) {
+                            HStack(spacing: 0) {
                                     Text(viewModel.transactionsList[index].description ?? "摘要未入力")
                                         .customFont(size: adjust(13), spacing: .none, weight: .light)
                                     Spacer()
-                                    viewModel.transactionsList[index].image
+                                    // 鉛筆マーク
+                                    pencilMarkForEdit
                                 }
                             }
                             .padding(.leading, adjust(5))
                         }
-                    }
                 }
             )
             .isDetailLink(false)
             .listRowBackground(Color.white)
             .listRowInsets(EdgeInsets())
+            .buttonStyle(PlainButtonStyle())
         }
-        .padding(0)
+        .adjustPadding(.trailing, 10)
         .environment(\.defaultMinListRowHeight, 78)
         .listStyle(PlainListStyle())
+    }
+    /// 色がついkた縦線
+    func verticalLine(color: Color) -> some View {
+        color
+            .frame(maxWidth: 7, maxHeight: .infinity)
+            .padding(.vertical, 2)
+    }
+    /// リストラベル
+    func label(text: String) -> some View {
+        Text(text)
+            .customFont(size: adjust(13), spacing: .none, weight: .light)
+    }
+    /// 編集可能であることを伝えるための鉛筆マーク
+    var pencilMarkForEdit: some View {
+        Image(Asset.pencilIcon)
+            .resizable()
+            .adjustSize(width: 20, height: 20)
     }
     func failedView(_ error: Error) -> some View {
         Text(error.localizedDescription)
@@ -151,5 +172,6 @@ extension TransactionsListScreen {
         .adjustPadding(.horizontal, 5)
         .adjustPadding(.vertical, 10)
         .frame(maxWidth: .infinity, maxHeight: adjust(40), alignment: .leading)
+        .background(Color.rgb(247, 247, 247))
     }
 }

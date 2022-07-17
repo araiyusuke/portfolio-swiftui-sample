@@ -5,7 +5,7 @@
             "accounts": "接待交際費",
             "date": "2022/07/03",
             "price": 2990,
-            "hex": "#ffffff",
+            "hex": "FFDDAF",
             "supplier": "ローソン",
             "description": "地理ちりばめられて。"
         },
@@ -14,7 +14,7 @@
             "accounts": "売上ほか",
             "date": "2022/07/03",
             "price": 260,
-            "hex": "#3cb371",
+            "hex": "FFDD0E",
             "supplier": "ローソン",
             "description": "ここはランの袋ふく。"
         },
@@ -23,7 +23,7 @@
             "accounts": "接待交際費",
             "date": "2022/07/03",
             "price": 681,
-            "hex": "#ff0000",
+            "hex": "009911",
             "supplier": "ローソン",
             "description": "よせたりした。する。"
         }

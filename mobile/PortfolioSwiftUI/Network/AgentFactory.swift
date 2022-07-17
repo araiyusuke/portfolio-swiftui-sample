@@ -33,9 +33,9 @@ struct APIMockAgent: APIAgentProtocol {
 struct AgentFactory {
     static func create(config: URLSessionConfiguration? = nil) -> APIAgentProtocol {
         #if NotServer
-        return APIMockAgent()
-        #else
         return APIAgent(config: config)
+        #else
+        return APIMockAgent()
         #endif
     }
     static func stub(statusCd: Int, json: String) -> URLSessionConfiguration {
