@@ -22,11 +22,11 @@ struct TransactionsDetailScreen: View {
             VStack(spacing: 0) {
                 // 編集説明
                 transactionEditHelp
-                    .frame(height: 80)
+                    .adjustSize(height: 80)
 
                 // 内容
                 detailContents
-                    .frame(height: 400)
+                    .adjustSize(height: 400)
                 Spacer()
                 Button(action: deleteTransactionAction ) {
                     deleteBtn
@@ -119,11 +119,11 @@ struct TransactionsDetailScreen: View {
     // 取引詳細を削除するためのボタン
     var deleteBtn: some View {
         Text("削除")
-            .customFont(size: 16, spacing: .none, rgb: .red, weight: .light)
-            .padding(.vertical, 15)
-            .frame(maxWidth: .infinity, maxHeight: 40)
+            .customFont(size: adjust(16), spacing: .none, rgb: .red, weight: .light)
+            .adjustPadding(.vertical, 15)
+            .frame(maxWidth: .infinity, maxHeight: adjust(40))
             .background(.white)
-            .padding(.vertical, 15)
+            .adjustPadding(.vertical, 15)
     }
     var accountList: some View {
         List {
@@ -142,7 +142,7 @@ struct TransactionsDetailScreen: View {
         .frame(maxWidth: .infinity)
         .listStyle(.plain)
         .background(Color.white)
-        .frame(height: 400)
+        .adjustSize(height: 400)
     }
     // 取引詳細の内容
     var detailContents : some View {

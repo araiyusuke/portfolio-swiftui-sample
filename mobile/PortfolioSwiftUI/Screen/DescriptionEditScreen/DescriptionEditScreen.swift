@@ -17,11 +17,11 @@ struct DescriptionEditScreen: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: adjust(20)) {
             Text("摘要")
                 .customFont(size: 13, spacing: .short, weight: .light)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            HStack(alignment: .top, spacing: 3) {
+            HStack(alignment: .top, spacing: adjust(3)) {
                 inputDescription
                 PullDown()
                     .resizableSheet($state) { builder in
@@ -29,7 +29,7 @@ struct DescriptionEditScreen: View {
                             BottomSheetList(title: "摘要", items: $pullDownItems, state: $state) { value in
                                 self.editText = value.name
                             }
-                            .frame(height: 600)
+                            .adjustSize(height: 600)
                         }
                     }
                     .onButtonTap {
@@ -58,14 +58,14 @@ struct DescriptionEditScreen: View {
     }
     var inputDescription: some View {
         TextEditor(text: $editText.toUnwrapped(defaultValue: ""))
-            .padding(.leading, 10)
-            .frame(width: 290, height: 100)
+            .adjustPadding(.leading, 10)
+            .adjustSize(width: 290, height: 100)
             .background(.white)
             .border(.gray)
     }
     var help: some View {
         Text("取引の内容やメモを入力します。\n入力すると、後で取引を探しやすくなります。\n入力しなくても構いません。")
-            .customFont(size: 13, spacing: .short, weight: .light)
+            .customFont(size: adjust(13), spacing: .short, weight: .light)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

@@ -22,7 +22,7 @@ struct Toast: ViewModifier {
                 VStack {
                     Text(header.toastTitle)
                 }
-                .frame(maxWidth: .infinity, maxHeight: 100)
+                .frame(maxWidth: .infinity, maxHeight: adjust(100))
                 .background(Color.white)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                 .background(Color.gray.opacity(0.4))

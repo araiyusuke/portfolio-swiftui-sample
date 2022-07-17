@@ -6,6 +6,13 @@
 //
 
 import SwiftUI
+import ViewAdjustSize
+
+func adjust(_ targetSize: CGFloat) -> CGFloat {
+    let originalSize: CGSize = .init(width: 375, height: 812)
+    return ViewAdjustSize.convert(targetSize, originalSize)
+}
+
 @main
 struct TapSimpleButtonApp: App {
     var body: some Scene {
@@ -15,6 +22,7 @@ struct TapSimpleButtonApp: App {
                 .environmentObject(TransactionInputRouter.shared)
                 .environmentObject(Header())
                 .environmentObject(BottomTabManager.shared)
+                .environment(\.adjustOriginalSize, .init(size: CGSize(width: 375, height: 812), debug: false))
         }
     }
 }

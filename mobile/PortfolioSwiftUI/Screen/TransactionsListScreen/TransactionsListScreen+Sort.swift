@@ -30,7 +30,7 @@ extension TransactionsListScreen {
         var icon : some View {
             Image(Asset.sortIcon)
                 .resizable()
-                .frame(width: 27, height: 27)
+                .adjustSize(width: 27, height: 27)
                 .rotationEffect(.degrees(rotate))
         }
         /// 矢印の右にある文字列(新しい取引日順、古い取引日順)

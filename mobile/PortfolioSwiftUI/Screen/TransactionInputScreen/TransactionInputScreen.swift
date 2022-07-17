@@ -25,7 +25,6 @@ struct TransactionInputScreen: ScreenMovable2 {
                 FirstScreen(viewModel: FirstScreen.ViewModel(container: container))
             case .second:
                 SecondScreen()
-//                    .environment(\.resizableSheetCenter, resizableSheetCenter)
             case .third:
                 ThirdScreen()
             }
@@ -35,7 +34,7 @@ struct TransactionInputScreen: ScreenMovable2 {
         VStack(spacing: 0) {
             contents
             footer
-                .frame(maxHeight: 60)
+                .adjustSize(height: 60)
                 .background(Color.backGroundColor)
         }
     }

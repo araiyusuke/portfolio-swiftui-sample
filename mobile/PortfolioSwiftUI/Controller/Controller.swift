@@ -23,7 +23,7 @@ struct Controller: ScreenMovable {
                 ZStack {
                     if router.screen == .transactionInput(false) {
                         headerTop
-                            .frame(maxWidth: .infinity, maxHeight: 100)
+                            .frame(maxWidth: .infinity, maxHeight: adjust(100))
                             .background(Asset.lightBlue.color)
                     }
                 }
@@ -34,7 +34,7 @@ struct Controller: ScreenMovable {
                 } else {
                     if bottomTabManager.isShow {
                         bottomMenu
-                            .frame(height: 60)
+                            .adjustSize(height: 60)
                     }
                 }
             }
