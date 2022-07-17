@@ -23,9 +23,7 @@ extension Controller {
         HStack(spacing: 0) {
             ForEach(Self.menus) { menu in
                 VStack {
-
                     menu.image.foregroundColor(rgb(self.selectTabMenu == menu))
-
                     Text(menu.description)
                         .customFont(size: adjust(11), spacing: .none, rgb: rgb(self.selectTabMenu == menu), weight: .light)
 
@@ -53,5 +51,6 @@ extension Controller {
         }
         .adjustPadding(.horizontal, 10)
         .background(Color.white)
+        .border(width: 1, edges: [.top], color: Asset.lightGray.color)
     }
 }
