@@ -24,7 +24,7 @@ extension FirstScreen {
         [
             Account(name: "法定福利費", color: Color.rgb(243, 177, 116)),
             Account(name: "前回の取引", color: Color.gray),
-            Account(name: "その他", color: .gray)
+            Account(name: L10n.others, color: .gray)
         ]
     ]
 }

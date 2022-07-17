@@ -53,7 +53,7 @@ struct TransactionsDetailScreen: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .background(Color.rgb(247, 247, 247))
-        .customNavigation(leading: "戻る", center: "取引詳細", trailing: "保存") {
+        .customNavigation(leading: L10n.back, center: "取引詳細", trailing: L10n.save) {
             viewModel.onSaveButtonTap()
         }
         .onAppear {
@@ -117,7 +117,7 @@ struct TransactionsDetailScreen: View {
     }
     // 取引詳細を削除するためのボタン
     var deleteBtn: some View {
-        Text("削除")
+        Text(L10n.remove)
             .customFont(size: adjust(16), spacing: .none, rgb: .red, weight: .light)
             .adjustPadding(.vertical, 15)
             .frame(maxWidth: .infinity, maxHeight: adjust(40))
@@ -147,7 +147,7 @@ struct TransactionsDetailScreen: View {
     var detailContents : some View {
         List {
             HStack {
-                Text("取引日")
+                Text(L10n.transactionDate)
                     .customFont(size: 15, spacing: .none, weight: .light)
                 Spacer()
                 Text(viewModel.transaction.date)
@@ -160,7 +160,7 @@ struct TransactionsDetailScreen: View {
                 }
             }
             HStack {
-                Text("科目")
+                Text(L10n.transaction)
                     .customFont(size: 15, spacing: .none, weight: .light)
                 Spacer()
                 Text(viewModel.transaction.accounts)
@@ -186,7 +186,7 @@ struct TransactionsDetailScreen: View {
                 .isDetailLink(false)
             }
             HStack {
-                Text("摘要")
+                Text(L10n.descriptions)
                     .customFont(size: 15, spacing: .none, weight: .light)
                 NavigationLink(
                     destination: DescriptionEditScreen(editText: $viewModel.transaction.description),
@@ -199,7 +199,7 @@ struct TransactionsDetailScreen: View {
                 .isDetailLink(false)
             }
             HStack {
-                Text("金額(税込)")
+                Text("\(L10n.price)(税込)")
                     .customFont(size: 13, spacing: .none, weight: .light)
                 TextField("¥0", value: $viewModel.transaction.price, formatter: NumberFormatter())
                     .font(Font.custom("NotoSansJP", size: 15))
@@ -223,7 +223,7 @@ extension TransactionsDetailScreen {
             case .date:
                 return "取引日"
             case .account:
-                return "科目"
+                return L10n.account
             }
         }
     }

@@ -12,7 +12,7 @@ extension TransactionInputScreen {
     @ViewBuilder
     var back: some View {
         if router.screen != .first {
-             Text("〈 戻る")
+            Text("〈 " + L10n.back)
                 .customFont(size: adjust(18), spacing: .short, weight: .medium)
                 .onTapGesture {
                     switch router.screen {

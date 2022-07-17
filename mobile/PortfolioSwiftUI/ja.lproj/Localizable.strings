@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  PortfolioSwiftUI
+
+  Created by 名前なし on 2022/07/17.
+  
+*/
+"transaction" = "取引";
+"list" = "一覧";
+"price" = "金額";
+"others" = "その他";
+"help" = "ヘルプ";
+"input transaction" = "取引入力";
+"back" = "戻る";
+"save" = "保存";
+"remove" = "削除";
+"transaction date" = "取引日";
+"descriptions" = "摘要";
+"transactions" = "取引一覧";
+"expenses" = "支出";
+"incomes" = "収入";
+"account" = "科目";
+"logout" = "ログアウト";
+"settings" = "設定";
+"search" = "検索";
+"input" = "入力";
