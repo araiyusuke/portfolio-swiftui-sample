@@ -20,10 +20,19 @@ class TransactionInputRouter: ObservableObject {
     static let shared: TransactionInputRouter = .init()
 }
 
+/// 下部のメニュー表示管理
 class BottomTabManager: ObservableObject {
-    @Published var isShow: Bool = true
+    @Published private (set) var isShow: Bool = true
     private init() {}
     static let shared: BottomTabManager = .init()
+    /// 下部メニューを表示
+    public func show() {
+        self.isShow = true
+    }
+    /// 下部メニューを隠す
+    public func hide() {
+        self.isShow = false
+    }
 }
 
 class Router: ObservableObject {

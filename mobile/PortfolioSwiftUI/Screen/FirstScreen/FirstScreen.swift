@@ -21,7 +21,7 @@ struct FirstScreen: ScreenMovable2 {
     @ObservedObject private(set) var viewModel: ViewModel
     @EnvironmentObject var header: Header
     @EnvironmentObject var router: TransactionInputRouter
-
+    @EnvironmentObject var bottomTab: BottomTabManager
     let circleSize: CGFloat = 82
     @State private var labelPosX: CGFloat = 0
     @State private var tab = 1
@@ -113,6 +113,7 @@ struct FirstScreen: ScreenMovable2 {
                    })
         )
         .onAppear {
+            bottomTab.show()
             header.setTitle("勘定科目を選択")
         }
     }

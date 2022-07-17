@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+/// 下向き矢印のボタン
 struct PullDown: View {
     var body: some View {
         Image(Asset.pullDown)

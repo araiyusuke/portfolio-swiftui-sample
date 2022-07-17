@@ -11,7 +11,6 @@ struct TransactionInputScreen: ScreenMovable2 {
     @EnvironmentObject var router: TransactionInputRouter
     @EnvironmentObject var header: Header
     @ObservedObject private(set) var viewModel: ViewModel
-
     let container: DIContainer
     init(container: DIContainer) {
         self.container = container

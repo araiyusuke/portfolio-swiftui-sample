@@ -57,9 +57,8 @@ struct TransactionsDetailScreen: View {
             viewModel.onSaveButtonTap()
         }
         .onAppear {
-            print("TransactionsDetialScreen")
             viewModel.onAppear()
-            bottomTab.isShow = false
+            bottomTab.hide()
         }
         .onReceive(viewModel.dismissHandle) { _ in
             header.showToast(title: "保存ができました")

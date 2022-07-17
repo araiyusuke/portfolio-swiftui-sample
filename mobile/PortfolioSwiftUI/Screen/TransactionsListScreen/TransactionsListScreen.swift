@@ -30,7 +30,7 @@ struct TransactionsListScreen: View {
             }
             .onAppear {
                 // NaivgationViewでOnAppearだと戻ってきた時に、TransactionsListScreen.onAppearにはならなかった
-                bottomTab.isShow = true
+                bottomTab.show()
             }
         }
     }
