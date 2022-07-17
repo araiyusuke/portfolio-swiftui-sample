@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+import ViewAdjustSize
 extension Controller {
     static let menus: [BottomMenuType] = [
         .list,
@@ -27,10 +27,10 @@ extension Controller {
                     menu.image.foregroundColor(rgb(self.selectTabMenu == menu))
 
                     Text(menu.description)
-                        .customFont(size: 11, spacing: .short, rgb: rgb(self.selectTabMenu == menu), weight: .light)
+                        .customFont(size: adjust(11), spacing: .none, rgb: rgb(self.selectTabMenu == menu), weight: .light)
 
                 }
-                .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottom)
+                .frame(maxWidth: .infinity, maxHeight: adjust(60), alignment: .bottom)
                 .onButtonTap {
                     if selectTabMenu == menu {
                         return
@@ -51,7 +51,7 @@ extension Controller {
                 }
             }
         }
-        .padding(.horizontal, 10)
+        .adjustPadding(.horizontal, 10)
         .background(Color.white)
     }
 }

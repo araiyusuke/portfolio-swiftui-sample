@@ -27,7 +27,7 @@ struct ThirdScreen: ScreenMovable2 {
                 }
                 header.append(letter: numKey.string)
             }
-            .frame(width: 324, height: 430)
+            .adjustSize(width: 324, height: 430)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.backGroundColor)

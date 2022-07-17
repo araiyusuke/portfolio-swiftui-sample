@@ -11,9 +11,9 @@ struct PullDown: View {
     var body: some View {
         Image(Asset.pullDown)
             .resizable()
-            .frame(width: 18, height: 20)
-            .frame(width: 40, height: 40)
+            .adjustSize(width: 18, height: 20)
+            .adjustSize(width: 40, height: 40)
             .background(Asset.lightBlue.color)
-            .cornerRadius(5)
+            .cornerRadius(adjust(5))
     }
 }

@@ -27,9 +27,9 @@ struct SecondScreen: ScreenMovable2 {
 
     var body: some View {
         SlideAnimation2 {
-            VStack(spacing: 15) {
+            VStack(spacing: adjust(15)) {
                 supplier
-                HStack(spacing: 3) {
+                HStack(spacing: adjust(3)) {
                     inputSuppliers
                     PullDown()
                         .onButtonTap {
@@ -54,13 +54,13 @@ struct SecondScreen: ScreenMovable2 {
                                         self.descriptionText = value.name
                                     }
                                 }
-                                .frame(height: 600)
+                                .adjustSize(height: 600)
                             }
                         }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 description
-                HStack(alignment: .top, spacing: 3) {
+                HStack(alignment: .top, spacing: adjust(3)) {
                     inputDescription
                     PullDown()
                         .onButtonTap {
@@ -96,8 +96,8 @@ struct SecondScreen: ScreenMovable2 {
                     }
                 })
             )
-            .padding(.leading, 30)
-            .padding(.top, 20)
+            .adjustPadding(.leading, 30)
+            .adjustPadding(.top, 20)
             .background(Color.backGroundColor)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
@@ -108,31 +108,29 @@ struct SecondScreen: ScreenMovable2 {
     }
     var help: some View {
         Text("取引の内容やメモを入力します。\n入力すると、後で取引を探しやすくなります。\n入力しなくても構いません。")
-            .customFont(size: 13, spacing: .short, weight: .light)
+            .customFont(size: adjust(13), spacing: .short, weight: .light)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     var supplier: some View {
         Text("取引先")
-            .customFont(size: 12, spacing: .short, weight: .light)
+            .customFont(size: adjust(12), spacing: .short, weight: .light)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
     var inputDescription: some View {
         TextEditor(text: $descriptionText)
-            .padding(.leading, 10)
-            .frame(width: 290, height: 100)
+            .adjustSize(width: 290, height: 100)
             .background(.white)
             .border(.gray)
     }
     var inputSuppliers: some View {
-        TextField("取引先を入力(任意)", text: $supplierText)
-            .padding(.leading, 10)
-            .frame(width: 290, height: 41)
+        TextField("", text: $supplierText)
+            .adjustSize(width: 290, height: 41)
             .background(.white)
             .border(.gray)
     }
     var description: some View {
         Text("摘要")
-            .customFont(size: 12, spacing: .short, weight: .light)
+            .customFont(size: adjust(12), spacing: .short, weight: .light)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

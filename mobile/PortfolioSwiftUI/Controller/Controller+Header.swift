@@ -25,53 +25,54 @@ extension Controller {
                 case .first:
                     VStack {
                         Text("白色申告")
-                            .customFont(size: 28, spacing: .short, color: .white, weight: .light)
-                            .frame(height: 30)
+                            .customFont(size: adjust(28), spacing: .short, color: .white, weight: .light)
+                            .frame(height: adjust(30))
+                        
                         Text(header.getTitle())
                             .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
-                            .frame(height: 30)
+                            .frame(height: adjust(30))
                     }
                     .frame(alignment: .center)
                 case .second:
                     VStack {
                         Text(header.getAccount()?.name ?? "")
                             .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
-                            .frame(height: 20)
+                            .frame(height: adjust(20))
                         Text("取引先・摘要入力")
                             .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
-                            .frame(height: 30)
+                            .frame(height: adjust(30))
                     }
                     .frame(alignment: .top)
                 case .third:
                     VStack(spacing: 0) {
                         Text(header.getAccount()?.name ?? "")
                             .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
-                            .frame(height: 20)
+                            .adjustSize(height: 20)
                         Text(dateString)
                             .customFont(size: 19, spacing: .short, rgb: Asset.moneyYellow.color, weight: .bold)
-                            .frame(height: 30)
+                            .adjustSize(height: 30)
                         Text("¥ \(header.getNumPad().isEmpty ? "0" : header.getNumPad())")
                             .customFont(size: 24, spacing: .short, rgb: Asset.moneyYellow.color, weight: .bold)
-                            .frame(height: 30)
+                            .adjustSize(height: 30)
                     }
                     .frame(alignment: .top)
                 }
             case .setting:
                 Text("設定")
                     .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
-                    .frame(height: 20)
+                    .adjustSize(height: 20)
             case .transactionList:
                 Text("取引一覧")
                     .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
-                    .frame(height: 20)
+                    .adjustSize(height: 20)
             case .receipt:
                 Text("レシート")
                     .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
-                    .frame(height: 20)
+                    .adjustSize(height: 20)
             case .help:
                 Text("ヘルプ")
                     .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
-                    .frame(height: 20)
+                    .adjustSize(height: 20)
             }
         }
     }

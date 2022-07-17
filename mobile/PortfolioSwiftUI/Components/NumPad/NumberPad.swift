@@ -17,7 +17,7 @@ extension EnvironmentValues {
 struct NumberPad: View {
     var onChange: ((NumberPad.Key) -> Void)
     var spacing: (x: CGFloat, y: CGFloat) {
-        (x: 27, y: 27)
+        (x: adjust(27), y: adjust(27))
     }
     init(
         _ onChange: @escaping ((NumberPad.Key) -> Void)
@@ -36,7 +36,7 @@ struct NumberPad: View {
     }
     var body: some View {
         GeometryReader { geometry in
-            VStack(spacing: spacing.x) {
+            VStack(spacing: adjust(spacing.x)) {
                 keypadRow(keys: [.number(7), .number(8), .number(9)])
                 keypadRow(keys: [.number(4), .number(5), .number(6)])
                 keypadRow(keys: [.number(1), .number(2), .number(3)])
@@ -68,20 +68,20 @@ struct NumberPad: View {
                 switch self {
                 case .doubleZero:
                     Text("00")
-                        .customFont(font: .roboto, size: 36, spacing: .short, weight: .light)
+                        .customFont(font: .roboto, size: adjust(36), spacing: .short, weight: .light)
                 case .number(let num):
                     Text(num.description)
-                        .customFont(font: .roboto, size: 36, spacing: .short, weight: .light)
+                        .customFont(font: .roboto, size: adjust(36), spacing: .short, weight: .light)
                 case .delete:
                     ZStack(alignment: .bottom) {
                         Text("消去")
-                            .customFont(font: .roboto, size: 13, spacing: .short, weight: .light)
-                            .offset(y: -8)
+                            .customFont(font: .roboto, size: adjust(13), spacing: .short, weight: .light)
+                            .offset(y: adjust(-8))
                         ZStack(alignment: .center) {
                             Image(Asset.removeIcon)
                                 .resizable()
-                                .frame(width: 40, height: 24)
-                                .offset(x: -2)
+                                .adjustSize(width: 40, height: 24)
+                                .offset(x: adjust(-2))
                         }
                         .frame(maxHeight: .infinity)
                     }

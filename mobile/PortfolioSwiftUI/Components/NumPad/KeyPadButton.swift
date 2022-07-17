@@ -25,11 +25,11 @@ struct KeyPadButton: View {
                 ZStack {
                     Circle()
                         .foregroundColor(.white)
-                        .frame(width: 90, height: 90)
+                        .adjustSize(width: 90, height: 90)
                         .overlay(
                             Circle()
-                                .stroke(.gray, lineWidth: 1)
-                                .frame(width: 90, height: 90)
+                                .stroke(.gray, lineWidth: adjust(1))
+                                .adjustSize(width: 90, height: 90)
                         )
                     key.label
                 }

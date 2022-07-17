@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+import ViewAdjustSize
 extension FirstScreen {
     class ViewModel: ObservableObject {
         let container: DIContainer
@@ -35,7 +35,7 @@ struct FirstScreen: ScreenMovable2 {
     }
     var body: some View {
         SlideAnimation2 {
-            let spacing: CGFloat = 30
+            let spacing: CGFloat = adjust(30)
             VStack(spacing: spacing) {
 
                 Picker(selection: $tab, label: Text("")) {
@@ -74,19 +74,20 @@ struct FirstScreen: ScreenMovable2 {
                 }
 
                 ForEach(0..<menus.count, id: \.self) { num in
-                    HStack(spacing: 36) {
+                    HStack(spacing: adjust(36)) {
                         ForEach(menus[num], id: \.hashValue) { account in
                             Group {
                                 if let account = account {
-                                    account.view(selected: account.name == header.getAccount()?.name).onButtonTap {
-                                        header.setAccount(account)
-                                        moveForward(screen: .second, router)
-                                    }
+                                    account.view(selected: account.name == header.getAccount()?.name)
+                                        .onButtonTap {
+                                            header.setAccount(account)
+                                            moveForward(screen: .second, router)
+                                        }
                                 } else {
                                     Text("")
                                 }
                             }
-                            .frame(width: 82, height: 82)
+                            .adjustSize(width: 82, height: 82)
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .center)

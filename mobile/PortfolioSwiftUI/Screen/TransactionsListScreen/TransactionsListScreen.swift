@@ -64,7 +64,7 @@ struct TransactionsListScreen: View {
                 label: {
                     ZStack {
                         Text(viewModel.transactionsList[index].accounts)
-                            .customFont(size: 12, spacing: .none, weight: .light)
+                            .customFont(size: adjust(12), spacing: .none, weight: .light)
                         HStack(spacing: 0) {
                             VStack(spacing: 0) {
                             }
@@ -74,19 +74,19 @@ struct TransactionsListScreen: View {
                             VStack(spacing: 10) {
                                 HStack(spacing: 0) {
                                     Text(viewModel.transactionsList[index].date)
-                                        .customFont(size: 12, spacing: .none, weight: .light)
+                                        .customFont(size: adjust(12), spacing: .none, weight: .light)
                                     Spacer()
                                     Text("¥\(viewModel.transactionsList[index].price)")
-                                        .customFont(size: 12, spacing: .none, weight: .light)
+                                        .customFont(size: adjust(12), spacing: .none, weight: .light)
                                 }
                                 HStack(spacing: 0) {
                                     Text(viewModel.transactionsList[index].description ?? "摘要未入力")
-                                        .customFont(size: 13, spacing: .none, weight: .light)
+                                        .customFont(size: adjust(13), spacing: .none, weight: .light)
                                     Spacer()
                                     viewModel.transactionsList[index].image
                                 }
                             }
-                            .padding(.leading, 5)
+                            .padding(.leading, adjust(5))
                         }
                     }
                 }
@@ -109,25 +109,25 @@ extension TransactionsListScreen {
     var searchButton: some View {
         Image(Asset.searchIcon)
             .resizable()
-            .frame(width: 80, height: 28)
+            .adjustSize(width: 80, height: 28)
     }
 }
 
 extension TransactionsListScreen {
     /// リストの情報(科目、取引日、検索結果)
     var listInfo: some View {
-        VStack(spacing: 5) {
+        VStack(spacing: adjust(5)) {
             Text("科目: すべて")
-                .customFont(size: 14, spacing: .short, weight: .light)
+                .customFont(size: adjust(14), spacing: .short, weight: .light)
                 .frame(maxWidth: .infinity, alignment: .leading)
             Text("取引日: 2021/01/01 〜 2022/07/04")
-                .customFont(size: 14, spacing: .short, weight: .light)
+                .customFont(size: adjust(14), spacing: .short, weight: .light)
                 .frame(maxWidth: .infinity, alignment: .leading)
             Text("検索結果: \(viewModel.searchCount)件")
-                .customFont(size: 14, spacing: .short, weight: .light)
+                .customFont(size: adjust(14), spacing: .short, weight: .light)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(5)
+        .padding(adjust(5))
         .frame(maxWidth: .infinity)
         .background(Color.rgb(205, 230, 237))
     }
@@ -148,8 +148,8 @@ extension TransactionsListScreen {
                 .onButtonTap {
                 }
         }
-        .padding(.horizontal, 5)
-        .padding(.vertical, 10)
-        .frame(maxWidth: .infinity, maxHeight: 40, alignment: .leading)
+        .adjustPadding(.horizontal, 5)
+        .adjustPadding(.vertical, 10)
+        .frame(maxWidth: .infinity, maxHeight: adjust(40), alignment: .leading)
     }
 }

@@ -24,32 +24,32 @@ extension TransactionInputScreen {
         VStack(spacing: 0) {
             ZStack {
                 horizontalLine
-                    .frame(maxWidth: .infinity, maxHeight: 2)
+                    .frame(maxWidth: .infinity, maxHeight: adjust(2))
                 HStack(spacing: 0) {
                     ForEach(0..<Self.naviItems.count, id: \.self) { index in
                         VStack {
                             Text(Self.naviItems[index])
                                 .foregroundColor(isActive(index) ? .white : .black)
-                                .backgroundCircle(isActive(index) ? .black : .white, 25, Asset.lightGray.color, 3)
-                                .frame(width: 25, height: 25)
-                                .frame(maxWidth: .infinity, maxHeight: 50, alignment: Self.alignments[index])
+                                .backgroundCircle(isActive(index) ? .black : .white, adjust(25), Asset.lightGray.color, 3)
+                                .adjustSize(width: 25, height: 25)
+                                .frame(maxWidth: .infinity, maxHeight: adjust(50), alignment: Self.alignments[index])
                         }
                     }
                 }
-                .frame(maxWidth: .infinity, maxHeight: 25)
+                .frame(maxWidth: .infinity, maxHeight: adjust(25))
             }
-            .frame(maxWidth: .infinity, maxHeight: 50)
+            .frame(maxWidth: .infinity, maxHeight: adjust(50))
             HStack {
                 Text("科目")
-                    .customFont(size: 11, spacing: .short, weight: .light)
+                    .customFont(size: adjust(11), spacing: .short, weight: .light)
                     .fixedSize()
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text("取引先・摘要")
-                    .customFont(size: 10, spacing: .none, weight: .light)
+                    .customFont(size: adjust(10), spacing: .none, weight: .light)
                     .fixedSize()
                     .frame(maxWidth: .infinity, alignment: .center)
                 Text("金額")
-                    .customFont(size: 11, spacing: .short, weight: .light)
+                    .customFont(size: adjust(11), spacing: .short, weight: .light)
                     .fixedSize()
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }

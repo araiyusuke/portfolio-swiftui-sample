@@ -13,7 +13,7 @@ extension TransactionInputScreen {
     var back: some View {
         if router.screen != .first {
              Text("〈 戻る")
-                .customFont(size: 18, spacing: .short, weight: .medium)
+                .customFont(size: adjust(18), spacing: .short, weight: .medium)
                 .onTapGesture {
                     switch router.screen {
                     case .first:
