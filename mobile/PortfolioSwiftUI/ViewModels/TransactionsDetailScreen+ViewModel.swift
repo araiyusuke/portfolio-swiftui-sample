@@ -11,15 +11,6 @@ import Combine
 
 extension TransactionsDetailScreen {
     class ViewModel: ObservableObject {
-        init(container: DIContainer, transaction: Transaction) {
-            self.container = container
-            self.transaction = transaction
-        }
-        var dismissHandle: AnyPublisher<Void, Never> {
-            subject.eraseToAnyPublisher()
-        }
-        private let subject = PassthroughSubject<Void, Never>()
-        let container: DIContainer
         // ボトムシートの表示管理
         @Published private var isShowBottomSheet: Bool = false
         // 何をボトムシート経由で編集するのか?(date or accounts)管理する
@@ -28,6 +19,15 @@ extension TransactionsDetailScreen {
         @Published var selectionDate = Date()
         @Published var transaction: Transaction
         @Published var dismiss: Bool = false
+        let container: DIContainer
+        init(container: DIContainer, transaction: Transaction) {
+            self.container = container
+            self.transaction = transaction
+        }
+        var dismissHandle: AnyPublisher<String, Never> {
+            subject.eraseToAnyPublisher()
+        }
+        private let subject = PassthroughSubject<String, Never>()
         public func showBottomSheets(_ bottomSheetState: BottomSheetState?) {
             self.bottomSheetState = bottomSheetState
             self.isShowBottomSheet = true
@@ -41,6 +41,19 @@ extension TransactionsDetailScreen {
         }
         public var isOpenBottomSheets: Bool {
             return isShowBottomSheet
+        }
+        /// 削除ボタンをタップ
+        public func delete() {
+            container.services.transaction.delete(transaction: transaction)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { completion in
+                    print(completion)
+                }, receiveValue: { response in
+                    if response.transactions.success {
+                        self.subject.send("削除しました")
+                    }
+                })
+                .store(in: &cancellables)
         }
         public func onAppear() {}
         private func convertString(date: Date) -> String {
@@ -68,19 +81,33 @@ extension TransactionsDetailScreen {
                 })
                 .store(in: &cancellables)
         }
+        
+        /// 保存処理
+        /// - Parameter transacton: 更新したい取引
         private func updateTransaction(_ transacton: Transaction) {
             container.services.transaction.update(transaction)
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { _ in
                 }, receiveValue: { response in
                     if response.transactions.success {
-                        self.subject.send()
+                        self.subject.send("保存しました")
                     }
                 })
                 .store(in: &cancellables)
         }
-        public func onSaveButtonTap() {
+        public func onUpdateButtonTap() {
             updateTransaction(transaction)
+        }
+        private func deleteTransaction(_ transacton: Transaction) {
+            container.services.transaction.update(transaction)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { _ in
+                }, receiveValue: { response in
+                    if response.transactions.success {
+                        self.subject.send("保存しました")
+                    }
+                })
+                .store(in: &cancellables)
         }
     }
 }
