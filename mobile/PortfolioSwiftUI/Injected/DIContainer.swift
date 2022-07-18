@@ -22,6 +22,9 @@ struct TransactionService {
     public func regist() -> AnyPublisher<TransactionsAPI.RegistResponse, Error> {
         return TransactionsAPI.regist()
     }
+    public func delete(transaction: Transaction)  -> AnyPublisher<TransactionsAPI.RegistResponse, Error> {
+        return TransactionsAPI.delete(transaction: transaction)
+    }
     public func update(_ transaction: Transaction) -> AnyPublisher<TransactionsAPI.UpdateResponse, Error> {
         return TransactionsAPI.update()
     }

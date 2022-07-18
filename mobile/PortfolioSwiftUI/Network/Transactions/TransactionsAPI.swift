@@ -59,8 +59,16 @@ enum TransactionsAPI {
                 .request()
         )
     }
-
-    // 取引編集後の上書きボタンをタップした時に実行
+    /// 取引を削除する
+    /// - Returns: JSONレスポンス
+    static func delete(transaction: Transaction) -> AnyPublisher<RegistResponse, Error> {
+        return agent.run(
+            TransactionsApi
+                .Delete
+                .request()
+        )
+    }
+    /// 取引編集後の上書きボタンをタップした時に実行
     static func update() -> AnyPublisher<UpdateResponse, Error> {
         return agent.run(
             TransactionsApi

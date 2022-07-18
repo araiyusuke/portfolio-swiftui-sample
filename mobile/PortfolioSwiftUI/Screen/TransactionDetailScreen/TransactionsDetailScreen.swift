@@ -23,14 +23,14 @@ struct TransactionsDetailScreen: View {
                 // 編集説明
                 transactionEditHelp
                     .adjustSize(height: 80)
-                
                 // 内容
                 detailContents
                     .adjustSize(height: 400)
                 Spacer()
-                Button(action: deleteTransactionAction ) {
-                    deleteBtn
-                }
+                deleteBtn
+                    .onButtonTap {
+                        viewModel.delete()
+                    }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
             if viewModel.isOpenBottomSheets {
@@ -54,14 +54,14 @@ struct TransactionsDetailScreen: View {
         .frame(maxHeight: .infinity, alignment: .top)
         .background(Color.rgb(247, 247, 247))
         .customNavigation(leading: L10n.back, center: "取引詳細", trailing: L10n.save) {
-            viewModel.onSaveButtonTap()
+            viewModel.onUpdateButtonTap()
         }
         .onAppear {
             viewModel.onAppear()
             bottomTab.hide()
         }
-        .onReceive(viewModel.dismissHandle) { _ in
-            header.showToast(title: "保存ができました")
+        .onReceive(viewModel.dismissHandle) { value in
+            header.showToast(title: value)
             presentationMode.wrappedValue.dismiss()
         }
     }
@@ -69,12 +69,10 @@ struct TransactionsDetailScreen: View {
     // ボトムシート閉じるボタンとタイトル
     private func bottomSheetsHeader(title: String) -> some View {
         HStack {
-            
             ZStack {
                 // 日付 or 勘定名をタイトルにもつ
                 Text(title)
                     .customFont(size: 14, spacing: .none, weight: .light)
-                
                 // 閉じるボタンは右に寄せる
                 ZStack {
                     Text("X")

@@ -35,6 +35,13 @@ struct TransactionsApi {
             return URLRequest.create(endPoint, method: .post)
         }
     }
+    struct Delete: RequestParameter {
+        static let endPoint = EndPoint(url: "\(Api.transactionsEndPoint)/")
+
+        static func request() -> URLRequest {
+            return URLRequest.create(endPoint, method: .post)
+        }
+    }
     struct Update: RequestParameter {
         static let endPoint = EndPoint(url: "\(Api.transactionsEndPoint)/update")
 
