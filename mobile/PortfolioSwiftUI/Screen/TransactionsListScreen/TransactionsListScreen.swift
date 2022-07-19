@@ -167,7 +167,7 @@ extension TransactionsListScreen {
             Spacer()
             NavigationLink(
                 destination:
-                    SearchTransactionScreen(),
+                    SearchTransactionScreen(viewModel: .init()),
                 label: {
                     searchButton
                 })
