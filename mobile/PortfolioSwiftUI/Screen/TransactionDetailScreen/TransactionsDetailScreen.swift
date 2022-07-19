@@ -37,7 +37,6 @@ struct TransactionsDetailScreen: View {
                 VStack {
                     if let bottomSheetState = viewModel.bottomSheetState {
                         bottomSheetsHeader(title: bottomSheetState.description)
-                        
                         if bottomSheetState == .date {
                             picker
                         } else if bottomSheetState == .account {

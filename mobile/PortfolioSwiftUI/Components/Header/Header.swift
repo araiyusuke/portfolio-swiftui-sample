@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+/// アプリの上部にあるヘッダー部分を管理するクラス
 class HeaderManager: ObservableObject {
     @Published private (set) var isShowToast: Bool  = false
     @Published var title: String  = ""

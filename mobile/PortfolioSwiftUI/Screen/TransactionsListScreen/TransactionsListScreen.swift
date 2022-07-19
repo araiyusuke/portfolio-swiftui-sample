@@ -29,7 +29,7 @@ struct TransactionsListScreen: View {
                 .customNavigation(center: "取引一覧")
             }
             .onAppear {
-                // NaivgationViewでOnAppearだと戻ってきた時に、TransactionsListScreen.onAppearにはならなかった
+                //NaivgationViewでOnAppearだと戻ってきた時に、TransactionsListScreen.onAppearにはならなかった
                 bottomTab.show()
             }
         }
@@ -126,7 +126,7 @@ struct TransactionsListScreen: View {
 }
 
 extension TransactionsListScreen {
-    /// 画面上の検索ボタン
+    /// 検索画面に遷移するボタン
     var searchButton: some View {
         Image(Asset.searchIcon)
             .resizable()
@@ -165,9 +165,12 @@ extension TransactionsListScreen {
                     sort.toggle()
                 }
             Spacer()
-            searchButton
-                .onButtonTap {
-                }
+            NavigationLink(
+                destination:
+                    SearchTransactionScreen(),
+                label: {
+                    searchButton
+                })
         }
         .adjustPadding(.horizontal, 5)
         .adjustPadding(.vertical, 10)
