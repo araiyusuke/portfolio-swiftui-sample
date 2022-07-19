@@ -10,32 +10,26 @@ import SwiftUI
 struct SearchTransactionScreen: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var header: HeaderManager
+    @State var accounts: String = "すべて"
+    @State var startDate: String = "2021/01/01"
+    @State var endDate: String = "2021/07/20"
+
     var body: some View {
         VStack {
 
             HStack {
-                rowLabel("検索条件")
+                Text("検索条件")
+                    .customFont(size: 14, spacing: .none, rgb: Asset.lightGray.color, weight: .light)
+
                 Spacer()
             }
             .adjustSize(height: 35)
             .padding(adjust(10))
 
             List {
-                HStack {
-                    rowLabel("科目")
-                    Spacer()
-                    rowLabel("すべて")
-                }
-                HStack {
-                    rowLabel("取引日(いつから)")
-                    Spacer()
-                    rowLabel("2021/01/01")
-                }
-                HStack {
-                    rowLabel("取引日(いつまで)")
-                    Spacer()
-                    rowLabel("2021/07/20")
-                }
+                ListRow(title: "科目", value: $accounts)
+                ListRow(title: "取引日(いつから)", value: $startDate)
+                ListRow(title: "取引日(いつまで)", value: $endDate)
             }
             .listStyle(.plain)
             .adjustSize(height: 200)
@@ -43,11 +37,6 @@ struct SearchTransactionScreen: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .background(Color.rgb(240, 240, 240))
-    }
-
-    func rowLabel(_ title: String) -> some View {
-        Text(title)
-            .customFont(size: 14, spacing: .none, rgb: Asset.lightGray.color, weight: .light)
     }
     var searchButton: some View {
         Text("検索")
