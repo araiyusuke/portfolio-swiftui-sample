@@ -19,7 +19,7 @@ extension FirstScreen {
 
 struct FirstScreen: ScreenMovable2 {
     @ObservedObject private(set) var viewModel: ViewModel
-    @EnvironmentObject var header: Header
+    @EnvironmentObject var header: HeaderManager
     @EnvironmentObject var router: TransactionInputRouter
     @EnvironmentObject var bottomTab: BottomTabManager
     let circleSize: CGFloat = 82

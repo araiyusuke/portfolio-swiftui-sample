@@ -20,7 +20,7 @@ struct TapSimpleButtonApp: App {
             Controller(container: AppEnvironment.bootstrap().container)
                 .environmentObject(Router.shared)
                 .environmentObject(TransactionInputRouter.shared)
-                .environmentObject(Header())
+                .environmentObject(HeaderManager.shared)
                 .environmentObject(BottomTabManager.shared)
                 .environment(\.adjustOriginalSize, .init(size: CGSize(width: 375, height: 812), debug: false))
         }

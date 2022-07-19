@@ -13,7 +13,7 @@ struct TransactionsListScreen: View {
     @State private var sort: Sort = .new
     @StateObject var viewModel: ViewModel
     @EnvironmentObject var bottomTab: BottomTabManager
-    @EnvironmentObject var header: Header
+    @EnvironmentObject var header: HeaderManager
     var body: some View {
         NavigationView {
             ZStack {

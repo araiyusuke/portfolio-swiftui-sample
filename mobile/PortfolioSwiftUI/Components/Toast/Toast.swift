@@ -14,7 +14,7 @@ extension View {
 }
 
 struct Toast: ViewModifier {
-    @EnvironmentObject var header: Header
+    @EnvironmentObject var header: HeaderManager
 
     func body(content: Content) -> some View {
         ZStack {

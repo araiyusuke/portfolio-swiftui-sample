@@ -12,7 +12,7 @@ struct TransactionsDetailScreen: View {
     @StateObject var viewModel: ViewModel
     @EnvironmentObject var bottomTab: BottomTabManager
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var header: Header
+    @EnvironmentObject var header: HeaderManager
     var body: some View {
         ZStack(alignment: .bottom) {
             // ボトムシート表示時は画面操作を禁止させる

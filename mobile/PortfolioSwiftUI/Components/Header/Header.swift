@@ -8,12 +8,14 @@
 import Foundation
 import SwiftUI
 
-class Header: ObservableObject {
+class HeaderManager: ObservableObject {
     @Published private (set) var isShowToast: Bool  = false
     @Published var title: String  = ""
     @Published private (set) var toastTitle: String  = ""
     @Published private var account: Account?
     @Published private var numPadValue: String  = ""
+    private init() {}
+    static let shared: HeaderManager = .init()
     public func showToast(title: String) {
         isShowToast.toggle()
         toastTitle = title
