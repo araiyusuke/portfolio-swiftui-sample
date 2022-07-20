@@ -11,6 +11,14 @@ import SwiftUI
 extension TransactionsListScreen {
     enum Sort {
         case new, old
+        var orderBy: ComparisonResult {
+            switch self {
+            case .old:
+                return .orderedAscending
+            case .new:
+                return .orderedDescending
+            }
+        }
         mutating func toggle() {
             if self == .new {
                 self = .old

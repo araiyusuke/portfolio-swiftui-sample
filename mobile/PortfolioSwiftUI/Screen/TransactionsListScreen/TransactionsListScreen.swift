@@ -26,7 +26,7 @@ struct TransactionsListScreen: View {
                 .customNavigation(center: "取引一覧")
             }
             .onAppear {
-                //NaivgationViewでOnAppearだと戻ってきた時に、TransactionsListScreen.onAppearにはならなかった
+                // NaivgationViewでOnAppearだと戻ってきた時に、TransactionsListScreen.onAppearにはならなかった
                 bottomTab.show()
             }
         }.onAppear {
@@ -162,6 +162,9 @@ extension TransactionsListScreen {
                 .customFont(size: 13, spacing: .short, weight: .light)
                 .onButtonTap {
                     sort.toggle()
+                    viewModel.transactionsList = viewModel.transactionsList.sorted(by: {
+                        $0.date.compare($1.date) == sort.orderBy
+                    })
                 }
             Spacer()
             NavigationLink(
