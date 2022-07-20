@@ -11,12 +11,27 @@ extension SearchTransactionScreen {
     class ViewModel: ObservableObject {
         // ボトムシートの表示管理
         @Published private var isShowBottomSheet: Bool = false
+        @Published var bottomSheetState: BottomSheetState?
         private let subject = PassthroughSubject<String, Never>()
         var dismissHandle: AnyPublisher<String, Never> {
             subject.eraseToAnyPublisher()
         }
         public func search() {
             self.subject.send("検索結果一覧")
+        }
+        public func showBottomSheets(_ bottomSheetState: BottomSheetState?) {
+            self.bottomSheetState = bottomSheetState
+            self.isShowBottomSheet = true
+        }
+        public func showBottomSheets(_ bottomSheetState: BottomSheetState?, date: Date) {
+            self.bottomSheetState = bottomSheetState
+            self.isShowBottomSheet = true
+        }
+        public func closeBottomSheets() {
+            self.isShowBottomSheet = false
+        }
+        public var isOpenBottomSheets: Bool {
+            return isShowBottomSheet
         }
     }
 }
@@ -48,7 +63,6 @@ struct SearchTransactionScreen: View {
             }
             .listStyle(.plain)
             .adjustSize(height: 200)
-
             List {
                 searchButton
                     .onButtonTap {
@@ -60,6 +74,9 @@ struct SearchTransactionScreen: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .background(Color.rgb(240, 240, 240))
+        .customNavigation(leading: L10n.back, center: "取引検索") {
+
+        }
         .onAppear {
             // 取引検索画面にボトムメニューは不要
             bottom.hide()
@@ -75,5 +92,12 @@ struct SearchTransactionScreen: View {
         Text("検索")
             .customFont(size: 16, spacing: .long, rgb: Asset.lightBlue.color, weight: .light)
             .frame(maxWidth: .infinity)
+    }
+    
+    enum BottomSheetState {
+        // いつから
+        case start
+        // いつまで
+        case finish
     }
 }
