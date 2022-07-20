@@ -14,7 +14,7 @@ struct SecondScreen: ScreenMovable2 {
     enum InputState {
         case supplier, description
     }
-    @EnvironmentObject var header: Header
+    @EnvironmentObject var header: HeaderManager
     @EnvironmentObject var router: TransactionInputRouter
     @EnvironmentObject var bottomTab: BottomTabManager
     @State private var inputState: InputState?

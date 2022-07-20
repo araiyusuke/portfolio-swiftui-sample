@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TransactionInputScreen: ScreenMovable2 {
     @EnvironmentObject var router: TransactionInputRouter
-    @EnvironmentObject var header: Header
+    @EnvironmentObject var header: HeaderManager
     @ObservedObject private(set) var viewModel: ViewModel
     let container: DIContainer
     init(container: DIContainer) {

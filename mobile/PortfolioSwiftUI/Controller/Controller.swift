@@ -4,7 +4,7 @@ import ResizableSheet
 
 struct Controller: ScreenMovable {
     @EnvironmentObject var router: Router
-    @EnvironmentObject var header: Header
+    @EnvironmentObject var header: HeaderManager
     @EnvironmentObject var transactionInputRouter: TransactionInputRouter
     @EnvironmentObject var bottomTabManager: BottomTabManager
     @State private var labelPosX: CGFloat = 0

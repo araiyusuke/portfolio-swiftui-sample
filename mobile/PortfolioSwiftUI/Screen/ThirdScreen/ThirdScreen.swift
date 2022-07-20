@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ThirdScreen: ScreenMovable2 {
     @EnvironmentObject var router: TransactionInputRouter
-    @EnvironmentObject var header: Header
+    @EnvironmentObject var header: HeaderManager
     @State private var labelPosX: CGFloat = 0
     var body: some View {
         SlideAnimation2 {
