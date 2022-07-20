@@ -19,6 +19,13 @@ enum TransactionsAPI {
             return try! decoder.decode(Response.self, from: loadFile(json: file ?? "Success_Fetch_Transactions"))
         }
     }
+    struct SearchResponse: Mockable {
+        let transactions: [Transaction]
+        static func mock(_ file: String? = nil) -> SearchResponse {
+            let decoder = jsonDecoder()
+            return try! decoder.decode(SearchResponse.self, from: loadFile(json: file ?? "Success_Search_Transaction"))
+        }
+    }
 
     struct Success: Codable {
         let success: Bool
@@ -73,6 +80,14 @@ enum TransactionsAPI {
         return agent.run(
             TransactionsApi
                 .Update
+                .request()
+        )
+    }
+    /// 検索
+    static func search() -> AnyPublisher<SearchResponse, Error> {
+        return agent.run(
+            TransactionsApi
+                .Search
                 .request()
         )
     }

@@ -1,0 +1,49 @@
+{
+    "transactions": [
+        {
+            "id": 1,
+            "accounts": "接待交際費",
+            "date": "2022/07/03",
+            "price": 2990,
+            "hex": "FFDDAF",
+            "supplier": "ドトール",
+            "description": "山田さん打ち合わせ"
+        },
+        {
+            "id": 2,
+            "accounts": "売上ほか",
+            "date": "2022/07/03",
+            "price": 260,
+            "hex": "FFDD0E",
+            "supplier": "ローソン",
+            "description": "ここはランの袋ふく。"
+        },
+        {
+            "id": 3,
+            "accounts": "接待交際費",
+            "date": "2022/07/04",
+            "price": 681,
+            "hex": "009911",
+            "supplier": "ローソン",
+            "description": "よせたりした。する。"
+        },
+        {
+            "id": 4,
+            "accounts": "接待交際費",
+            "date": "2022/07/05",
+            "price": 681,
+            "hex": "009911",
+            "supplier": "ローソン",
+            "description": "よせたりした。する。"
+        },
+        {
+            "id": 5,
+            "accounts": "交通費",
+            "date": "2022/07/06",
+            "price": 681,
+            "hex": "009911",
+            "supplier": "小田急電鉄",
+            "description": "打ち合わせのため"
+        }
+    ]
+}
