@@ -56,6 +56,7 @@ struct SearchTransactionScreen: View {
     @State var accounts: String = "すべて"
     @State var startDate: String = "2021/01/01"
     @State var endDate: String = "2021/07/20"
+    @Binding var transactions: [Transaction]
 
     var body: some View {
         VStack {
@@ -94,7 +95,7 @@ struct SearchTransactionScreen: View {
             bottom.hide()
         }
         .onReceive(viewModel.dismissHandle) { value in
-            print(value.count)
+            self.transactions = value
             presentationMode.wrappedValue.dismiss()
         }
     }

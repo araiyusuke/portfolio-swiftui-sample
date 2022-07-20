@@ -23,15 +23,14 @@ struct TransactionsListScreen: View {
                     content
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                .onAppear {
-                    viewModel.fetchTransactions()
-                }
                 .customNavigation(center: "取引一覧")
             }
             .onAppear {
                 //NaivgationViewでOnAppearだと戻ってきた時に、TransactionsListScreen.onAppearにはならなかった
                 bottomTab.show()
             }
+        }.onAppear {
+            viewModel.fetchTransactions()
         }
     }
     @ViewBuilder
@@ -167,7 +166,8 @@ extension TransactionsListScreen {
             Spacer()
             NavigationLink(
                 destination:
-                    SearchTransactionScreen(viewModel: .init(container: self.viewModel.container)),
+                    SearchTransactionScreen(
+                        viewModel: .init(container: self.viewModel.container), transactions: $viewModel.transactionsList),
                 label: {
                     searchButton
                 })

@@ -28,7 +28,7 @@ struct TransactionService {
     public func update(_ transaction: Transaction) -> AnyPublisher<TransactionsAPI.UpdateResponse, Error> {
         return TransactionsAPI.update()
     }
-    public func search() -> AnyPublisher<TransactionsAPI.Response, Error> {
+    public func search() -> AnyPublisher<TransactionsAPI.SearchResponse, Error> {
         return TransactionsAPI.search()
     }
 }
