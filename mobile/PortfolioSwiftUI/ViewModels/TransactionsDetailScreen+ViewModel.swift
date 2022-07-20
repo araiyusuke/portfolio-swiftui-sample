@@ -19,6 +19,7 @@ extension TransactionsDetailScreen {
         @Published var selectionDate = Date()
         @Published var transaction: Transaction
         @Published var dismiss: Bool = false
+        private var cancellables = Set<AnyCancellable>()
         let container: DIContainer
         init(container: DIContainer, transaction: Transaction) {
             self.container = container
@@ -65,7 +66,6 @@ extension TransactionsDetailScreen {
         public func pickerChange(date: Date) {
             self.transaction.date = convertString(date: date)
         }
-        private var cancellables = Set<AnyCancellable>()
         public var accounts: [Account] {
             return Account.all()
         }

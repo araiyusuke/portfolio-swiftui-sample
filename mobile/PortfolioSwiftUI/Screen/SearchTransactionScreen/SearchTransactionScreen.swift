@@ -12,12 +12,24 @@ extension SearchTransactionScreen {
         // ボトムシートの表示管理
         @Published private var isShowBottomSheet: Bool = false
         @Published var bottomSheetState: BottomSheetState?
-        private let subject = PassthroughSubject<String, Never>()
-        var dismissHandle: AnyPublisher<String, Never> {
+        private var cancellables = Set<AnyCancellable>()
+        let container: DIContainer
+        init(container: DIContainer) {
+            self.container = container
+        }
+        private let subject = PassthroughSubject<[Transaction], Never>()
+        var dismissHandle: AnyPublisher<[Transaction], Never> {
             subject.eraseToAnyPublisher()
         }
         public func search() {
-            self.subject.send("検索結果一覧")
+            container.services.transaction.search()
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { completion in
+                    print(completion)
+                }, receiveValue: { response in
+                    self.subject.send(response.transactions)
+                })
+                .store(in: &cancellables)
         }
         public func showBottomSheets(_ bottomSheetState: BottomSheetState?) {
             self.bottomSheetState = bottomSheetState
@@ -82,7 +94,7 @@ struct SearchTransactionScreen: View {
             bottom.hide()
         }
         .onReceive(viewModel.dismissHandle) { value in
-            header.showToast(title: value)
+            print(value.count)
             presentationMode.wrappedValue.dismiss()
         }
     }
@@ -93,7 +105,6 @@ struct SearchTransactionScreen: View {
             .customFont(size: 16, spacing: .long, rgb: Asset.lightBlue.color, weight: .light)
             .frame(maxWidth: .infinity)
     }
-    
     enum BottomSheetState {
         // いつから
         case start

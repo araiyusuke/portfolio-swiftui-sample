@@ -49,6 +49,13 @@ struct TransactionsApi {
             return URLRequest.create(endPoint, method: .post)
         }
     }
+    struct Search: RequestParameter {
+        static let endPoint = EndPoint(url: "\(Api.transactionsEndPoint)/search")
+
+        static func request() -> URLRequest {
+            return URLRequest.create(endPoint, method: .post)
+        }
+    }
 }
 
 struct DescriptionsApi {

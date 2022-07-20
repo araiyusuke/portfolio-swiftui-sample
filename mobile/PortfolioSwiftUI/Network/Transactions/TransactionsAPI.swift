@@ -76,4 +76,12 @@ enum TransactionsAPI {
                 .request()
         )
     }
+    /// 検索
+    static func search() -> AnyPublisher<Response, Error> {
+        return agent.run(
+            TransactionsApi
+                .Search
+                .request()
+        )
+    }
 }

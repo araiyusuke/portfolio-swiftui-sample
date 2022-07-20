@@ -13,7 +13,6 @@ extension TransactionsListScreen {
     class ViewModel: ObservableObject {
         let container: DIContainer
         private var cancellables = Set<AnyCancellable>()
-
         @Published var transactions: Loadable<[Transaction]>
         @Published var transactionsList: [Transaction] = []
         @Published var isShowSecond: Bool = false
