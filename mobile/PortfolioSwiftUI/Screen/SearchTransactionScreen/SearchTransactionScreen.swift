@@ -41,7 +41,7 @@ struct SearchTransactionScreen: View {
     @EnvironmentObject var bottom: BottomTabManager
     @EnvironmentObject var header: HeaderManager
     @StateObject var viewModel: ViewModel
-    @State var accounts: String = "すべて1"
+    @State var accounts: String = "すべて"
     @State var startDate: String = "2021/01/01"
     @State var endDate: String = "2021/07/20"
 
