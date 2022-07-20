@@ -11,17 +11,20 @@ import SwiftUI
 struct CustomNavigationModifier: ViewModifier {
     @Environment(\.dismiss) var dismiss
     public let leading: String?
+    // 必ずセットされる
     public let center: String
     public let trailing: String?
     public var callBack: (() -> Void)?
+
     func body(content: Content) -> some View {
-        return ZStack {
-            if let leading = leading, let trailing = trailing {
-                content
-                    .navigationTitle(center)
-                    .navigationBarBackButtonHidden(true)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
+        ZStack {
+            content
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle(center)
+                .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        if let leading = leading {
                             Button(
                                 action: {
                                     dismiss()
@@ -33,23 +36,22 @@ struct CustomNavigationModifier: ViewModifier {
                                 }
                             ).tint(.white)
                         }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(
-                                action: {
-                                    if let callBack = self.callBack {
-                                        callBack()
-                                    }
-                                }, label: {
-                                    Text(trailing)
-                                })
-                            }
                     }
-            } else {
-                content
-                    .navigationBarTitleDisplayMode(.inline)
-                    .navigationBarTitle("取引一覧")
-            }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(
+                            action: {
+                                if let callBack = self.callBack {
+                                    callBack()
+                                }
+                            }, label: {
+                                if let trailing = trailing {
+                                    Text(trailing)
+                                }
+                            })
+                    }
+                }
         }
+        .accentColor(.white)
     }
 }
 
@@ -62,11 +64,11 @@ extension View {
         trailing: String? = nil,
         callBack: (() -> Void)? = nil
     )  -> some View {
-            self.modifier(CustomNavigationModifier(
-                leading: leading,
-                center: center,
-                trailing: trailing,
-                callBack: callBack
-            ))
-        }
+        self.modifier(CustomNavigationModifier(
+            leading: leading,
+            center: center,
+            trailing: trailing,
+            callBack: callBack
+        ))
+    }
 }
