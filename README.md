@@ -24,7 +24,7 @@ http://localhost:8080/api/transactions
             "price": 4606,
             "hex": "#ffffff",
             "supplier": "ファミリーマート",
-            "description": "だして答えました。。"
+            "description": "封筒"
         },
         {
             "id": 2,
@@ -33,7 +33,7 @@ http://localhost:8080/api/transactions
             "price": 855,
             "hex": "#3cb371",
             "supplier": "ダイソー",
-            "description": "なく、みんなほんと。"
+            "description": "鉛筆"
         },
         {
             "id": 3,
@@ -42,7 +42,7 @@ http://localhost:8080/api/transactions
             "price": 457,
             "hex": "#ff0000",
             "supplier": "ローソン",
-            "description": "つの緑みどりいろい。"
+            "description": "切手"
         }
     ]
 }
