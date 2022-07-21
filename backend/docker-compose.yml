@@ -1,0 +1,68 @@
+version: '3.9'
+
+volumes:
+  db_store_volume:
+    name: portfolio_db_store_volume
+
+services:
+  nginx_service:  
+    image: portfolio_backend
+    hostname: portfolio_backend_nginx_host
+    container_name: portfolio_backend_nginx_container
+    tty: true
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    volumes:
+        - ./src:/application
+    ports:
+       - 8080:80
+    environment:
+      COMPOSE_PROJECT_NAME: portfolio_backend
+    depends_on:
+      - laravel_service
+  laravel_service:
+    build:
+      context: .
+      dockerfile: ./docker/laravel/Dockerfile
+    image: portfolio_backend_laravel_image
+    container_name: portfolio_backend_laravel_container
+    hostname: portfolio_backend_laravel_host
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: portfolio_backend_db_host
+      DB_PORT: ${DB_PORT:-3306}
+      DB_DATABASE: ${DB_DATABASE:-laravel_db}
+      DB_USERNAME: ${DB_USERNAME:-laravel_user}
+      DB_PASSWORD: ${DB_PASSWORD:-laravel_pass}
+    # 本番はBindせずDockerfileでcomposer installしてvendorに展開する。
+    # 開発環境はdocker-composeでbindしてローカルのvendorを使用する
+    volumes:
+      - type: bind
+        source: ./src
+        target: /application
+    env_file:
+      - ./src/.env
+  db_service:
+    image: portfolio_backend_db_image
+    hostname: portfolio_backend_db_host
+    build:
+      context: .
+      dockerfile: ./docker/db/Dockerfile
+    container_name: portfolio_backend_db_container
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
+      MYSQL_DATABASE: ${DB_DATABASE:-laravel_db}
+      MYSQL_USER: ${DB_USER:-laravel_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-laravel_pass}
+    volumes:
+      - type: volume
+        source: db_store_volume
+        target: /var/lib/mysql
+        volume:
+          nocopy: true
+    ports:
+      - target: 3306
+        published: ${DB_PUBLISHED_PORT:-3306}
+        protocol: tcp
+        mode: host
