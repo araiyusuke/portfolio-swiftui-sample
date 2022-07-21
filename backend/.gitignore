@@ -17,3 +17,6 @@
 
 # Docker
 /backend/src/vendor
+
+#vscode
+*.code-workspace
