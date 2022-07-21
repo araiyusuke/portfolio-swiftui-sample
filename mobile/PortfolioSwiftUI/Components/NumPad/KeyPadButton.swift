@@ -24,7 +24,7 @@ struct KeyPadButton: View {
             }, label: {
                 ZStack {
                     Circle()
-                        .foregroundColor(.white)
+                        .foregroundColor(Asset.circleButton.color)
                         .adjustSize(width: 90, height: 90)
                         .overlay(
                             Circle()

@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import ViewAdjustSize
+
 extension FirstScreen {
     class ViewModel: ObservableObject {
         let container: DIContainer
@@ -25,7 +26,7 @@ struct FirstScreen: ScreenMovable2 {
     let circleSize: CGFloat = 82
     @State private var labelPosX: CGFloat = 0
     @State private var tab = 1
-    var menus: [[Account?]] {
+    var accounts: [[Account?]] {
         if tab == 0 {
             return FirstScreen.income
 
@@ -37,7 +38,7 @@ struct FirstScreen: ScreenMovable2 {
         SlideAnimation2 {
             let spacing: CGFloat = adjust(30)
             VStack(spacing: spacing) {
-
+                // 収入と支出の切り替え
                 Picker(selection: $tab, label: Text("")) {
                     Text(L10n.incomes)
                             .customFont(size: 11, spacing: .short, weight: .light)
@@ -73,12 +74,12 @@ struct FirstScreen: ScreenMovable2 {
                        ], for: .selected)
                 }
 
-                ForEach(0..<menus.count, id: \.self) { num in
+                ForEach(0..<accounts.count, id: \.self) { num in
                     HStack(spacing: adjust(36)) {
-                        ForEach(menus[num], id: \.hashValue) { account in
+                        ForEach(accounts[num], id: \.hashValue) { account in
                             Group {
                                 if let account = account {
-                                    account.view(selected: account.name == header.getAccount()?.name)
+                                    account.circleButton(selected: account.name == header.getAccount()?.name)
                                         .onButtonTap {
                                             header.setAccount(account)
                                             moveForward(screen: .second, router)
@@ -93,11 +94,10 @@ struct FirstScreen: ScreenMovable2 {
                     .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
-            .font(.footnote)
         }
         .hiddenNavigationBarStyle()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .background(Color.backGroundColor)
+        .background(Asset.screenBackColor.color)
         .gesture(DragGesture()
                    .onEnded({ value in
                        if abs(value.translation.width) < 10 {

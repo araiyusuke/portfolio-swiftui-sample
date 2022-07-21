@@ -74,22 +74,25 @@ struct SearchTransactionScreen: View {
                 ListRow(title: "取引日(いつから)", value: $startDate)
                 ListRow(title: "取引日(いつまで)", value: $endDate)
             }
+            .background(Asset.screenBackColor.color)
             .listStyle(.plain)
             .adjustSize(height: 200)
-            List {
-                searchButton
-                    .onButtonTap {
-                        viewModel.search()
-                    }
+            .onAppear {
+                UITextView.appearance().backgroundColor = .clear
+            }.onDisappear {
+                UITextView.appearance().backgroundColor = nil
             }
-            .listStyle(.plain)
+
+            searchButton
+                .onButtonTap {
+                    viewModel.search()
+                }
+
 
         }
         .frame(maxHeight: .infinity, alignment: .top)
-        .background(Color.rgb(240, 240, 240))
-        .customNavigation(leading: L10n.back, center: "取引検索") {
-
-        }
+        .background(Asset.screenBackColor.color)
+        .customNavigation(leading: L10n.back, center: "取引検索")
         .onAppear {
             // 取引検索画面にボトムメニューは不要
             bottom.hide()
@@ -104,7 +107,8 @@ struct SearchTransactionScreen: View {
     var searchButton: some View {
         Text("検索")
             .customFont(size: 16, spacing: .long, rgb: Asset.lightBlue.color, weight: .light)
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: adjust(40))
+            .background(Asset.listBack.color)
     }
     enum BottomSheetState {
         // いつから

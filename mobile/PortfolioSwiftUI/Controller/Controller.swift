@@ -28,7 +28,8 @@ struct Controller: ScreenMovable {
                     }
                 }
                 contents
-                    .navigationBarColor(UIColor.rgba(red: 144, green: 204, blue: 240, alpha: 1))
+                    .navigationBarColor(Asset.lightBlue.color)
+
                 if transactionInputRouter.screen == .second || transactionInputRouter.screen == .third {
                     EmptyView()
                 } else {
@@ -75,12 +76,12 @@ extension View {
 }
 
 struct NavigationBarModifier: ViewModifier {
-    let backgroundColor: UIColor
-    init(backgroundColor: UIColor) {
+    let backgroundColor: Color
+    init(backgroundColor: Color) {
         self.backgroundColor = backgroundColor
         let coloredAppearance = UINavigationBarAppearance()
         coloredAppearance.configureWithTransparentBackground()
-        coloredAppearance.backgroundColor = backgroundColor
+        coloredAppearance.backgroundColor = UIColor(backgroundColor)
         coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().standardAppearance = coloredAppearance
@@ -94,7 +95,8 @@ struct NavigationBarModifier: ViewModifier {
 }
 
 extension View {
-    func navigationBarColor(_ backgroundColor: UIColor) -> some View {
+    func navigationBarColor(_ backgroundColor: Color) -> some View {
+
         modifier(NavigationBarModifier(backgroundColor: backgroundColor))
     }
 }

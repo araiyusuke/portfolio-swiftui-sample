@@ -50,7 +50,7 @@ extension Controller {
             }
         }
         .adjustPadding(.horizontal, 10)
-        .background(Color.white)
+        .background(Asset.bottomMenuBack.color)
         .border(width: 1, edges: [.top], color: Asset.lightGray.color)
     }
 }

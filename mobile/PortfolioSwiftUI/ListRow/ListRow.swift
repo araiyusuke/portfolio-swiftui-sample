@@ -13,11 +13,11 @@ struct ListRow: View {
     var body: some View {
         HStack {
             Text(title)
-                .customFont(size: 14, spacing: .none, rgb: Asset.lightGray.color, weight: .light)
+                .customFont(size: 14, spacing: .none, color: .lightGray, weight: .light)
             Spacer()
             Text(value)
                 .customFont(size: 14, spacing: .none, rgb: Asset.lightGray.color, weight: .light)
         }
-
+        .listRowBackground(Asset.listBack.color)
     }
 }

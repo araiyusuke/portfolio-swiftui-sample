@@ -21,9 +21,10 @@ struct Toast: ViewModifier {
             if header.isShowToast {
                 VStack {
                     Text(header.toastTitle)
+                        .customFont(size: 15, spacing: .none, weight: .light)
                 }
                 .frame(maxWidth: .infinity, maxHeight: adjust(100))
-                .background(Color.white)
+                .background(Asset.toastBack.color)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                 .background(Color.gray.opacity(0.4))
                 .zIndex(.infinity)

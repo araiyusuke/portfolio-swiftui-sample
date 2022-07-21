@@ -13,6 +13,11 @@ struct TransactionsDetailScreen: View {
     @EnvironmentObject var bottomTab: BottomTabManager
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var header: HeaderManager
+
+    init(viewModel: ViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
+
     var body: some View {
         ZStack(alignment: .bottom) {
             // ボトムシート表示時は画面操作を禁止させる
@@ -26,6 +31,11 @@ struct TransactionsDetailScreen: View {
                 // 内容
                 detailContents
                     .adjustSize(height: 400)
+                    .onAppear {
+                        UITextView.appearance().backgroundColor = .clear
+                    }.onDisappear {
+                        UITextView.appearance().backgroundColor = nil
+                    }
                 Spacer()
                 deleteBtn
                     .onButtonTap {
@@ -44,20 +54,25 @@ struct TransactionsDetailScreen: View {
                         }
                     }
                 }
-                .background(Color.white)
                 .zIndex(.infinity)
+                // 下からボトムシートを表示するアニメーション
                 .transition(.move(edge: .bottom))
+                // ボトムシートの背景
+                .background(Asset.screenBackColor.color)
                 .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
         .frame(maxHeight: .infinity, alignment: .top)
-        .background(Color.rgb(247, 247, 247))
+        .background(Asset.screenBackColor.color)
         .customNavigation(leading: L10n.back, center: "取引詳細", trailing: L10n.save) {
             viewModel.onUpdateButtonTap()
         }
         .onAppear {
             viewModel.onAppear()
             bottomTab.hide()
+        }
+        .onDisappear {
+            bottomTab.show()
         }
         .onReceive(viewModel.dismissHandle) { value in
             header.showToast(title: value)
@@ -85,7 +100,7 @@ struct TransactionsDetailScreen: View {
                 }.frame(maxWidth: .infinity, alignment: .trailing)
             }
         }
-        .background(Color.rgb(240, 240, 240))
+        .background(Asset.bottomSheetTitleBack.color)
     }
     let deleteTransactionAction = { () -> Void in
         print("削除")
@@ -118,9 +133,10 @@ struct TransactionsDetailScreen: View {
             .customFont(size: adjust(16), spacing: .none, rgb: .red, weight: .light)
             .adjustPadding(.vertical, 15)
             .frame(maxWidth: .infinity, maxHeight: adjust(40))
-            .background(.white)
+            .background(Asset.listBack.color)
             .adjustPadding(.vertical, 15)
     }
+    /// ボトムシートに表示する勘定科目一覧
     var accountList: some View {
         List {
             ForEach(viewModel.accounts) { account in
@@ -134,15 +150,17 @@ struct TransactionsDetailScreen: View {
                         }
                     }
             }
+            .listRowBackground(Asset.listBack.color)
         }
         .frame(maxWidth: .infinity)
         .listStyle(.plain)
-        .background(Color.white)
         .adjustSize(height: 400)
+
     }
     // 取引詳細の内容
     var detailContents : some View {
         List {
+            // 取引日
             HStack {
                 Text(L10n.transactionDate)
                     .customFont(size: 15, spacing: .none, weight: .light)
@@ -156,6 +174,8 @@ struct TransactionsDetailScreen: View {
                     viewModel.showBottomSheets(.date)
                 }
             }
+            .listRowBackground(Asset.listBack.color)
+
             HStack {
                 Text(L10n.transaction)
                     .customFont(size: 15, spacing: .none, weight: .light)
@@ -168,6 +188,9 @@ struct TransactionsDetailScreen: View {
                     viewModel.showBottomSheets(.account)
                 }
             }
+            .listRowBackground(Asset.listBack.color)
+
+
             HStack {
                 Text("取引先")
                     .customFont(size: 15, spacing: .none, weight: .light)
@@ -182,6 +205,8 @@ struct TransactionsDetailScreen: View {
                 )
                 .isDetailLink(false)
             }
+            .listRowBackground(Asset.listBack.color)
+
             HStack {
                 Text(L10n.descriptions)
                     .customFont(size: 15, spacing: .none, weight: .light)
@@ -195,6 +220,8 @@ struct TransactionsDetailScreen: View {
                 )
                 .isDetailLink(false)
             }
+            .listRowBackground(Asset.listBack.color)
+
             HStack {
                 Text("\(L10n.price)(税込)")
                     .customFont(size: 13, spacing: .none, weight: .light)
@@ -208,9 +235,17 @@ struct TransactionsDetailScreen: View {
                         .multilineTextAlignment(TextAlignment.trailing)
                 }
             }
+            .listRowBackground(Asset.listBack.color)
+
         }
         .listStyle(.plain)
+        .onAppear {
+            UITextView.appearance().backgroundColor = .clear
+        }.onDisappear {
+            UITextView.appearance().backgroundColor = nil
+        }
     }
+
 }
 
 extension TransactionsDetailScreen {

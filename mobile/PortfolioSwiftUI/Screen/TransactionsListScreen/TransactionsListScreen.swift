@@ -23,13 +23,14 @@ struct TransactionsListScreen: View {
                     content
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                .background(Asset.screenBackColor.color)
                 .customNavigation(center: "取引一覧")
             }
             .onAppear {
-                // NaivgationViewでOnAppearだと戻ってきた時に、TransactionsListScreen.onAppearにはならなかった
                 bottomTab.show()
             }
         }.onAppear {
+            // 戻ってきた時にNavigationViewの外に出さないとAPIが繰り返し呼び出される
             viewModel.fetchTransactions()
         }
     }
@@ -94,7 +95,7 @@ struct TransactionsListScreen: View {
                 }
             )
             .isDetailLink(false)
-            .listRowBackground(Color.white)
+            .listRowBackground(Asset.listBack.color)
             .listRowInsets(EdgeInsets())
             .buttonStyle(PlainButtonStyle())
         }
@@ -149,7 +150,7 @@ extension TransactionsListScreen {
         }
         .padding(adjust(5))
         .frame(maxWidth: .infinity)
-        .background(Color.rgb(205, 230, 237))
+        .background(Asset.lightBlue.color.opacity(0.4))
     }
 }
 
@@ -159,7 +160,7 @@ extension TransactionsListScreen {
         HStack {
             sort.icon
             Text(sort.description)
-                .customFont(size: 13, spacing: .short, weight: .light)
+                .customFont(size: 13, spacing: .short, color: .lightGray, weight: .light)
                 .onButtonTap {
                     sort.toggle()
                     viewModel.transactionsList = viewModel.transactionsList.sorted(by: {
@@ -178,6 +179,6 @@ extension TransactionsListScreen {
         .adjustPadding(.horizontal, 5)
         .adjustPadding(.vertical, 10)
         .frame(maxWidth: .infinity, maxHeight: adjust(40), alignment: .leading)
-        .background(Color.rgb(247, 247, 247))
+        .background(Asset.listBack.color)
     }
 }

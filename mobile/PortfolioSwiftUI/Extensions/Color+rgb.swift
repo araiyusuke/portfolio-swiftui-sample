@@ -12,9 +12,6 @@ extension Color {
     static func rgb(_ red: Double, _ green: Double, _ blue: Double, _ alpha: CGFloat = 1.0) -> Color {
         return Color(red: red / 255, green: green / 255, blue: blue / 255, opacity: alpha)
     }
-    static var backGroundColor: Color {
-        return Color.rgb(252, 251, 246)
-    }
     /// 16進数からColorに変換する
     /// - Parameters:
     ///   - hexString: 16進数
