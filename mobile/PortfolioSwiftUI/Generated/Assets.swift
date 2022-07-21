@@ -11,19 +11,25 @@ import SwiftUI
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
   internal static let accentColor = ColorAsset(name: "AccentColor")
+  internal static let bottomMenuBack = ColorAsset(name: "bottom_menu_back")
+  internal static let bottomSheetTitleBack = ColorAsset(name: "bottom_sheet_title_back")
+  internal static let circleButton = ColorAsset(name: "circle_button")
   internal static let inputIcon = ImageAsset(name: "input_icon")
+  internal static let inputText = ColorAsset(name: "input_text")
   internal static let lightBlue = ColorAsset(name: "light_blue")
   internal static let lightGray = ColorAsset(name: "light_gray")
+  internal static let listBack = ColorAsset(name: "list_back")
   internal static let listIcon = ImageAsset(name: "list_icon")
   internal static let moneyYellow = ColorAsset(name: "money_yellow")
-  internal static let onigiriImage = ImageAsset(name: "onigiri_image")
   internal static let pencilIcon = ImageAsset(name: "pencil_icon")
   internal static let pullDown = ImageAsset(name: "pull_down")
   internal static let red = ColorAsset(name: "red")
   internal static let removeIcon = ImageAsset(name: "remove_icon")
   internal static let rightAllowIcon = ImageAsset(name: "right_allow_icon")
+  internal static let screenBackColor = ColorAsset(name: "screen_back_color")
   internal static let searchIcon = ImageAsset(name: "search_icon")
   internal static let sortIcon = ImageAsset(name: "sort_icon")
+  internal static let toastBack = ColorAsset(name: "toast_back")
   internal static let white = ColorAsset(name: "white")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

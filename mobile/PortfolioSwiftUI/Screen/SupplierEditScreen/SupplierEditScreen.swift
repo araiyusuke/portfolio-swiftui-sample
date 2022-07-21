@@ -48,11 +48,12 @@ struct SupplierEditScreen: View {
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
-        .background(Color.backGroundColor)
+        .background(Asset.screenBackColor.color)
         .customNavigation(leading: L10n.back, center: "取引先入力")
     }
     var inputSuppliers: some View {
         TextField("取引先を入力(任意)", text: $editText.toUnwrapped(defaultValue: ""))
+            .foregroundColor(Asset.inputText.color)
             .padding(.leading, 10)
             .frame(width: 290, height: 41)
             .background(.white)

@@ -15,7 +15,6 @@ struct TransactionInputScreen: ScreenMovable2 {
     init(container: DIContainer) {
         self.container = container
         self.viewModel = .init(container: container)
-
     }
     var contents: some View {
         return ZStack {
@@ -34,7 +33,8 @@ struct TransactionInputScreen: ScreenMovable2 {
             contents
             footer
                 .adjustSize(height: 60)
-                .background(Color.backGroundColor)
+                .background(Asset.screenBackColor.color)
         }
+        .background(Asset.screenBackColor.color)
     }
 }

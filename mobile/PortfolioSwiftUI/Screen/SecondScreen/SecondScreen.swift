@@ -85,7 +85,7 @@ struct SecondScreen: ScreenMovable2 {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             // スワイプするために色を入れる
-            .background(Color.backGroundColor)
+            .background(Asset.screenBackColor.color)
             .gesture(DragGesture()
                 .onEnded({ value in
                     if abs(value.translation.width) < 10 {
@@ -102,7 +102,7 @@ struct SecondScreen: ScreenMovable2 {
             )
             .adjustPadding(.leading, 30)
             .adjustPadding(.top, 20)
-            .background(Color.backGroundColor)
+            .background(Asset.screenBackColor.color)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .hiddenNavigationBarStyle()
@@ -125,14 +125,21 @@ struct SecondScreen: ScreenMovable2 {
     /// 摘要入力ボックス
     var descriptionTextField: some View {
         TextEditor(text: $descriptionText)
+            .foregroundColor(Asset.inputText.color)
             .adjustSize(width: 290, height: 100)
             .background(.white)
             .border(.gray)
+            .onAppear {
+                UITextView.appearance().backgroundColor = .clear
+            }.onDisappear {
+                UITextView.appearance().backgroundColor = nil
+            }
     }
     /// 取引先入力ボックス
     var suppliersTextField: some View {
         TextField("", text: $supplierText)
             .adjustSize(width: 290, height: 41)
+            .foregroundColor(Asset.inputText.color)
             .background(.white)
             .border(.gray)
     }

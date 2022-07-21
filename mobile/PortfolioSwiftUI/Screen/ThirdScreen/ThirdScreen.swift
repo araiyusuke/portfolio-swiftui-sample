@@ -30,7 +30,7 @@ struct ThirdScreen: ScreenMovable2 {
             .adjustSize(width: 324, height: 430)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.backGroundColor)
+        .background(Asset.screenBackColor.color)
         .hiddenNavigationBarStyle()
         .gesture(DragGesture()
             .onEnded({ value in

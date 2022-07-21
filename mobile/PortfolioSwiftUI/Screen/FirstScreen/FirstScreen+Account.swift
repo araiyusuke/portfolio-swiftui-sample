@@ -13,10 +13,10 @@ struct Account: Identifiable, Hashable {
     var name: String
     var color: Color
     var boderSize: CGFloat = 3
-    func view(selected: Bool) -> some View {
+    func circleButton(selected: Bool) -> some View {
         Text(name)
-            .customFont(size: adjust(11), spacing: .short, weight: .light)
-            .backgroundCircle(selected ? color : .white, adjust(82), color, boderSize)
+            .customFont(size: adjust(13), spacing: .short, color: .lightGray, weight: .light)
+            .backgroundCircle(selected ? color : Asset.circleButton.color, adjust(82), color, boderSize)
     }
     static func all() -> [Account] {
         [

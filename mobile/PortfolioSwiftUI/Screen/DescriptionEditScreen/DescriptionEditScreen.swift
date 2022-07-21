@@ -50,7 +50,7 @@ struct DescriptionEditScreen: View {
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        .background(Color.backGroundColor)
+        .background(Asset.screenBackColor.color)
         .customNavigation(leading: L10n.back, center: "\(L10n.account)入力") {
         }
 
@@ -59,8 +59,14 @@ struct DescriptionEditScreen: View {
         TextEditor(text: $editText.toUnwrapped(defaultValue: ""))
             .adjustPadding(.leading, 10)
             .adjustSize(width: 290, height: 100)
+            .foregroundColor(Asset.inputText.color)
             .background(.white)
             .border(.gray)
+            .onAppear {
+                UITextView.appearance().backgroundColor = .clear
+            }.onDisappear {
+                UITextView.appearance().backgroundColor = nil
+            }
     }
     var help: some View {
         Text("取引の内容やメモを入力します。\n入力すると、後で取引を探しやすくなります。\n入力しなくても構いません。")
