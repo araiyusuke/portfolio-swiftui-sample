@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 struct TransactionsListScreen: View {
-    @State private var sort: Sort = .new
+    @State private var sort: Sort = .old
     @StateObject var viewModel: ViewModel
     @EnvironmentObject var bottomTab: BottomTabManager
     @EnvironmentObject var header: HeaderManager
