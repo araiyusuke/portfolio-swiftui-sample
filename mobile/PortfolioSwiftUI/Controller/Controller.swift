@@ -20,7 +20,7 @@ struct Controller: ScreenMovable {
     var body: some View {
         // 一番上の階層
         VStack(spacing: 0) {
-            if router.screen == .transactionInput(false) {
+            if router.screen == .transactionInput {
                 headerTop
                     .frame(maxWidth: .infinity, maxHeight: adjust(100))
                     .background(Asset.lightBlue.color)
@@ -38,8 +38,6 @@ struct Controller: ScreenMovable {
                 }
             }
         }
-//        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .environment(\.resizableSheetCenter, resizableSheetCenter)
         .toast()
     }

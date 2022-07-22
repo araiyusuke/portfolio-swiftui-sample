@@ -13,7 +13,7 @@ enum TransactionInput: Equatable {
 
 enum ScreenType: Equatable {
     case login
-    case transactionInput(Bool)
+    case transactionInput
     case receipt
     case setting
     case help

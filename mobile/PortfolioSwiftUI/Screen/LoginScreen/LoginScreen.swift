@@ -7,13 +7,26 @@
 
 import SwiftUI
 
-struct LoginContentScreen: View {
-
+struct LoginScreen: View {
+    @EnvironmentObject var router: Router
+    @EnvironmentObject var bottomTabManager: BottomTabManager
     @State var email: String = ""
     @State var password: String = ""
 
     var body: some View {
 
+        ZStack {
+            Asset.lightBlue.color
+            contents
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        // ボトムメニューは不要
+        .onAppear {
+            bottomTabManager.hide()
+        }
+    }
+
+    var contents: some View {
         GeometryReader { geometry in
 
             VStack {
@@ -47,7 +60,7 @@ struct LoginContentScreen: View {
                 Text("ログイン")
                     .customFont(size: 16, spacing: .short, color: .white, weight: .light)
                     .onButtonTap {
-                        print("ログイン")
+                        router.screen = .transactionInput
                     }
 
                 // 画面下セーフエリア分スペースを開ける
@@ -60,25 +73,7 @@ struct LoginContentScreen: View {
             .ignoresSafeArea()
             .background(Asset.lightBlue.color)
         }
-    }
-}
-struct LoginScreen: View {
 
-    @EnvironmentObject var bottomTabManager: BottomTabManager
-
-    var body: some View {
-
-        ZStack {
-//            Asset.lightBlue.color
-            LoginContentScreen()
-        }
-        // ディスプレイ上下の余白を背景色で埋める
-        //        .edgesIgnoringSafeArea(.all)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        // ボトムメニューは不要
-        .onAppear {
-            bottomTabManager.hide()
-        }
     }
 }
 

@@ -38,7 +38,7 @@ extension Controller {
                     case .list:
                         moveForward(screen: .transactionList, router)
                     case .input:
-                        moveForward(screen: .transactionInput(false), router)
+                        moveForward(screen: .transactionInput, router)
                     case .camera:
                         moveForward(screen: .receipt, router)
                     case .help:
