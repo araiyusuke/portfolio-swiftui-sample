@@ -12,6 +12,7 @@ enum TransactionInput: Equatable {
 }
 
 enum ScreenType: Equatable {
+    case login
     case transactionInput(Bool)
     case receipt
     case setting
@@ -27,11 +28,5 @@ enum ScreenType: Equatable {
     }
     func isShowBottomMenu() -> Bool {
         return true
-//        switch self {
-//        case .transactionInput, .setting, .transactionList:
-//            return true
-//        default:
-//            return false
-//        }
     }
 }

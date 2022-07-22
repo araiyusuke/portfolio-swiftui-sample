@@ -18,34 +18,36 @@ struct Controller: ScreenMovable {
         self.container = container
     }
     var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                ZStack {
-                    if router.screen == .transactionInput(false) {
-                        headerTop
-                            .frame(maxWidth: .infinity, maxHeight: adjust(100))
-                            .background(Asset.lightBlue.color)
-                    }
-                }
-                contents
-                    .navigationBarColor(Asset.lightBlue.color)
+        // 一番上の階層
+        VStack(spacing: 0) {
+            if router.screen == .transactionInput(false) {
+                headerTop
+                    .frame(maxWidth: .infinity, maxHeight: adjust(100))
+                    .background(Asset.lightBlue.color)
+            }
 
-                if transactionInputRouter.screen == .second || transactionInputRouter.screen == .third {
-                    EmptyView()
-                } else {
-                    if bottomTabManager.isShow {
-                        bottomMenu
-                            .adjustSize(height: 60)
-                    }
+            contents
+                .navigationBarColor(Asset.lightBlue.color)
+
+            if transactionInputRouter.screen == .second || transactionInputRouter.screen == .third {
+                EmptyView()
+            } else {
+                if bottomTabManager.isShow {
+                    bottomMenu
+                        .adjustSize(height: 60)
                 }
             }
         }
+//        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .environment(\.resizableSheetCenter, resizableSheetCenter)
         .toast()
     }
     var contents: some View {
         return ZStack {
             switch router.screen {
+            case .login:
+                LoginScreen()
             case .help:
                 HelpScreen()
             case .receipt:

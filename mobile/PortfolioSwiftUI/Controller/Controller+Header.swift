@@ -72,6 +72,10 @@ extension Controller {
                 Text(L10n.help)
                     .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
                     .adjustSize(height: 20)
+            case .login:
+                Text("ログイン")
+                    .customFont(size: 14, spacing: .short, color: .white, weight: .bold)
+                    .adjustSize(height: 20)
             }
         }
     }

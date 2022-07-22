@@ -41,7 +41,7 @@ class Router: ObservableObject {
         case detail
     }
     // スタート画面は取引入力
-    @Published var screen: ScreenType = .transactionInput(false)
+    @Published var screen: ScreenType = .login
     @Published var direction: Direction = .forward
 
     public init() {}
