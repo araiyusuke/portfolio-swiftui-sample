@@ -10,10 +10,17 @@ import Combine
 import SwiftUI
 
 struct DIContainer {
-    let services: Services = .init(transaction: TransactionService())
+    let services: Services = .init(
+        transaction: TransactionService(),
+        user: UsersService()
+    )
 }
 
-private var cancellables = Set<AnyCancellable>()
+struct UsersService {
+    public func fetchToken() -> AnyPublisher<UsersApi.TokenResponse, Error> {
+        UsersApi.fetchToken()
+    }
+}
 
 struct TransactionService {
     public func fetch() -> AnyPublisher<TransactionsAPI.Response, Error> {
@@ -34,11 +41,11 @@ struct TransactionService {
 }
 
 extension DIContainer {
-    struct Services {
-        let transaction: TransactionService
 
-        init(transaction: TransactionService) {
-            self.transaction = transaction
-        }
+    struct Services {
+        // 取引
+        let transaction: TransactionService
+        // 認証
+        let user: UsersService
     }
 }

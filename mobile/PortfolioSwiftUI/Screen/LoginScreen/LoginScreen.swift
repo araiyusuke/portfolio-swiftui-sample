@@ -6,18 +6,38 @@
 //
 
 import SwiftUI
+import Combine
 
 struct LoginScreen: View {
     @EnvironmentObject var router: Router
     @EnvironmentObject var bottomTabManager: BottomTabManager
-    @State var email: String = ""
-    @State var password: String = ""
+    @StateObject var viewModel: ViewModel
 
     var body: some View {
-
         ZStack {
             Asset.lightBlue.color
-            contents
+            switch viewModel.fetchTokenResult {
+            case .notRequested:
+                contents
+            case .isLoading:
+                ZStack {
+                    LoadingView()
+                    contents
+                }
+            case .loaded:
+                Text("テストさん、ログインに成功しました")
+                    .customFont(size: 16, spacing: .short, color: .lightGray, weight: .light)
+                    .padding(30)
+                    .background(.white)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            router.screen = .transactionInput
+                        }
+                    }
+            case let .failed(error):
+                failedView(error)
+            }
+
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         // ボトムメニューは不要
@@ -26,7 +46,19 @@ struct LoginScreen: View {
         }
     }
 
+    func failedView(_ error: Error) -> some View {
+        Text(error.localizedDescription)
+            .customFont(size: 16, spacing: .short, color: .white, weight: .light)
+
+    }
+
+    var loadingView: some View {
+        Text("loading")
+            .customFont(size: 16, spacing: .short, color: .white, weight: .light)
+    }
+
     var contents: some View {
+
         GeometryReader { geometry in
 
             VStack {
@@ -40,14 +72,14 @@ struct LoginScreen: View {
                     .customFont(size: 16, spacing: .short, color: .white, weight: .light)
                     .frame(maxWidth: .infinity, maxHeight: adjust(40))
 
-                TextField("メールアドレス", text: $email)
+                TextField("メールアドレス", text: $viewModel.email)
                     .foregroundColor(Asset.inputText.color)
                     .padding(.leading, 10)
                     .frame(width: 290, height: 41)
                     .background(.white)
                     .border(.gray)
 
-                TextField("パスワード", text: $password)
+                TextField("パスワード", text: $viewModel.password)
                     .foregroundColor(Asset.inputText.color)
                     .padding(.leading, 10)
                     .frame(width: 290, height: 41)
@@ -60,7 +92,7 @@ struct LoginScreen: View {
                 Text("ログイン")
                     .customFont(size: 16, spacing: .short, color: .white, weight: .light)
                     .onButtonTap {
-                        router.screen = .transactionInput
+                        viewModel.login()
                     }
 
                 // 画面下セーフエリア分スペースを開ける
@@ -77,8 +109,15 @@ struct LoginScreen: View {
     }
 }
 
-struct LoginScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginScreen()
+struct LoadingView: View {
+
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .foregroundColor(.white)
+                .opacity(0.6)
+            ProgressView("")
+        }
+        .zIndex(.infinity)
     }
 }

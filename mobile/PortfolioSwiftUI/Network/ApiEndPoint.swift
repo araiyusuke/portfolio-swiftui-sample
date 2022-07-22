@@ -14,7 +14,8 @@ struct Api {
     static let suppliers = "suppliers"
     static let descriptions = "descriptions"
     static let transactions = "transactions"
-
+    static let users = "users"
+    static let userEndPoint = "\(Api.httpProtocol)\(Api.host)\(users)"
     static let sppliterEndPoint = "\(Api.httpProtocol)\(Api.host)\(suppliers)"
     static let descriptionsEndPoint = "\(Api.httpProtocol)\(Api.host)\(descriptions)"
     static let transactionsEndPoint = "\(Api.httpProtocol)\(Api.host)\(transactions)"

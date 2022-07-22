@@ -20,10 +20,6 @@ struct PullDownItem: Mockable, Hashable, Identifiable {
     }
 }
 
-protocol Hogetarou: Identifiable, Hashable {
-    func getName() -> String
-}
-
 protocol UserProtocol {
     func getUser()
 }

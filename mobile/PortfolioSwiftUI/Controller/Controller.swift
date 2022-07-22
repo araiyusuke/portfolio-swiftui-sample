@@ -29,6 +29,7 @@ struct Controller: ScreenMovable {
             contents
                 .navigationBarColor(Asset.lightBlue.color)
 
+            // 下のメニューは特定のスクリーンのみ表示する
             if transactionInputRouter.screen == .second || transactionInputRouter.screen == .third {
                 EmptyView()
             } else {
@@ -39,13 +40,14 @@ struct Controller: ScreenMovable {
             }
         }
         .environment(\.resizableSheetCenter, resizableSheetCenter)
+        // 特定の画面でトーストを表示する
         .toast()
     }
     var contents: some View {
         return ZStack {
             switch router.screen {
             case .login:
-                LoginScreen()
+                LoginScreen(viewModel: .init(container: container))
             case .help:
                 HelpScreen()
             case .receipt:
